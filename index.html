@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>La Gazette de Janzé</title>
+<meta name="description" content="Le journal de bord de Janzé : conseil municipal, travaux, projets, urbanisme et alertes.">
+<meta name="theme-color" content="#f3e3dc">
+<link rel="icon" type="image/png" sizes="32x32" href="icones/icone-gazette-janze-32.png">
+<link rel="apple-touch-icon" href="icones/icone-gazette-janze-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Gazette">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>html,body{margin:0;padding:0}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;0,6..72,800;1,6..72,800&family=Libre+Franklin:wght@400;600;700&display=swap">
+<style>
+/* Layout : petit quotidien local. Titre de une, barre de rubriques collante, grille à deux colonnes de brèves, page article en lecture. Thème papier rosé assumé. */
+:root {
+  --paper: #f3e3dc;
+  --paper-2: #fbf2ec;
+  --ink: #1e2a4a;
+  --ink-2: #3d4766;
+  --rule: #c9a99c;
+  --rust: #b5532f;
+  --apricot: #f2a65a;
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "Libre Franklin", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--paper); }
+body { color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+a { color: var(--rust); }
+:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+.page { max-width: 780px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px; }
+
+.mast { padding-top: 34px; text-align: center; }
+.mast small { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; }
+.mast small .rue { display: block; margin-top: 3px; color: var(--rust); }
+.mast h1 { font-family: var(--display); font-weight: 800; font-style: italic; font-size: clamp(40px, 11vw, 68px); margin: 4px 0 2px; letter-spacing: -.02em; line-height: 1; }
+.mast h1 button { text-align: center; display: inline-flex; flex-direction: column; align-items: center; gap: 0; }
+.mast h1 .pre { font-size: clamp(22px, 5.5vw, 30px); letter-spacing: -.01em; margin-top: 10px; }
+.mast h1 .wm { display: block; width: clamp(220px, 62vw, 340px); height: auto; margin-top: 10px; overflow: visible; }
+.dateline { display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; font-weight: 600; border-top: 1px solid var(--ink); border-bottom: 3px double var(--ink); padding: 6px 0; margin-top: 10px; }
+
+nav.rub { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); border-bottom: 1px solid var(--ink); margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: 0 max(16px, env(safe-area-inset-left, 0px)); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 11; background: var(--paper); }
+nav.rub .in { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+nav.rub .in::-webkit-scrollbar { display: none; }
+nav.rub button { flex: none; padding: 11px 10px 9px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-bottom: 3px solid transparent; color: var(--ink-2); }
+nav.rub button[aria-current="page"] { color: var(--rust); border-bottom-color: var(--rust); }
+
+.kick { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; font-weight: 700; color: var(--rust); }
+.une { display: block; width: 100%; margin-top: 18px; background: var(--ink); color: var(--paper); padding: 20px; border-radius: 3px; }
+.une .kick { color: var(--apricot); }
+.une h2 { font-family: var(--display); font-size: clamp(26px, 6vw, 36px); line-height: 1.08; margin: 6px 0 10px; text-wrap: balance; }
+.une p { margin: 0; font-size: 14.5px; opacity: .92; }
+.une ul { margin: 10px 0 0; padding-left: 18px; font-size: 14px; }
+.une .lire { display: inline-block; margin-top: 12px; font-weight: 700; font-size: 13px; color: var(--apricot); }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); margin-top: 18px; }
+@media (max-width: 340px) { .grid { grid-template-columns: 1fr; } }
+.br { display: block; width: 100%; padding: 12px 12px 14px 0; border-bottom: 1px solid var(--rule); min-width: 0; }
+.br:nth-child(even) { padding: 12px 0 14px 12px; border-left: 1px solid var(--rule); }
+.br h3 { font-family: var(--display); font-size: 19px; line-height: 1.15; margin: 4px 0; text-wrap: balance; }
+.br p { margin: 0; font-size: 13px; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.br time { display: block; font-size: 11.5px; color: var(--ink-2); margin-top: 6px; font-weight: 600; }
+
+.box { margin-top: 22px; background: var(--paper-2); border: 1px solid var(--rule); padding: 14px 16px; border-radius: 3px; }
+.box h4 { margin: 0 0 6px; font-family: var(--display); font-size: 21px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.box h4 button { font-family: var(--body); font-size: 12.5px; font-weight: 700; color: var(--rust); }
+.agl { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 4px 12px; padding: 8px 0; border-top: 1px dotted var(--rule); font-size: 14px; }
+.agl b { color: var(--rust); font-variant-numeric: tabular-nums; }
+.agl small { display: block; color: var(--ink-2); font-size: 12.5px; }
+.why { font-size: 11.5px; color: var(--ink-2); margin: 6px 0 0; font-style: italic; }
+.strip { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; justify-content: space-between; width: 100%; margin-top: 12px; padding: 10px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); font-size: 14px; }
+.strip b { font-family: var(--display); font-size: 17px; }
+.strip span { color: var(--rust); font-weight: 700; font-size: 13px; }
+.pj { display: block; width: 100%; padding: 14px 0 16px; border-bottom: 1px solid var(--rule); }
+.pj:last-child { border-bottom: 0; }
+.pj .ph { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.pj h3 { font-family: var(--display); font-size: 20px; line-height: 1.15; margin: 0; }
+.pj .stage { flex: none; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--rust); }
+.pj p { margin: 3px 0 10px; font-size: 13.5px; color: var(--ink-2); }
+.bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+.bar i { height: 8px; background: var(--rule); opacity: .55; }
+.bar i.on { background: var(--ink); opacity: 1; }
+.bar i.cur { background: var(--rust); opacity: 1; }
+.barlab { display: grid; grid-template-columns: repeat(5, 1fr); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin-top: 5px; font-weight: 600; }
+.barlab span.here { color: var(--rust); }
+.pj .more { display: inline-block; margin-top: 10px; font-size: 12.5px; font-weight: 700; color: var(--rust); }
+.box .pj { padding: 10px 0 12px; }
+.box .pj h3 { font-size: 17px; }
+.box .pj p { display: none; }
+
+.sec-title { font-family: var(--display); font-size: 32px; margin: 20px 0 4px; }
+.sec-sub { margin: 0 0 6px; color: var(--ink-2); font-size: 14px; }
+.list .row { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; width: 100%; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.list .row time { font-size: 12px; font-weight: 700; color: var(--rust); padding-top: 4px; }
+.list .row h3 { font-family: var(--display); font-size: 21px; line-height: 1.15; margin: 0 0 4px; }
+.list .row p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
+
+article.read { padding-top: 18px; }
+.back { font-size: 13px; font-weight: 700; color: var(--rust); padding: 6px 0; }
+article.read h2 { font-family: var(--display); font-size: clamp(30px, 7vw, 42px); line-height: 1.06; margin: 8px 0 10px; text-wrap: balance; }
+.byline { font-size: 12.5px; color: var(--ink-2); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 7px 0; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.chapo { font-family: var(--display); font-size: 20px; line-height: 1.4; margin: 16px 0 12px; max-width: 62ch; }
+article.read ul { padding-left: 20px; font-size: 15.5px; max-width: 62ch; }
+article.read li { margin-bottom: 7px; }
+.drop::first-letter { font-family: var(--display); font-weight: 800; float: left; font-size: 3.1em; line-height: .85; padding: 4px 8px 0 0; color: var(--rust); }
+.srcbtn { display: inline-block; margin-top: 10px; padding: 11px 16px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 700; font-size: 13.5px; border-radius: 3px; }
+.aussi { margin-top: 28px; border-top: 3px double var(--ink); padding-top: 10px; }
+
+.srcgroup { margin-top: 22px; }
+.srcgroup h3 { display: block; margin: 0; padding-bottom: 6px; border-bottom: 2px solid var(--ink); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--lv); }
+.srcgroup h3 small { display: block; margin-top: 2px; font-size: 12px; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--ink-2); }
+.srclist .s { padding: 11px 0 11px 14px; border-bottom: 1px dotted var(--rule); border-left: 3px solid var(--lv); margin-top: 8px; }
+.srcgroup.auto { --lv: #3e6b3a; } .srcgroup.semi { --lv: var(--rust); } .srcgroup.non { --lv: #8a3b52; }
+.srclist b { display: block; font-family: var(--display); font-size: 17px; }
+.srclist span { font-size: 13px; color: var(--ink-2); }
+.colophon { margin-top: 26px; font-size: 12px; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
+</style>
+
+<div class="page">
+  <header class="mast">
+    <small>Le journal de bord de votre ville<span class="rue">pour les voisins des Hirondelles</span></small>
+    <h1><button data-go="une" aria-label="La Gazette de Janzé : retour à la une">
+      <svg class="wm" viewBox="-4 0 170 108" role="img" aria-hidden="true">
+        <g transform="translate(-40 -4) scale(.66)">
+          <text x="104" y="160" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-weight="800" font-style="normal" font-size="170" fill="var(--ink)">J</text>
+          <circle cx="96" cy="31" r="9" fill="var(--rust)"/><circle cx="110" cy="27" r="10" fill="var(--rust)"/><circle cx="124" cy="31" r="9" fill="var(--rust)"/>
+          <path d="M96 50 L76 58 L96 65 Z" fill="var(--apricot)"/><circle cx="106" cy="55" r="4.5" fill="var(--paper)"/><ellipse cx="90" cy="72" rx="5" ry="8" fill="var(--rust)"/>
+        </g>
+        <path d="M60 22.4 H158" stroke="var(--ink)" stroke-width="2.4"/><path d="M60 26.2 H158" stroke="var(--ink)" stroke-width=".8"/>
+        <text x="109" y="46" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-weight="800" font-style="italic" font-size="21" fill="var(--ink)">La Gazette</text>
+        <text x="109" y="66" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-weight="800" font-style="italic" font-size="15" fill="var(--rust)">— de —</text>
+        <text x="52" y="101.6" font-family="Newsreader, Georgia, serif" font-weight="800" font-style="normal" font-size="50" fill="var(--ink)" letter-spacing="-1">anzé</text>
+      </svg>
+    </button></h1>
+    <div class="dateline"><span id="dl-date"></span><span>Édition du jour</span><span>35150</span></div>
+  </header>
+  <nav class="rub" aria-label="Rubriques"><div class="in" id="rub"></div></nav>
+  <main id="main"></main>
+  <p class="colophon">Prototype · informations relevées le 28 octobre 2026 sur janze.fr et dans le Janzé mag</p>
+</div>
+
+<script>
+const CATS = {
+  conseil: { label: "Conseil municipal", short: "Conseil" },
+  travaux: { label: "Travaux & circulation", short: "Travaux" },
+  projets: { label: "Projets", short: "Projets" },
+  urba:    { label: "Urbanisme & permis", short: "Urbanisme" },
+  alerte:  { label: "Alertes", short: "Alertes" },
+  presse:  { label: "Presse locale", short: "Presse" }
+};
+const KEYWORD = "Janzé";
+const AUTO = { auto: "Collecte automatique", semi: "Collecte partielle", non: "Saisie manuelle" };
+const TODAY = "2026-10-28";
+const ITEMS = [
+  { id: "p-coupe-pontivy", d: "2026-10-26", cat: "presse", press: true, t: "« Beaucoup de fierté, mais quelques regrets » : Janzé s'incline en Coupe de France",
+    p: "Reportage photo sur le 6e tour de Coupe de France, où l'US Janzé recevait Pontivy le dimanche 25 octobre.",
+    src: "Le Journal de Vitré (actu.fr)", url: "https://actu.fr/bretagne/janze_35136/en-images-beaucoup-de-fierte-mais-quelques-regrets-janze-sincline-en-coupe-de-france_64976207.html", a: "auto" },
+  { id: "p-austen-rd777", d: "2026-10-24", cat: "presse", press: true, place: "rd777", t: "Tempête Austen : la route Vitré-Janzé barrée plusieurs heures",
+    p: "Un arbre tombé a fermé la RD 777 à la sortie de Vitré en fin de matinée. Une déviation a été mise en place le temps du dégagement.",
+    src: "Le Journal de Vitré (actu.fr)", url: "https://actu.fr/bretagne/vitre_35360/tempete-austen-la-route-vitre-janze-barree-plusieurs-heures-apres-la-chute-dun-arbre_64972334.html", a: "auto" },
+  { id: "p-heros", d: "2026-10-12", cat: "presse", press: true, t: "L'US Janzé accueillie en héros après un match historique",
+    p: "Victoire à Plescop le 11 octobre : le club se qualifie pour la première fois de son histoire pour le 6e tour de la Coupe de France.",
+    src: "Le Journal de Vitré (actu.fr)", url: "https://www.titrespresse.com/24853682603/ille-vilaine-we", a: "auto" },
+  { id: "p-vide-greniers", d: "2026-10-07", cat: "presse", press: true, t: "Près de 300 exposants attendus au vide-greniers d'automne",
+    p: "Le vide-greniers de Janzé se tenait le dimanche 11 octobre dans le centre-ville.",
+    src: "Le Journal de Vitré (actu.fr)", url: "https://actu.fr/bretagne/janze_35136/pres-de-300-exposants-attendus-au-vide-greniers-de-cette-commune-dille-et-vilaine-ce-week-end_64894830.html", a: "auto" },
+  { id: "p-exploit", d: "2026-09-28", cat: "presse", press: true, t: "« Un véritable exploit » : Janzé signe la surprise de la région en Coupe de France",
+    p: "L'US Janzé, en R3, élimine un club de R1 le 27 septembre.",
+    src: "Le Journal de Vitré (actu.fr)", url: "https://actu.fr/bretagne/vitre_35360/un-veritable-exploit-janze-signe-la-surprise-de-la-region-en-coupe-de-france_64849978.html", a: "auto" },
+  { id: "secheresse", d: "2026-10-26", cat: "alerte", t: "Crise sécheresse : l'eau réservée aux usages prioritaires",
+    p: "Tout le département reste au niveau « crise », le plus élevé. L'eau sert d'abord à l'eau potable des personnes et des animaux.",
+    li: ["Réduire sa consommation au maximum", "Signaler une fuite ou un poteau incendie ouvert au 02 23 08 01 89"],
+    src: "janze.fr", url: "https://www.janze.fr/actualites/crise-secheresse-economisons-la-ressource-en-eau", a: "auto" },
+  { id: "haies", d: "2026-10-20", cat: "urba", t: "Arracher une haie : la demande se fait en ligne",
+    p: "Depuis le 1er octobre 2026, toute demande de destruction de haie ou d'alignement d'arbres se dépose sur haie.beta.gouv.fr, et non plus en mairie. Un simulateur anonyme permet de savoir si une autorisation est nécessaire. L'entretien courant n'est pas concerné.",
+    src: "janze.fr", url: "https://www.janze.fr/actualites/haies-et-alignements-darbres-un-guichet-unique-pour-vos-demarches", a: "auto" },
+  { id: "gendarmerie", d: "2026-10-08", cat: "travaux", t: "La gendarmerie déménage rue Pierre Aristide Bréal",
+    p: "À partir du samedi 10 octobre, la brigade s'installe dans l'ancienne Trésorerie pendant toute la durée du chantier. Le bâtiment actuel, à l'entrée de ville, est démoli pour construire une gendarmerie neuve.",
+    li: ["Bâtiment de 413 m², cabinet d'architecture Faber", "Coût : 1 587 660 € HT, subventions demandées à l'État et à la Région", "Logements de fonction construits par Neotoa", "Téléphone de la brigade : 02 99 47 03 18"],
+    src: "janze.fr", url: "https://www.janze.fr/actualites/la-gendarmerie-demenage-dans-lancienne-tresorerie-le-temps-des-travaux", a: "auto" },
+  { id: "catnat", d: "2026-09-23", cat: "alerte", t: "Catastrophe naturelle reconnue pour les pluies de juillet",
+    p: "Après les pluies diluviennes de la nuit du 16 au 17 juillet, l'État a reconnu l'état de catastrophe naturelle « inondations et coulées de boue ». L'arrêté est paru au Journal officiel le 22 septembre.",
+    li: ["Délai de déclaration à l'assureur : 30 jours après la parution, soit vers le 22 octobre"],
+    src: "janze.fr", url: "https://www.janze.fr/actualites/intemperies-diluviennes-letat-de-catastrophe-naturelle-reconnu", a: "auto" },
+  { id: "mairie", d: "2026-09-14", cat: "travaux", t: "Mairie : fin de la phase 1 cet automne, extension en 2027",
+    p: "Le chantier d'accessibilité, lancé en mai 2025 et retardé par la découverte de mérule, est coupé en deux.",
+    li: ["Phase 1 : finir le bâtiment existant pour rouvrir la mairie, réception visée fin d'automne 2026", "Le chantier rétrécit et rend des places de stationnement", "Phase 2 : extension côté sud pour rendre la salle du conseil accessible, reprise en 2027 avec un projet revu pour garder du stationnement"],
+    src: "janze.fr", url: "https://www.janze.fr/actualites/travaux-de-la-mairie-point-detape-sur-le-chantier", a: "auto" },
+  { id: "canopee", d: "2026-07-15", approx: true, cat: "travaux", t: "Parking de la Canopée et caméras en centre-ville",
+    p: "Une vingtaine de places ouvertes 24 h/24 compensent celles du Champ de Foire occupé par la guinguette. Des caméras de vidéoprotection, déplaçables selon les événements, sont installées en plusieurs points du centre. Une extension avec la gendarmerie est prévue.",
+    src: "Janzé mag n°82", url: "https://www.janze.fr/sites/default/files/janze_mag_82_web_compressed_1.pdf", a: "semi" },
+  { id: "plu-inventaire", d: "2026-07-15", approx: true, cat: "urba", t: "PLU : la ville recense les granges transformables en logement",
+    p: "Dans le cadre de la révision du PLU, les propriétaires peuvent signaler un bâtiment agricole ancien qui pourrait devenir un logement.",
+    li: ["Bâti traditionnel en pierre ou en terre, en bon état", "Au moins 50 m² au sol", "À plus de 100 m d'une exploitation agricole active", "Contact : plu@janze.fr, 02 99 47 67 09"],
+    src: "Janzé mag n°82", url: "https://www.janze.fr/mon-quotidien/urbanisme/revision-du-plu", a: "semi" },
+  { id: "budget", d: "2026-04-29", cat: "conseil", t: "Budget 2026 voté, impôts inchangés",
+    p: "Au conseil municipal du 29 avril, les élus ont adopté les budgets 2026 et pris plusieurs décisions.",
+    li: ["Taux maintenus : foncier bâti 39,77 %, non bâti 38,64 %, habitation 13,85 %", "Commission d'indemnisation pour les commerçants privés de stationnement place de l'Hôtel de Ville", "Subvention du Département de 166 098 € pour la piste cyclable Janzé-Brie", "CCAS : 148 300 € ; associations : 96 391 € au total", "Bâtiment de la médiathèque confié gratuitement au réseau Libellule (Roche aux Fées)"],
+    src: "Janzé mag n°82", url: "https://www.janze.fr/sites/default/files/janze_mag_82_web_compressed_1.pdf", a: "semi" },
+  { id: "premieres-mesures", d: "2026-05-15", approx: true, cat: "travaux", t: "Éclairage jusqu'à 23 h et 7 places boulevard Plazanet",
+    p: "Premières mesures de la nouvelle équipe municipale.",
+    li: ["Éclairage public allumé jusqu'à 23 h au lieu de 21 h", "7 places de stationnement le long du cimetière, boulevard Plazanet", "Stop du boulevard Cahours décalé pour mieux voir", "Contrôles renforcés de la zone bleue et des vitesses"],
+    src: "Janzé mag n°81", url: "https://www.janze.fr/sites/default/files/janze_mag_81_web.pdf", a: "semi" },
+  { id: "rafcom", d: "2026-04-14", cat: "conseil", t: "Roche aux Fées Communauté : Christian Sorieux élu président",
+    p: "Le maire de Janzé Jonathan Houillot, ainsi qu'Eric Pineau et Emmanuelle Clouet, entrent au bureau exécutif de l'intercommunalité.",
+    src: "Janzé mag n°81", url: "https://www.janze.fr/sites/default/files/janze_mag_81_web.pdf", a: "semi" },
+  { id: "designations", d: "2026-03-31", cat: "conseil", t: "Conseil du 31 mars : les représentants désignés",
+    p: "Les élus ont été désignés au CCAS, au collège Jean Monnet, à l'OGEC, aux syndicats d'eau, à Énergie 35, au syndicat d'urbanisme du Pays de Vitré et au SMICTOM.",
+    src: "Janzé mag n°81", url: "https://www.janze.fr/sites/default/files/janze_mag_81_web.pdf", a: "semi" },
+  { id: "elections", d: "2026-03-15", cat: "conseil", t: "Jonathan Houillot élu maire",
+    p: "La liste « Unis pour Janzé » obtient plus de 75 % des voix : 26 élus de majorité et 3 de minorité sur 29. Priorités annoncées : centre-ville, sécurité, pas de hausse d'impôts, médiathèque.",
+    src: "Janzé mag n°81", url: "https://www.janze.fr/sites/default/files/janze_mag_81_web.pdf", a: "semi" },
+  { id: "padd", d: "2025-06-04", cat: "urba", t: "Révision du PLU : les grandes orientations débattues",
+    p: "La révision lancée le 21 février 2024 doit intégrer la ZAC multi-sites (Gambetta, L'Yve, La Clouyère) et limiter l'artificialisation des sols. Durée prévue : 2 à 3 ans.",
+    src: "janze.fr", url: "https://www.janze.fr/mon-quotidien/urbanisme/revision-du-plu", a: "auto" },
+  { id: "hopital", d: "2024-12-18", cat: "projets", t: "Nouvel hôpital : feu vert de l'enquête publique",
+    p: "Le futur Centre hospitalier de la Roche aux Fées sera construit secteur de l'Yve, à l'angle des rues Pierre et Marie Curie et du Bois Rougé. La commissaire enquêtrice a rendu un avis favorable.",
+    li: ["Permis de construire déposé le 1er octobre 2024", "Ouverture annoncée pour 2027 dans le dossier"],
+    src: "Rapport d'enquête", url: "https://www.janze.fr/sites/default/files/rapport_mecdu_hopital.pdf", a: "semi" }
+];
+const AGENDA = [
+  { d: "2026-11-04", cat: "conseil", t: "Conseil municipal", s: "Salle Uranus, Maison des Associations (Brûlon)" },
+  { d: "2026-11-30", cat: "travaux", t: "Réception de la phase 1 de la mairie", s: "Visée « fin d'automne 2026 »", approx: "fin nov." },
+  { d: "2026-12-16", cat: "conseil", t: "Conseil municipal", s: "Dernière séance de l'année" },
+  { d: "2027-01-15", cat: "projets", t: "Boucle d'électricité locale", s: "Janzé rejoint l'autoconsommation collective", approx: "début 2027" },
+  { d: "2027-06-30", cat: "projets", t: "Ouverture du nouvel hôpital", s: "Échéance du dossier 2024, à confirmer", approx: "2027" }
+];
+const STEP_LABELS = ["Idée", "Étude", "Vote", "Chantier", "Livré"];
+const PROJECTS = [
+  { t: "Accessibilité de la mairie", s: "Phase 1 en finition, phase 2 en 2027", step: 3, item: "mairie", due: "2026-11-30" },
+  { t: "Nouvelle gendarmerie", s: "Chantier lancé, 1,59 M€ HT", step: 3, item: "gendarmerie" },
+  { t: "Centre hospitalier", s: "Secteur de l'Yve, ouverture annoncée 2027", step: 3, item: "hopital", due: "2027-06-30" },
+  { t: "Révision du PLU", s: "Orientations débattues, inventaire en cours", step: 1, item: "plu-inventaire" },
+  { t: "Voie cyclable Janzé-Brie", s: "Subvention de 166 098 € votée", step: 3, item: "budget" },
+  { t: "Collège Jean Monnet reconstruit", s: "Porté par le Département, horizon 2030", step: 1 },
+  { t: "Médiathèque", s: "Engagement du mandat", step: 1 }
+];
+const SOURCES = [
+  { n: "Actualités de janze.fr", w: "Travaux, alertes, annonces", a: "auto" },
+  { n: "Le Journal de Vitré (actu.fr)", w: "Articles qui citent Janzé, page commune + filtre sur le mot-clé", a: "auto" },
+  { n: "Actes officiels (Mégalis)", w: "Délibérations et arrêtés, dont les déviations", a: "auto" },
+  { n: "Permis accordés (Sitadel)", w: "Permis de construire, d'aménager, de démolir, chaque mois", a: "auto" },
+  { n: "Appels d'offres (BOAMP)", w: "Chantiers annoncés avant leur démarrage", a: "auto" },
+  { n: "PLU en vigueur (Géoportail)", w: "Zonage et modifications approuvées", a: "auto" },
+  { n: "Restrictions d'eau (VigiEau)", w: "Niveau de sécheresse à Janzé", a: "auto" },
+  { n: "Janzé mag", w: "Résumés des conseils, un à deux mois après", a: "semi" },
+  { n: "Ouest-France", w: "Plus de flux par commune : titres via la page Janzé ou Google Actualités, articles souvent payants", a: "semi" },
+  { n: "Routes départementales", w: "Communiqués du Département", a: "semi" },
+  { n: "Actualités de Roche aux Fées Communauté", w: "Flux RSS public de rafcom.bzh (actus, agenda, par thème)", a: "auto" },
+  { n: "Permis en cours, petites déclarations", w: "Affichés en mairie uniquement", a: "non" },
+  { n: "Chantiers Enedis, eau, fibre", w: "Panneaux sur place", a: "non" }
+];
+
+const RUBS = [["une", "À la une"], ["alerte", "Alertes"], ["projets", "Projets"], ["conseil", "Conseil"], ["travaux", "Travaux"], ["urba", "Urbanisme"], ["presse", "Presse"], ["agenda", "Agenda"], ["sources", "Sources"]];
+const SEC_SUB = {
+  conseil: "Décisions du conseil municipal et de l'intercommunalité.",
+  travaux: "Chantiers, stationnement, circulation et déviations.",
+  urba: "PLU, permis de construire et démarches d'urbanisme.",
+  projets: "Les grands équipements en préparation.",
+  alerte: "Sécheresse, intempéries, sécurité.",
+  presse: "Les articles des journaux locaux qui citent Janzé, détectés par mot-clé."
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const dt = d => new Date(d + "T12:00:00");
+const fDay = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short" });
+const fMon = new Intl.DateTimeFormat("fr-FR", { month: "long", year: "numeric" });
+const fFull = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+const fShort = new Intl.DateTimeFormat("fr-FR", { weekday: "short", day: "numeric", month: "long", year: "numeric" });
+const when = i => i.approx ? fMon.format(dt(i.d)) : (i.d.startsWith("2026") ? fDay.format(dt(i.d)) : fDay.format(dt(i.d)) + " " + dt(i.d).getFullYear());
+const sorted = () => [...ITEMS].sort((a, b) => b.d.localeCompare(a.d));
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+const brief = i => `<button class="br" data-open="${i.id}"><div class="kick">${esc(CATS[i.cat].short)}</div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p><time>${esc(when(i))}</time></button>`;
+
+function agendaRows(list) {
+  return list.map(a => `<div class="agl"><b>${esc(a.approx ? a.approx : fDay.format(dt(a.d)))}</b><div>${esc(a.t)}<small>${esc(a.s)}</small></div></div>`).join("");
+}
+
+// La une : l'info la plus importante parmi les plus fraîches.
+// Poids par rubrique, moins un point par jour d'ancienneté.
+const WEIGHT = { alerte: 50, conseil: 45, travaux: 40, urba: 30, projets: 30, presse: 20 };
+const ageDays = i => Math.round((dt(TODAY) - dt(i.d)) / 86400000);
+const score = i => WEIGHT[i.cat] - ageDays(i);
+const pickLead = () => [...ITEMS].sort((a, b) => score(b) - score(a))[0];
+
+// Projets de la une : actu récente et échéance proche d'abord, puis chantiers en cours.
+// Jusqu'à 60 points pour une actu de moins de 2 mois, 60 pour une échéance dans les 2 mois, 15 si chantier.
+function projectScore(p) {
+  const it = p.item && ITEMS.find(i => i.id === p.item);
+  const fresh = it ? Math.max(0, 60 - ageDays(it)) : 0;
+  const soon = p.due ? Math.max(0, 60 - Math.round((dt(p.due) - dt(TODAY)) / 86400000)) : 0;
+  return fresh + soon + (p.step === 3 ? 15 : 0);
+}
+const frontProjects = () => [...PROJECTS].sort((a, b) => projectScore(b) - projectScore(a)).slice(0, 4);
+
+function projectRow(p, compact) {
+  const bars = STEP_LABELS.map((_, k) => `<i class="${k < p.step ? "on" : k === p.step ? "cur" : ""}"></i>`).join("");
+  const labs = STEP_LABELS.map((l, k) => `<span class="${k === p.step ? "here" : ""}">${l}</span>`).join("");
+  const tag = p.item ? "button" : "div";
+  return `<${tag} class="pj" ${p.item ? `data-open="${p.item}"` : ""}>
+    <div class="ph"><h3>${esc(p.t)}</h3><span class="stage">${STEP_LABELS[p.step]}</span></div>
+    <p>${esc(p.s)}</p>
+    <div class="bar" role="img" aria-label="Étape ${p.step + 1} sur 5 : ${STEP_LABELS[p.step]}">${bars}</div>
+    ${compact ? "" : `<div class="barlab">${labs}</div>${p.item ? `<span class="more">Dernière info →</span>` : ""}`}
+  </${tag}>`;
+}
+
+function viewUne() {
+  const lead = pickLead();
+  const rest = sorted().filter(i => i.id !== lead.id).slice(0, 6);
+  const next = AGENDA.find(a => !a.approx && a.d >= TODAY);
+  const inDays = next ? Math.round((dt(next.d) - dt(TODAY)) / 86400000) : 0;
+  return `
+  <button class="une" data-open="${lead.id}">
+    <div class="kick">${esc(CATS[lead.cat].label)} · ${esc(when(lead))}</div>
+    <h2>${esc(lead.t)}</h2>
+    <p>${esc(lead.p)}</p>
+    ${lead.li ? `<ul>${lead.li.slice(0, 3).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+    <span class="lire">Lire l'article →</span>
+  </button>
+  <p class="why">Une choisie automatiquement : l'info la plus importante parmi les plus récentes.</p>
+  ${next ? `<button class="strip" data-go="agenda"><b>${esc(next.t)} : ${esc(new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(dt(next.d)))}</b><span>dans ${inDays} jours →</span></button>` : ""}
+  <div class="grid">${rest.map(brief).join("")}</div>
+  <div class="box"><h4>Où en sont les projets <button data-go="projets">Tous les projets →</button></h4>${frontProjects().map(p => projectRow(p, true)).join("")}</div>
+  <div class="box"><h4>Au programme <button data-go="agenda">Tout l'agenda →</button></h4>${agendaRows(AGENDA.slice(0, 3))}</div>`;
+}
+
+function viewProjets() {
+  const news = sorted().filter(i => i.cat === "projets");
+  return `<h2 class="sec-title">Grands projets</h2><p class="sec-sub">Idée, étude, vote, chantier, livré : l'avancement de chaque projet.</p>
+  <div>${PROJECTS.map(p => projectRow(p, false)).join("")}</div>
+  ${news.length ? `<div class="aussi"><div class="kick">Articles</div><div class="list">${news.map(i => `<button class="row" data-open="${i.id}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></button>`).join("")}</div></div>` : ""}`;
+}
+
+function viewSection(cat) {
+  const list = sorted().filter(i => i.cat === cat);
+  return `<h2 class="sec-title">${esc(CATS[cat].label)}</h2><p class="sec-sub">${esc(SEC_SUB[cat])}</p>
+  <div class="list">${list.map(i => `<button class="row" data-open="${i.id}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></button>`).join("")}</div>`;
+}
+
+function viewAgenda() {
+  return `<h2 class="sec-title">Agenda</h2><p class="sec-sub">Séances du conseil et échéances annoncées.</p>
+  <div class="box">${agendaRows(AGENDA)}</div>
+  <div class="box"><h4>Où en sont les grands projets <button data-go="projets">Voir l'avancement →</button></h4></div>`;
+}
+
+function viewSources() {
+  return `<h2 class="sec-title">Nos sources</h2><p class="sec-sub">Ce que la Gazette lit chaque nuit, et ce qu'elle ne peut pas lire.</p>
+  ${[["auto", "Collecte automatique", "lu chaque nuit sans intervention"], ["semi", "Collecte partielle", "incomplet, en retard ou payant"], ["non", "Hors ligne", "rien à lire sur internet"]].map(([k, title, sub]) => {
+    const list = SOURCES.filter(s => s.a === k);
+    return list.length ? `<section class="srcgroup ${k}"><h3>${title} <small>${list.length} · ${sub}</small></h3>
+      <div class="srclist">${list.map(s => `<div class="s"><b>${esc(s.n)}</b><span>${esc(s.w)}</span></div>`).join("")}</div></section>` : "";
+  }).join("")}`;
+}
+
+function viewArticle(id) {
+  const i = ITEMS.find(x => x.id === id);
+  if (!i) return viewUne();
+  const aussi = sorted().filter(x => x.cat === i.cat && x.id !== i.id).slice(0, 2);
+  const more = aussi.length ? aussi : sorted().filter(x => x.id !== i.id).slice(0, 2);
+  return `<article class="read">
+    <button class="back" data-back>← Retour</button>
+    <div class="kick">${esc(CATS[i.cat].label)}</div>
+    <h2>${esc(i.t)}</h2>
+    <div class="byline"><span>${esc(i.approx ? "Vers " + fMon.format(dt(i.d)) : cap(fFull.format(dt(i.d))))}</span><span>Source : ${esc(i.src)}</span><span>${esc(AUTO[i.a])}</span>${i.press ? `<span>Mot-clé détecté : « ${esc(KEYWORD)} »</span>` : ""}</div>
+    <p class="chapo drop">${esc(i.p)}</p>
+    ${i.li ? `<ul>${i.li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+    <a class="srcbtn" href="${i.url}" target="_blank" rel="noopener">Lire la source originale</a>
+    <div class="aussi"><div class="kick">Lire aussi</div><div class="grid" style="border-top:0;margin-top:4px">${more.map(brief).join("")}</div></div>
+  </article>`;
+}
+
+let prev = "une";
+function current() {
+  const h = location.hash.slice(1);
+  if (h.startsWith("article-")) return { art: h.slice(8) };
+  return { rub: RUBS.some(r => r[0] === h) ? h : "une" };
+}
+function render() {
+  const c = current();
+  if (c.rub) prev = c.rub;
+  const active = c.rub || ITEMS.find(i => i.id === c.art)?.cat || "une";
+  document.getElementById("rub").innerHTML = RUBS.map(([k, l]) => `<button data-go="${k}" ${k === active ? 'aria-current="page"' : ""}>${l}</button>`).join("");
+  const m = document.getElementById("main");
+  m.innerHTML = c.art ? viewArticle(c.art) : c.rub === "une" ? viewUne() : c.rub === "agenda" ? viewAgenda() : c.rub === "sources" ? viewSources() : c.rub === "projets" ? viewProjets() : viewSection(c.rub);
+  const cur = document.querySelector('nav.rub [aria-current="page"]');
+  if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
+}
+document.getElementById("dl-date").textContent = cap(fShort.format(dt(TODAY)));
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-open],[data-go],[data-back]");
+  if (!t) return;
+  if (t.dataset.open) location.hash = "article-" + t.dataset.open;
+  else if (t.dataset.go) location.hash = t.dataset.go;
+  else location.hash = prev;
+});
+window.addEventListener("hashchange", () => { render(); const nav = document.querySelector("nav.rub"); const y = nav.offsetTop; if (window.scrollY > y) window.scrollTo(0, y); });
+render();
+
+// Ajuste l'espacement de la 2e ligne du bandeau pour qu'elle ait la même largeur que la 1re.
+function fitRue() {
+  const r = document.querySelector(".mast small .rue");
+  if (!r) return;
+  const width = node => { const g = document.createRange(); g.selectNodeContents(node); return g.getBoundingClientRect().width; };
+  r.style.letterSpacing = "";
+  const ls = parseFloat(getComputedStyle(r).letterSpacing) || 0;
+  r.style.letterSpacing = (ls + (width(r.previousSibling) - width(r.firstChild)) / r.textContent.length) + "px";
+}
+fitRue();
+if (document.fonts) document.fonts.ready.then(fitRue);
+</script>
+
+</body>
+</html>

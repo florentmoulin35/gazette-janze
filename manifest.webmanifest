@@ -1,0 +1,21 @@
+{
+  "name": "La Gazette de Janzé",
+  "short_name": "Gazette",
+  "lang": "fr",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f3e3dc",
+  "theme_color": "#f3e3dc",
+  "icons": [
+    {
+      "src": "icones/icone-gazette-janze-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icones/icone-gazette-janze-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
