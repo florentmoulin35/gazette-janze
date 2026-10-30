@@ -13,7 +13,11 @@ Sources lues :
 - Roche aux Fées Communauté : flux RSS des actus (collectivité, mobilité, urbanisme…)
 
 Une source en panne ne bloque pas les autres : on garde ce qu'elle avait donné
-la veille. Le script échoue (code 1) seulement si toutes les sources échouent.
+la veille. Codes de sortie :
+- 0 : tout va bien (ou panne récente, de moins de 48 h) ;
+- 1 : toutes les sources ont échoué ;
+- 2 : auto.js est écrit, mais une source est en panne depuis plus de 48 h
+  (le workflow enregistre auto.js puis passe en rouge pour prévenir).
 """
 
 from __future__ import annotations
@@ -40,6 +44,7 @@ CODE_INSEE = "35136"
 GARDER_JOURS = 400           # on oublie les infos de plus d'un an
 MAX_ITEMS = 200
 MAX_ARTICLES_NOUVEAUX = 15   # articles janze.fr à ouvrir par passage
+PANNE_HEURES = 48            # au-delà, une source en panne fait échouer le workflow
 
 UA = "Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github.io/gazette-janze/)"
 
@@ -87,6 +92,11 @@ def telecharger(url: str) -> str:
     requete = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "fr-FR,fr"})
     with urllib.request.urlopen(requete, timeout=30) as reponse:  # noqa: S310
         return reponse.read().decode(reponse.headers.get_content_charset() or "utf-8", "replace")
+
+
+def lien_valide(url: str) -> bool:
+    """N'accepte que les liens web (http/https) : pas de javascript:, data:, etc."""
+    return urllib.parse.urlsplit((url or "").strip()).scheme.lower() in ("http", "https")
 
 
 def ident(prefixe: str, url: str) -> str:
@@ -212,6 +222,8 @@ def collecter_janze(deja: dict[str, dict]) -> list[dict]:
 
     items, ouverts = [], 0
     for url in liens:
+        if not lien_valide(url):
+            continue
         if url in deja:            # déjà lu un autre soir : on garde la version connue
             items.append(deja[url])
             continue
@@ -243,7 +255,7 @@ def collecter_presse() -> list[dict]:
         titre = re.sub(rf"\s+-\s+{re.escape(source)}$", "", it["titre"]) if source else it["titre"]
         # Détection du mot-clé : on ne garde que les articles dont le titre cite Janzé,
         # et pas le site de la mairie, déjà lu directement.
-        if not cite_janze(titre) or "janze.fr" in source.lower() or not it["date"]:
+        if not cite_janze(titre) or "janze.fr" in source.lower() or not it["date"] or not lien_valide(it["lien"]):
             continue
         # Les feuilles de match (« HB Janzé vs … ») ne sont pas des articles.
         if re.search(r"\bvs\b", normaliser(titre)):
@@ -271,8 +283,13 @@ def collecter_vigieau() -> list[dict]:
         arrete = z.get("arrete") or {}
         if not niveau:
             continue
+        fin = (arrete.get("dateFinValidite") or "")[:10]
+        if fin and fin < date.today().isoformat():   # arrêté expiré
+            continue
         usages = [u for u in z.get("usages", []) if u.get("concerneParticulier")]
-        url = arrete.get("cheminFichier") or "https://vigieau.gouv.fr"
+        url = arrete.get("cheminFichier") or ""
+        if not lien_valide(url):
+            url = "https://vigieau.gouv.fr"
         items.append({
             "id": f"vigieau-{arrete.get('id', 'x')}-{z.get('niveauGravite')}",
             "d": (arrete.get("dateDebutValidite") or date.today().isoformat())[:10],
@@ -280,6 +297,7 @@ def collecter_vigieau() -> list[dict]:
             "p": f"Un arrêté préfectoral place Janzé au niveau « {niveau} ». Voici ce qui change pour les particuliers.",
             "li": [couper(f"{u['nom']} : {u['description']}", 160) for u in usages[:6]],
             "src": "VigiEau", "url": url, "a": "auto", "k": "vigieau",
+            **({"fin": fin} if fin else {}),
         })
     return items
 
@@ -290,7 +308,7 @@ def collecter_rafcom() -> list[dict]:
     items, vus = [], set()
     for flux, tout_garder in RAFCOM.items():
         for it in lire_rss(telecharger(flux)):
-            if it["lien"] in vus or not it["date"]:
+            if it["lien"] in vus or not it["date"] or not lien_valide(it["lien"]):
                 continue
             if not tout_garder and not cite_janze(it["titre"], it["resume"]):
                 continue
@@ -324,6 +342,7 @@ def main() -> int:
     sources = dict(avant.get("sources", {}))
     nouveaux: dict[str, dict] = {}
     echecs = 0
+    reussies = set()
 
     for cle, fonction in COLLECTEURS.items():
         try:
@@ -331,20 +350,29 @@ def main() -> int:
             trouves = fonction(*argument)
             for i in trouves:
                 nouveaux[i["url"]] = i
+            reussies.add(cle)
             sources[cle] = {"etat": "ok", "le": maintenant, "n": len(trouves)}
             print(f"{cle:8} ok      {len(trouves)} infos")
         except Exception as erreur:  # noqa: BLE001 : une source en panne ne doit pas tout arrêter
             echecs += 1
+            ancien = avant.get("sources", {}).get(cle) or {}
+            # Après une passe déjà en erreur, son « le » n'est pas une réussite.
+            dernier_ok = ancien.get("dernier_ok") if ancien.get("etat") == "erreur" else ancien.get("le")
             sources[cle] = {"etat": "erreur", "le": maintenant, "msg": str(erreur)[:200],
-                            "dernier_ok": (avant.get("sources", {}).get(cle) or {}).get("le")}
+                            "dernier_ok": dernier_ok}
             print(f"{cle:8} ERREUR  {erreur}", file=sys.stderr)
 
     # On cumule avec l'historique, sans doublon, en oubliant ce qui est trop ancien.
     limite = (date.today() - timedelta(days=GARDER_JOURS)).isoformat()
+    # VigiEau dit l'état du jour : s'il a répondu, ses anciennes alertes sont remplacées.
+    if "vigieau" in reussies:
+        par_url = {u: i for u, i in par_url.items() if i.get("k") != "vigieau"}
     tous = {**par_url, **nouveaux}
     items, titres_presse = [], set()
     for i in sorted(tous.values(), key=lambda i: (i["d"], "maville" not in i["src"].lower()), reverse=True):
-        if i["d"] < limite:
+        if i["d"] < limite or not lien_valide(i.get("url", "")):
+            continue
+        if i.get("fin") and i["fin"] < date.today().isoformat():   # arrêté VigiEau expiré
             continue
         if i["k"] == "presse":   # même article repris par plusieurs journaux, d'un soir à l'autre
             if cle_titre(i["t"]) in titres_presse:
@@ -361,7 +389,31 @@ def main() -> int:
         encoding="utf-8",
     )
     print(f"-> {SORTIE.relative_to(RACINE)} : {len(items)} infos")
-    return 1 if echecs == len(COLLECTEURS) else 0
+    if echecs == len(COLLECTEURS):
+        return 1
+    pannes = sources_en_panne(sources, datetime.now(timezone.utc))
+    for message in pannes:
+        print(message, file=sys.stderr)
+    return 2 if pannes else 0
+
+
+def sources_en_panne(sources: dict, maintenant: datetime) -> list[str]:
+    """Messages pour les sources en erreur depuis plus de PANNE_HEURES."""
+    messages = []
+    for cle, etat in sources.items():
+        if etat.get("etat") != "erreur":
+            continue
+        dernier_ok = etat.get("dernier_ok")
+        if not dernier_ok:
+            messages.append(f"Source {cle} en panne (aucune réussite connue) : {etat.get('msg', '')}")
+            continue
+        try:
+            depuis = datetime.fromisoformat(dernier_ok)
+        except ValueError:
+            continue
+        if maintenant - depuis > timedelta(hours=PANNE_HEURES):
+            messages.append(f"Source {cle} en panne depuis le {dernier_ok} : {etat.get('msg', '')}")
+    return messages
 
 
 if __name__ == "__main__":

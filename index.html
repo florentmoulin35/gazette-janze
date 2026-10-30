@@ -129,7 +129,7 @@ article.read li { margin-bottom: 7px; }
 @keyframes glisse-d { from { transform: translateX(-40px); opacity: .3; } to { transform: none; opacity: 1; } }
 /* Le geste horizontal est géré par la page : le navigateur ne doit pas faire bouger tout l'écran. */
 html, body { overflow-x: hidden; overflow-x: clip; overscroll-behavior-x: none; }
-main { touch-action: pan-y; }
+main { touch-action: pan-y pinch-zoom; }
 main.glisse-g { animation: glisse-g .22s ease-out; } main.glisse-d { animation: glisse-d .22s ease-out; }
 @media (prefers-reduced-motion: reduce) { main.glisse-g, main.glisse-d { animation: none; } }
 .colophon { margin-top: 26px; font-size: 12px; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
@@ -201,8 +201,7 @@ const ITEMS_MANUELS = [
     li: ["Bâtiment de 413 m², cabinet d'architecture Faber", "Coût : 1 587 660 € HT, subventions demandées à l'État et à la Région", "Logements de fonction construits par Neotoa", "Téléphone de la brigade : 02 99 47 03 18"],
     src: "janze.fr", url: "https://www.janze.fr/actualites/la-gendarmerie-demenage-dans-lancienne-tresorerie-le-temps-des-travaux", a: "auto" },
   { id: "catnat", d: "2026-09-23", cat: "alerte", t: "Catastrophe naturelle reconnue pour les pluies de juillet",
-    p: "Après les pluies diluviennes de la nuit du 16 au 17 juillet, l'État a reconnu l'état de catastrophe naturelle « inondations et coulées de boue ». L'arrêté est paru au Journal officiel le 22 septembre.",
-    li: ["Délai de déclaration à l'assureur : 30 jours après la parution, soit vers le 22 octobre"],
+    p: "Après les pluies diluviennes du 15 juillet, l'État a reconnu l'état de catastrophe naturelle « inondations et coulées de boue ». L'arrêté est paru au Journal officiel le 21 septembre.",
     src: "janze.fr", url: "https://www.janze.fr/actualites/intemperies-diluviennes-letat-de-catastrophe-naturelle-reconnu", a: "auto" },
   { id: "mairie", d: "2026-09-14", cat: "travaux", t: "Mairie : fin de la phase 1 cet automne, extension en 2027",
     p: "Le chantier d'accessibilité, lancé en mai 2025 et retardé par la découverte de mérule, est coupé en deux.",
@@ -251,7 +250,9 @@ const AGENDA = [
 // Une info déjà saisie à la main (même lien) garde sa version manuelle, plus complète.
 const COLLECTE = window.GAZETTE_AUTO || { items: [], sources: {} };
 // Les articles de presse saisis à la main sont remplacés par la collecte dès qu'elle fonctionne.
-const MANUELS = COLLECTE.sources.presse ? ITEMS_MANUELS.filter(i => !i.press) : ITEMS_MANUELS;
+// Un item manuel peut porter une date « expire » (AAAA-MM-JJ) : il n'est plus affiché après ce jour.
+const PRESSE_OK = COLLECTE.sources.presse?.etat === "ok";
+const MANUELS = ITEMS_MANUELS.filter(i => !(PRESSE_OK && i.press) && !(i.expire && i.expire < TODAY));
 const ITEMS = [...MANUELS, ...COLLECTE.items.filter(a => CATS[a.cat] && !MANUELS.some(m => m.url === a.url))];
 const STEP_LABELS = ["Idée", "Étude", "Vote", "Chantier", "Livré"];
 const PROJECTS = [
@@ -290,6 +291,8 @@ const SEC_SUB = {
   vie: "Événements, services et annonces de la ville et de la communauté de communes."
 };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+// Seuls les liens http et https sont affichés : une adresse « javascript: » ou autre est ignorée.
+const lienSur = u => { try { return ["http:", "https:"].includes(new URL(u).protocol); } catch { return false; } };
 const dt = d => new Date(d + "T12:00:00");
 const fDay = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short" });
 const fMon = new Intl.DateTimeFormat("fr-FR", { month: "long", year: "numeric" });
@@ -299,9 +302,12 @@ const when = i => i.approx ? fMon.format(dt(i.d)) : (i.d.startsWith(TODAY.slice(
 const sorted = () => [...ITEMS].sort((a, b) => b.d.localeCompare(a.d));
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 
-const brief = i => `<button class="br" data-open="${i.id}"><div class="kick">${esc(CATS[i.cat].short)}</div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p><time>${esc(when(i))}</time></button>`;
+const brief = i => `<button class="br" data-open="${esc(i.id)}"><div class="kick">${esc(CATS[i.cat].short)}</div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p><time>${esc(when(i))}</time></button>`;
 
+// Échéances à venir : celles dont la date est passée ne sont plus affichées.
+const aVenir = () => AGENDA.filter(a => a.d >= TODAY);
 function agendaRows(list) {
+  if (!list.length) return `<p class="why">Aucune échéance annoncée pour l'instant.</p>`;
   return list.map(a => `<div class="agl"><b>${esc(a.approx ? a.approx : fDay.format(dt(a.d)))}</b><div>${esc(a.t)}<small>${esc(a.s)}</small></div></div>`).join("");
 }
 
@@ -326,7 +332,7 @@ function projectRow(p, compact) {
   const bars = STEP_LABELS.map((_, k) => `<i class="${k < p.step ? "on" : k === p.step ? "cur" : ""}"></i>`).join("");
   const labs = STEP_LABELS.map((l, k) => `<span class="${k === p.step ? "here" : ""}">${l}</span>`).join("");
   const tag = p.item ? "button" : "div";
-  return `<${tag} class="pj" ${p.item ? `data-open="${p.item}"` : ""}>
+  return `<${tag} class="pj" ${p.item ? `data-open="${esc(p.item)}"` : ""}>
     <div class="ph"><h3>${esc(p.t)}</h3><span class="stage">${STEP_LABELS[p.step]}</span></div>
     <p>${esc(p.s)}</p>
     <div class="bar" role="img" aria-label="Étape ${p.step + 1} sur 5 : ${STEP_LABELS[p.step]}">${bars}</div>
@@ -340,10 +346,12 @@ function viewUne() {
   let nPresse = 0;
   const rest = [...ITEMS].sort((a, b) => score(b) - score(a))
     .filter(i => i.id !== lead.id && (i.cat !== "presse" || ++nPresse <= 2)).slice(0, 6);
-  const next = AGENDA.find(a => !a.approx && a.d >= TODAY);
+  const agenda = aVenir();
+  const next = agenda.find(a => !a.approx);
   const inDays = next ? Math.round((dt(next.d) - dt(TODAY)) / 86400000) : 0;
+  const delai = inDays === 0 ? "aujourd'hui" : inDays === 1 ? "demain" : `dans ${inDays} jours`;
   return `
-  <button class="une" data-open="${lead.id}">
+  <button class="une" data-open="${esc(lead.id)}">
     <div class="kick">${esc(CATS[lead.cat].label)} · ${esc(when(lead))}</div>
     <h2>${esc(lead.t)}</h2>
     <p>${esc(lead.p)}</p>
@@ -351,28 +359,28 @@ function viewUne() {
     <span class="lire">Lire l'article →</span>
   </button>
   <p class="why">Une choisie automatiquement : l'info la plus importante parmi les plus récentes.</p>
-  ${next ? `<button class="strip" data-go="agenda"><b>${esc(next.t)} : ${esc(new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(dt(next.d)))}</b><span>dans ${inDays} jours →</span></button>` : ""}
+  ${next ? `<button class="strip" data-go="agenda"><b>${esc(next.t)} : ${esc(new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(dt(next.d)))}</b><span>${delai} →</span></button>` : ""}
   <div class="grid">${rest.map(brief).join("")}</div>
   <div class="box"><h4>Où en sont les projets <button data-go="projets">Tous les projets →</button></h4>${frontProjects().map(p => projectRow(p, true)).join("")}</div>
-  <div class="box"><h4>Au programme <button data-go="agenda">Tout l'agenda →</button></h4>${agendaRows(AGENDA.slice(0, 3))}</div>`;
+  <div class="box"><h4>Au programme <button data-go="agenda">Tout l'agenda →</button></h4>${agendaRows(agenda.slice(0, 3))}</div>`;
 }
 
 function viewProjets() {
   const news = sorted().filter(i => i.cat === "projets");
   return `<h2 class="sec-title">Grands projets</h2><p class="sec-sub">Idée, étude, vote, chantier, livré : l'avancement de chaque projet.</p>
   <div>${PROJECTS.map(p => projectRow(p, false)).join("")}</div>
-  ${news.length ? `<div class="aussi"><div class="kick">Articles</div><div class="list">${news.map(i => `<button class="row" data-open="${i.id}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></button>`).join("")}</div></div>` : ""}`;
+  ${news.length ? `<div class="aussi"><div class="kick">Articles</div><div class="list">${news.map(i => `<button class="row" data-open="${esc(i.id)}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></button>`).join("")}</div></div>` : ""}`;
 }
 
 function viewSection(cat) {
   const list = sorted().filter(i => i.cat === cat);
   return `<h2 class="sec-title">${esc(CATS[cat].label)}</h2><p class="sec-sub">${esc(SEC_SUB[cat])}</p>
-  <div class="list">${list.map(i => `<button class="row" data-open="${i.id}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></button>`).join("")}</div>`;
+  <div class="list">${list.map(i => `<button class="row" data-open="${esc(i.id)}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></button>`).join("")}</div>`;
 }
 
 function viewAgenda() {
   return `<h2 class="sec-title">Agenda</h2><p class="sec-sub">Séances du conseil et échéances annoncées.</p>
-  <div class="box">${agendaRows(AGENDA)}</div>
+  <div class="box">${agendaRows(aVenir())}</div>
   <div class="box"><h4>Où en sont les grands projets <button data-go="projets">Voir l'avancement →</button></h4></div>`;
 }
 
@@ -406,7 +414,7 @@ function viewArticle(id) {
     <div class="byline"><span>${esc(i.approx ? "Vers " + fMon.format(dt(i.d)) : cap(fFull.format(dt(i.d))))}</span><span>Source : ${esc(i.src)}</span><span>${esc(AUTO[i.a])}</span>${i.press ? `<span>Mot-clé détecté : « ${esc(KEYWORD)} »</span>` : ""}</div>
     <p class="chapo drop">${esc(i.p)}</p>
     ${i.li ? `<ul>${i.li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
-    <a class="srcbtn" href="${i.url}" target="_blank" rel="noopener">Lire la source originale</a>
+    ${lienSur(i.url) ? `<a class="srcbtn" href="${esc(i.url)}" target="_blank" rel="noopener">Lire la source originale</a>` : ""}
     <div class="aussi"><div class="kick">Lire aussi</div><div class="grid" style="border-top:0;margin-top:4px">${more.map(brief).join("")}</div></div>
   </article>`;
 }
@@ -430,12 +438,30 @@ function render() {
 }
 if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Roche aux Fées Communauté";
 document.getElementById("dl-date").textContent = cap(fShort.format(dt(TODAY)));
+// Position de défilement de chaque rubrique, retrouvée au retour d'un article.
+// « restaurer » reste vrai sauf quand la page change elle-même de rubrique (onglet, lien, geste).
+const positions = {};
+let restaurer = true;
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+function aller(h) {
+  if (location.hash.slice(1) === h) return;
+  restaurer = false;
+  location.hash = h;
+}
 document.addEventListener("click", e => {
   const t = e.target.closest("[data-open],[data-go],[data-back]");
   if (!t) return;
-  if (t.dataset.open) location.hash = "article-" + t.dataset.open;
-  else if (t.dataset.go) location.hash = t.dataset.go;
-  else location.hash = prev;
+  if (t.dataset.open) {
+    // Nombre d'articles ouverts depuis la rubrique, pour y revenir d'un coup avec « Retour ».
+    const c = current();
+    if (c.rub) positions[c.rub] = window.scrollY;
+    const prof = c.art ? (history.state?.prof || 0) + 1 : 1;
+    aller("article-" + t.dataset.open);
+    history.replaceState({ prof }, "");
+  }
+  else if (t.dataset.go) aller(t.dataset.go);
+  else if (history.state?.prof) history.go(-history.state.prof);  // arrivé depuis la page : on revient dans l'historique
+  else location.hash = prev;  // arrivé par un lien direct
 });
 // Glisser le doigt vers la gauche ou la droite pour passer à la rubrique suivante ou précédente.
 let toucheX = null, toucheY = 0;
@@ -449,6 +475,7 @@ zoneSwipe.addEventListener("touchend", e => {
   const dx = e.changedTouches[0].clientX - toucheX, dy = e.changedTouches[0].clientY - toucheY;
   toucheX = null;
   if (Math.abs(dx) < 60 || Math.abs(dx) < 1.5 * Math.abs(dy)) return;  // geste trop court ou plutôt vertical
+  if (window.visualViewport && visualViewport.scale > 1.01) return;  // page zoomée : le geste sert à se déplacer
   const c = current();
   const ici = RUBS.findIndex(r => r[0] === (c.rub || ITEMS.find(i => i.id === c.art)?.cat || "une"));
   const cible = RUBS[ici + (dx < 0 ? 1 : -1)];
@@ -456,9 +483,15 @@ zoneSwipe.addEventListener("touchend", e => {
   zoneSwipe.classList.remove("glisse-g", "glisse-d");
   void zoneSwipe.offsetWidth;  // relance l'animation
   zoneSwipe.classList.add(dx < 0 ? "glisse-g" : "glisse-d");
-  location.hash = cible[0];
+  aller(cible[0]);
 }, { passive: true });
-window.addEventListener("hashchange", () => { render(); const nav = document.querySelector("nav.rub"); const y = nav.offsetTop; if (window.scrollY > y) window.scrollTo(0, y); });
+window.addEventListener("hashchange", () => {
+  render();
+  const c = current();
+  if (restaurer && c.rub && positions[c.rub] !== undefined) window.scrollTo(0, positions[c.rub]);
+  else { const nav = document.querySelector("nav.rub"); const y = nav.offsetTop; if (window.scrollY > y) window.scrollTo(0, y); }
+  restaurer = true;
+});
 render();
 
 // Ajuste l'espacement de la 2e ligne du bandeau pour qu'elle ait la même largeur que la 1re.
