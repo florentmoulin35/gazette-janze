@@ -125,6 +125,10 @@ article.read li { margin-bottom: 7px; }
 .srclist em.ko { color: #8a3b52; }
 .srclist b { display: block; font-family: var(--display); font-size: 17px; }
 .srclist span { font-size: 13px; color: var(--ink-2); }
+@keyframes glisse-g { from { transform: translateX(40px); opacity: .3; } to { transform: none; opacity: 1; } }
+@keyframes glisse-d { from { transform: translateX(-40px); opacity: .3; } to { transform: none; opacity: 1; } }
+main.glisse-g { animation: glisse-g .22s ease-out; } main.glisse-d { animation: glisse-d .22s ease-out; }
+@media (prefers-reduced-motion: reduce) { main.glisse-g, main.glisse-d { animation: none; } }
 .colophon { margin-top: 26px; font-size: 12px; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
 </style>
 
@@ -429,6 +433,27 @@ document.addEventListener("click", e => {
   else if (t.dataset.go) location.hash = t.dataset.go;
   else location.hash = prev;
 });
+// Glisser le doigt vers la gauche ou la droite pour passer à la rubrique suivante ou précédente.
+let toucheX = null, toucheY = 0;
+const zoneSwipe = document.getElementById("main");
+zoneSwipe.addEventListener("touchstart", e => {
+  if (e.touches.length !== 1) { toucheX = null; return; }
+  toucheX = e.touches[0].clientX; toucheY = e.touches[0].clientY;
+}, { passive: true });
+zoneSwipe.addEventListener("touchend", e => {
+  if (toucheX === null) return;
+  const dx = e.changedTouches[0].clientX - toucheX, dy = e.changedTouches[0].clientY - toucheY;
+  toucheX = null;
+  if (Math.abs(dx) < 60 || Math.abs(dx) < 1.5 * Math.abs(dy)) return;  // geste trop court ou plutôt vertical
+  const c = current();
+  const ici = RUBS.findIndex(r => r[0] === (c.rub || ITEMS.find(i => i.id === c.art)?.cat || "une"));
+  const cible = RUBS[ici + (dx < 0 ? 1 : -1)];
+  if (!cible) return;
+  zoneSwipe.classList.remove("glisse-g", "glisse-d");
+  void zoneSwipe.offsetWidth;  // relance l'animation
+  zoneSwipe.classList.add(dx < 0 ? "glisse-g" : "glisse-d");
+  location.hash = cible[0];
+}, { passive: true });
 window.addEventListener("hashchange", () => { render(); const nav = document.querySelector("nav.rub"); const y = nav.offsetTop; if (window.scrollY > y) window.scrollTo(0, y); });
 render();
 
