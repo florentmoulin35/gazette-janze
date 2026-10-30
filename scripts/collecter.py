@@ -48,12 +48,20 @@ MAX_ITEMS = 200
 MAX_ARTICLES_NOUVEAUX = 15   # articles janze.fr à ouvrir par passage
 PANNE_HEURES = 48            # au-delà, une source en panne fait échouer le workflow
 BUDGET_JANZE = 300           # secondes au plus pour ouvrir les articles de janze.fr
+BUDGET_PRESSE = 180          # secondes au plus pour chercher l'aperçu des nouveaux articles
+MAX_APERCUS = 25             # aperçus de presse cherchés par passage
 PARIS = ZoneInfo("Europe/Paris")
 
 UA = "Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github.io/gazette-janze/)"
 
 JANZE_LISTE = "https://www.janze.fr/actualites"
 PRESSE_RSS = "https://news.google.com/rss/search?q=Janz%C3%A9&hl=fr&gl=FR&ceid=FR:fr"
+GN_DECODE = "https://news.google.com/_/DotsSplashUi/data/batchexecute?rpcids=Fbv4je"
+# Sites trouvés par Google Actualités qui ne sont pas des journaux mais annoncent
+# la vie locale (bals, spectacles, courses, matchs) : rangés en Vie locale.
+SOURCES_LOCALES = r"helloasso|kidiklik|velopresse|federation francaise|score.n.co|agirc"
+# Pages sans rapport avec l'actualité : écartées.
+SOURCES_EXCLUES = r"iqair"
 VIGIEAU = f"https://api.vigieau.gouv.fr/api/zones?commune={CODE_INSEE}&profil=particulier&zoneType=SUP"
 # Flux « Actu » de rafcom.bzh : on garde tout pour les thèmes qui touchent la
 # vie de la commune, et seulement ce qui cite Janzé pour les autres.
@@ -104,8 +112,9 @@ def aujourdhui() -> str:
     return datetime.now(PARIS).date().isoformat()
 
 
-def telecharger(url: str, essais: int = 2) -> str:
-    requete = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "fr-FR,fr"})
+def telecharger(url: str, essais: int = 2, donnees: dict | None = None) -> str:
+    corps = urllib.parse.urlencode(donnees).encode() if donnees else None
+    requete = urllib.request.Request(url, data=corps, headers={"User-Agent": UA, "Accept-Language": "fr-FR,fr"})
     for essai in range(essais):
         try:
             with urllib.request.urlopen(requete, timeout=30) as reponse:  # noqa: S310
@@ -294,8 +303,57 @@ def collecter_janze(deja: dict[str, dict]) -> list[dict]:
 
 # --- Presse -----------------------------------------------------------------
 
-def collecter_presse() -> list[dict]:
+def url_reelle(lien: str) -> str | None:
+    """Adresse de l'article derrière un lien news.google.com/rss/articles/…
+    (Google la masque : on la demande comme le fait sa page de redirection)."""
+    if "news.google.com" not in lien:
+        return lien
+    code = urllib.parse.urlsplit(lien).path.rstrip("/").rsplit("/", 1)[-1]
+    page = telecharger(f"https://news.google.com/articles/{code}", essais=1)
+    sig = re.search(r'data-n-a-sg="([^"]+)"', page)
+    ts = re.search(r'data-n-a-ts="([^"]+)"', page)
+    if not (sig and ts):
+        return None
+    demande = ["garturlreq", [["X", "X", ["X", "X"], None, None, 1, 1, "FR:fr", None, 1, None, None, None, None, None, 0, 1],
+                              "X", "X", 1, [1, 1, 1], 1, 1, None, 0, 0, None, 0], code, int(ts.group(1)), sig.group(1)]
+    reponse = telecharger(GN_DECODE, essais=1, donnees={"f.req": json.dumps([[["Fbv4je", json.dumps(demande), None, "generic"]]])})
+    trouve = re.search(r'\\"garturlres\\",\\"(https?://[^"\\]+)', reponse)
+    return trouve.group(1) if trouve and lien_valide(trouve.group(1)) else None
+
+
+def apercu(url: str) -> str:
+    """Chapeau public d'un article (balise og:description, celle des aperçus de partage)."""
+    page = telecharger(url, essais=1)
+    for motif in (r'<meta[^>]+property="og:description"[^>]+content="([^"]*)"',
+                  r'<meta[^>]+content="([^"]*)"[^>]+property="og:description"',
+                  r'<meta[^>]+name="description"[^>]+content="([^"]*)"'):
+        trouve = re.search(motif, page, re.I)
+        if trouve and len(trouve.group(1).strip()) >= 40:
+            return couper(trouve.group(1))
+    return ""
+
+
+def completer_presse(item: dict, connu: dict | None, debut: float, cherches: list) -> dict:
+    """Reprend l'adresse et l'aperçu déjà trouvés, sinon les cherche (dans la limite du budget)."""
+    if connu and connu.get("resolu"):
+        return {**item, "url": connu["url"], "p": connu.get("p", ""), "resolu": True}
+    if len(cherches) >= MAX_APERCUS or time.monotonic() - debut > BUDGET_PRESSE:
+        return item
+    cherches.append(item["id"])
+    try:
+        url = url_reelle(item["url"])
+        if not url:
+            return item
+        return {**item, "url": url, "p": apercu(url), "resolu": True}
+    except Exception as erreur:  # noqa: BLE001 : sans aperçu, l'article reste affiché
+        print(f"presse   aperçu impossible : {item['t'][:50]} ({erreur})", file=sys.stderr)
+        return item
+
+
+def collecter_presse(deja: dict[str, dict] | None = None) -> list[dict]:
+    deja = deja or {}
     items, vus = [], set()
+    debut, cherches = time.monotonic(), []
     # Ouest-France avant ses reprises (maville.com…), pour garder la source d'origine.
     flux = sorted(lire_rss(telecharger(PRESSE_RSS)), key=lambda i: "maville" in i["source"].lower())
     for it in flux:
@@ -305,19 +363,18 @@ def collecter_presse() -> list[dict]:
         # et pas le site de la mairie, déjà lu directement.
         if not cite_janze(titre) or "janze.fr" in source.lower() or not it["date"] or not lien_valide(it["lien"]):
             continue
-        # Les feuilles de match (« HB Janzé vs … ») ne sont pas des articles.
-        if re.search(r"\bvs\b", normaliser(titre)):
+        if re.search(SOURCES_EXCLUES, normaliser(source)):
             continue
         # Un même article repris par plusieurs sites (Ouest-France et maville.com…) : on le garde une fois.
         cle = cle_titre(titre)
         if cle in vus:
             continue
         vus.add(cle)
-        items.append(classer({
+        item = {
             "id": ident("presse", it["lien"]), "d": it["date"], "cat": "presse", "press": True,
-            "t": titre, "p": f"Article paru dans {source}.", "src": source,
-            "url": it["lien"], "a": "auto", "k": "presse",
-        }))
+            "t": titre, "p": "", "src": source, "url": it["lien"], "a": "auto", "k": "presse",
+        }
+        items.append(classer(completer_presse(item, deja.get(item["id"]), debut, cherches)))
     return items
 
 
@@ -380,6 +437,12 @@ def classer(i: dict) -> dict:
     i = dict(i)
     if i["k"] == "presse":
         i.pop("cat2", None)
+        if i.get("p", "").startswith("Article paru dans"):   # ancien résumé générique
+            i["p"] = ""
+        if re.search(SOURCES_LOCALES, normaliser(i["src"])):
+            i["cat"], i["press"] = "vie", False
+            return i
+        i["cat"], i["press"] = "presse", True
         cat = rubrique(i["t"])
         if cat != "vie":
             i["cat2"] = cat
@@ -401,7 +464,7 @@ def lire_precedent() -> dict:
 
 def main() -> int:
     avant = lire_precedent()
-    par_url = {i["url"]: i for i in avant.get("items", [])}
+    par_id = {i["id"]: i for i in avant.get("items", [])}
     maintenant = datetime.now(timezone.utc).isoformat(timespec="minutes")
     sources = dict(avant.get("sources", {}))
     nouveaux: dict[str, dict] = {}
@@ -410,10 +473,15 @@ def main() -> int:
 
     for cle, fonction in COLLECTEURS.items():
         try:
-            argument = ({u: i for u, i in par_url.items() if i.get("k") == "janze"},) if cle == "janze" else ()
+            if cle == "janze":
+                argument = ({i["url"]: i for i in par_id.values() if i.get("k") == "janze"},)
+            elif cle == "presse":
+                argument = ({n: i for n, i in par_id.items() if i.get("k") == "presse"},)
+            else:
+                argument = ()
             trouves = fonction(*argument)
             for i in trouves:
-                nouveaux[i["url"]] = i
+                nouveaux[i["id"]] = i
             reussies.add(cle)
             sources[cle] = {"etat": "ok", "le": maintenant, "n": len(trouves)}
             print(f"{cle:8} ok      {len(trouves)} infos")
@@ -430,8 +498,8 @@ def main() -> int:
     limite = (datetime.now(PARIS).date() - timedelta(days=GARDER_JOURS)).isoformat()
     # VigiEau dit l'état du jour : s'il a répondu, ses anciennes alertes sont remplacées.
     if "vigieau" in reussies:
-        par_url = {u: i for u, i in par_url.items() if i.get("k") != "vigieau"}
-    tous = {**par_url, **nouveaux}
+        par_id = {n: i for n, i in par_id.items() if i.get("k") != "vigieau"}
+    tous = {**par_id, **nouveaux}
     items, titres_presse = [], set()
     for i in sorted(tous.values(), key=lambda i: (i["d"], "maville" not in i["src"].lower()), reverse=True):
         if i["d"] < limite or not lien_valide(i.get("url", "")):
@@ -440,13 +508,15 @@ def main() -> int:
             continue
         if i["k"] == "rafcom" and autre_commune(i["t"], i.get("p", "")):
             continue
+        if i["k"] == "presse" and re.search(SOURCES_EXCLUES, normaliser(i["src"])):
+            continue
         i = classer(i)   # l'historique profite des règles de classement à jour
         if i["k"] == "presse":   # même article repris par plusieurs journaux, d'un soir à l'autre
             if cle_titre(i["t"]) in titres_presse:
                 continue
             titres_presse.add(cle_titre(i["t"]))
         items.append(i)
-    items = items[:MAX_ITEMS]
+    items = regrouper(items)[:MAX_ITEMS]
 
     donnees = {"maj": maintenant, "sources": sources, "items": items}
     SORTIE.parent.mkdir(exist_ok=True)
@@ -462,6 +532,54 @@ def main() -> int:
     for message in pannes:
         print(message, file=sys.stderr)
     return 2 if pannes else 0
+
+
+MOTS_VIDES = {"janze", "dans", "pour", "avec", "sont", "plus", "apres", "avant", "entre", "leur", "leurs",
+              "cette", "tout", "tous", "fait", "font", "sera", "etre", "avoir", "35150", "voici", "quoi"}
+
+
+def mots(titre: str) -> set[str]:
+    return {m for m in re.findall(r"[a-z0-9]+", normaliser(titre)) if len(m) >= 4 and m not in MOTS_VIDES}
+
+
+def regrouper(items: list[dict]) -> list[dict]:
+    """Une même info racontée par plusieurs sources (mots du titre en commun,
+    à 3 jours d'écart au plus) devient une seule carte : on garde la version la
+    plus complète, et les autres restent accessibles par « Aussi dans … »."""
+    def qualite(i):
+        return (bool(i.get("p")), i["k"] != "presse", i["src"] == "Ouest-France")
+
+    gardes: list[dict] = []
+    for i in items:
+        if i["k"] == "vigieau":
+            gardes.append(i)
+            continue
+        mi = mots(i["t"])
+        proche = None
+        for g in gardes:
+            if g["k"] == "vigieau" or abs((date_de(g["d"]) - date_de(i["d"])).days) > 3:
+                continue
+            mg = mots(g["t"])
+            ni, ng = set(re.findall(r"\d+", i["t"])), set(re.findall(r"\d+", g["t"]))
+            if ni and ng and ni != ng:   # « Division 2 » et « Division 3 » : deux matchs différents
+                continue
+            if mi and mg and len(mi & mg) / len(mi | mg) >= 0.4:
+                proche = g
+                break
+        if proche is None:
+            gardes.append(i)
+            continue
+        tete, autre = (i, proche) if qualite(i) > qualite(proche) else (proche, i)
+        aussi = {a["url"]: a for a in proche.get("aussi", []) + i.get("aussi", [])}
+        aussi[autre["url"]] = {"src": autre["src"], "url": autre["url"], "t": autre["t"]}
+        aussi.pop(tete["url"], None)
+        fusion = {**tete, "aussi": list(aussi.values())}
+        gardes[gardes.index(proche)] = fusion
+    return gardes
+
+
+def date_de(texte: str):
+    return datetime.fromisoformat(texte[:10]).date()
 
 
 def sources_en_panne(sources: dict, maintenant: datetime) -> list[str]:
