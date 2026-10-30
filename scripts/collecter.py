@@ -59,7 +59,8 @@ UA = "Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github
 UA_NAVIGATEUR = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
 # Sites qui refusent même un navigateur depuis les serveurs de GitHub (testé le 30/10/2026) :
 # inutile d'y perdre le budget, l'article garde juste son lien direct.
-SITES_FERMES = r"ouest-france\.fr|letelegramme\.fr|helloasso\.com|auto-infos\.fr|maville\.com"
+# (agence-api.ouest-france.fr, elle, répond : ses articles ont un aperçu.)
+SITES_FERMES = r"www\.ouest-france\.fr|letelegramme\.fr|helloasso\.com|auto-infos\.fr|maville\.com"
 
 JANZE_LISTE = "https://www.janze.fr/actualites"
 PRESSE_RSS = "https://news.google.com/rss/search?q=Janz%C3%A9&hl=fr&gl=FR&ceid=FR:fr"
