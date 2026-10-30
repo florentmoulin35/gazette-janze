@@ -1,25 +1,25 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-30T23:41+00:00",
+ "maj": "2026-10-30T23:46+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-30T23:41+00:00",
+   "le": "2026-10-30T23:46+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-30T23:41+00:00",
-   "n": 92
+   "le": "2026-10-30T23:46+00:00",
+   "n": 58
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-30T23:41+00:00",
+   "le": "2026-10-30T23:46+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-30T23:41+00:00",
+   "le": "2026-10-30T23:46+00:00",
    "n": 46
   }
  },
@@ -476,7 +476,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null
+   "ap": 2
   },
   {
    "id": "presse-9d7c107f3c",
@@ -504,7 +504,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null
+   "ap": 2
   },
   {
    "id": "presse-79263e24ed",
@@ -641,9 +641,11 @@ window.GAZETTE_AUTO = {
    "t": "En attendant la construction de ses nouveaux locaux, la gendarmerie de Janzé déménage dans l’ancienne trésorerie",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMiogJBVV95cUxOUmNyeTZsanZZZkstVkRnLWxpVE8xUkpXWFlnTkw3UV94UzdiNHlyZ05jU1NYZjA3YVRydThrTDRuY3lXdjVfTEF3bnM1M3QyYjFxLVJyaHZwMEFlMkplc3ViS3o1MmxXMy1ublowZ3E1cl95ZE1RcW8wOWNrNlVoX0UtZTk1aGlqMUpTR3JQVzFwRmFib29PQS1YQWxFeE5neXhsLWFvWC1sZjdXOUJXMTV6dmRwMmhpSmY5TVlzWTZ2MW5nTkJjXzZoNUR5X3prdXRVNmY2VXZ0eHdQYkdGSk1TVHlrLWRYOHUxclZEVzZQdHQwZ3NQRGhoMHhVQ3lZWkU0NDlhZVNnMmRMcGdlVmsydmppWmgzYldwUl9TcU1jZw?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/en-attendant-la-construction-de-ses-nouveaux-locaux-la-gendarmerie-de-janze-demenage-dans-lancienne-tresorerie-511ffcaa-b9b3-11f1-889b-45b1452cdab8",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
+   "ap": 2,
    "cat2": "projets"
   },
   {
@@ -681,9 +683,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. L’association Tous pour la vie se prépare à son grand week-end",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOcVNwak4wMHlVN3hDU0o0ZUhKVU5XM01ZcTBXaWdqOUhLeTBfQTFtcVU4S280ejdtOVJ3ZjNPNUNORnNCMjV6cm13eXpvdUxaakNlb3psVlM5MlhraWloOTJqX3pLX0c2ckdZbWVzV0RVSVUySVkxd2kyUkI1UkIyVTJxcmQ1VGZYd0NwU0VXR01NNU9CUHZBZTdRWGIyX1ZQV3d1WVk4TUhRaVZfV0djLTU3ZmJYVi04WjRKU01pcGNIUUpCMjQ0Tk43b1FPTm5zbFNXazFUM3cxekVMblZObWJHS0VIRG1P?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-lassociation-tous-pour-la-vie-se-prepare-a-son-grand-week-end-251a07b1-ff09-4911-b7f0-46d3fbeca20c",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-ca3fb8f167",
@@ -737,9 +741,11 @@ window.GAZETTE_AUTO = {
    "t": "ENT CHATEAUGIRON / JANZE vs LE LANDREAU HANDBALL",
    "p": "",
    "src": "Fédération Française de Handball",
-   "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQTFpDR0JxbnE5dzNwQ3liRHlqeXpEUThNWm9RTnYtdXVOTDlMRHY1UUEyRy13QVVzR2ViWC1fVk9WeVRVYzI1WVRWWmxzMzZhQkpFR1J2UUxEQ1BvM3dqdDlrSmkwV19wYzN2X08xSElMM0R6NkhfUWJDZ0xIai1vcFhPWmctRmdyRFdRX0RhaDRETlAwNnhSN0ItZkhvc2VrX2NEVXdUblJZc3RtWWx2Ums0a2Qxc3NTZm5VUi04bVhjQ1p2MnlxbmJtcHJtd3VYeGhYYlNQeEU1Wk5pNHZqdUowYWR0Q2dCX1QwNVZqTEtPVDZK?oc=5",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/poule-196378/rencontre-2729151/",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-8c7e7c4b26",
@@ -795,11 +801,6 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
-    },
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -973,9 +974,11 @@ window.GAZETTE_AUTO = {
    "t": "À Janzé, les enseignants et le personnel ont fait leur rentrée au collège Saint-Joseph",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxNZjlldWhkdk0wbVhDVDcyVlFhOHNCSlZuNzl5ZXpGZUxlRlc5T1BtYUljVVZpbEQ3bktBRU9lcHFDNTcwS2cxR1g1a2ZJTnJ6RWstSFBtQTYxNHdOaDNtb2ttQVhEZlFsNE4zTWdnek9adHFDM01ET2NERXJvakVfeXRLN1dqU3VLVU9laWptYWc3VHBJR0hIQlJsQ29LdldDbzN0Zkhva3d2R0hrS2ZBMFQ0ZDNSYTEzMXRZN2ctQk1YbDN3NGlVam5ZcS1KNkhYdlZGczd2WEhtdlpjWkNCVFlhY2lOMV9BbEpKOERuZ3VXVFA5QnIxVmJXaHFacDJS?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/a-janze-les-enseignants-et-le-personnel-ont-fait-leur-rentree-au-college-saint-joseph-024496da-a514-11f1-9a23-2458a7833d0a",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-7c1b71e5f1",
@@ -1085,9 +1088,11 @@ window.GAZETTE_AUTO = {
    "t": "À Janzé, les travaux de la mairie réorganisés en deux phases",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOMFZVUWltYVc5V1BaXzFtblRnaUJxYTlkZ2MwcTNuU1VMQmxaLXF5QW1wMmtvaHdybE9xUjludEtFUGhoR1JQNWhQNm1sb2pMd0FUamJxVTNhdC1SckFsTndnbGNUM0VSbUFrMHBCaWNtMHFBaGhIOEYwbU01ekozNnAyS1Y0MHlockRZQ3pVZkxUMDJ2N1VuQzVfUXhoLVFaUTNHRXJZTXFEZy11Um1hMW5yT2kyUmNDTEpIbzZKdmlCSGtuY2hwN3ZwRXdXY1JMQzVjdkdJZzAzZUZON2c?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/a-janze-les-travaux-de-la-mairie-reorganises-en-deux-phases-fa55cc58-9273-11f1-836e-318a0522cae2",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
+   "ap": 2,
    "cat2": "travaux"
   },
   {
@@ -1108,11 +1113,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Une enfant de deux ans disparait à Janzé avant d'être retrouvée dans un champ avec des vaches",
-   "p": "",
+   "p": "D'importants moyens ont été déployés par la gendarmerie à Janzé (Ille-et-Vilaine) ce samedi 1ᵉʳ août pour retrouver une petite fille de deux ans et demi. Après plusieurs heures de recherches, elle a finalement été retrouvée dans un champ.",
    "src": "ici.fr",
-   "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOLTlacmtMYnVMZGktcXRrazFnQURRNjI2cmc2LXdndkhBTjZMSmNDdHpicnZBSFVvcDZTa0EzWlZtVnltbFowLXpTbzJ3Y3l2VjZhUDZYZUJrVW5qZHRyRGRQcV9VQVJ2cC1pcDlnV3RxVG1Valg1TmlMbzBFS3RRSVd2OGxTRWZZbTdPcThWcV9DVnZNU1BUUFRqdEVRQTA3VDlFeWdQbXdndUE0WTNvTkZKM00yeVVvS2ZjbmVvS3dWaEdqNHlwOW40MktmZkc2ajlSOHg1LWFCeTZONHV0SF9NeTZlZ3cwZHJN?oc=5",
+   "url": "https://www.ici.fr/bretagne/ille-et-vilaine-35/janze/une-enfant-de-deux-ans-disparait-a-janze-avant-d-etre-retrouvee-dans-un-champs-avec-des-vaches-7161644",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-9841be74c4",
@@ -1168,9 +1175,11 @@ window.GAZETTE_AUTO = {
    "t": "« Une véritable tempête » : un violent orage frappe Janzé, les dégâts sont nombreux",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQWTdCbDR3aWFzbC1XUWgtWHpYSXJwOGo5NmlmbmpYLTFjSXFCRGFVZmpFMHhfT3pVeVZGODlrVEtKdy12ZWlLenM2WlpZMUl5LWtFNEp5N1FzQnJOUHRHeTVpdjNGTm1ySFJGSnlnVzlPX1V2UEJvR0ZLX0FBX1BUMnNRN3BWamctZjRlRE5DMVJObk1WeGFrUm1IY2pUMDhadUlNUUFqN1ExZWF5RHI0dHYtWk5xOUQ2WkduVzc4U2Q0WXdkX2Mza3ItUF9ubklpRUx4RktfREVOekllb05hYmRmcVpOZDVh?oc=5",
+   "url": "https://www.ouest-france.fr/meteo/orage/une-veritable-tempete-un-violent-orage-frappe-janze-les-degats-sont-nombreux-a2ef3bc2-8132-11f1-9d8e-98fb5a42b8f3",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
+   "ap": 2,
    "cat2": "alerte"
   },
   {
@@ -1185,14 +1194,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null,
-   "aussi": [
-    {
-     "src": "velopressecollection",
-     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPaV9zUnFDdU5NSDhMdjVtV3F6MU84cjJFZWllYVpOcHRfamd6aWNMS01xeWMtUzZlNHdpSmRYMGlGSWZJX1U2aS1GaTdOVmIyYjlTTjdVVERDcERlWlJNdk9CSmJnX01TRXFNeHlMMGgyTE44ckdXYUVJSVQyVU9EYzdxSFNWcWRqU2dTVzFVWTdGYzFaajRvNnFpN3pWbEphOHcwNm1CMlBacEZNOElKcWV0MnNGWEd5QkJJZWpYdkhqVm1QVzJpSjFjbEY4Zw?oc=5",
-     "t": "Janzé Grand Prix Cycliste 13 juillet 2026 infos de course cycliste"
-    }
-   ]
+   "ap": null
   },
   {
    "id": "rafcom-9c04434898",
@@ -1213,9 +1215,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Un festival de musique metal aura lieu ce week-end",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOVEJWQlZ5N012YWFEQVhZaFY1VTI0eWhkOUktZUJUWDRvdjdoZWVlMF9IRE1saldLQjJCTGY1OUFKeWRoMWpKdzJJMGRMbjRWZzd0RzBDbm1kSGNSSFQ0dkhTNklCZFFtT3lDZkMyOXp3RUlaWmNDR0NXRTNwSUV6ZGJqNkhyM2xoUzhwbjhLelplS0wzMXl3SXhoTHJCeGJOTkhJSUZXc2l1RVBYRzRlMEtsQnZGNlhyYXhaSk5BbEJSTkV6WFVnenF0WHBza2swdmRNc0l5eThTQQ?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-un-festival-de-musique-metal-aura-lieu-ce-week-end-90191e14-73bd-11f1-9aa0-1190a8d96b7a",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "rafcom-44a9aec09e",
@@ -1234,11 +1238,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "TotalEnergies inaugure la centrale solaire de Janzé, avec à la clé un investissement de 2,9 M",
-   "p": "",
+   "p": "Avec 3,5 MWc de puissance installée et 2,9 M€ investis, la centrale solaire de Janzé est un projet emblématique de transition énergétique .",
    "src": "Bretagne Économique",
-   "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNNTN6RXZGS2VHTjd5MzNCVVk0djhIYllEZHRaV3ZKZWpUWXVTLXN6MFlCLWhpZ3JaNGNqWVJVN196YXV6c1V1Q19zX3I0aE4tVDh0SlNKblVOUU4yWnNtWXBHdWVhZHBYOUtRNU1HTW9XX0U4Vl9leHJXYkwtNWQ5Q3dXUHdHUzdoZkN4RUFCbVhPODI2LTR0UEJrR3lSNW5zdUNtTkk2WTItcGsyS3RFN0Q5TVVPZVBGb0Y0QWcyRDJzMTNRTEVhMzY3WVVKTHJpbVVzNUE5dw?oc=5",
+   "url": "https://www.bretagne-economique.com/actualites/totalenergies-inaugure-la-centrale-solaire-de-janze-avec-a-la-cle-un-investissement-de-29-me/",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-d1d28750bc",
@@ -1291,14 +1297,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null,
-   "aussi": [
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
-     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
-    }
-   ]
+   "ap": null
   },
   {
    "id": "presse-c321fe73da",
@@ -1345,9 +1344,11 @@ window.GAZETTE_AUTO = {
    "t": "La Guinguette A la Bonheur s’installe à Janzé pour l’été",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQRXpPckNNcmJWMGt4TW9vemR3ODkwMGRxRmQyWDhBUFZiWFpwOW9NWXNEZ00xcGRoamw2OFc3SVU4YUlpcFU0Mk9YcUZkbHpKT0paeDdsZl83WjJaSHJONjNQS0NfZlFNUkxPRDlMU2tidGZ0NjN3VEVUakl5NGc3T2VFa04tTXJPZ2E2NlNINHljNFMzUzNQNVBMTVQybFE2cXp6RHRqSVJBTnRGX2Q4S2J2UlAyMzhBSlYwTkFXOE5RaVdsSHlGb3FOc3RpZjRNRkstdVdITQ?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/la-guinguette-a-la-bonheur-sinstalle-a-janze-pour-lete-1c1f75e4-590f-11f1-85b1-345c98c474fd",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-08bb364a56",
@@ -1379,11 +1380,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "RD 173 : travaux du 18 au 26 mai entre Janzé et Brie",
-   "p": "",
+   "p": "Le Département d'Ille-et-Vilaine réalise des travaux de renouvellement de la chaussée sur le RD 173 entre les communes de Janzé et Brie.",
    "src": "Département Ille et Vilaine",
-   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQemFtbWFpMGFDcjhEQXJwdDItSzFLTEg4WmVuMjFza3k1OFN3WU0zR1RVdnFuRlpfTnl3cDh0cUlRSWgtaGFCbGdiYldmdkM4c3UybTNlajYzMEZkWTlVN1Y3LTRCYUxVOXBJeVN3TmRqOG12ZUlWbE8tV21XUERtRVZSU2VYSkpj?oc=5",
+   "url": "https://www.ille-et-vilaine.fr/rd-173-travaux-du-18-au-26-mai-entre-janze-et-brie",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
+   "ap": 2,
    "cat2": "travaux"
   },
   {
@@ -1405,9 +1408,11 @@ window.GAZETTE_AUTO = {
    "t": "Diesel Technic France monte en puissance logistique avec sa plateforme de Janzé",
    "p": "",
    "src": "Auto Infos",
-   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPUXVZSFVBNzQzRndnc19oaTZvUGZPa3BoVE1sV21LWnpYelRYUTJrS0ZwRThTeC1naGxUVWJtVU5pZHRXYmxneHl2dVJFYlZpYWFPLW4zT01EeVhmWEpzV0RyRTluQy1mZkFQZ0ExQkt5MzFmM2hBNnotS0NSc0hDVlV6Q1hFcHVJSTdCMDlVazJfVkJtNW9peTJBNzVkLUpWc1ZIblRjbFljUUZ5WnNtVWJ0SjRNdmhpdlAzSA?oc=5",
+   "url": "https://www.auto-infos.fr/article/diesel-technic-france-monte-en-puissance-logistique-avec-sa-plateforme-de-janze.291660",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-4dee9690f5",
@@ -1451,11 +1456,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Janzé : Jonathan Houillot est élu maire, voici ses adjoints et ses priorités",
-   "p": "",
+   "p": "Suite aux élections du 15 mars, le conseil municipal d’installation a eu lieu samedi 21 mars. À cette occasion, Jonathan Houillot a été élu maire de Janzé (Ille-et-Vilaine).",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQY1Y4S3BxckY4dDdBQ295MndEMkhtRHVlSkxKTnB3el8wUGV0b1RYb0ZsTDRBUzZfSVdKS0RIZXZiNkVhc1RkTHBteW0xVWlJc3JVTDJKV0JUMDF5R1Z6VjFGemdwRzNXMjlBZGZfa1ZWOEkwNlNWcF9GRjN6cWRPdmM3TDJJMm9jUlVEZ0xCeU1MbkdnRG1MWW1oS0VMOGJJRTBVWTZUaVhSbUZGOXh6d0U0R1hQNmNudGh6aS11N1Njdw?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/janze-jonathan-houillot-est-elu-maire-voici-ses-adjoints-et-ses-priorites_64057064.html",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
+   "ap": 2,
    "cat2": "conseil"
   },
   {
@@ -1466,9 +1473,11 @@ window.GAZETTE_AUTO = {
    "t": "« C’était devenu une addiction » : à Janzé, il brisait les vitres de voitures pour de maigres butins",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMimwJBVV95cUxOZ0Q4ZnB4SnNMTjlaVXR0UGEyakJiZ0hIcVI4NnBkMThpaEMxREVlSlhteGdlRUxqZWRkckhUdS1Lc1VPWEptellaN0NvUXAxZmRFLXV5dUNCekVpSVdleUdtcTN0YVlSaVkwS2t1eGpmRkxPaFpMVTc0Z09KUFlKWGhHLWttYXBxRTNNYUpwMWZHaVJGXzNTWGc2TW0wMGdNMFN3OFE0OFRxRFhhOTFXUE5GZU0xUTRNSkNLOHlkcFN2dGZqWHBpX3B3UlVIeE5YeTFpUmZza1k5WkVNYS11TENRSnQ3enpyRllWY29NQ3BPZllhc0ptT0tCQzZtaEpIalFyY1h6UUw4QUJfNDdrNVltTzd4T0dPZ1Uw?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/cetait-devenu-une-addiction-dans-le-bourg-de-janze-il-brisait-la-vitre-de-voitures-pour-de-maigres-butins-8b7173b0-22e7-11f1-bd90-e52e64f8157c",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-6977382e6b",
@@ -1478,9 +1487,11 @@ window.GAZETTE_AUTO = {
    "t": "Municipales à Janzé : Jonathan Houillot l’emporte haut la main",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOeDJjVzFEWEFsV0gzUkxGeW9pQVBYb3VOZk5zbTBtREdYV3F5V2R1Wk5JY05iVHYxUURrY0Y5RXVJdnBvdVU5clpxNmNjVWNic2FfRVVhZThhSTBWTklLZzlJYi1GSXY3eDNlZWpJcm9sZHFBR0wyQU41RmtJRWI4cTFYMXloWlE5Q1B6SUpNVi0zZS1rc2xiMDdDaHNUblV1bkZVZmxOa0ZUN0drZUFSRDRLNzc5OFVMRzhzY3lWeGdpMnVja0NERGRwMlZUdndqbEIteVFXQW9YaU5hcTY0?oc=5",
+   "url": "https://www.ouest-france.fr/elections/municipales/municipales-a-janze-jonathan-houillot-lemporte-haut-la-main-863c3a26-20b5-11f1-9113-2bccc08cc294",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-abc6794db2",
@@ -1488,11 +1499,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Municipales 2026 à Janzé : la liste de Jonathan Houillot largement élue",
-   "p": "",
+   "p": "La liste de Jonathan Houillot a remporté les élections municipales à Janzé (Ille-et-Vilaine), ce dimanche 15 mars 2026. Le candidat est arrivé largement en tête.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNbzJJWnpEVmQwa0F6MTlhSTRnMmV2RDF1UldUVGY4ajA2azJoa3FJdWRZd2tqT29uMmo2QnVrZm03THBydEVhdGNvU0lqVlZ1Y2szMzNGTzdEZ1NlQllzaWo1cDN4LXlEQU1IZ0lpWXhWb1Nud0R6TXpzWEVnT0NDeklmZmtmWDFKb3Zma0pURXN0OGhsZ3pVeUFkdGJiX3ZuMWtqbUFPTGw2bmFETGRuS2tyMU5pZ3RxN3lDMQ?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/municipales-2026-a-janze-la-liste-de-jonathan-houillot-largement-elue_63972664.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-4be6a370ad",
@@ -1502,9 +1515,11 @@ window.GAZETTE_AUTO = {
    "t": "« Orange ne respecte pas l’accord signé » : le conseil de Janzé déplore les retards d’enfouissements des réseaux",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxPbjRwQndTQ0EwN3FjZVkyUzZpbmZ5ZlJMRGVfd255TWwxVURNbHgxN0JoV2Z1WVNOTjZFUmJzSTZGTWVZUTN4cEpFTnppOUZiRy1RVFNoemlndC02WHlEOWNYdGN4NGFlTFZaVlVSbXF0Y1pYOVkySEtDTEhseTB3WGRDWHAzMG5WVnY2UjJ6Wl80UE5nYzdicHhlMjItWVc1WFN3aTk3NG5Ca0ZONkVvUVpUOFBwVVNXVldnRVRUWDJIRlhGMzZ4Q05zMjRNNkRqWWlnd293OUpHVlZvTXJTNVI4dzVsSEVwN05udXMxQTVBLVZhcDBNaDU0VlBVcmdlaXZqdTBXQ1V4QQ?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/en-pleine-periode-electorale-le-debat-sur-lorientation-budgetaire-irrite-la-minorite-a-janze-e8138656-189e-11f1-82a0-9796cae8a64a",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "rafcom-92fa2a5226",
@@ -1523,11 +1538,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Municipales 2026 à Janzé : Jennifer Maillard présente sa liste et ses priorités",
-   "p": "",
+   "p": "Jennifer Maillard mènera la liste aux élections municipales de Janzé (Ille-et-Vilaine) avec des priorités affichées pour l’avenir de la commune.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQZEsxWVdxVkI0YVZDOFBlNnc5Z1JCX0YzaXlfQll0S3luVWtsRHgwaDFkZktQN0NsY0tkN2FtNEhiUklFbldqY2JkZG9CdGZ3Q1BaX0xwbUpBcmNLMm5aWjM1VnZSejY4M2lBM01IbzFIZlp6S1gzOF9TOXcxYnh4bXU3Y3Y5T2JFekJMNHEwZnVSZzY5QXlBaXNOMTdYYU4wU2lRMGZKby1rS1dudWE3b1k5X09Pb0xyT1RtLW04dzNIVlhoemlz?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/municipales-2026-a-janze-jennifer-maillard-presente-sa-liste-et-ses-priorites_63871682.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-8fb18fd702",
@@ -1569,11 +1586,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Municipales 2026 à Janzé : le candidat Jonathan Houillot présente sa liste",
-   "p": "",
+   "p": "Qui sont les candidats figurant sur la liste « Unis pour Janzé ? » Jonathan Houillot dévoile les noms des membres de son équipe pour les élections municipales.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNYjBQV2lndUJnVFl4S3VjUElfZFdUOGdNWFVLdWJqRDFlazFHWFNrOGRETW82OUJHZUR5M1g2VndvX0U1WjIyQUNlRVZ0dWQ3UGI3S05abGo4aUE5YWtLbFNLVlE0bzBDZVBMT3RBWFlQSWY4T0ZFQlkzLXozdENDNG5jZUZFRkUySi1OVEZFZmpyblNRc0ViajBqLU9IWWNJX3N6NHJRdU05RnB4MllGTmE3blJGZk9CSWF0RVpoNk4?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/municipales-2026-a-janze-le-candidat-jonathan-houillot-presente-sa-liste_63773623.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-de609ac5ef",
@@ -1583,9 +1602,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. De nouvelles têtes accueillies à la brigade de gendarmerie",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNaFZzWjhVVkVtRHlENzVycXBnckQtM0Jib2ZwMTBGaGtmWTNuS25laG8xRjg0Um14RDRXZWVzVGU5YkpFQzNXdFJDMmtTZXpzaGZVN2w4TllCOTEtUDZuVkw0a1BQZjJ1bUVqeXVqZEc5Rms2bHFCdE1CVWlUd2RvRER4RFIycnVUQml4ak9lcmtYQTlGSFdOZHJHQXRESWlZYThRYXlBbi0zd0poNWJRblp6azVaTGg4WXBuQV9RNmw0bnZERVhZejVWSVRTbFFkRU1fUFJBTzlNd3Ew?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/de-nouvelles-tetes-accueillies-a-la-brigade-de-gendarmerie-5409293a-f520-11f0-b9a1-d6112deb75f2",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-3fa999d3d8",
@@ -1595,9 +1616,11 @@ window.GAZETTE_AUTO = {
    "t": "Avant de partir, le maire de Janzé fait le point sur les chantiers en attente",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPcXd0QWkwaVdhRmFQOHdsQmtNY3NZM2ZfR1B1aEJvN2JleG55UGN1Q1dyZk8xLW94NERGVVRBTmZ0UlB6XzBDZlFfWGQxYi02aEZIVmd4RmNmelgzUGZCM1pZQWppSk16UFF2cng0cUw5NXJ3UDAyYTl6dlY5N0pKS01NelJxVlNqWkViUFdORl9QZzRzcmVDdWI5d0ljSldNUXhvRTRXbkVIRTRCMzBHUXlwTVdUQS1rbXpUeG9qN01RNV9vNTVYRXphWWE1TDRoN3BSYjNhQUI5NDZxNVpGMEd1LTFUa0hXT0RZRXVYTDEzbG9W?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/avant-de-partir-le-maire-de-janze-fait-le-point-sur-les-chantiers-en-attente-4a604536-eedf-11f0-b9c9-867b213e179a",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
+   "ap": 2,
    "cat2": "conseil"
   },
   {
@@ -1617,11 +1640,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Municipales 2026 à Janzé : le conseiller départemental Jonathan Houillot est candidat",
-   "p": "",
+   "p": "Battu d’un rien aux élections municipales de 2020 à Janzé (Ille-et-Vilaine), l’élu d’opposition et conseiller départemental Jonathan Houillot sera de nouveau candidat en 2026.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOZTdtSUJiNzhDenJiTUV1WGVZR0ZwNW15dEpvekg0ZmVlSDhMM2RTQXlRaW5DemRqUjVYQjlUWm5YWTJkNHMycGVldkU3VXlVM21DZ2lVSU1UVC1TbzNBNTc1Y3FmbW55aWI2dHEyQ2stajNpVTBXU0lFeEgtXzF6NTZGWWtra0Z0S2ExcmhndXRsUmNoSzJzTnQ1ZnNydjBTdDYzV0dGbGRud1BXZlJuRUZzQklKQXN6aWpjTk1NSV90TUVOcVU2SXpRb1ptMlE?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/municipales-2026-a-janze-le-conseiller-departemental-jonathan-houillot-est-candidat_63376601.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-912d09e11a",
