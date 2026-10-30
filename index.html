@@ -127,6 +127,9 @@ article.read li { margin-bottom: 7px; }
 .srclist span { font-size: 13px; color: var(--ink-2); }
 @keyframes glisse-g { from { transform: translateX(40px); opacity: .3; } to { transform: none; opacity: 1; } }
 @keyframes glisse-d { from { transform: translateX(-40px); opacity: .3; } to { transform: none; opacity: 1; } }
+/* Le geste horizontal est géré par la page : le navigateur ne doit pas faire bouger tout l'écran. */
+html, body { overflow-x: hidden; overscroll-behavior-x: none; }
+main { touch-action: pan-y; }
 main.glisse-g { animation: glisse-g .22s ease-out; } main.glisse-d { animation: glisse-d .22s ease-out; }
 @media (prefers-reduced-motion: reduce) { main.glisse-g, main.glisse-d { animation: none; } }
 .colophon { margin-top: 26px; font-size: 12px; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
