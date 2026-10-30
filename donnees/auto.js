@@ -1,27 +1,26 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-30T22:12+00:00",
+ "maj": "2026-10-30T22:14+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-30T22:12+00:00",
+   "le": "2026-10-30T22:14+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-30T22:12+00:00",
-   "n": 61
+   "le": "2026-10-30T22:14+00:00",
+   "n": 56
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-30T22:12+00:00",
+   "le": "2026-10-30T22:14+00:00",
    "n": 1
   },
   "rafcom": {
-   "etat": "erreur",
-   "le": "2026-10-30T22:12+00:00",
-   "msg": "not well-formed (invalid token): line 12, column 376",
-   "dernier_ok": null
+   "etat": "ok",
+   "le": "2026-10-30T22:14+00:00",
+   "n": 59
   }
  },
  "items": [
@@ -96,6 +95,17 @@ window.GAZETTE_AUTO = {
    "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNUlFGZHVfYk5CMnhkbG5rRUNEZEx1czQxdjdiaUJmNTRKU3R6VnNCMVBsZkFRTklSNG00YmVZaHRRdW9MblU0bER5OG1nRUIzd045OWd6M3pZSW5kdFZrUXlJNG1TVUlHVGkyUV8tbXRnMDZhc1l6OWNSSjhoNmI5b0NPN1NDM2hYaDN2dHYwekJWalh1ZmhES29SWE84Qk80LWNleVhPZFZwS2ZjV1ladF9UOV84bDlLX09jNHdsMmxJTWNwTGk2SURmLWUtWDQ4TDhIbkhUUXVtZGE1cTVXdzQ1aW1Yc1ZDa1ViT1FOSkUzVEV0UzZJdUJSdC03ZUE?oc=5",
    "a": "auto",
    "k": "presse"
+  },
+  {
+   "id": "rafcom-906e4d100a",
+   "d": "2026-10-27",
+   "cat": "alerte",
+   "t": "SÉCHERESSE : LE DÉPARTEMENT EN ÉTAT DE CRISE",
+   "p": "Sécheresse en Ille-et-Vilaine : le département en état de crise, la sobriété est l'affaire de tous Depuis cet été, l'Ille-et-Vilaine fait face à une situation hydrique critique et se trouve placée en état de crise sécheresse, le niveau d’alerte le plus élevé. Face à la rareté…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/secheresse-le-departement-en-etat-de-crise",
+   "a": "auto",
+   "k": "rafcom"
   },
   {
    "id": "janze-c1d611a184",
@@ -202,6 +212,17 @@ window.GAZETTE_AUTO = {
    "url": "https://www.janze.fr/actualites/haies-et-alignements-darbres-un-guichet-unique-pour-vos-demarches",
    "a": "auto",
    "k": "janze"
+  },
+  {
+   "id": "rafcom-cc18774ee3",
+   "d": "2026-10-20",
+   "cat": "vie",
+   "t": "Mobilités : participez au développement de vos déplacements !",
+   "p": "Roche aux Fées Communauté est une Autorité Organisatrice des Mobilités (AOM), ce qui lui permet de gérer les transports publics tels que le réseau de navettes Mobilifées, de promouvoir le covoiturage et le vélo, et de proposer des services de conseil en mobilité. Cependant, les…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/mobilites-participez-au-developpement-de-vos-deplacements",
+   "a": "auto",
+   "k": "rafcom"
   },
   {
    "id": "presse-b706d84d50",
@@ -393,6 +414,17 @@ window.GAZETTE_AUTO = {
    "k": "janze"
   },
   {
+   "id": "rafcom-74e91ffdf0",
+   "d": "2026-09-10",
+   "cat": "travaux",
+   "t": "Perturbations sur le réseau Mobilifées — Vendredi 11 septembre",
+   "p": "🚧 Perturbations sur le réseau Mobilifées — Vendredi 11 septembre En raison de travaux, plusieurs arrêts ne seront pas desservis. Voici les reports à prévoir : Arrêt Gare (non desservi de 8h à 20h) ➡️ Report à l'arrêt Route de Bain Arrêt Place des Halles (non desservi dès 17h)…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/perturbations-sur-le-reseau-mobilifees-vendredi-11-septembre",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
    "id": "janze-925baf1b71",
    "d": "2026-09-09",
    "cat": "vie",
@@ -449,6 +481,28 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "rafcom-8f8a1733d5",
+   "d": "2026-08-27",
+   "cat": "vie",
+   "t": "Les Journées du Patrimoine 2026",
+   "p": "Les Journées du Patrimoine reviennent les 19 et 20 septembre, chaque année, les Journées du Patrimoine offrent une occasion unique de découvrir et d'explorer les trésors culturels et naturels qui façonnent notre histoire et notre environnement. Cet événement incontournable,…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
+   "id": "rafcom-7e0e674eff",
+   "d": "2026-08-26",
+   "cat": "vie",
+   "t": "Transport collectif Mobilifées : De nouveaux horaires pour ce service gratuit !",
+   "p": "Lancé en septembre 2025 par Roche aux Fées Communauté pour faciliter les déplacements quotidiens sur les 16 communes du territoire, le réseau de transport collectif Mobilifées dresse un bilan encourageant : 4 433 trajets ont été comptabilisés sur ses 9 premiers mois…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/transport-collectif-mobilifees-de-nouveaux-horaires-pour-ce-service-gratuit",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
    "id": "janze-93743c9bab",
    "d": "2026-08-18",
    "cat": "alerte",
@@ -503,6 +557,39 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "rafcom-d848694248",
+   "d": "2026-07-30",
+   "cat": "vie",
+   "t": "Transport collectif : avec Mobilifées, c'est GRATUIT et régulier !",
+   "p": "Roche aux Fées Communauté s’engage pour une mobilité plus durable et solidaire. Le Plan de Mobilité Simplifié est un document qui planifie les actions en faveur des mobilités sur le territoire jusqu’en 2033. C’est dans ce cadre que Roche aux Fées Communauté met en place d’un…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/transport-collectif-avec-mobilifees-cest-gratuit-et-regulier",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
+   "id": "rafcom-6c84294f6b",
+   "d": "2026-07-30",
+   "cat": "vie",
+   "t": "CONSTRUCTION D’UN MUR EN MOELLONS ET INITIATION À LA TAILLE DE PIERRE À MARCILLÉ-ROBERT",
+   "p": "Dans le cadre de son programme de valorisation du petit patrimoine, Roche aux Fées Communauté propose une nouvelle formation gratuite sur 2 jours, sur la création d’un mur en moellons de pierre et initiation à la taille de pierre, en partenariat avec l’entreprise Terroir Bâti.…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/construction-dun-mur-en-moellons-et-initiation-la-taille-de-pierre-marcille-robert",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
+   "id": "rafcom-c452c57d88",
+   "d": "2026-07-27",
+   "cat": "vie",
+   "t": "Semaine de la mobilité 2026",
+   "p": "Roche aux Fées Communauté dévoile le programme de sa Semaine de la Mobilité 2026 Roche aux Fées Communauté présente la nouvelle édition de la Semaine de la Mobilité, qui se déroulera sur le territoire du 15 au 20 septembre 2026. Cet événement propose une programmation riche,…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/semaine-de-la-mobilite-2026",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
    "id": "presse-46c85121b5",
    "d": "2026-07-16",
    "cat": "presse",
@@ -527,6 +614,17 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "rafcom-9c04434898",
+   "d": "2026-07-07",
+   "cat": "conseil",
+   "t": "Retour sur le Forum des Élus : cohésion et projets au cœur de la journée",
+   "p": "Samedi 4 juillet, la commune de Brie a accueilli le Forum des élus de Roche aux Fées Communauté. Une journée d'échange, de travail et de convivialité qui a rassemblé près de 100 élus du territoire autour d'un objectif commun : renforcer l'interconnaissance et la cohésion autour…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/retour-sur-le-forum-des-elus-cohesion-et-projets-au-coeur-de-la-journee",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
    "id": "presse-f0c5f8d527",
    "d": "2026-07-02",
    "cat": "presse",
@@ -537,6 +635,17 @@ window.GAZETTE_AUTO = {
    "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOVEJWQlZ5N012YWFEQVhZaFY1VTI0eWhkOUktZUJUWDRvdjdoZWVlMF9IRE1saldLQjJCTGY1OUFKeWRoMWpKdzJJMGRMbjRWZzd0RzBDbm1kSGNSSFQ0dkhTNklCZFFtT3lDZkMyOXp3RUlaWmNDR0NXRTNwSUV6ZGJqNkhyM2xoUzhwbjhLelplS0wzMXl3SXhoTHJCeGJOTkhJSUZXc2l1RVBYRzRlMEtsQnZGNlhyYXhaSk5BbEJSTkV6WFVnenF0WHBza2swdmRNc0l5eThTQQ?oc=5",
    "a": "auto",
    "k": "presse"
+  },
+  {
+   "id": "rafcom-44a9aec09e",
+   "d": "2026-07-02",
+   "cat": "vie",
+   "t": "Roche aux Fées Communauté lance le « Parcours Achat » : 3 rendez-vous pour les acteurs du territoire.",
+   "p": "Roche aux Fées Communauté se mobilise pour accompagner les acteurs économiques de son territoire. À travers un parcours en trois temps, « Parcours Achat », la Communauté de communes souhaite donner toutes les clés aux petites et moyennes entreprises locales pour sauter le pas…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/roche-aux-fees-communaute-lance-le-parcours-achat-3-rendez-vous-pour-les-acteurs-du",
+   "a": "auto",
+   "k": "rafcom"
   },
   {
    "id": "presse-e23c77cecb",
@@ -587,6 +696,17 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "rafcom-0ee42d5db3",
+   "d": "2026-06-17",
+   "cat": "vie",
+   "t": "En voiture Nina et Simon.e.s",
+   "p": "« En voiture Nina et Simon.e.s » : Un van jaune pour faire rouler l’égalité sur notre territoire Depuis le début de l’année, un curieux véhicule jaune vif sillonne les communes de Roche aux Fées Communauté. Son nom ? « En voiture Nina et Simon.e.s ». Porté par le CIDFF 35…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/en-voiture-nina-et-simones",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
    "id": "presse-509e327254",
    "d": "2026-06-02",
    "cat": "presse",
@@ -621,6 +741,17 @@ window.GAZETTE_AUTO = {
    "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQemFtbWFpMGFDcjhEQXJwdDItSzFLTEg4WmVuMjFza3k1OFN3WU0zR1RVdnFuRlpfTnl3cDh0cUlRSWgtaGFCbGdiYldmdkM4c3UybTNlajYzMEZkWTlVN1Y3LTRCYUxVOXBJeVN3TmRqOG12ZUlWbE8tV21XUERtRVZSU2VYSkpj?oc=5",
    "a": "auto",
    "k": "presse"
+  },
+  {
+   "id": "rafcom-8b874ac2ee",
+   "d": "2026-04-15",
+   "cat": "conseil",
+   "t": "Roche aux Fées Communauté : une nouvelle équipe pour le mandat 2026-2032",
+   "p": "Le 14 avril 2026, les nouveaux élus communautaires se sont réunis afin d'élire le Président, les Vices-Présidents et les nouveaux membres du Bureau communautaire.",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/roche-aux-fees-communaute-une-nouvelle-equipe-pour-le-mandat-2026-2032",
+   "a": "auto",
+   "k": "rafcom"
   },
   {
    "id": "presse-79d9c09f15",
@@ -695,6 +826,17 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "rafcom-92fa2a5226",
+   "d": "2026-02-24",
+   "cat": "vie",
+   "t": "Une programmation 2026 structurée pour l’achat public durable",
+   "p": "L’intercommunalité de Roche aux Fées poursuit en 2026 une politique d’achats publics dynamique, en cohérence avec sa stratégie d’achat public durable (performance, impact social et environnemental, soutien à l’économie locale).",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/une-programmation-2026-structuree-pour-lachat-public-durable",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
    "id": "presse-64e02541b2",
    "d": "2026-02-20",
    "cat": "presse",
@@ -705,6 +847,28 @@ window.GAZETTE_AUTO = {
    "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQZEsxWVdxVkI0YVZDOFBlNnc5Z1JCX0YzaXlfQll0S3luVWtsRHgwaDFkZktQN0NsY0tkN2FtNEhiUklFbldqY2JkZG9CdGZ3Q1BaX0xwbUpBcmNLMm5aWjM1VnZSejY4M2lBM01IbzFIZlp6S1gzOF9TOXcxYnh4bXU3Y3Y5T2JFekJMNHEwZnVSZzY5QXlBaXNOMTdYYU4wU2lRMGZKby1rS1dudWE3b1k5X09Pb0xyT1RtLW04dzNIVlhoemlz?oc=5",
    "a": "auto",
    "k": "presse"
+  },
+  {
+   "id": "rafcom-cbfecc5458",
+   "d": "2026-02-11",
+   "cat": "vie",
+   "t": "Un transport gratuit et régulier ? C'est Mobilifées !",
+   "p": "Depuis le 1er septembre 2025, ce réseau de navettes vient desservir les 16 communes tout en les reliant sur les 3 villes principales du territoire : Janzé, Retiers et Martigné-Ferchaud.",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/un-transport-gratuit-et-regulier-cest-mobilifees",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
+   "id": "rafcom-01bb6a9b60",
+   "d": "2026-02-03",
+   "cat": "conseil",
+   "t": "En 2026, les élections comptent double !",
+   "p": "Les 15 et 22 mars, les élections seront municipales ET intercommunales. Pour comprendre le fonctionnement et les enjeux du scrutin et de l'intercommunalité, retrouvez toutes nos vidéos, infographies et documents. Cette campagne a vocation à être relayée au plus grand nombre.",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/en-2026-les-elections-comptent-double",
+   "a": "auto",
+   "k": "rafcom"
   },
   {
    "id": "presse-34a1bcfd6d",
@@ -741,6 +905,17 @@ window.GAZETTE_AUTO = {
    "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPcXd0QWkwaVdhRmFQOHdsQmtNY3NZM2ZfR1B1aEJvN2JleG55UGN1Q1dyZk8xLW94NERGVVRBTmZ0UlB6XzBDZlFfWGQxYi02aEZIVmd4RmNmelgzUGZCM1pZQWppSk16UFF2cng0cUw5NXJ3UDAyYTl6dlY5N0pKS01NelJxVlNqWkViUFdORl9QZzRzcmVDdWI5d0ljSldNUXhvRTRXbkVIRTRCMzBHUXlwTVdUQS1rbXpUeG9qN01RNV9vNTVYRXphWWE1TDRoN3BSYjNhQUI5NDZxNVpGMEd1LTFUa0hXT0RZRXVYTDEzbG9W?oc=5",
    "a": "auto",
    "k": "presse"
+  },
+  {
+   "id": "rafcom-0a51b32ec3",
+   "d": "2025-12-01",
+   "cat": "vie",
+   "t": "Eau de la Forêt du Theil : information",
+   "p": "Un changement d’identité en 2025 Le Syndicat Intercommunal des Eaux de la Forêt du Theil (SIEFT) a été fondé en 1948 pour créer et développer les infrastructures d’eau potable pour 41 communes membres, dont la vôtre. Fin 2020, suite au départ des communes de Vitré Communauté,…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/eau-de-la-foret-du-theil-information",
+   "a": "auto",
+   "k": "rafcom"
   },
   {
    "id": "presse-71d98b0969",
