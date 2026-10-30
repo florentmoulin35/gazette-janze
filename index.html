@@ -114,6 +114,8 @@ article.read h2 { font-family: var(--display); font-size: clamp(30px, 7vw, 42px)
 article.read ul { padding-left: 20px; font-size: 15.5px; max-width: 62ch; }
 article.read li { margin-bottom: 7px; }
 .drop::first-letter { font-family: var(--display); font-weight: 800; float: left; font-size: 3.1em; line-height: .85; padding: 4px 8px 0 0; color: var(--rust); }
+.autres { font-size: 14px; margin-top: 12px; }
+.chapo.drop { display: flow-root; }   /* la lettrine ne déborde pas sur le bouton de source */
 .srcbtn { display: inline-block; margin-top: 10px; padding: 11px 16px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 700; font-size: 13.5px; border-radius: 3px; }
 .aussi { margin-top: 28px; border-top: 3px double var(--ink); padding-top: 10px; }
 
@@ -281,7 +283,7 @@ const SOURCES = [
   { n: "Chantiers Enedis, eau, fibre", w: "Panneaux sur place", a: "non" }
 ];
 
-const RUBS = [["une", "À la une"], ["presse", "Presse"], ["alerte", "Alertes"], ["projets", "Projets"], ["travaux", "Travaux"], ["urba", "Urbanisme"], ["vie", "Vie locale"], ["conseil", "Conseil"], ["agenda", "Agenda"], ["sources", "Sources"]];
+const RUBS = [["une", "À la une"], ["presse", "Presse"], ["vie", "Vie locale"], ["alerte", "Alertes"], ["projets", "Projets"], ["travaux", "Travaux"], ["urba", "Urbanisme"], ["conseil", "Conseil"], ["agenda", "Agenda"], ["sources", "Sources"]];
 const SEC_SUB = {
   conseil: "Décisions du conseil municipal et de l'intercommunalité.",
   travaux: "Chantiers, stationnement, circulation et déviations.",
@@ -367,14 +369,14 @@ function viewUne() {
 }
 
 function viewProjets() {
-  const news = sorted().filter(i => i.cat === "projets");
+  const news = sorted().filter(i => i.cat === "projets" || i.cat2 === "projets");
   return `<h2 class="sec-title">Grands projets</h2><p class="sec-sub">Idée, étude, vote, chantier, livré : l'avancement de chaque projet.</p>
   <div>${PROJECTS.map(p => projectRow(p, false)).join("")}</div>
   ${news.length ? `<div class="aussi"><div class="kick">Articles</div><div class="list">${news.map(i => `<button class="row" data-open="${esc(i.id)}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></button>`).join("")}</div></div>` : ""}`;
 }
 
 function viewSection(cat) {
-  const list = sorted().filter(i => i.cat === cat);
+  const list = sorted().filter(i => i.cat === cat || i.cat2 === cat);   // cat2 : article de presse rangé aussi dans une rubrique
   return `<h2 class="sec-title">${esc(CATS[cat].label)}</h2><p class="sec-sub">${esc(SEC_SUB[cat])}</p>
   <div class="list">${list.map(i => `<button class="row" data-open="${esc(i.id)}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></button>`).join("")}</div>`;
 }
@@ -413,9 +415,10 @@ function viewArticle(id) {
     <div class="kick">${esc(CATS[i.cat].label)}</div>
     <h2>${esc(i.t)}</h2>
     <div class="byline"><span>${esc(i.approx ? "Vers " + fMon.format(dt(i.d)) : cap(fFull.format(dt(i.d))))}</span><span>Source : ${esc(i.src)}</span><span>${esc(AUTO[i.a])}</span>${i.press ? `<span>Mot-clé détecté : « ${esc(KEYWORD)} »</span>` : ""}</div>
-    <p class="chapo drop">${esc(i.p)}</p>
+    ${i.p ? `<p class="chapo drop">${esc(i.p)}</p>` : ""}
     ${i.li ? `<ul>${i.li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
     ${lienSur(i.url) ? `<a class="srcbtn" href="${esc(i.url)}" target="_blank" rel="noopener">Lire la source originale</a>` : ""}
+    ${(i.aussi || []).some(a => lienSur(a.url)) ? `<p class="autres">Aussi dans : ${i.aussi.filter(a => lienSur(a.url)).map(a => `<a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.t)}">${esc(a.src)}</a>`).join(", ")}</p>` : ""}
     <div class="aussi"><div class="kick">Lire aussi</div><div class="grid" style="border-top:0;margin-top:4px">${more.map(brief).join("")}</div></div>
   </article>`;
 }
