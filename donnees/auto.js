@@ -1,25 +1,25 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-30T22:14+00:00",
+ "maj": "2026-10-30T22:15+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-30T22:14+00:00",
+   "le": "2026-10-30T22:15+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-30T22:14+00:00",
+   "le": "2026-10-30T22:15+00:00",
    "n": 56
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-30T22:14+00:00",
+   "le": "2026-10-30T22:15+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-30T22:14+00:00",
+   "le": "2026-10-30T22:15+00:00",
    "n": 59
   }
  },
@@ -49,18 +49,6 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
-   "id": "presse-c82c340251",
-   "d": "2026-10-28",
-   "cat": "presse",
-   "press": true,
-   "t": "À Janzé, la révision du PLU passe à l’étape suivante : le projet est désormais arrêté",
-   "p": "Article paru dans maville.com.",
-   "src": "maville.com",
-   "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPZ0F5cUplVkJtS1E0MHNSVWJPZ0ZCcDFERmVEVzh2VndjSzZMbXdMQ2JvU0V2MVVKNG8zQ2hTdWdlRGZ4MmdYN3NkUXQxcDFlandWNVNUcE5hNHd5VUhHeWpIaXZpQW4zN1RINzJOblNEby1UR2lHUmROZDFUcm9LRDR3dGNtbUFyQkN5TElVczZxQnVJbFlCSWdCQ1BiMUNuT0xZcjhRMjgtRkpRcjJRMEVSNkkwUVBicDFEZUVQWFU3SDFmUDA1bEhWRVJBb3pKR3VCNlpURTRtZ28?oc=5",
-   "a": "auto",
-   "k": "presse"
-  },
-  {
    "id": "presse-a11e4726fb",
    "d": "2026-10-28",
    "cat": "presse",
@@ -85,6 +73,17 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "rafcom-906e4d100a",
+   "d": "2026-10-27",
+   "cat": "alerte",
+   "t": "Sécheresse : le département en état de crise",
+   "p": "Sécheresse en Ille-et-Vilaine : le département en état de crise, la sobriété est l'affaire de tous Depuis cet été, l'Ille-et-Vilaine fait face à une situation hydrique critique et se trouve placée en état de crise sécheresse, le niveau d’alerte le plus élevé. Face à la rareté…",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/actualites/secheresse-le-departement-en-etat-de-crise",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
    "id": "presse-4860d9c4c3",
    "d": "2026-10-27",
    "cat": "presse",
@@ -95,17 +94,6 @@ window.GAZETTE_AUTO = {
    "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNUlFGZHVfYk5CMnhkbG5rRUNEZEx1czQxdjdiaUJmNTRKU3R6VnNCMVBsZkFRTklSNG00YmVZaHRRdW9MblU0bER5OG1nRUIzd045OWd6M3pZSW5kdFZrUXlJNG1TVUlHVGkyUV8tbXRnMDZhc1l6OWNSSjhoNmI5b0NPN1NDM2hYaDN2dHYwekJWalh1ZmhES29SWE84Qk80LWNleVhPZFZwS2ZjV1ladF9UOV84bDlLX09jNHdsMmxJTWNwTGk2SURmLWUtWDQ4TDhIbkhUUXVtZGE1cTVXdzQ1aW1Yc1ZDa1ViT1FOSkUzVEV0UzZJdUJSdC03ZUE?oc=5",
    "a": "auto",
    "k": "presse"
-  },
-  {
-   "id": "rafcom-906e4d100a",
-   "d": "2026-10-27",
-   "cat": "alerte",
-   "t": "SÉCHERESSE : LE DÉPARTEMENT EN ÉTAT DE CRISE",
-   "p": "Sécheresse en Ille-et-Vilaine : le département en état de crise, la sobriété est l'affaire de tous Depuis cet été, l'Ille-et-Vilaine fait face à une situation hydrique critique et se trouve placée en état de crise sécheresse, le niveau d’alerte le plus élevé. Face à la rareté…",
-   "src": "Roche aux Fées Communauté",
-   "url": "https://www.rafcom.bzh/actualites/secheresse-le-departement-en-etat-de-crise",
-   "a": "auto",
-   "k": "rafcom"
   },
   {
    "id": "janze-c1d611a184",
@@ -151,18 +139,6 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans Foot Amateur Bretagne.",
    "src": "Foot Amateur Bretagne",
    "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxNOFRXaVlHdVBGN2J5dXJiUVNQOEJIRUVzVThNakkxN0FUS3NveXRiV0xBMEVYZHdtTDRfV2VlSTQ1RUNvZjc5am5RclV1am5EQ1cwTy1UWm9JWDZCLUlaRE1ZdmRfSmxId2ROUklZSW9rcnNkSzNrU0ZoYkpkaHFpeWZfcjJjRWNDUzRUeXlhdTRpUWxZd3laNDFaTmM2RUM4ckxnTGJfMFBWSHNFc1ZkUjkwVjZuV2NIblRkbTc5aXFQc1d5UWJDcEwzdlctSDVCNVh3RmRGbXNIdEwyZ1I5N18yN2FPaTRZbURUeF8yV001TjlxX1RJS0VPUDREV3FNeE92YmFpM2ZpTTg2SEZ6N0NMV1lIMEt2U0E?oc=5",
-   "a": "auto",
-   "k": "presse"
-  },
-  {
-   "id": "presse-7f0b58b3e6",
-   "d": "2026-10-25",
-   "cat": "presse",
-   "press": true,
-   "t": "Coupe de France (6e tour). Battu par le Stade pontivyen, Janzé sort la tête haute",
-   "p": "Article paru dans maville.com.",
-   "src": "maville.com",
-   "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOMWE3akNCbkdOcDZmbWNicGE1TTExcHRZQVZ1WkFldFhzNnk0Mnk2RU1TcUtMRnF1OVg4cjItQ0EtRWR0M2dGMWlyU3MyMWRVRGZjT0J0UTFoM1V2Q0o2a1ppbE1RNHdGRWljUlJFYTRkVzhMQWNSNjFLNUFZR3dpWWxSekxoMFJwdWtTZDV1LU10N0Vtd2xFWk1XWjNzeWVUR2pvVm1wMUhRX01xX1otb1ZUcXJyNGlXbEU3TGhsYkl3akp5MTFpaGpYd2ZJYzltdlE?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -571,7 +547,7 @@ window.GAZETTE_AUTO = {
    "id": "rafcom-6c84294f6b",
    "d": "2026-07-30",
    "cat": "vie",
-   "t": "CONSTRUCTION D’UN MUR EN MOELLONS ET INITIATION À LA TAILLE DE PIERRE À MARCILLÉ-ROBERT",
+   "t": "Construction d’un mur en moellons et initiation à la taille de pierre à marcillé-robert",
    "p": "Dans le cadre de son programme de valorisation du petit patrimoine, Roche aux Fées Communauté propose une nouvelle formation gratuite sur 2 jours, sur la création d’un mur en moellons de pierre et initiation à la taille de pierre, en partenariat avec l’entreprise Terroir Bâti.…",
    "src": "Roche aux Fées Communauté",
    "url": "https://www.rafcom.bzh/actualites/construction-dun-mur-en-moellons-et-initiation-la-taille-de-pierre-marcille-robert",
