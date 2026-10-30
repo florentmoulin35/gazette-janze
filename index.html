@@ -120,7 +120,9 @@ article.read li { margin-bottom: 7px; }
 .srcgroup h3 { display: block; margin: 0; padding-bottom: 6px; border-bottom: 2px solid var(--ink); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--lv); }
 .srcgroup h3 small { display: block; margin-top: 2px; font-size: 12px; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--ink-2); }
 .srclist .s { padding: 11px 0 11px 14px; border-bottom: 1px dotted var(--rule); border-left: 3px solid var(--lv); margin-top: 8px; }
-.srcgroup.auto { --lv: #3e6b3a; } .srcgroup.semi { --lv: var(--rust); } .srcgroup.non { --lv: #8a3b52; }
+.srcgroup.auto { --lv: #3e6b3a; } .srcgroup.semi { --lv: var(--rust); } .srcgroup.non { --lv: #8a3b52; } .srcgroup.bientot { --lv: #6b6f86; }
+.srclist em { display: block; font-style: normal; font-size: 12px; font-weight: 600; margin-top: 2px; color: var(--lv); }
+.srclist em.ko { color: #8a3b52; }
 .srclist b { display: block; font-family: var(--display); font-size: 17px; }
 .srclist span { font-size: 13px; color: var(--ink-2); }
 .colophon { margin-top: 26px; font-size: 12px; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
@@ -146,9 +148,10 @@ article.read li { margin-bottom: 7px; }
   </header>
   <nav class="rub" aria-label="Rubriques"><div class="in" id="rub"></div></nav>
   <main id="main"></main>
-  <p class="colophon">Prototype · informations relevées le 28 octobre 2026 sur janze.fr et dans le Janzé mag</p>
+  <p class="colophon" id="colophon">Informations saisies à la main le 28 octobre 2026</p>
 </div>
 
+<script src="donnees/auto.js"></script>
 <script>
 const CATS = {
   conseil: { label: "Conseil municipal", short: "Conseil" },
@@ -156,13 +159,14 @@ const CATS = {
   projets: { label: "Projets", short: "Projets" },
   urba:    { label: "Urbanisme & permis", short: "Urbanisme" },
   alerte:  { label: "Alertes", short: "Alertes" },
-  presse:  { label: "Presse locale", short: "Presse" }
+  presse:  { label: "Presse locale", short: "Presse" },
+  vie:     { label: "Vie locale", short: "Vie locale" }
 };
 const KEYWORD = "Janzé";
 const AUTO = { auto: "Collecte automatique", semi: "Collecte partielle", non: "Saisie manuelle" };
 // Date du jour (heure locale), au format AAAA-MM-JJ : sert au bandeau, à la une et à l'agenda.
 const TODAY = new Date().toLocaleDateString("sv-SE");
-const ITEMS = [
+const ITEMS_MANUELS = [
   { id: "p-coupe-pontivy", d: "2026-10-26", cat: "presse", press: true, t: "« Beaucoup de fierté, mais quelques regrets » : Janzé s'incline en Coupe de France",
     p: "Reportage photo sur le 6e tour de Coupe de France, où l'US Janzé recevait Pontivy le dimanche 25 octobre.",
     src: "Le Journal de Vitré (actu.fr)", url: "https://actu.fr/bretagne/janze_35136/en-images-beaucoup-de-fierte-mais-quelques-regrets-janze-sincline-en-coupe-de-france_64976207.html", a: "auto" },
@@ -236,6 +240,10 @@ const AGENDA = [
   { d: "2027-01-15", cat: "projets", t: "Boucle d'électricité locale", s: "Janzé rejoint l'autoconsommation collective", approx: "début 2027" },
   { d: "2027-06-30", cat: "projets", t: "Ouverture du nouvel hôpital", s: "Échéance du dossier 2024, à confirmer", approx: "2027" }
 ];
+// Infos collectées chaque nuit (donnees/auto.js), ajoutées aux infos saisies à la main.
+// Une info déjà saisie à la main (même lien) garde sa version manuelle, plus complète.
+const COLLECTE = window.GAZETTE_AUTO || { items: [], sources: {} };
+const ITEMS = [...ITEMS_MANUELS, ...COLLECTE.items.filter(a => CATS[a.cat] && !ITEMS_MANUELS.some(m => m.url === a.url))];
 const STEP_LABELS = ["Idée", "Étude", "Vote", "Chantier", "Livré"];
 const PROJECTS = [
   { t: "Accessibilité de la mairie", s: "Phase 1 en finition, phase 2 en 2027", step: 3, item: "mairie", due: "2026-11-30" },
@@ -247,29 +255,30 @@ const PROJECTS = [
   { t: "Médiathèque", s: "Engagement du mandat", step: 1 }
 ];
 const SOURCES = [
-  { n: "Actualités de janze.fr", w: "Travaux, alertes, annonces", a: "auto" },
-  { n: "Le Journal de Vitré (actu.fr)", w: "Articles qui citent Janzé, page commune + filtre sur le mot-clé", a: "auto" },
-  { n: "Actes officiels (Mégalis)", w: "Délibérations et arrêtés, dont les déviations", a: "auto" },
-  { n: "Permis accordés (Sitadel)", w: "Permis de construire, d'aménager, de démolir, chaque mois", a: "auto" },
-  { n: "Appels d'offres (BOAMP)", w: "Chantiers annoncés avant leur démarrage", a: "auto" },
-  { n: "PLU en vigueur (Géoportail)", w: "Zonage et modifications approuvées", a: "auto" },
-  { n: "Restrictions d'eau (VigiEau)", w: "Niveau de sécheresse à Janzé", a: "auto" },
+  { n: "Actualités de janze.fr", w: "Travaux, alertes, annonces", a: "auto", k: "janze" },
+  { n: "Le Journal de Vitré (actu.fr)", w: "Articles qui citent Janzé, détectés par mot-clé via Google Actualités", a: "auto", k: "presse" },
+  { n: "Ouest-France", w: "Titres qui citent Janzé, via Google Actualités ; articles souvent payants", a: "auto", k: "presse" },
+  { n: "Restrictions d'eau (VigiEau)", w: "Niveau de sécheresse à Janzé", a: "auto", k: "vigieau" },
+  { n: "Actualités de Roche aux Fées Communauté", w: "Flux RSS de rafcom.bzh : collectivité, mobilité, urbanisme", a: "auto", k: "rafcom" },
+  { n: "Actes officiels (Mégalis)", w: "Délibérations et arrêtés, dont les déviations", a: "bientot" },
+  { n: "Permis accordés (Sitadel)", w: "Permis de construire, d'aménager, de démolir, chaque mois", a: "bientot" },
+  { n: "Appels d'offres (BOAMP)", w: "Chantiers annoncés avant leur démarrage", a: "bientot" },
+  { n: "PLU en vigueur (Géoportail)", w: "Zonage et modifications approuvées", a: "bientot" },
   { n: "Janzé mag", w: "Résumés des conseils, un à deux mois après", a: "semi" },
-  { n: "Ouest-France", w: "Plus de flux par commune : titres via la page Janzé ou Google Actualités, articles souvent payants", a: "semi" },
   { n: "Routes départementales", w: "Communiqués du Département", a: "semi" },
-  { n: "Actualités de Roche aux Fées Communauté", w: "Flux RSS public de rafcom.bzh (actus, agenda, par thème)", a: "auto" },
   { n: "Permis en cours, petites déclarations", w: "Affichés en mairie uniquement", a: "non" },
   { n: "Chantiers Enedis, eau, fibre", w: "Panneaux sur place", a: "non" }
 ];
 
-const RUBS = [["une", "À la une"], ["alerte", "Alertes"], ["projets", "Projets"], ["conseil", "Conseil"], ["travaux", "Travaux"], ["urba", "Urbanisme"], ["presse", "Presse"], ["agenda", "Agenda"], ["sources", "Sources"]];
+const RUBS = [["une", "À la une"], ["alerte", "Alertes"], ["projets", "Projets"], ["conseil", "Conseil"], ["travaux", "Travaux"], ["urba", "Urbanisme"], ["presse", "Presse"], ["vie", "Vie locale"], ["agenda", "Agenda"], ["sources", "Sources"]];
 const SEC_SUB = {
   conseil: "Décisions du conseil municipal et de l'intercommunalité.",
   travaux: "Chantiers, stationnement, circulation et déviations.",
   urba: "PLU, permis de construire et démarches d'urbanisme.",
   projets: "Les grands équipements en préparation.",
   alerte: "Sécheresse, intempéries, sécurité.",
-  presse: "Les articles des journaux locaux qui citent Janzé, détectés par mot-clé."
+  presse: "Les articles des journaux locaux qui citent Janzé, détectés par mot-clé.",
+  vie: "Événements, services et annonces de la ville et de la communauté de communes."
 };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const dt = d => new Date(d + "T12:00:00");
@@ -277,7 +286,7 @@ const fDay = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short" }
 const fMon = new Intl.DateTimeFormat("fr-FR", { month: "long", year: "numeric" });
 const fFull = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 const fShort = new Intl.DateTimeFormat("fr-FR", { weekday: "short", day: "numeric", month: "long", year: "numeric" });
-const when = i => i.approx ? fMon.format(dt(i.d)) : (i.d.startsWith("2026") ? fDay.format(dt(i.d)) : fDay.format(dt(i.d)) + " " + dt(i.d).getFullYear());
+const when = i => i.approx ? fMon.format(dt(i.d)) : (i.d.startsWith(TODAY.slice(0, 4)) ? fDay.format(dt(i.d)) : fDay.format(dt(i.d)) + " " + dt(i.d).getFullYear());
 const sorted = () => [...ITEMS].sort((a, b) => b.d.localeCompare(a.d));
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -289,7 +298,7 @@ function agendaRows(list) {
 
 // La une : l'info la plus importante parmi les plus fraîches.
 // Poids par rubrique, moins un point par jour d'ancienneté.
-const WEIGHT = { alerte: 50, conseil: 45, travaux: 40, urba: 30, projets: 30, presse: 20 };
+const WEIGHT = { alerte: 50, conseil: 45, travaux: 40, urba: 30, projets: 30, presse: 20, vie: 15 };
 const ageDays = i => Math.round((dt(TODAY) - dt(i.d)) / 86400000);
 const score = i => WEIGHT[i.cat] - ageDays(i);
 const pickLead = () => [...ITEMS].sort((a, b) => score(b) - score(a))[0];
@@ -355,12 +364,21 @@ function viewAgenda() {
   <div class="box"><h4>Où en sont les grands projets <button data-go="projets">Voir l'avancement →</button></h4></div>`;
 }
 
+// État de la dernière collecte pour une source lue chaque nuit.
+const fHeure = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" });
+function etatSource(s) {
+  const e = s.k && COLLECTE.sources[s.k];
+  if (!e) return "";
+  if (e.etat === "ok") return `<em>Lu le ${esc(fHeure.format(new Date(e.le)))}</em>`;
+  return `<em class="ko">Lecture impossible ${e.dernier_ok ? "depuis le " + esc(fHeure.format(new Date(e.dernier_ok))) : "pour l'instant"}</em>`;
+}
+
 function viewSources() {
   return `<h2 class="sec-title">Nos sources</h2><p class="sec-sub">Ce que la Gazette lit chaque nuit, et ce qu'elle ne peut pas lire.</p>
-  ${[["auto", "Collecte automatique", "lu chaque nuit sans intervention"], ["semi", "Collecte partielle", "incomplet, en retard ou payant"], ["non", "Hors ligne", "rien à lire sur internet"]].map(([k, title, sub]) => {
+  ${[["auto", "Collecte automatique", "lu chaque nuit sans intervention"], ["bientot", "Bientôt", "prévu, pas encore branché"], ["semi", "Collecte partielle", "incomplet, en retard ou payant"], ["non", "Hors ligne", "rien à lire sur internet"]].map(([k, title, sub]) => {
     const list = SOURCES.filter(s => s.a === k);
     return list.length ? `<section class="srcgroup ${k}"><h3>${title} <small>${list.length} · ${sub}</small></h3>
-      <div class="srclist">${list.map(s => `<div class="s"><b>${esc(s.n)}</b><span>${esc(s.w)}</span></div>`).join("")}</div></section>` : "";
+      <div class="srclist">${list.map(s => `<div class="s"><b>${esc(s.n)}</b><span>${esc(s.w)}</span>${etatSource(s)}</div>`).join("")}</div></section>` : "";
   }).join("")}`;
 }
 
@@ -397,6 +415,7 @@ function render() {
   const cur = document.querySelector('nav.rub [aria-current="page"]');
   if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
 }
+if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Roche aux Fées Communauté";
 document.getElementById("dl-date").textContent = cap(fShort.format(dt(TODAY)));
 document.addEventListener("click", e => {
   const t = e.target.closest("[data-open],[data-go],[data-back]");

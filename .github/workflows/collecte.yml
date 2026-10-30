@@ -1,0 +1,41 @@
+# Collecte de chaque nuit : lit les sources, met à jour donnees/auto.js
+# et l'enregistre dans le dépôt. GitHub Pages republie alors le site.
+name: Collecte de la nuit
+
+on:
+  schedule:
+    - cron: "0 4 * * *"   # tous les jours à 4 h UTC (5 h ou 6 h à Janzé)
+  workflow_dispatch:       # bouton « Run workflow » pour lancer à la main
+  push:
+    branches: [main]
+    paths: ["scripts/**", ".github/workflows/collecte.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collecte
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lire les sources
+        run: python scripts/collecter.py
+      - name: Enregistrer les nouvelles infos
+        run: |
+          git config user.name "Gazette de Janzé (collecte)"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add donnees/auto.js
+          if git diff --cached --quiet; then
+            echo "Rien de nouveau."
+          else
+            git commit -m "Collecte du $(date -u +%Y-%m-%d)"
+            git push
+          fi
