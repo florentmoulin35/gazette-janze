@@ -1,25 +1,25 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-30T23:21+00:00",
+ "maj": "2026-10-30T23:26+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-30T23:21+00:00",
+   "le": "2026-10-30T23:26+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-30T23:21+00:00",
-   "n": 59
+   "le": "2026-10-30T23:26+00:00",
+   "n": 92
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-30T23:21+00:00",
+   "le": "2026-10-30T23:26+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-30T23:21+00:00",
+   "le": "2026-10-30T23:26+00:00",
    "n": 46
   }
  },
@@ -32,9 +32,10 @@ window.GAZETTE_AUTO = {
    "t": "BALILALLOWEEN 2026 - Bals Folk à JANZE le 30 et 31 octobre 2026",
    "p": "",
    "src": "HelloAsso",
-   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQVlBzb0c5WUZ4a3pDdmFtR1VXSDZqRDJwYmNZVkU3aFZ2M09ZeXlnRm5nNW9lOGRNbXNMaE9yVkRKdTRTYnJpU0RWOUJLTHNlZ3VRMnpuM2lZU2JXbVpoZldGckwxRFFoalZhSGJLM09OMUgyZko2OXgyOGppMWY1MXNwYndENnpLMm45QWc3cHFaa3VxRXpzV0owbm5XaVhMUnZqYXIxZk1qZFp3X19HMFNlcXZpalI5RWJiTHFZNWhnMlhSZDFKcUI5RQ?oc=5",
+   "url": "https://www.helloasso.com/associations/les-vies-dansent-35/evenements/balilalloween-2026-bals-folk-a-janze-le-30-et-31-octobre-2026",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-af4f311e8f",
@@ -57,9 +58,10 @@ window.GAZETTE_AUTO = {
    "t": "À Janzé, la révision du PLU passe à l’étape suivante : le projet est désormais arrêté",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxPbjRfck9zUzlvc1JleXhVVXNOd3R3YVFtN29TaXprYURUWDIyYXRWYTRic0ZUTVIxTDhfREpQdFdWTHZTZjZJTlVlQUN6WGMwNFRmWWFxb0lUZDJsc2RsUmRaUGdMeEtUS0xzSy13SGhXVG9ONk1oeE0zVDVTbWV2Y2ZNUnhSV0JuYmZKNXItS2hNdk1BRjJJMS1vMkd2M0ptR1VrRHlYb0tzOXRqSDFybVZjR0NsYUNrQkNpR2tZdmtiUC1YbUFxa2M5RUFHbVA1aHkzQjJNYWpRSVA5eHVtdUxSMzFtemZla1kxaXA4X2ZsYVYtWWZLZUl4SQ?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/a-janze-la-revision-du-plu-passe-a-letape-suivante-le-projet-est-desormais-arrete-46db1526-d219-11f1-807c-c0c44a88b55f",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
    "cat2": "urba"
   },
   {
@@ -117,9 +119,10 @@ window.GAZETTE_AUTO = {
    "t": "En images : « Beaucoup de fierté, mais quelques regrets », Janzé s’incline en Coupe de France",
    "p": "",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNeTliODFHd1YzTTR4bGlsVkswSTlpYnlGS0ktUFNXam9wVndLMTh3ZmtPRV80R2dBSFBhOEpQS3F1Sjc5cTdkUjBNZmdzUmpsQ3J6Rjd4STZtZDd0OTVXLS1aM3BJX05VaFFxT0k5S1U1a2dqa1BpYmpoanA5dnZhZUtFYjRkUnB6Y1F1WDhVTUhPelBkX3dTOVFLdXY4UzNhc2pET2JNOWdRSDlQbkowV3ZxeGo0Sm9yV1dSWGpzRzhOWExUM1BhZ1FYdnE0RVU3?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/en-images-beaucoup-de-fierte-mais-quelques-regrets-janze-sincline-en-coupe-de-france_64976207.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-851e41e79b",
@@ -129,9 +132,23 @@ window.GAZETTE_AUTO = {
    "t": "Football - Division 3 poule F : US JANZE chute à domicile contre US CHATEAUGIRON",
    "p": "",
    "src": "Foot Amateur Bretagne",
-   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNZU43NDFWenBqYjlhXzB2Vlp4cEw1ME5qNnQ5OG5CWnNIQ181eFdlZER6UEdsRXIwWUZWSDRGNHBpbDVHdHA5RTZ3Q01sWEpwX2p1UlpLZEMtX0RWRjlwUzFGNHJkbDV0Z2Q1ZDI5ME1TdVk4SmZzMTN4cE1LWjhmRk5qZl92bW9zR1FtZ1NwbVNmR0pWWHdHT1NISmJQemJfcHBtMGVUaVZFR2JLWVU0Mm5TMTBuUXNMelB0LVhaSmc4MUY5ckUxeGZoc1B4ZkI1b3o3aHB3?oc=5",
+   "url": "https://footamateur.letelegramme.fr/clubs/us-janze/football-division-3-poule-f-us-janze-chute-a-domicile-contre-us-chateaugiron-7141102.php",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
+  },
+  {
+   "id": "presse-ebad94b640",
+   "d": "2026-10-26",
+   "cat": "presse",
+   "press": true,
+   "t": "Football - Division 2 poule F : US JANZE chute à domicile contre Boistrudan-Piré",
+   "p": "",
+   "src": "Foot Amateur Bretagne",
+   "url": "https://footamateur.letelegramme.fr/clubs/us-janze/football-division-2-poule-f-us-janze-chute-a-domicile-contre-boistrudan-pire-7146382.php",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-b854be71e2",
@@ -141,9 +158,10 @@ window.GAZETTE_AUTO = {
    "t": "Coupe de France (6e tour). Battu par le Stade pontivyen, Janzé sort la tête haute",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxQMlZZR1IzVXRNTXo5UTZZY1pyY012Z2gwelRuQUF0dE5TOG5LMUpzX1ozaWdPSHc5X0xMQTJGdUc2SFdFMmg3NGpublRsck5VZmJrZXRYeGdyVTQ0WjNMb3NPYmdXc09IM3FodHlLakNRbEpyRUNwUjkzRGxScXo4bHA0dHFST3VSUGhNNWFHWFhnYzZmQUdwWjJFMWpScURIY0FVQkFpeFM5X2RrampLeGJVR3hUSTZqT1hKcXEwalJHa09pU05TcU1YSy12VmtXWFNxV183T2ZORlVIQVVPbDZ4c2kwbDBRdFE1ZkIzVnpfWEhTNWdyWUlJRUIta1Btcncw?oc=5",
+   "url": "https://www.ouest-france.fr/sport/football/coupe-de-france/coupe-de-france-6e-tour-battu-par-le-stade-pontivyen-janze-sort-la-tete-haute-9b291f1a-d09d-11f1-897b-b13214c912e2",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-c5fbae126b",
@@ -153,21 +171,23 @@ window.GAZETTE_AUTO = {
    "t": "« On a su faire le match qu’on voulait » : le Stade Pontivyen maîtrise Janzé et verra bien le 7e tour de Coupe de France",
    "p": "",
    "src": "Foot Amateur Bretagne",
-   "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxNOFRXaVlHdVBGN2J5dXJiUVNQOEJIRUVzVThNakkxN0FUS3NveXRiV0xBMEVYZHdtTDRfV2VlSTQ1RUNvZjc5am5RclV1am5EQ1cwTy1UWm9JWDZCLUlaRE1ZdmRfSmxId2ROUklZSW9rcnNkSzNrU0ZoYkpkaHFpeWZfcjJjRWNDUzRUeXlhdTRpUWxZd3laNDFaTmM2RUM4ckxnTGJfMFBWSHNFc1ZkUjkwVjZuV2NIblRkbTc5aXFQc1d5UWJDcEwzdlctSDVCNVh3RmRGbXNIdEwyZ1I5N18yN2FPaTRZbURUeF8yV001TjlxX1RJS0VPUDREV3FNeE92YmFpM2ZpTTg2SEZ6N0NMV1lIMEt2U0E?oc=5",
+   "url": "https://footamateur.letelegramme.fr/competitions/coupe-de-france/on-a-su-faire-le-match-quon-voulait-le-stade-pontivyen-maitrise-janze-et-verra-bien-le-7e-tour-de-coupe-de-france-7145949.php",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
-   "id": "presse-ebad94b640",
+   "id": "presse-002abe410d",
    "d": "2026-10-25",
    "cat": "presse",
    "press": true,
-   "t": "Football - Division 2 poule F : US JANZE chute à domicile contre Boistrudan-Piré",
+   "t": "Janzé (A) - Stade Pontivyen (A) - Résultats et calendrier",
    "p": "",
    "src": "Foot Amateur Bretagne",
-   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPRzJCUS1ZR21Vc2xXRUVTTWtHMEFILVhmNGFvTGp4OWVNVDNTdkIzbWw3dG5FU1RLcFpDTXFZMUdvMUxoNFFJanRKZFN3ZFZnQVkta19TMmdaRjYtSko1WDlqUDFHbk84UVlMY0dRUnk5aF9MT1k1eDVuNHJxX3ZPaDZTOFlEYUlab281UkZkX3VUYUFOLWJZeWMtdkNWdEZ1SXc1Z1dvR1dWR2ktMlJ2TUZoWGV2OE55cjZuMzV1aUJUYzBUQkowUi1wOFNXLVZleDZZQkpn?oc=5",
+   "url": "https://footamateur.letelegramme.fr/fil-de-match/coupes/coupe-de-france-messieurs/6e-tour/janze-a-stade-pontivyen-a/1821881",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-c1ae7906a7",
@@ -177,22 +197,11 @@ window.GAZETTE_AUTO = {
    "t": "Tempête Austen : la route Vitré-Janzé barrée plusieurs heures après la chute d’un arbre",
    "p": "",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQUEo2MVFPcF9hX0JuMENjQnJNYnJZNk1XOGlCaWJ0ejFfMzdiYTZfQlppOHg1aDRSTGJjRlFFOGFUYzlzZTVHVVpxS2pHN09FekhETXJZMzJqdUJibk1mVXlVb1ViOEhzMDlRMUh5Q2N3Y0N3bzZ4QmVpRUJsQTVLYmQtR3dvVDhvYjQyX1dCTE1BSGxESi12OFp4M0Ytc3RwVUNFcHBxVEtwdU82MTFMTTY0S2RmOUhDWXpNOGV1YVVkWVJIeDZ3dTRZeXN2TDVa?oc=5",
+   "url": "https://actu.fr/bretagne/vitre_35360/tempete-austen-la-route-vitre-janze-barree-plusieurs-heures-apres-la-chute-dun-arbre_64972334.html",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
    "cat2": "alerte"
-  },
-  {
-   "id": "presse-002abe410d",
-   "d": "2026-10-24",
-   "cat": "presse",
-   "press": true,
-   "t": "Janzé (A) - Stade Pontivyen (A) - Résultats et calendrier",
-   "p": "",
-   "src": "Foot Amateur Bretagne",
-   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNTWpLUzBIMmxnN2hWeTFTdlBYZlVySENMUUlXNWJIWTJCNTBFOHotSFppZk4yR1NzOE9OSEJVZnI2LVZTcFpheWFyTjRMd1BFZS1IamFhNEk2X1U4dFFJaUxQbV9JM1NsbUdEY2Y0UERfMlhNZDhPdngyRm5vbE53b1p0a2g0ak14bjF0QnJmRUtfanowNHNSYnI3dHk4aGJfM01lYWpwNFRjc1ZmaEdEY1ZlMklfNmhVczBNRXFnVmk?oc=5",
-   "a": "auto",
-   "k": "presse"
   },
   {
    "id": "presse-fca2718b78",
@@ -213,11 +222,12 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "À Janzé, Diesel Technic met en service une nouvelle plateforme logistique avec 13 M€ d’investissement à la clé",
-   "p": "",
+   "p": "[API News] Après un investissement de près de 13 M€, Diesel Technic France a mis en service sa nouvelle plateforme logistique à Janzé. Ce nouvel outil de 6 200 m² double ses capacités de stockage et accompagne la progression de l’activité française du groupe allemand, qui…",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxONUg1ZlJJdFduRnFaU3ZJSzlmb3dqUl9KWXFoM3RfYmFZdWprcGNSZVNpTlJNY3lvWll1UGRxMW02LVVrUXBlbWJGRC1KWkJjX0dPUFNwVDBubDdELThVZ2J3eHpSNy1vWlJSWFBNdXVCWnplWmM3ai1VMVZSUVk2S0d3MDNuUkJmd0taZG5IbnhjWk9qTUFvUFNGUEV2UUdwaUJXUThIYjhsNzJTQ2ZaRTh2bHZtZXNvb1daSVVxQndGUmdtTkR5S1c4cWxaY3M4a2lYc3RPWGFVZVViOXp0RnhuWnREX3lJMmdVYm5RRnFyTjRJNUxpTUxFVngzUjEyMnZJX2VTcjhTaUV0RFc2dDJMQ01UVnBOWUN2VElXYUM?oc=5",
+   "url": "https://agence-api.ouest-france.fr/transport/a-janze-diesel-technic-met-en-service-une-nouvelle-plateforme-logistique-avec-13-m-euros-dinvestissement-a-la-cle-43346c6c-cdf8-11f1-bf87-17eca79cb13c",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
    "aussi": [
     {
      "src": "TRM24",
@@ -234,9 +244,10 @@ window.GAZETTE_AUTO = {
    "t": "« C’est aux jeunes d’écrire l’histoire » : favori à Janzé (R3), le Stade Pontivyen (R1) n’a plus perdu contre une équipe inférieure depuis 13 ans en Coupe de France",
    "p": "",
    "src": "Foot Amateur Bretagne",
-   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQZzhORFRHc0s3OVlZRUgxc2NkbHQtZHZ6VF91eFo0QWNVUThYM0VuWHVEb2lwSDk3bkxXTno3TEF0Z05oeDVXWjNzNDVhLUhRY1M4aU5GbmlKaG40RGUxR2dFWDNRYW1MS3RzVmo1UnVaZ3d0VTJRR01fUnhQWTU2c25iejZYaUtxLWNERWE5RkVNYnAzOVk4UEZ4ak5FelZxVmV1VEowWV9IYnUwUHkyZ0ZDVWI1eTNOdHBhOA?oc=5",
+   "url": "https://footamateur.letelegramme.fr/clubs/stade-pontivyen/au-stade-pontivyen-pas-question-de-se-faire-pieger-7143978.php",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-5631e310d4",
@@ -246,9 +257,10 @@ window.GAZETTE_AUTO = {
    "t": "Diesel Technic change de dimension logistique à Janzé",
    "p": "",
    "src": "Auto Infos",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQaXQ5ZzB6TWNMYUIybVdxLUg4em9DUEhIUXZ4dVlwZjZsWlFMaWZFWFJiSnRRYkpoQlo1V3AybnZrT3VKbWpMY0llYVBZZlNIQVFGZllZcGdwRGhQVUZWbUkwMjBuTjMxRU1IZnczbllYbldBZnhlVEtxMnNYbzd4bkdvODhaRWJLcjJmTXhWZUFNV0MtdV9ORFVn?oc=5",
+   "url": "https://www.auto-infos.fr/article/diesel-technic-change-de-dimension-logistique-a-janze.294097",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-6eec1bf1ef",
@@ -298,15 +310,16 @@ window.GAZETTE_AUTO = {
   },
   {
    "id": "presse-2b4c863ce1",
-   "d": "2026-10-19",
+   "d": "2026-10-20",
    "cat": "vie",
    "press": false,
    "t": "Ciné-concert \"Paranoïd Park\", spectacle avec les ados à Janzé (35)",
-   "p": "",
+   "p": "Spectacle musical et projection de passage du film de Gus Van Sant retraçant la vie d'un teenager par les Vinyl Lovers au Gentieg à Janzé. Sur réservation.",
    "src": "Kidiklik",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOdXM5aHBTWllMUkk3dnhpaUJoU1JnME90UFJnM290RGVic3V1eVBwUnQxRVIwamNLMW8yUjU3VDVfbldqMjctVFIyTVlCUFdITVJoMm1CdE02Nk1zdXc4YWdpalFqNzdOcFhLMVV5aXM4blFadnNPOEtRdXcyQVJBUzRHTkhSa3V5UWN3cHAzS0U1aEdjbnRYOG9WckZ5dFZyODFsSUNSa0FPRlJVdWc?oc=5",
+   "url": "https://35.kidiklik.fr/sorties-moment/481658-cine-concert-paranoid-park-spectacle-avec-les-ados-janze-35.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-b4377a8561",
@@ -328,9 +341,23 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Quinze athlètes iront au championnat de France",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNVGJtRE1TOE9nd19GdzVUNG5qeXQ3cEh0X01MUjY2MDhWQzlEcDJyamx3Y2R1ZUl4NjR6b0FWd0poWmhCemwtSlotNnMwT0t4TS1UWC1uMmRJc2JEZlBkMVktc2NEYjdXYWdMU3dma0dSZWV0bHJvVjdrekNkUGJhQWVtTV9sbHdnSG9Kc2ItYkZyZW5HbEpPVy1RdEpCRkdkdjFJSnd3cnBvTjcxcDhzZUR6eHVSYWJ1bzMyT0VYcmhMX1FVSnZzcVlZUHZfcHJuSm9ORA?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-quinze-athletes-iront-au-championnat-de-france-b5aef5ec-26bb-4a1a-80f9-97986da36498",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
+  },
+  {
+   "id": "presse-3a391f8241",
+   "d": "2026-10-17",
+   "cat": "vie",
+   "press": false,
+   "t": "GUICHEN HB 1 vs HB JANZÉ",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193009/rencontre-2683674/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-0132556806",
@@ -355,6 +382,19 @@ window.GAZETTE_AUTO = {
    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNaXZzc0E4VUowYWlHcEdRSlFsejVqSWlzNDdDa09BM25jWFJtRnMtejhRSzJpUVJYejBFTTFZTXN4LUZ2eVhRYmV4akdFUjVMTVl1MGRuMWZSZ3E4X1BqZ2VQOGZxeGd0bkZaQnJUT3pvQVFtTHU5Unh4NmRjSzB2MHpkRzdGWlJMd2RFQW1KNA?oc=5",
    "a": "auto",
    "k": "presse"
+  },
+  {
+   "id": "presse-c8b89adef5",
+   "d": "2026-10-15",
+   "cat": "vie",
+   "press": false,
+   "t": "Handball Club 310 - U13F1 vs HB Janzé",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194502/rencontre-2697438/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-0a6406d450",
@@ -426,9 +466,10 @@ window.GAZETTE_AUTO = {
    "t": "Coupe de France (5e tour). Janzé s’impose aux forceps contre Plescop",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxORDVBTkZ5R1ZnR0VpR3Y1UDJpM3luU0FjUG56R1dBWGQzaXphRW5OYlotMF9zV1laNDZVa3p1QWRSN2lNR2Y1dlBOTEdwdEgtRGxSSGRXY0pXUXpfVnlXSWZXSmxVXzBJRG9OSy1Lb1U1OGZDUEZiUG9QNkxERE9iT1FPYmlybFhiVURpNEo2aW54eUYzUlF4Y2hlUnd6Ui1QVjZ6cWJ0R0Z1ejB1TmU5dXJrLTFfVVZERlJzZ3BqNGk1T3VUb0tPazdVSDhaVjAwWktYeUR0LUduQUVDNUQxV3JWNFQ5RERMc3pMbnA4U0ZYQQ?oc=5",
+   "url": "https://www.ouest-france.fr/sport/football/coupe-de-france/coupe-de-france-5e-tour-janze-simpose-aux-forceps-contre-plescop-05d98f06-c591-11f1-b3a8-1120a69ac78a",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-debc971404",
@@ -451,9 +492,10 @@ window.GAZETTE_AUTO = {
    "t": "Réduit à dix, Plescop craque sur le fil face à l’US Janzé et est éliminé de Coupe de France",
    "p": "",
    "src": "Foot Amateur Bretagne",
-   "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQVVRHVFBkS0tpNTRkcXdNU3BWNUtZVGxWLVBieTdIUXBwY3k0U3VhbkxPdml3MEM5RmRyelp3Zy1NdVhxZWtJSC1fMk1PSDUwZU5hMC0xNHNMWnpsT25rWkt1aDI5TDJRYnlJRVk3QkI0YzU3NUExODJaaHBhZWJ4R2lvSzViYkJwREl3alU3SXZZbUJYM3BOYXJYeEhyUkxrMXBZZkt1SXdRX2xXQm80a1M3MlF6WXZSd2Q5RVBHZC1uUlRhRnU5dG5qb2U0NHZDM3Z1eldpal9MWVppdnVLQlRUMkhCU1UzS3JwUUxNVFZnaVdNcDJNMTJB?oc=5",
+   "url": "https://footamateur.letelegramme.fr/competitions/coupe-de-france/reduit-a-dix-plescop-craque-sur-le-fil-face-a-lus-janze-et-est-elimine-de-coupe-de-france-7136318.php",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-3bf3c12706",
@@ -463,9 +505,10 @@ window.GAZETTE_AUTO = {
    "t": "Plescop (A) - Janzé (A) - Résultats et calendrier",
    "p": "",
    "src": "Foot Amateur Bretagne",
-   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOLVotQ2hYRnEwMDlUN2wyS1c5bGNXNFFveFRfNUJjTjRNNjBSTkhQMFRLSmVtYzIwdWFvMFVpSjZ4RURsYXl0QThibnlGRzdVTVQxRGxOZmZxdEs3MlJWQ0tlcTVJSUk2dGJLbC1ZVlB5QW53eTNWUklZLWk4Y1BEa3NMTFpaYVBUQ19XSTU4Wm5qaG9vT2tMODlqUHk0cWlsUTNWMWY4NmVPdGc5cDJNanhZUlo5QQ?oc=5",
+   "url": "https://footamateur.letelegramme.fr/fil-de-match/coupes/coupe-de-france-messieurs/5e-tour/plescop-a-janze-a/1820151",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "janze-22d41045be",
@@ -486,7 +529,20 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Contre le cancer, la population mobilisée",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPa3FVZVNSSXdxM1Jxb0licFFGamdfOU56N2xoS1NPZjI4ZlBvRDFCMEZIbzdkXzlteWVFMS1iN201QnVhTlVtc1l5VHVIT293X2FBaUpkOGFfN0lwWmRqUlU4dHk2TWFoSlIzcjdHdUlsY0FNbW05djFUbUtQSmRHRnBTVW4zQ1JZckpyUFVDdEFlOEhPaFBKZTRDQ1VIb2IxdVNZb1JSLUJUWTh3N0ZNLUtjTy15TDJoOGRaYTRsaERmQ2NrblN1b3RUM1o?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-contre-le-cancer-la-population-mobilisee-9673765c-c0bf-11f1-aef6-9f33a81faeff",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true
+  },
+  {
+   "id": "presse-0efc2d2c8d",
+   "d": "2026-10-07",
+   "cat": "vie",
+   "press": false,
+   "t": "CESSON RENNES METROPOLE HB 1 vs HB JANZÉ",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOY21ib2ZaTkxLTk8wSDFtdHU5X09vRU5nQUFCdG9XbWFSbmMxNlRuaXBwSFltOVdIZXlZenZIZ3FMd2pYenBDSXVoS1BYdGtqdGwzSzd1cWFfYmpSQWtDTHFxM2Fwd3VkMHUzdFFGdUo3ZHhWRXp4bkRoUWY4RzJqaERYQlFFSXNDRHVZVDRJTWVYbi02MEpwM1BLVVk3aGU3WTBIZG96eXV2VWJBcktDZVBXWmRlV3dFMkkyVnVfMFZ3MmtCMUE?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -511,6 +567,18 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Foot Amateur Bretagne",
    "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQVGEzcFh1OFBZN3NoMnFjbXpvYWNHUk1ncjhvZnFRZEtQZ0pQRVVkSFN1ZkdXUmxaTktCNmtuVEZEYlUzQ1JrTDNLTVJ6T3Q4LWNtUWh0TlhSeTQ1b3NaVDBrd0h1ZzZDd3dQdnU3bGFxNk5PUV9pdTNWaW13ZDBWaGlkNW1iUWJ6ZGRvSGdIWjF0UXpyRnA4T25kZDdhdGhQdjBmcVBvUlE1SGpITVV3WW1SZ1BIM1dpdG1jWklRMTV6dTFHb2NWN29sSVZCcGZma1k5bk9WM3NZU295dG5J?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-886325fa95",
+   "d": "2026-10-02",
+   "cat": "vie",
+   "press": false,
+   "t": "LA VITREENNE HANDBALL 2 vs HB Janzé",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQS01pVlRUM1dYS01kT2pwdmY2a3RkVEdiUGtqaEd2eTNMcEZFRkVFbjV2QU9EVTBMdlR6Q1dDRnd0UGRPVElXOUtXYTNBYmc3WklFZ2dFUm5xU1VsaHBUa2l0V01UMEZRRjJfRU4wN0xPVEFKZ2tITDVib2x0cTVjTkJZdXBoXzd2eGRIY3dFeExCSDdvalQ3UW90RmVzcUxDM0xBOHJ5OXUzTDFrcEJEZXA3clR0YThXa2hlTmJpYjU3T2dyalEteUp4bw?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -573,9 +641,10 @@ window.GAZETTE_AUTO = {
    "t": "« Un véritable exploit » : Janzé signe la surprise de la région en Coupe de France",
    "p": "",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQLTQtZFJYVGJKTGtsSi00MktPUjRCOF9WMkV5U1d2VEszWTRQQURrM2xOWXdMQmFrdXphaWQ2T2ZBZmE2TU0zVUdtdzRWZi1hcUxnUjBScXpTWkM4eldORHd3WGIydnNkRk9vTTBLNGFVOWltQlpLdVN6NXhCQjVXRUhIRjU5QkJCT3FkeExja3k0R2VOYmRaVVZmRFFrUnFxYmd1cDctQm9FaGlvWnJWekhoTHZ1NGhSMWdlMjBpMEdtbXhwOXc?oc=5",
+   "url": "https://actu.fr/bretagne/vitre_35360/un-veritable-exploit-janze-signe-la-surprise-de-la-region-en-coupe-de-france_64849978.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-a00306bf58",
@@ -597,9 +666,10 @@ window.GAZETTE_AUTO = {
    "t": "Coupe de France : le Ploërmel FC déplumé par Janzé, « c’est le charme de la Coupe »",
    "p": "",
    "src": "Le Télégramme",
-   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNNVhSa1JpTnBKbEI3aDhaTjFjYVpWbERiV0ZMNFFHYVNSM0pwUDdKSkhKZnFnY2V0anhidURXWlg4SVlhc3lUNDBHSTFsR1RwTVBjcndPbExOQXlyU003M2ZtYzU0Vmw2dkFOdWJsSEtiUzN6VDE0WTRPZkVuTktjSExWYnhNTnRpSERLczlqaUtmaVBkRmw3TG9LSnZ5VlhOUndKaHRONEwtLUI3c2lmbnBTRjBWbjBmajl1MnBkYnlBVDZnZzdOam1hdw?oc=5",
+   "url": "https://www.letelegramme.fr/sports/football/coupe-de-france-le-ploermel-fc-deplume-par-janze-cest-le-charme-de-la-coupe-7126289.php",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true
   },
   {
    "id": "presse-8e085c90c2",
@@ -699,7 +769,7 @@ window.GAZETTE_AUTO = {
     },
     {
      "src": "velopressecollection",
-     "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQaXJJOUhDRzFQNXg4c0tEelJHZnFROEFNYTN2T2tjQkUtZDhxUFBNOHJkU1NwcDNTLWx1cTFKcTdwY21QWmZWczE3N2R4WWpRX1FkV0cxTkozdDQzUjNzYmdybEk1LUJnWXR0VjU2YXFkSjJaOVpuTzc3d0RJZ3UyNmVWTTdKWHZmMEJVZmtuYWNhS0FwUUljSGpaVnFyNDZVUzBPVDF3MWxYZXgzQ041aXFHckNtNFZOVHJJMjN2LTI1WWtuZkQxZnJhUDZ2QzdkMUNUaEFpZzI0aWlPZlRuYw?oc=5",
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
@@ -1193,7 +1263,7 @@ window.GAZETTE_AUTO = {
    "aussi": [
     {
      "src": "velopressecollection",
-     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQbkZVSXNyWC1RTnpFQ29uNVYtWlBRUnAwcFBLcXA2eEZzOHNaOXBKTE9fRXZtYVVSaFd1Z0V4NUU1R1RuRlZvelRzbm02ampBSEFPdGd1VGx2UklDMVFCZzZvMTVKcy1pUDk2SmJubFpub3c0eF9hdlhaNjU3NjEtZzlwM1VCZEwwYkhRUmtJUmZrbzE2U1E3VzhyT01MYUJfTDY3SGRVZHZpcXZoLXVWN1NIbWxhamZtaG8xY3FPZC0ydmd6ZDRYS25FY1REUWxiQUxybHFfa1oyLW9IZlVEUjhR?oc=5",
+     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
      "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
     }
    ]
