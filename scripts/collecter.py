@@ -93,6 +93,18 @@ def ident(prefixe: str, url: str) -> str:
     return f"{prefixe}-{hashlib.sha1(url.encode()).hexdigest()[:10]}"
 
 
+def titre_propre(titre: str) -> str:
+    """Remet en minuscules un titre écrit tout en capitales (« SÉCHERESSE : LE … »)."""
+    titre = re.sub(r"\s+", " ", html.unescape(titre or "")).strip()
+    if len(titre) > 12 and titre == titre.upper():
+        titre = titre[0] + titre[1:].lower()
+    return titre
+
+
+def cle_titre(titre: str) -> str:
+    return normaliser(re.sub(r"\W+", " ", titre))[:70]
+
+
 def couper(texte: str, n: int = 280) -> str:
     texte = re.sub(r"\s+", " ", html.unescape(texte or "")).strip()
     return texte if len(texte) <= n else texte[: n - 1].rsplit(" ", 1)[0] + "…"
@@ -237,7 +249,7 @@ def collecter_presse() -> list[dict]:
         if re.search(r"\bvs\b", normaliser(titre)):
             continue
         # Un même article repris par plusieurs sites (Ouest-France et maville.com…) : on le garde une fois.
-        cle = normaliser(re.sub(r"\W+", " ", titre))[:70]
+        cle = cle_titre(titre)
         if cle in vus:
             continue
         vus.add(cle)
@@ -286,7 +298,7 @@ def collecter_rafcom() -> list[dict]:
             resume = couper(it["resume"])
             items.append({
                 "id": ident("rafcom", it["lien"]), "d": it["date"],
-                "cat": rubrique(it["titre"], resume), "t": it["titre"].strip(), "p": resume,
+                "cat": rubrique(it["titre"], resume), "t": titre_propre(it["titre"]), "p": resume,
                 "src": "Roche aux Fées Communauté", "url": it["lien"], "a": "auto", "k": "rafcom",
             })
     return items
@@ -330,7 +342,16 @@ def main() -> int:
     # On cumule avec l'historique, sans doublon, en oubliant ce qui est trop ancien.
     limite = (date.today() - timedelta(days=GARDER_JOURS)).isoformat()
     tous = {**par_url, **nouveaux}
-    items = sorted((i for i in tous.values() if i["d"] >= limite), key=lambda i: i["d"], reverse=True)[:MAX_ITEMS]
+    items, titres_presse = [], set()
+    for i in sorted(tous.values(), key=lambda i: (i["d"], "maville" not in i["src"].lower()), reverse=True):
+        if i["d"] < limite:
+            continue
+        if i["k"] == "presse":   # même article repris par plusieurs journaux, d'un soir à l'autre
+            if cle_titre(i["t"]) in titres_presse:
+                continue
+            titres_presse.add(cle_titre(i["t"]))
+        items.append(i)
+    items = items[:MAX_ITEMS]
 
     donnees = {"maj": maintenant, "sources": sources, "items": items}
     SORTIE.parent.mkdir(exist_ok=True)

@@ -329,7 +329,10 @@ function projectRow(p, compact) {
 
 function viewUne() {
   const lead = pickLead();
-  const rest = sorted().filter(i => i.id !== lead.id).slice(0, 6);
+  // Brèves : même règle que la une, avec au plus 2 articles de presse pour laisser la place à la ville.
+  let nPresse = 0;
+  const rest = [...ITEMS].sort((a, b) => score(b) - score(a))
+    .filter(i => i.id !== lead.id && (i.cat !== "presse" || ++nPresse <= 2)).slice(0, 6);
   const next = AGENDA.find(a => !a.approx && a.d >= TODAY);
   const inDays = next ? Math.round((dt(next.d) - dt(TODAY)) / 86400000) : 0;
   return `
