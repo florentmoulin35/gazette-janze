@@ -342,12 +342,18 @@ def completer_presse(item: dict, connu: dict | None, debut: float, cherches: lis
     cherches.append(item["id"])
     try:
         url = url_reelle(item["url"])
-        if not url:
-            return item
-        return {**item, "url": url, "p": apercu(url), "resolu": True}
-    except Exception as erreur:  # noqa: BLE001 : sans aperçu, l'article reste affiché
-        print(f"presse   aperçu impossible : {item['t'][:50]} ({erreur})", file=sys.stderr)
+    except Exception as erreur:  # noqa: BLE001 : on réessaiera la nuit suivante
+        print(f"presse   adresse introuvable : {item['t'][:50]} ({erreur})", file=sys.stderr)
         return item
+    if not url:
+        return item
+    try:
+        resume = apercu(url)
+    except Exception as erreur:  # noqa: BLE001 : certains journaux refusent les robots (403)
+        print(f"presse   aperçu impossible : {item['t'][:50]} ({erreur})", file=sys.stderr)
+        resume = ""
+    # Même sans aperçu, on garde le lien direct vers l'article et on ne recherche plus.
+    return {**item, "url": url, "p": resume, "resolu": True}
 
 
 def collecter_presse(deja: dict[str, dict] | None = None) -> list[dict]:
