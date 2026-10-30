@@ -1,25 +1,25 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-30T22:15+00:00",
+ "maj": "2026-10-30T23:08+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-30T22:15+00:00",
+   "le": "2026-10-30T23:08+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-30T22:15+00:00",
-   "n": 56
+   "le": "2026-10-30T23:08+00:00",
+   "n": 87
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-30T22:15+00:00",
+   "le": "2026-10-30T23:08+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-30T22:15+00:00",
+   "le": "2026-10-30T23:08+00:00",
    "n": 59
   }
  },
@@ -119,6 +119,18 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-851e41e79b",
+   "d": "2026-10-26",
+   "cat": "presse",
+   "press": true,
+   "t": "Football - Division 3 poule F : US JANZE chute à domicile contre US CHATEAUGIRON",
+   "p": "Article paru dans Foot Amateur Bretagne.",
+   "src": "Foot Amateur Bretagne",
+   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNZU43NDFWenBqYjlhXzB2Vlp4cEw1ME5qNnQ5OG5CWnNIQ181eFdlZER6UEdsRXIwWUZWSDRGNHBpbDVHdHA5RTZ3Q01sWEpwX2p1UlpLZEMtX0RWRjlwUzFGNHJkbDV0Z2Q1ZDI5ME1TdVk4SmZzMTN4cE1LWjhmRk5qZl92bW9zR1FtZ1NwbVNmR0pWWHdHT1NISmJQemJfcHBtMGVUaVZFR2JLWVU0Mm5TMTBuUXNMelB0LVhaSmc4MUY5ckUxeGZoc1B4ZkI1b3o3aHB3?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-b854be71e2",
    "d": "2026-10-25",
    "cat": "presse",
@@ -143,6 +155,18 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-ebad94b640",
+   "d": "2026-10-25",
+   "cat": "presse",
+   "press": true,
+   "t": "Football - Division 2 poule F : US JANZE chute à domicile contre Boistrudan-Piré",
+   "p": "Article paru dans Foot Amateur Bretagne.",
+   "src": "Foot Amateur Bretagne",
+   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPRzJCUS1ZR21Vc2xXRUVTTWtHMEFILVhmNGFvTGp4OWVNVDNTdkIzbWw3dG5FU1RLcFpDTXFZMUdvMUxoNFFJanRKZFN3ZFZnQVkta19TMmdaRjYtSko1WDlqUDFHbk84UVlMY0dRUnk5aF9MT1k1eDVuNHJxX3ZPaDZTOFlEYUlab281UkZkX3VUYUFOLWJZeWMtdkNWdEZ1SXc1Z1dvR1dWR2ktMlJ2TUZoWGV2OE55cjZuMzV1aUJUYzBUQkowUi1wOFNXLVZleDZZQkpn?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-c1ae7906a7",
    "d": "2026-10-24",
    "cat": "presse",
@@ -151,6 +175,18 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans Actu.fr.",
    "src": "Actu.fr",
    "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQUEo2MVFPcF9hX0JuMENjQnJNYnJZNk1XOGlCaWJ0ejFfMzdiYTZfQlppOHg1aDRSTGJjRlFFOGFUYzlzZTVHVVpxS2pHN09FekhETXJZMzJqdUJibk1mVXlVb1ViOEhzMDlRMUh5Q2N3Y0N3bzZ4QmVpRUJsQTVLYmQtR3dvVDhvYjQyX1dCTE1BSGxESi12OFp4M0Ytc3RwVUNFcHBxVEtwdU82MTFMTTY0S2RmOUhDWXpNOGV1YVVkWVJIeDZ3dTRZeXN2TDVa?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-002abe410d",
+   "d": "2026-10-24",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé (A) - Stade Pontivyen (A) - Résultats et calendrier",
+   "p": "Article paru dans Foot Amateur Bretagne.",
+   "src": "Foot Amateur Bretagne",
+   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNTWpLUzBIMmxnN2hWeTFTdlBYZlVySENMUUlXNWJIWTJCNTBFOHotSFppZk4yR1NzOE9OSEJVZnI2LVZTcFpheWFyTjRMd1BFZS1IamFhNEk2X1U4dFFJaUxQbV9JM1NsbUdEY2Y0UERfMlhNZDhPdngyRm5vbE53b1p0a2g0ak14bjF0QnJmRUtfanowNHNSYnI3dHk4aGJfM01lYWpwNFRjc1ZmaEdEY1ZlMklfNmhVczBNRXFnVmk?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -167,6 +203,18 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-4167a5a4bf",
+   "d": "2026-10-23",
+   "cat": "presse",
+   "press": true,
+   "t": "Diesel Technic France change d’échelle avec sa plateforme logistique de Janzé",
+   "p": "Article paru dans TRM24.",
+   "src": "TRM24",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQbk9aS0d4bHRXWVpCTDgtM2VTZ2NITDI3VHRBdWxMR0s1dkF0dkxGeHI4bUJSejQtakFpa1FrUG9wTEZCaUFGdFVvM3huUHdvQmpMTGNTbUpqZGRrN20ydXNqT0tVek95NGpJS3RoQjZGSi1Ud2dDbUVjWlNzVW1LcEpEUUpsZERzQzJXNE9iSGx0NGFYWGh2al9UN3VWTTA?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-6a593e8e7d",
    "d": "2026-10-22",
    "cat": "presse",
@@ -175,6 +223,42 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans Foot Amateur Bretagne.",
    "src": "Foot Amateur Bretagne",
    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQZzhORFRHc0s3OVlZRUgxc2NkbHQtZHZ6VF91eFo0QWNVUThYM0VuWHVEb2lwSDk3bkxXTno3TEF0Z05oeDVXWjNzNDVhLUhRY1M4aU5GbmlKaG40RGUxR2dFWDNRYW1MS3RzVmo1UnVaZ3d0VTJRR01fUnhQWTU2c25iejZYaUtxLWNERWE5RkVNYnAzOVk4UEZ4ak5FelZxVmV1VEowWV9IYnUwUHkyZ0ZDVWI1eTNOdHBhOA?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-288b942295",
+   "d": "2026-10-22",
+   "cat": "presse",
+   "press": true,
+   "t": "À Janzé, Diesel Technic met en service une nouvelle plateforme logistique avec 13 M€ d’investissement à la clé",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxONUg1ZlJJdFduRnFaU3ZJSzlmb3dqUl9KWXFoM3RfYmFZdWprcGNSZVNpTlJNY3lvWll1UGRxMW02LVVrUXBlbWJGRC1KWkJjX0dPUFNwVDBubDdELThVZ2J3eHpSNy1vWlJSWFBNdXVCWnplWmM3ai1VMVZSUVk2S0d3MDNuUkJmd0taZG5IbnhjWk9qTUFvUFNGUEV2UUdwaUJXUThIYjhsNzJTQ2ZaRTh2bHZtZXNvb1daSVVxQndGUmdtTkR5S1c4cWxaY3M4a2lYc3RPWGFVZVViOXp0RnhuWnREX3lJMmdVYm5RRnFyTjRJNUxpTUxFVngzUjEyMnZJX2VTcjhTaUV0RFc2dDJMQ01UVnBOWUN2VElXYUM?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-5631e310d4",
+   "d": "2026-10-22",
+   "cat": "presse",
+   "press": true,
+   "t": "Diesel Technic change de dimension logistique à Janzé",
+   "p": "Article paru dans Auto Infos.",
+   "src": "Auto Infos",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQaXQ5ZzB6TWNMYUIybVdxLUg4em9DUEhIUXZ4dVlwZjZsWlFMaWZFWFJiSnRRYkpoQlo1V3AybnZrT3VKbWpMY0llYVBZZlNIQVFGZllZcGdwRGhQVUZWbUkwMjBuTjMxRU1IZnczbllYbldBZnhlVEtxMnNYbzd4bkdvODhaRWJLcjJmTXhWZUFNV0MtdV9ORFVn?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-6eec1bf1ef",
+   "d": "2026-10-22",
+   "cat": "presse",
+   "press": true,
+   "t": "Entente Bruz Bréal - U18-1 - HB JANZE",
+   "p": "Article paru dans Score'n'co.",
+   "src": "Score'n'co",
+   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNQUszaElyMWFJWkJKem5hRE9pYmFQR0JfSElKeVM2eXdXNkVPT2lKWHdTTjhmZU56WjFENUJqcUhvX2xPblNvRXpqdWowTEVjZEdUTFRhU25hczZRR3J4cjloenhOOExsbUZ6QU92a181TXZWNExDcnJuaE5iUDAwYTBTZm1LcFh4?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -201,6 +285,42 @@ window.GAZETTE_AUTO = {
    "k": "rafcom"
   },
   {
+   "id": "presse-fb753dd760",
+   "d": "2026-10-20",
+   "cat": "presse",
+   "press": true,
+   "t": "PLESCOP ENT S - US Janzé - Football",
+   "p": "Article paru dans Score'n'co.",
+   "src": "Score'n'co",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9rU2Y4N19nZ2dKQ3l1bm54UlRPSndkaGVQb3dnNkFzRExVREZLeE9YbFlickhpYjZuMWZnczBsVDBVUExpTmxNSHdSYzc4M0t0YmVfQURuZENCdXVoX1NZN3dvNUY1bzBqMG01dEV3YnBJUHBiZEdsbVFR?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-2b4c863ce1",
+   "d": "2026-10-19",
+   "cat": "presse",
+   "press": true,
+   "t": "Ciné-concert \"Paranoïd Park\", spectacle avec les ados à Janzé (35)",
+   "p": "Article paru dans Kidiklik.",
+   "src": "Kidiklik",
+   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOdXM5aHBTWllMUkk3dnhpaUJoU1JnME90UFJnM290RGVic3V1eVBwUnQxRVIwamNLMW8yUjU3VDVfbldqMjctVFIyTVlCUFdITVJoMm1CdE02Nk1zdXc4YWdpalFqNzdOcFhLMVV5aXM4blFadnNPOEtRdXcyQVJBUzRHTkhSa3V5UWN3cHAzS0U1aEdjbnRYOG9WckZ5dFZyODFsSUNSa0FPRlJVdWc?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-b4377a8561",
+   "d": "2026-10-19",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Des gourdes pour les jeunes footballeurs",
+   "p": "Article paru dans MaVille.com - Rennes.",
+   "src": "MaVille.com - Rennes",
+   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPbkoyMHJMZUlPUmwwNlBmQTZVNjN6Tm90Z0JsOUVxaVRkNnNDZV9mOTA1Q3FZRFBHZHhNbFBmd3NlZzk0WnZzU24xVnZINHhQeU1wOFN6aEN6TnVxZnBHOFBPQ2llcnpkTEx4UU82SFhhOW9JWk5mTWRMeHItczQtWkZXTFFPUlpiMzNpcHN6TXlOMU4tX1dnM2dmQ2lsSGhlYTFrZGdyMEQ?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-b706d84d50",
    "d": "2026-10-17",
    "cat": "presse",
@@ -209,6 +329,78 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans Ouest-France.",
    "src": "Ouest-France",
    "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNVGJtRE1TOE9nd19GdzVUNG5qeXQ3cEh0X01MUjY2MDhWQzlEcDJyamx3Y2R1ZUl4NjR6b0FWd0poWmhCemwtSlotNnMwT0t4TS1UWC1uMmRJc2JEZlBkMVktc2NEYjdXYWdMU3dma0dSZWV0bHJvVjdrekNkUGJhQWVtTV9sbHdnSG9Kc2ItYkZyZW5HbEpPVy1RdEpCRkdkdjFJSnd3cnBvTjcxcDhzZUR6eHVSYWJ1bzMyT0VYcmhMX1FVSnZzcVlZUHZfcHJuSm9ORA?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-0132556806",
+   "d": "2026-10-16",
+   "cat": "presse",
+   "press": true,
+   "t": "A Janzé, Les Ormeaux du Nord proposent une large gamme de plantes pour la Toussaint",
+   "p": "Article paru dans maville.com.",
+   "src": "maville.com",
+   "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPQ0YxdFJwN3hIRUlaTUxha2tveDJxTFNNLXJWdXdsRHZ1bVhuMVo5MVVWa19oQm4tQTliX05SNkJ3QWFTa3ZaOFNRcG1CeVg2TlRXcE1TaF9FcC1TdGMyQTRkNEFRbWZJdm8xWEFjT2VsQVBnZmsweDZ4NUtTZE9HOUlqVGY3NlY1WldsM0lkWU1NR0VQZzd4VU10MVZyd3duNW9GcXo5NjdsVFducHFvbm1lYzhZc3lXVzlZRFktMDdPRFlya05rUUpFY2VYWEN5ZWdaOVlWYTMyaDJXR3l3?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-b8a792067b",
+   "d": "2026-10-15",
+   "cat": "presse",
+   "press": true,
+   "t": "US Janzé - US Val d'Ize",
+   "p": "Article paru dans Score'n'co.",
+   "src": "Score'n'co",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNaXZzc0E4VUowYWlHcEdRSlFsejVqSWlzNDdDa09BM25jWFJtRnMtejhRSzJpUVJYejBFTTFZTXN4LUZ2eVhRYmV4akdFUjVMTVl1MGRuMWZSZ3E4X1BqZ2VQOGZxeGd0bkZaQnJUT3pvQVFtTHU5Unh4NmRjSzB2MHpkRzdGWlJMd2RFQW1KNA?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-0a6406d450",
+   "d": "2026-10-14",
+   "cat": "presse",
+   "press": true,
+   "t": "Résultats municipales 2026 à Janzé (35150) : résultats et maire élu",
+   "p": "Article paru dans Le Figaro.",
+   "src": "Le Figaro",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOenVTVFlpY25icDlVQmkwTElISkZqX3NCelk1WURFdThBaTI4U1JfbWlSZGZTclcwODRvRm83ME5NOG5hWXY5eUhsWEwyV1hEQUNkakdVZEk4Vm9ZZmlhbVhHZXhWNjU5LXF2b0xzUjllYlJpQVI1SW1WRG43a1A2TnFGR3RxSHhUTDlFdkdRelMyY2lyYVE?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-affd626d8d",
+   "d": "2026-10-13",
+   "cat": "presse",
+   "press": true,
+   "t": "US Janzé - Football Club Canton du Sel",
+   "p": "Article paru dans Score'n'co.",
+   "src": "Score'n'co",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPbWY0RzIyaUFqaXVNbW9NYkRKWVF4VURjYWNCWlA0bzlxSG5ZSEVabDlMX016NDY0V1JpVlVWa2dOLW5qMjIwTWJfVUZiSlp4NjhQZEpZLW9JTm9mZUFObGFYZnFXYVNyTWN2dUdXM05odUhUVVBDdzYxR3cyLXRaQThyTDhTdUFoTEY3VVhkQWtWaUdx?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-d8c5c395bf",
+   "d": "2026-10-13",
+   "cat": "presse",
+   "press": true,
+   "t": "ORGERES US - US Janzé 2",
+   "p": "Article paru dans Score'n'co.",
+   "src": "Score'n'co",
+   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFB1bFF5TmtaaUNhbmJjR3BxZWF3R2hxT1JmWWoxQndheFJZNFZHMEV1VGhIaFJ5ZHkyLXJ3alBOMDdMcGpKMFU0WldBZEZzVGVma0MwZE9kOUcxMnJPeU9ZUV90dlZKd2FfbHVEaEFpX2d4aWJ6NElMYUp0MEs?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-324fc94588",
+   "d": "2026-10-13",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Chef cuisinier, il propose des menus sur-mesure à domicile",
+   "p": "Article paru dans MaVille.com - Rennes.",
+   "src": "MaVille.com - Rennes",
+   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOMHp6eVdSYXlGS0VpYWd5R3BfQUpadXlWempDSHRtVmxWby1KUm1FTDlzT2JjcGJyNnpCQWtaUkljY1lDczd1N1M3NjJxM1dKaFRoQlFQZzU4akw0WFZZZ1JvMEd6dHliZ21tbmNNU0Z4N0RlRmlRREhoTmxxMDlSVWt0TlhSdGhUenM4cVh4bS1DRHRQcF9DZ1pCdjJUa2dPN3lTOVJ0cWZUNHJMWlgxVjdpRF9vbDJEVGxRV0Vobw?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -249,6 +441,30 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-79263e24ed",
+   "d": "2026-10-11",
+   "cat": "presse",
+   "press": true,
+   "t": "Réduit à dix, Plescop craque sur le fil face à l’US Janzé et est éliminé de Coupe de France",
+   "p": "Article paru dans Foot Amateur Bretagne.",
+   "src": "Foot Amateur Bretagne",
+   "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQVVRHVFBkS0tpNTRkcXdNU3BWNUtZVGxWLVBieTdIUXBwY3k0U3VhbkxPdml3MEM5RmRyelp3Zy1NdVhxZWtJSC1fMk1PSDUwZU5hMC0xNHNMWnpsT25rWkt1aDI5TDJRYnlJRVk3QkI0YzU3NUExODJaaHBhZWJ4R2lvSzViYkJwREl3alU3SXZZbUJYM3BOYXJYeEhyUkxrMXBZZkt1SXdRX2xXQm80a1M3MlF6WXZSd2Q5RVBHZC1uUlRhRnU5dG5qb2U0NHZDM3Z1eldpal9MWVppdnVLQlRUMkhCU1UzS3JwUUxNVFZnaVdNcDJNMTJB?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-3bf3c12706",
+   "d": "2026-10-10",
+   "cat": "presse",
+   "press": true,
+   "t": "Plescop (A) - Janzé (A) - Résultats et calendrier",
+   "p": "Article paru dans Foot Amateur Bretagne.",
+   "src": "Foot Amateur Bretagne",
+   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOLVotQ2hYRnEwMDlUN2wyS1c5bGNXNFFveFRfNUJjTjRNNjBSTkhQMFRLSmVtYzIwdWFvMFVpSjZ4RURsYXl0QThibnlGRzdVTVQxRGxOZmZxdEs3MlJWQ0tlcTVJSUk2dGJLbC1ZVlB5QW53eTNWUklZLWk4Y1BEa3NMTFpaYVBUQ19XSTU4Wm5qaG9vT2tMODlqUHk0cWlsUTNWMWY4NmVPdGc5cDJNanhZUlo5QQ?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "janze-22d41045be",
    "d": "2026-10-08",
    "cat": "travaux",
@@ -272,6 +488,30 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-df80b71d1e",
+   "d": "2026-10-04",
+   "cat": "presse",
+   "press": true,
+   "t": "Football - Régional 3 poule L : victoire de US JANZE contre ASSOCIATION SPORTIVE DE RETIERS-COESMES",
+   "p": "Article paru dans Foot Amateur Bretagne.",
+   "src": "Foot Amateur Bretagne",
+   "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQa2JxbzZicmE1dXltb2xzdXBucmJySWc3ci1kenJmUlpWRWhKYTZUN1JOSWE5d3RZQWJKNWtwNS1HTGpaaVQzSFktUWxJUFBELVlUZHFNemVicVliNXRJMlMtdjZRd3RDWWtMTjJiTUpsa0Q3R2tJbS14UkFvZTJkSEVqWDFCczNZRnE1RFBSeHBFOU54Ni1LNzlvam9fUGxpbElCUlhEd2tpc1NuUnY2dmNnamNUejdiWlFBelhoRmpGOFZWTm1KZnU0NXdtOS1TbFI5QTc2Qmk3TEZCUW1TMXdJRkpGZ0FUcVJjclB1TQ?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-044f0072bf",
+   "d": "2026-10-04",
+   "cat": "presse",
+   "press": true,
+   "t": "Football - Division 2 poule F : victoire de US JANZE contre ESSE LE THEIL FOOTBALL CLUB",
+   "p": "Article paru dans Foot Amateur Bretagne.",
+   "src": "Foot Amateur Bretagne",
+   "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQVGEzcFh1OFBZN3NoMnFjbXpvYWNHUk1ncjhvZnFRZEtQZ0pQRVVkSFN1ZkdXUmxaTktCNmtuVEZEYlUzQ1JrTDNLTVJ6T3Q4LWNtUWh0TlhSeTQ1b3NaVDBrd0h1ZzZDd3dQdnU3bGFxNk5PUV9pdTNWaW13ZDBWaGlkNW1iUWJ6ZGRvSGdIWjF0UXpyRnA4T25kZDdhdGhQdjBmcVBvUlE1SGpITVV3WW1SZ1BIM1dpdG1jWklRMTV6dTFHb2NWN29sSVZCcGZma1k5bk9WM3NZU295dG5J?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-380a52aa2e",
    "d": "2026-10-01",
    "cat": "presse",
@@ -284,6 +524,18 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-d729962597",
+   "d": "2026-09-30",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Hospital informatique lance une branche de création de sites web",
+   "p": "Article paru dans maville.com.",
+   "src": "maville.com",
+   "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNSVlNMzB1aGlIUy1pcmJlaDBIX2o1QnlYSjRZaVdSOExDc2R4VFBDREE1X0xsbW4xZnIxTkUtWTRyUk1HeElNbjlHXzFSdTVmcGFseWQ0SEN0bXhscmJHcktEY2cyOVQ1MmI2SVRuaXJPYlpidFJ0aXhNN0VjMUxZaDd5X2NXX0hqblN1cWtIMFhzYnVRNzc5YVIxUWg3V2RxMnkzNUlSczM0VnhHTGg2aFBSd3VmazlWOHBLMjhtdndEVEJIRmkzWg?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-405e5c7090",
    "d": "2026-09-29",
    "cat": "presse",
@@ -292,6 +544,18 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans Ouest-France.",
    "src": "Ouest-France",
    "url": "https://news.google.com/rss/articles/CBMiogJBVV95cUxOUmNyeTZsanZZZkstVkRnLWxpVE8xUkpXWFlnTkw3UV94UzdiNHlyZ05jU1NYZjA3YVRydThrTDRuY3lXdjVfTEF3bnM1M3QyYjFxLVJyaHZwMEFlMkplc3ViS3o1MmxXMy1ublowZ3E1cl95ZE1RcW8wOWNrNlVoX0UtZTk1aGlqMUpTR3JQVzFwRmFib29PQS1YQWxFeE5neXhsLWFvWC1sZjdXOUJXMTV6dmRwMmhpSmY5TVlzWTZ2MW5nTkJjXzZoNUR5X3prdXRVNmY2VXZ0eHdQYkdGSk1TVHlrLWRYOHUxclZEVzZQdHQwZ3NQRGhoMHhVQ3lZWkU0NDlhZVNnMmRMcGdlVmsydmppWmgzYldwUl9TcU1jZw?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-900dd92baf",
+   "d": "2026-09-29",
+   "cat": "presse",
+   "press": true,
+   "t": "Résultats des élections municipales 2020 à Janzé (35150) : tout ce qu’il faut savoir",
+   "p": "Article paru dans Le Figaro.",
+   "src": "Le Figaro",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOV1JmMDZFTFg3OWhRSGVZdS0xcG5ESzVBTm9OeVdEUTZac0FreFBjMEZxckVSRlZtek45NWNNSXlHRjhGRHZvcThaUkJmSEkxTDdtVFJwckZheXlPb0F2cjJUajlUX2V5TWU4TXZ3UGVlckxUdFZWQXcyYlh6ZjUwc2JpQ2lUWnU4dTh2aDdacy1QTmZoNnc?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -332,6 +596,30 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-8e085c90c2",
+   "d": "2026-09-25",
+   "cat": "presse",
+   "press": true,
+   "t": "À Vitré et Janzé, un rassemblement pour le climat, la paix et la justice sociale ce samedi",
+   "p": "Article paru dans Actu.fr.",
+   "src": "Actu.fr",
+   "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQYmhfMWdILUlIMTRucll1TmpnTDR5TDg0Zk1FeFlTdUFBWjU3dGg5UkF1MWxvZ05Md0tjdDNGajIyQ2JoenBjR19OcGdJWEtrbElGemF6MFdkQzVfTzl0dm82bXNPQWo2UWJpdFJzNERWSWxNQTV1VW9teXJuMGx1clZFSU9ISXJ0VFA5ZGp6ZTZOY0NfdXRBRFdQZThKd1VOeE82c0dQQ1BXSWNxNF9tQ0ZldWZyLVlpRzlxVFhUT25qWjcyZzdCcmFiN0xfMGtiendHcmtKNGdPVDktb1lVaEJsU0dfQm9xVDF3?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-6ffde4e1b6",
+   "d": "2026-09-25",
+   "cat": "presse",
+   "press": true,
+   "t": "À Vitré et Janzé, la gauche locale appelle à se rassembler pour le climat, la paix et la justice sociale",
+   "p": "Article paru dans Actu.fr.",
+   "src": "Actu.fr",
+   "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNcEw4aV81SE9HSFlySmVPbTlhbnA2MWRSR0NLMHlBaGwxNldRS0wxN1FKYmh6UG5oSGRlVk1lSk50bm1NWm1ib3pGQU0zVEN0MHJ0dDkxX3NGd1dHWWZjUmJ0NTZqdFJpRXNleDNQZ19XVkhPcjFTWXhMOTNiV29tQXdsT1EwTFpPRXkyX3NTbkpvQUJqVzE3VXlSY0szYjRwc1ZvQ3ltWWttbi1IWGZqV0w3end5UTUxN3RybGVTSmktMGFBT1ZsN08xNkdIdHNYZ3BkbFpSQktVTDJKRkJpbDU2RXZVWXNk?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "janze-59999748aa",
    "d": "2026-09-23",
    "cat": "alerte",
@@ -351,6 +639,42 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans Fédération Française de Handball.",
    "src": "Fédération Française de Handball",
    "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQTFpDR0JxbnE5dzNwQ3liRHlqeXpEUThNWm9RTnYtdXVOTDlMRHY1UUEyRy13QVVzR2ViWC1fVk9WeVRVYzI1WVRWWmxzMzZhQkpFR1J2UUxEQ1BvM3dqdDlrSmkwV19wYzN2X08xSElMM0R6NkhfUWJDZ0xIai1vcFhPWmctRmdyRFdRX0RhaDRETlAwNnhSN0ItZkhvc2VrX2NEVXdUblJZc3RtWWx2Ums0a2Qxc3NTZm5VUi04bVhjQ1p2MnlxbmJtcHJtd3VYeGhYYlNQeEU1Wk5pNHZqdUowYWR0Q2dCX1QwNVZqTEtPVDZK?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-8c7e7c4b26",
+   "d": "2026-09-21",
+   "cat": "presse",
+   "press": true,
+   "t": "Football - Division 2 poule F : égalité entre ETS BRIE et US JANZE",
+   "p": "Article paru dans Foot Amateur Bretagne.",
+   "src": "Foot Amateur Bretagne",
+   "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPakN4eWRWdVB0Z2twcmNRRVhXV0tlWF9uLXRneTc5TmFLeFRZSVJld1A4elRBT0NReVp0TmhKYmxmZ2RXck51dFFyWk9EdEdvWk5zTjJqUU1tamdHOWhfUUxCSWhQeWNQZkZwbVF6S2haR0U1WkNQTjF4WVlFd0ZkSy1VdW5Sajl6Umk4TWVERnBEZkJ0YzEzTlFNTHpWNmRtNEV0QnpUWjF0a2gyMzU4V2xTT29kX2VxZUF4T2J1UFB0aU0?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-cac77d6e9b",
+   "d": "2026-09-18",
+   "cat": "presse",
+   "press": true,
+   "t": "US Janzé",
+   "p": "Article paru dans Score'n'co.",
+   "src": "Score'n'co",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0wX0ZQcmZ4aDFnX2xjMU1JdDRwNWE1bUtvcjFhQXp3TGZSQWRLejZHVjBCNE1na0JRN1Btb2VOSkx6aGlTSFVHS2ZCOE1lWU5CV2dwQ2RzSmJvMTA5R2V2cDJmSnAzUnIydkpnLQ?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-719297f0b2",
+   "d": "2026-09-18",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. L’association Accueil de jour a soufflé ses vingt bougies",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQQnVvTjc3ZXVFVWZpUWl5cWVEVFZUMVZoWU4tcVljWlBKWExmYXdRMnRyNUNQMzRqVGRsUEk1ZjJ3azhSeUxiREEzM2pRYjlMb2dqU1VoalAwRlZ4UEpjOE1MYkpzTThpUVZKY0dGcEluaHcwMzZnb3pXdm5fTkNaNkd1blR3TThINXZzelIxOWlHRG1FNnhXNFNNUUJnX2ZzYnllUUlwdW84d1J0ZklLZWJhV0g2YWQ1MUQ4VTZJTFpXZ29kRHd1RDNtSW1hZE4yQnl0SktGazZCOEFIcHpzYWVR?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -379,6 +703,30 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-d63012f4c6",
+   "d": "2026-09-11",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste",
+   "p": "Article paru dans velopressecollection.",
+   "src": "velopressecollection",
+   "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQaXJJOUhDRzFQNXg4c0tEelJHZnFROEFNYTN2T2tjQkUtZDhxUFBNOHJkU1NwcDNTLWx1cTFKcTdwY21QWmZWczE3N2R4WWpRX1FkV0cxTkozdDQzUjNzYmdybEk1LUJnWXR0VjU2YXFkSjJaOVpuTzc3d0RJZ3UyNmVWTTdKWHZmMEJVZmtuYWNhS0FwUUljSGpaVnFyNDZVUzBPVDF3MWxYZXgzQ041aXFHckNtNFZOVHJJMjN2LTI1WWtuZkQxZnJhUDZ2QzdkMUNUaEFpZzI0aWlPZlRuYw?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-cce9a963be",
+   "d": "2026-09-11",
+   "cat": "presse",
+   "press": true,
+   "t": "US Janzé 2",
+   "p": "Article paru dans Score'n'co.",
+   "src": "Score'n'co",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9CaE01UWYxSVVhS1ZIbmgyMFlpbGdmdEUweGcwUnU4bW55bExBOWFqZ1NlSGNTZTZhQ0pXSHVsczdvdV9lRHhIcDNmRm82aWJTYmlaUmo4OTN6ZFVMNzI5Wk41UlBNdkgwWXhCZw?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "janze-9f8e64a178",
    "d": "2026-09-10",
    "cat": "vie",
@@ -399,6 +747,30 @@ window.GAZETTE_AUTO = {
    "url": "https://www.rafcom.bzh/actualites/perturbations-sur-le-reseau-mobilifees-vendredi-11-septembre",
    "a": "auto",
    "k": "rafcom"
+  },
+  {
+   "id": "presse-82da0014b9",
+   "d": "2026-09-10",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Les festivités du 13 juillet auront lieu demain",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNZTVobExJVDNBQkZLOVRhMjlWdVJrVk1tUy0zOF9fMzNqTkg0WGRDTXB3WC1OQVFPVzdfUi1SQVlXRHM0a0oxaWMta19Pa2gxbWtLS3NiMWtzOE14QnY5ZDlicmxzNG1HeC13NEV2bFhGZ3BNRUJyOGZTZ1VrTVJWZ1ZOVzJBZURnVzhzNGtZQUVuemw5ZzFMMHlRbmxhVU5Hc201Y2JaU0FvejVBMUxLMTBnSlV5bGI5QmFJb1BWT0k5c3MtQnBRckhmN05OTFlzeWJvSWRR?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-2417186eb3",
+   "d": "2026-09-10",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. L’association des Créatifs janzéens propose des cours de couture",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNYVk0TGFINUh4VFVKZmhVSWpuNVhic2lDVzh6MTg3bVc5RTViSmdUZEdJNEYyaWx2VW9tRTNLM1JiSXR2REVfMXNJN0ZTcXhwNkx1U05HZE5TYU5pZ0tXck0waVFKTDhtcVRMNk5xVFBITGZUWG9vaUQ2T3U5Ui1JTEFmc1JZOEl2SW5pVUZuQl9pMjZVMGRMaDAzeGVhaVBOa3N2UDhYY1NiUzFENFVZaUU2QTdXNFozekJVYW1CRjd3bmI1b1VnajJCUFBQWmR4TzQwdTZOVlhqeVdfWVdPSG1SeENySE9kbXBv?oc=5",
+   "a": "auto",
+   "k": "presse"
   },
   {
    "id": "janze-925baf1b71",
@@ -434,6 +806,66 @@ window.GAZETTE_AUTO = {
    "k": "janze"
   },
   {
+   "id": "presse-5470bf9fc9",
+   "d": "2026-09-06",
+   "cat": "presse",
+   "press": true,
+   "t": "Football - Régional 3 poule L : égalité entre US JANZE et Allaire",
+   "p": "Article paru dans Foot Amateur Bretagne.",
+   "src": "Foot Amateur Bretagne",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNa1k3WFdFRGIzb2FiaElFOGNoT0dnSG5TMFVjVlNCaTFTdGtGUjJLTDF5d3FFSEozV3VvaVNKSUsxWEotbm5sa2ExVk1mSUlTMmtzSVVNR1F0RnpRX0haOW0zNXowYmR2YnNqM3hNVTVlUnp4YUFtWnZkMDY1TXJjLVNWM21NcVVpMFVSYkZpQjVrY2JZYnZ3MnpkNFBiTHFhaDNCcWZNNXRmcFpjQU5BVk5qTFQxOUJHbE5rc0J5MXA2Zw?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-e7b6f421d1",
+   "d": "2026-09-04",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Bientôt une végétalisation des cours à l’école Sacré-Cœur",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQRGZ5b1N4bXBMOE40VXktMW1WQ3FXdVdLVVlPb2VfTFZ3aWVxTE82U1QtZU5EbTlUYzRoTkl2emR3OWpTZ0RXTWZKZkhBNzU0LXU0YXp3cHpIdllHZjZMb2dGcllXN0ZqRVNMMzA5bGllNHZVaDA2bU1GY0hNeVNWeW1FMG9BV2lEX05lV2xPZjZRV2lMUW1tcnM3VGljcVg2ZlBZY3pZYjFiSjAyVHZLRV9rdFRtcGpJb0VDQVBwRGZQVndCTC1UcGtxWlNEOEZHRFpMRF9IWFNuLUkzb3Z0dg?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-4401093843",
+   "d": "2026-09-04",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. « Être plus réactif » : la Ville se dote d’une machine de marquage au sol",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPMjhNYUtHY1I4dlN4QzFyZy1OLTY1eU53Tk1obFlqWTN5RWM1MnVQdTRRZDFRbVVfSjAtSDRSbXhJelJvRFlqZ0JucmJ2ZktPWDFaNGFrOGNEUHFhTmdDTDRSaFIwSEszMnQxMkZMUDJidEdjNXZ1X1ljdFdibms4ZFhZVmxlN0ZMMkZfQmFTek1rcVFKZlBTcWlsWGlCa2xtclpTRG15YW52SVV6SXltQmd5TkNyVU1KZFJkaWtQakdlT280TG1IYU1sLXktd2tjSUtOaGF3cVdJdzRPblQtbXdmem9nejFRYUE2b0F0RQ?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-a8f9b1ddd1",
+   "d": "2026-09-03",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Avec 50 élèves en moins, le collège public perd deux classes",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNWHJiVThsdUEzbVRQZFBIU2M3SkxhT3VRQzY1d3JlalJCamM0WGNwV0s2VGtRS2RtNzhLeFpvdHVuLS12bW5lcnhtdHlKN0lHM0d1SE9HVDFWaHJiRDgzaTQ2OUlqeWxTeGVoSDZHTy0yUERtV0hPa2tLRlVNcGFYMGVOMXdiRmFCeWpuSXhrX09fVXNEbEI0emd4RUZCUmpDZWMtbkc4RVBnVjVFOHNNRHZmQkxyWmFGRnJrbnludVhqUEdaMTZJNU5mY3VGRy1RMDlvWm9TcTF6NlJmc2k3QW11OHVsQQ?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-f10ce17556",
+   "d": "2026-09-03",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Une nouvelle directrice à l’école du Chat Perché",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOeTdjSXBjZ3NScWs5X0tmX25relN6WFVralRmd2JROXM5RHhaMnozR3NLdFdSZ0tlemdKLURwZjFIcFZSVGtPaDlZREo0dV8wUndBbDIzUDdYQWI1RWVmeHhWdDdxNXZOOWdxVG9EUmp2OWpRU09VNWdBTFJqb2hNZXFJWldOY2RobHZvbkN6dE9DVGU2XzBiblpfOV9CbmdxaDRweGlJQ1k2MG9idm9RcnFPLUxEY2gyeFBaenNCN2V4QU42UHlzTkRKTnhJM1QyRzBLeWpn?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "janze-a0f1c2972d",
    "d": "2026-08-31",
    "cat": "conseil",
@@ -453,6 +885,30 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans Ouest-France.",
    "src": "Ouest-France",
    "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxNZjlldWhkdk0wbVhDVDcyVlFhOHNCSlZuNzl5ZXpGZUxlRlc5T1BtYUljVVZpbEQ3bktBRU9lcHFDNTcwS2cxR1g1a2ZJTnJ6RWstSFBtQTYxNHdOaDNtb2ttQVhEZlFsNE4zTWdnek9adHFDM01ET2NERXJvakVfeXRLN1dqU3VLVU9laWptYWc3VHBJR0hIQlJsQ29LdldDbzN0Zkhva3d2R0hrS2ZBMFQ0ZDNSYTEzMXRZN2ctQk1YbDN3NGlVam5ZcS1KNkhYdlZGczd2WEhtdlpjWkNCVFlhY2lOMV9BbEpKOERuZ3VXVFA5QnIxVmJXaHFacDJS?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-7c1b71e5f1",
+   "d": "2026-08-31",
+   "cat": "presse",
+   "press": true,
+   "t": "PHOTOS. Janzé sort Châteaugiron de la Coupe de France de football au terme d’une rencontre serrée",
+   "p": "Article paru dans Actu.fr.",
+   "src": "Actu.fr",
+   "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOWXdhQzM5X1ZMdWY1d0daRjhIQ3U1bWt3V2VUR0l4Z3NCQUt6TmlTVUpkM2EyYl80VlBDX0tpaG5kcVozaWRZOFJnaGhIY1dSQ2V5M0pVY0JIVUNlNEp1YTY5QmFaeVUtQnFKYVhZTFREZnBfTFVQdXl3WjM4LV9lNi1DRUFBeXJRemUzTVRwVzNzMklTYjVYVnU2MVhQZFNESG5Yelp2bHdWcmVBYWFpZVVxcWg1NkRPYmdHSHY3aDhtX2M1MkVlaE1sOEx6aDVQM1FEdGIxVGtWTGh3V0M4?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-c711559c47",
+   "d": "2026-08-28",
+   "cat": "presse",
+   "press": true,
+   "t": "À Janzé, ces deux jeunes femmes de 19 et 23 ans luttent contre l’isolement des personnes âgées",
+   "p": "Article paru dans Actu.fr.",
+   "src": "Actu.fr",
+   "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNdlZZY0ZLUTNudmRVUkRWNUFmVEtWQUlGVnhrOWN4aC1yUEw3WWxENUtWeWRab1kzY3F5SDRwbktFYk81T0lEcUUzelZITG8zOS0xNTNVS3haNjVpMmc1WEcyUExCc21VR3J4eEQzQUhWejc2QzN2WkZXOUlUN1RzNmZ1YUJ0ak1Qb3VsQUZJZEtYYXVQUUZ5QkU2a0FEc2dmSzNDczB0YzkzOERSMWFFZmpkdERmRnl3YmNQUzVVaXQ3NWk3ZW9vS1FESFdjVXFDNkJXcVBzR3IxM0E?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -477,6 +933,18 @@ window.GAZETTE_AUTO = {
    "url": "https://www.rafcom.bzh/actualites/transport-collectif-mobilifees-de-nouveaux-horaires-pour-ce-service-gratuit",
    "a": "auto",
    "k": "rafcom"
+  },
+  {
+   "id": "presse-020e8c5c06",
+   "d": "2026-08-21",
+   "cat": "presse",
+   "press": true,
+   "t": "Le club d’aquariophilie de Janzé change d’espace",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQQ195b2hCdG9BZUpsNWRFanVHNUJiaHVNdFpxWTNJVDRnT2pOLXdwTEp1UWNpZGRJU3gweDktU0wtYlFPMFdwcUhOS3Blek8zMzItaGgxbzF2YWNGUVhEd2JVTkdCemdOZ3B6cHdLa3Itd1BkT2hRSnpmeGpQN3Z0dUVyZ3Nnd1NHTWJ2NFZsLWZacV9kdFJQZ0dFcXgxMjNnYXNwbWVzaW5SVkhCcGRwN055c3NOQWNsTks3NEpGbnQzcDNxVFYzMXlnTEU?oc=5",
+   "a": "auto",
+   "k": "presse"
   },
   {
    "id": "janze-93743c9bab",
@@ -509,6 +977,18 @@ window.GAZETTE_AUTO = {
    "k": "vigieau"
   },
   {
+   "id": "presse-b9717825ca",
+   "d": "2026-08-12",
+   "cat": "presse",
+   "press": true,
+   "t": "À 18 ans, il crée son entreprise de nettoyage à Janzé, Clean-Auto35",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQOHNtX0Z0QmhYX2hXbXVYR3ZfbFNDTnk4Q0RueXkzdXZ5WjZhbWplbHVYdDQ1LU81dXJUblBRanV5ZFdXUXo4RWUxZktmX3psWDhCMzEwQUh1RENWNWVDUjA5ejBnSUhQVFEyNHhUUVRPZ0R0bEdCR3R5LVdvQmdHQm1EZ1ZBLWZ5eFhIbDJPRWNhVHV1T1NCUEt5Y0xIeUotT1JRa1ZfdUVXdHZSOE5jZnhxODBBdE45VkQ5Znl3cUdMd0w4V1NPd2xvS3ExQ1JqdG9ZY3lLbnFVTWxnOTd4Zw?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-be0a2873e3",
    "d": "2026-08-09",
    "cat": "presse",
@@ -521,6 +1001,18 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-8fa801b05f",
+   "d": "2026-08-09",
+   "cat": "presse",
+   "press": true,
+   "t": "À Janzé, le père Joseph Hoang Dinh quitte la paroisse Sainte-Anne après trois années de service",
+   "p": "Article paru dans Actu.fr.",
+   "src": "Actu.fr",
+   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQVFpvZTlSWTFrWWhGTU5QR1phUEVNZDlUVHNyMEx0YmUwTU04QUZ5NThCRVJpb3JJRG9CeEludDZ5N3g4cy05MU5pd2lWYmJ0QmlMVW9NYURudlRnWXdDcEl6bDNnQVMzSWtfOS1wYzBqczY5Z2s5VHFOTTZyTGpzZWtUajBzblB2eEkydDExbTJCeTlVUzAxeUR4dnpVUHlSZGsySUcwcUt1T3djSTJTZ0ltV1dDYk42VF9vWjVpbHd4dUJSN0xReV9oXzBNTmZONm5Pdzd0SDRCLWhsZGc?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-20c213d445",
    "d": "2026-08-02",
    "cat": "presse",
@@ -529,6 +1021,18 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans ici.fr.",
    "src": "ici.fr",
    "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOLTlacmtMYnVMZGktcXRrazFnQURRNjI2cmc2LXdndkhBTjZMSmNDdHpicnZBSFVvcDZTa0EzWlZtVnltbFowLXpTbzJ3Y3l2VjZhUDZYZUJrVW5qZHRyRGRQcV9VQVJ2cC1pcDlnV3RxVG1Valg1TmlMbzBFS3RRSVd2OGxTRWZZbTdPcThWcV9DVnZNU1BUUFRqdEVRQTA3VDlFeWdQbXdndUE0WTNvTkZKM00yeVVvS2ZjbmVvS3dWaEdqNHlwOW40MktmZkc2ajlSOHg1LWFCeTZONHV0SF9NeTZlZ3cwZHJN?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-9841be74c4",
+   "d": "2026-08-01",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé : une fillette de deux ans retrouvée saine et sauve –...",
+   "p": "Article paru dans Rennes Info Autrement.",
+   "src": "Rennes Info Autrement",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOSllmZWhDX1FwbFZCUDZlSkV6NHZuaU42b1JlYk4talptcGtZaUFZUm9qb1NMNkEzOTgySXQ2RkhOTlNZeFVBV1VkcDZONDZxRjZ2ejVtcVdjN2NjRFVBRjFHMDlvY083NFRuZzVsUnF4Z1ZOX3AybHNFR1BQbW0wVWFRSFRLQ3pPY21FVjV4VjVEb0pPVmVwSmNB?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -566,6 +1070,18 @@ window.GAZETTE_AUTO = {
    "k": "rafcom"
   },
   {
+   "id": "presse-c44cae6cc6",
+   "d": "2026-07-19",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé : Aurore Grimaud-Lecadre quitte la direction de l’hôpital et reçoit la médaille de la ville",
+   "p": "Article paru dans Actu.fr.",
+   "src": "Actu.fr",
+   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQZkZsVEdybGJ0aG91Tl94cEZWeGdzUEo5Um9pbzFaWnJGX3RaOXlRODVrRk5kRWFvdTlvb0l2aTNiWnRtcmdvRlEyeExwWElCZ2pRczM4SGNVak1lRXBNZTkzdGVsSWJIamJtQ3ZZZVJYc1dibjYtV2NNeVVSMWpIS2lvVnZ3S3p4U18zY1lBVVZTc3ZjYkw2UGlwd3cya0ZuN2lZWFJiQVhma0hvaFFscmUzekFyZG15RDZxZVMwdUJGN212WGNTUkdjdEw1Z3hmd2pPeDNZZGI5R3RTRXc?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-46c85121b5",
    "d": "2026-07-16",
    "cat": "presse",
@@ -586,6 +1102,18 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans velopressecollection.",
    "src": "velopressecollection",
    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOYzdpT1dOeExFeVN1WE9HR19ET3dMdWdZX0x1NHo3YVBvRUJxYlBkWF9CVXA2WV9IUTA0dkNTdENwdnROSEhVWkFKR3BtYmk0WEZHb3psTmllV2pwaHFUeTdCalQ3UEQyMW5hMHN6SnJSQWNNMnlvR3lqRldrVkltUW8yQ0lIYzZSMFpJRzc4WFExQ3pKNWp0dzBVTnE3M0IyRWVFSlBvQmVFSjh3OGpqblBPTktEdlo4OFFROU0zQTA?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-ea570268a9",
+   "d": "2026-07-13",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé Grand Prix Cycliste 13 juillet 2026 infos de course cycliste",
+   "p": "Article paru dans velopressecollection.",
+   "src": "velopressecollection",
+   "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPaV9zUnFDdU5NSDhMdjVtV3F6MU84cjJFZWllYVpOcHRfamd6aWNMS01xeWMtUzZlNHdpSmRYMGlGSWZJX1U2aS1GaTdOVmIyYjlTTjdVVERDcERlWlJNdk9CSmJnX01TRXFNeHlMMGgyTE44ckdXYUVJSVQyVU9EYzdxSFNWcWRqU2dTVzFVWTdGYzFaajRvNnFpN3pWbEphOHcwNm1CMlBacEZNOElKcWV0MnNGWEd5QkJJZWpYdkhqVm1QVzJpSjFjbEY4Zw?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -636,6 +1164,18 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-d1d28750bc",
+   "d": "2026-06-26",
+   "cat": "presse",
+   "press": true,
+   "t": "VIDÉO. À Janzé, une centrale photovoltaïque de 6 000 panneaux s’installe dans cette ancienne carrière",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxPMHczeFRadDhQdHdYRUJtYXdhekI5a1ZfYXBncEREdUFBS2VJQjlyelFnTXJCNmdsYmZidXZmb0hKeV9ja1pTUDh6cmNncmVxMmFSbE9Cb2JyRk8tVHpEcklSb2p6ZU9EYTRZUlRtd3RDVlowTXRqNUlQTkxWYlRReF9zdEdETGxNbjRVU0pha2ZtZGdNanRjWkt4V0laMUd5WTRVTjg3RDZtVDAwWWhUQklnMGIzbVI3ODI0SEh5bU5oMWRZMjNQdzVSSk4wN2dJaGxqdmg5c2h6RzlTNGR0b2owdWRNS3VMSklxV2VjWDdQZzMzdm1xZUpYaW8xUDdzUWhjMDdvaDhHSE50UTVuTjI0cw?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-0d79ea41a1",
    "d": "2026-06-25",
    "cat": "presse",
@@ -644,6 +1184,18 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans Agirc-Arrco.",
    "src": "Agirc-Arrco",
    "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPMnpkbUJXOTlHQ3dWdzVvZWFzVlFkSC1DaE42Y05CZ2lTN0ZWMHI0QzJibGc0QXh6LTVKSjV1NU03d1k4STRvQ013RnNVbEdsaXVJODJFVFRuVzE1ajduOVlOa2NKNXRUSS1QR2hrd2c4cVZkb3FPM2RXVl9ta1JHb090Sl9ET3FEeHYxTlZiN2kza05ZeUFKX0cyVnRKS3NadkxiaWQ0cTQyUm9OMklYOXpYazBRX2VQQm5JenZIQm1lRmZVdmRVcERZZHpxSjM0Ym5CVU9B?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-e176cbc28c",
+   "d": "2026-06-25",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Plan local d’urbanisme : ils ont planché sur la ville qu’ils imaginent pour demain",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNTzJ5ZW8zQUxEWXpwbUg4dkRnUF9MUWh3dWRsRXU4a2FTblhsQ0NvNHN5cGNrOS1uU0FsV3dQdEtTVG5ENnNuYS1odFRqWGtDam5uZUludWprS1JvalBGSXBpemx3cWN1YUJQUXZjNUNQZlRqVEhYV3J5MHZXTWhpckJVZGJIa2NtazVNNm9ZLUlkOS1UOF94OE9BQkhENjh5eV95TjZXLUJXNFpMS0R4b2l0WHAyd0lZcjFyQ1NRQldXbklrSVp1Vld4emhTdDliX2F6SHQtYnozT01pcHJ4YW9ORlBGNkVNTE5CNlEwMElxWVhab25VYUs2MFNXN2s?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -668,6 +1220,30 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans velopressecollection.",
    "src": "velopressecollection",
    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQenV5ZlJoRUdEMEJTY1FQdERITDRlYjZJd2tqdkcxWVJIaDh4Si1mdThPUmNrTnpRdUxqdHlGX0hLREljQnhoQnNSemFldTd6VnVlSkt6dW52eTUzM1ViZzQzQmNNMHNFREhPXzJRU0JTSHVGTXp5bllzVDd1dzdxYzMyS2hKbm9yektHSk5jQWR3S1pTRXFYRGJocngtZ1JzUUdXVTFNVTNkNlFFVTlLZnNraXNnalNLUjVPVng2RVA5R0lSNjYweWpDT21hQQ?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-343ac5e09c",
+   "d": "2026-06-21",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés",
+   "p": "Article paru dans velopressecollection.",
+   "src": "velopressecollection",
+   "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQbkZVSXNyWC1RTnpFQ29uNVYtWlBRUnAwcFBLcXA2eEZzOHNaOXBKTE9fRXZtYVVSaFd1Z0V4NUU1R1RuRlZvelRzbm02ampBSEFPdGd1VGx2UklDMVFCZzZvMTVKcy1pUDk2SmJubFpub3c0eF9hdlhaNjU3NjEtZzlwM1VCZEwwYkhRUmtJUmZrbzE2U1E3VzhyT01MYUJfTDY3SGRVZHZpcXZoLXVWN1NIbWxhamZtaG8xY3FPZC0ydmd6ZDRYS25FY1REUWxiQUxybHFfa1oyLW9IZlVEUjhR?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-c321fe73da",
+   "d": "2026-06-19",
+   "cat": "presse",
+   "press": true,
+   "t": "La Fête de la musique investit le centre de Janzé ce samedi 20 juin",
+   "p": "Article paru dans Actu.fr.",
+   "src": "Actu.fr",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOSDZfMWVJc0JoUkZ5dWNaYWZyeWlvT3dlVjhURFZxVzhIUXg4NlNKMnVnTWRCdkE2UDRvZ3pWWlhVOWEwdjFvZkd1ZXRnclFVM21XNTNpOXZHNl9za1pwSC02WVkwYnpKVDAwZGl5RUZwYVFsa0lzbHB5SDctSkIxSWNSQ2tmQWNFVG1JQTNFZHhXazBjakppd0ttS0haNDZWM3FPejhFSWFCdlo5bUN6cU5mZFR3OFpTb0E?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -707,6 +1283,30 @@ window.GAZETTE_AUTO = {
    "k": "presse"
   },
   {
+   "id": "presse-08bb364a56",
+   "d": "2026-05-19",
+   "cat": "presse",
+   "press": true,
+   "t": "À Janzé près de Rennes, La Palissade ouvre un refuge de création pour reprendre souffle",
+   "p": "Article paru dans Unidivers.",
+   "src": "Unidivers",
+   "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1lRVduTFF5bzVYMmtOSHotNk92QUpLY0xsVV9BbFdRdTlVdWdyd1UzSHI1QzUzUGJvVE1DSVRhR1BQNlQxZnNGczZ6VjYzX09jWUJ4UGoxQjBJY1I2QVctRmgwUQ?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-9e6bbb3800",
+   "d": "2026-05-14",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Un nouveau conseil d’administration pour le Centre communal d’action sociale",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxNR25KNlJranZPamtMdlJ2Q19TdV9tRnFTalZQb2liLUgxa01NbTJJaDRlZUtUWlpqTE5jc3JwYzBxU3ZSMjhJcGNMa1U2elNTVkN1Y2tZckVtLXVadERoZ3A3cmlSSUo5aUhYZVdNQ01EVEREdlpvNVRJNVlmWDJudDlOTkJHcWJHMzVyYk1peGRzRHAyLU4zOVhVM25JMVEwY21pbW53ZS1oV2dZX21aNWY4S3ZXMnhDdEg1eXFVR25BS2Z3dzg2cTdQQlVwdkNvcTdUVDJUZWlnRG9VMjM5QURwN1d0Z0lkRmdJaWV5R1d3V2haQVMyVTV3?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
    "id": "presse-d7d34d2b05",
    "d": "2026-05-04",
    "cat": "presse",
@@ -738,6 +1338,42 @@ window.GAZETTE_AUTO = {
    "p": "Article paru dans Auto Infos.",
    "src": "Auto Infos",
    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPUXVZSFVBNzQzRndnc19oaTZvUGZPa3BoVE1sV21LWnpYelRYUTJrS0ZwRThTeC1naGxUVWJtVU5pZHRXYmxneHl2dVJFYlZpYWFPLW4zT01EeVhmWEpzV0RyRTluQy1mZkFQZ0ExQkt5MzFmM2hBNnotS0NSc0hDVlV6Q1hFcHVJSTdCMDlVazJfVkJtNW9peTJBNzVkLUpWc1ZIblRjbFljUUZ5WnNtVWJ0SjRNdmhpdlAzSA?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-4dee9690f5",
+   "d": "2026-04-13",
+   "cat": "presse",
+   "press": true,
+   "t": "\"La Grande Parade\", déambulation familiale à Janzé",
+   "p": "Article paru dans Kidiklik.",
+   "src": "Kidiklik",
+   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQc0lETDVTSDRHSWtOU2lpTThkbU1YNHNIQU5hSG1QRVdjUnRaaGltS0xlOEwwNHRXcURqNmtsUjZBTVRTUTF5bU5Gel9iVWR4T29CQ2h2SDZVcGlCVTRJZlFsZlNWM2pzSlFlYUlNd2F2TGlzN3pBZVJOYWVuWVpQMnRSTzYwbjB6TWRJZk0zTUthSXQ2OGl4YUhRNA?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-8fad30c9df",
+   "d": "2026-04-01",
+   "cat": "presse",
+   "press": true,
+   "t": "Dynamiser le centre-ville, déployer la vidéoprotection… Le nouveau maire de Janzé présente ses priorités",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMimAJBVV95cUxQaFkzVVM0cG1XdjBwdXpZaWt2MEZhVS1pRHBFRFdOSHc3ZVZiSWVVd2YwcWxEaU1naEdqUWR6X1RfV20zenRSMFVvWmFyOW5sX2ZxcFJQaEZrbGhjVzRyYWdxbmRRcVhxazhmU0VWUXB4QjNnc0Qxb3FFSmdiVmNEeUhvRGdSWVpaS0JncmFhbmgtSUxNYk9fWUtaNHBSemkyZmJkZTlSMi1zM2FTOWpkaVpvX0RzdHlWaWZFdDZNaDNCSHgwZWg2R0Vpa0tiUkZDUk5JZVpNU0VZUGJMYjBXaHV0aWw5dHpRaklDRjVfb01teU1pWVFCcXFWcnlmNjZMdWpnUGhmY0ZiaGFKcDkzdDNramppa3BR?oc=5",
+   "a": "auto",
+   "k": "presse"
+  },
+  {
+   "id": "presse-3d0ff94d72",
+   "d": "2026-03-31",
+   "cat": "presse",
+   "press": true,
+   "t": "Un motard blessé et héliporté en urgence absolue, après une collision, près de Janzé",
+   "p": "Article paru dans Ouest-France.",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNWkhac2R4SDVfLWdyTkhpalVCQUYwcDA2Qk1tOXdrMFdqN0xyVDM5UHM0eEkxSEtHTnhfLUpkdVFNaHN6ZWpyZEQ1NHlHX2VQNzB4QWdHZUlHZDRGaHJSUTZrYWwtN3R0TFAwWXVoWHRJY0V5S1dBZWkzUFpfa1BSZlNwY3Y0UnlFbG10REJqbGJMOTZFRmZ0VHBvemtYUmNYMm5NWWltWlg4UldVdkJ6cnVON0dieXNmWVJJdm5GWHlpeEVERml5alZpdTgxNnJrb2Y1WHpjci00cWN6Y3lyc3M3RG45ci00YmgzNkhRS0ZuMVFsdjllSTE4bXc?oc=5",
    "a": "auto",
    "k": "presse"
   },
