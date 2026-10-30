@@ -132,7 +132,7 @@ article.read li { margin-bottom: 7px; }
 @keyframes glisse-d { from { transform: translateX(-40px); opacity: .3; } to { transform: none; opacity: 1; } }
 /* Le geste horizontal est géré par la page : le navigateur ne doit pas faire bouger tout l'écran. */
 html, body { overflow-x: hidden; overflow-x: clip; overscroll-behavior-x: none; }
-main { touch-action: pan-y pinch-zoom; }
+main { touch-action: pan-y; }   /* le geste horizontal sert à changer de rubrique ; pour agrandir : la loupe */
 main.glisse-g { animation: glisse-g .22s ease-out; } main.glisse-d { animation: glisse-d .22s ease-out; }
 @media (prefers-reduced-motion: reduce) { main.glisse-g, main.glisse-d { animation: none; } }
 /* Loupe : mode « grands caractères » (+50 %) pour les personnes malvoyantes. */
