@@ -30,6 +30,7 @@ import re
 import sys
 import time
 import unicodedata
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -53,6 +54,12 @@ MAX_APERCUS = 25             # aperçus de presse cherchés par passage
 PARIS = ZoneInfo("Europe/Paris")
 
 UA = "Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github.io/gazette-janze/)"
+# Certains journaux (Actu.fr) refusent le robot mais acceptent un navigateur :
+# pour l'aperçu seulement, on réessaie en se présentant comme un navigateur.
+UA_NAVIGATEUR = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+# Sites qui refusent même un navigateur depuis les serveurs de GitHub (testé le 30/10/2026) :
+# inutile d'y perdre le budget, l'article garde juste son lien direct.
+SITES_FERMES = r"ouest-france\.fr|letelegramme\.fr|helloasso\.com|auto-infos\.fr|maville\.com"
 
 JANZE_LISTE = "https://www.janze.fr/actualites"
 PRESSE_RSS = "https://news.google.com/rss/search?q=Janz%C3%A9&hl=fr&gl=FR&ceid=FR:fr"
@@ -112,9 +119,11 @@ def aujourdhui() -> str:
     return datetime.now(PARIS).date().isoformat()
 
 
-def telecharger(url: str, essais: int = 2, donnees: dict | None = None) -> str:
+def telecharger(url: str, essais: int = 2, donnees: dict | None = None, ua: str = UA) -> str:
     corps = urllib.parse.urlencode(donnees).encode() if donnees else None
-    requete = urllib.request.Request(url, data=corps, headers={"User-Agent": UA, "Accept-Language": "fr-FR,fr"})
+    requete = urllib.request.Request(url, data=corps, headers={
+        "User-Agent": ua, "Accept-Language": "fr-FR,fr",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"})
     for essai in range(essais):
         try:
             with urllib.request.urlopen(requete, timeout=30) as reponse:  # noqa: S310
@@ -323,7 +332,14 @@ def url_reelle(lien: str) -> str | None:
 
 def apercu(url: str) -> str:
     """Chapeau public d'un article (balise og:description, celle des aperçus de partage)."""
-    page = telecharger(url, essais=1)
+    if re.search(SITES_FERMES, url):
+        return ""
+    try:
+        page = telecharger(url, essais=1)
+    except urllib.error.HTTPError as erreur:
+        if erreur.code != 403:
+            raise
+        page = telecharger(url, essais=1, ua=UA_NAVIGATEUR)
     for motif in (r'<meta[^>]+property="og:description"[^>]+content="([^"]*)"',
                   r'<meta[^>]+content="([^"]*)"[^>]+property="og:description"',
                   r'<meta[^>]+name="description"[^>]+content="([^"]*)"'):
@@ -335,9 +351,20 @@ def apercu(url: str) -> str:
 
 def completer_presse(item: dict, connu: dict | None, debut: float, cherches: list) -> dict:
     """Reprend l'adresse et l'aperçu déjà trouvés, sinon les cherche (dans la limite du budget)."""
+    budget_ok = len(cherches) < MAX_APERCUS and time.monotonic() - debut <= BUDGET_PRESSE
     if connu and connu.get("resolu"):
-        return {**item, "url": connu["url"], "p": connu.get("p", ""), "resolu": True}
-    if len(cherches) >= MAX_APERCUS or time.monotonic() - debut > BUDGET_PRESSE:
+        repris = {**item, "url": connu["url"], "p": connu.get("p", ""), "resolu": True, "ap": connu.get("ap")}
+        # Adresse connue mais pas d'aperçu : un seul nouvel essai avec le repli navigateur.
+        if repris["p"] or repris["ap"] == 2 or not budget_ok:
+            return repris
+        cherches.append(item["id"])
+        try:
+            repris["p"] = apercu(repris["url"])
+        except Exception as erreur:  # noqa: BLE001
+            print(f"presse   aperçu impossible : {item['t'][:50]} ({erreur})", file=sys.stderr)
+        repris["ap"] = 2
+        return repris
+    if not budget_ok:
         return item
     cherches.append(item["id"])
     try:
@@ -353,7 +380,7 @@ def completer_presse(item: dict, connu: dict | None, debut: float, cherches: lis
         print(f"presse   aperçu impossible : {item['t'][:50]} ({erreur})", file=sys.stderr)
         resume = ""
     # Même sans aperçu, on garde le lien direct vers l'article et on ne recherche plus.
-    return {**item, "url": url, "p": resume, "resolu": True}
+    return {**item, "url": url, "p": resume, "resolu": True, "ap": 2}
 
 
 def collecter_presse(deja: dict[str, dict] | None = None) -> list[dict]:
