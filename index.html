@@ -243,7 +243,9 @@ const AGENDA = [
 // Infos collectées chaque nuit (donnees/auto.js), ajoutées aux infos saisies à la main.
 // Une info déjà saisie à la main (même lien) garde sa version manuelle, plus complète.
 const COLLECTE = window.GAZETTE_AUTO || { items: [], sources: {} };
-const ITEMS = [...ITEMS_MANUELS, ...COLLECTE.items.filter(a => CATS[a.cat] && !ITEMS_MANUELS.some(m => m.url === a.url))];
+// Les articles de presse saisis à la main sont remplacés par la collecte dès qu'elle fonctionne.
+const MANUELS = COLLECTE.sources.presse ? ITEMS_MANUELS.filter(i => !i.press) : ITEMS_MANUELS;
+const ITEMS = [...MANUELS, ...COLLECTE.items.filter(a => CATS[a.cat] && !MANUELS.some(m => m.url === a.url))];
 const STEP_LABELS = ["Idée", "Étude", "Vote", "Chantier", "Livré"];
 const PROJECTS = [
   { t: "Accessibilité de la mairie", s: "Phase 1 en finition, phase 2 en 2027", step: 3, item: "mairie", due: "2026-11-30" },

@@ -60,7 +60,7 @@ RAFCOM = {
 RUBRIQUES = [
     ("alerte", r"secheresse|crise|vigilance|alerte|tempete|inondation|catastrophe naturelle|canicule|coupure d.eau|orage|intemperie"),
     ("conseil", r"conseil municipal|conseil communautaire|deliberation|budget|election|\belus?\b|le maire|compte.rendu"),
-    ("urba", r"\bplu\b|urbanisme|permis|lotissement|\bzac\b|habitat|logement|haies?\b|cadastre"),
+    ("urba", r"\bplu\b|urbanisme|permis de (construire|demolir|amenager)|declaration prealable|lotissement|\bzac\b|habitat|logement|haies?\b|cadastre"),
     ("travaux", r"travaux|chantier|circulation|deviation|\broute|stationnement|voirie|parking|fermee?s? a la circulation|reseau d.eau|assainissement"),
 ]
 NIVEAUX_EAU = {"alerte": "alerte", "alerte_renforcee": "alerte renforcée", "crise": "crise"}
@@ -107,9 +107,21 @@ def date_rss(valeur: str | None) -> str | None:
         return None
 
 
+def _reparer_xml(xml: str) -> str:
+    """Corrige les flux mal formés : & isolés, entités HTML (&nbsp;…), caractères de contrôle."""
+    xml = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", xml)
+    xml = re.sub(r"&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)([a-zA-Z]+;)?",
+                 lambda m: html.unescape(m.group(0)).replace("&", "&amp;").replace("<", "&lt;") if m.group(2) else "&amp;",
+                 xml)
+    return xml
+
+
 def lire_rss(xml: str) -> list[dict]:
     """Retourne les <item> d'un flux RSS 2.0 sous forme de dictionnaires."""
-    racine = ET.fromstring(xml.encode())
+    try:
+        racine = ET.fromstring(xml.encode())
+    except ET.ParseError:
+        racine = ET.fromstring(_reparer_xml(xml).encode())
     items = []
     for it in racine.iter("item"):
         source = it.find("source")
@@ -211,14 +223,24 @@ def collecter_janze(deja: dict[str, dict]) -> list[dict]:
 # --- Presse -----------------------------------------------------------------
 
 def collecter_presse() -> list[dict]:
-    items = []
-    for it in lire_rss(telecharger(PRESSE_RSS)):
+    items, vus = [], set()
+    # Ouest-France avant ses reprises (maville.com…), pour garder la source d'origine.
+    flux = sorted(lire_rss(telecharger(PRESSE_RSS)), key=lambda i: "maville" in i["source"].lower())
+    for it in flux:
         source = it["source"] or "Presse"
         titre = re.sub(rf"\s+-\s+{re.escape(source)}$", "", it["titre"]) if source else it["titre"]
         # Détection du mot-clé : on ne garde que les articles dont le titre cite Janzé,
         # et pas le site de la mairie, déjà lu directement.
         if not cite_janze(titre) or "janze.fr" in source.lower() or not it["date"]:
             continue
+        # Les feuilles de match (« HB Janzé vs … ») ne sont pas des articles.
+        if re.search(r"\bvs\b", normaliser(titre)):
+            continue
+        # Un même article repris par plusieurs sites (Ouest-France et maville.com…) : on le garde une fois.
+        cle = normaliser(re.sub(r"\W+", " ", titre))[:70]
+        if cle in vus:
+            continue
+        vus.add(cle)
         items.append({
             "id": ident("presse", it["lien"]), "d": it["date"], "cat": "presse", "press": True,
             "t": titre, "p": f"Article paru dans {source}.", "src": source,
