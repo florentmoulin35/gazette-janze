@@ -128,7 +128,7 @@ article.read li { margin-bottom: 7px; }
 @keyframes glisse-g { from { transform: translateX(40px); opacity: .3; } to { transform: none; opacity: 1; } }
 @keyframes glisse-d { from { transform: translateX(-40px); opacity: .3; } to { transform: none; opacity: 1; } }
 /* Le geste horizontal est géré par la page : le navigateur ne doit pas faire bouger tout l'écran. */
-html, body { overflow-x: hidden; overscroll-behavior-x: none; }
+html, body { overflow-x: hidden; overflow-x: clip; overscroll-behavior-x: none; }
 main { touch-action: pan-y; }
 main.glisse-g { animation: glisse-g .22s ease-out; } main.glisse-d { animation: glisse-d .22s ease-out; }
 @media (prefers-reduced-motion: reduce) { main.glisse-g, main.glisse-d { animation: none; } }
@@ -425,7 +425,8 @@ function render() {
   const m = document.getElementById("main");
   m.innerHTML = c.art ? viewArticle(c.art) : c.rub === "une" ? viewUne() : c.rub === "agenda" ? viewAgenda() : c.rub === "sources" ? viewSources() : c.rub === "projets" ? viewProjets() : viewSection(c.rub);
   const cur = document.querySelector('nav.rub [aria-current="page"]');
-  if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
+  // Centre l'onglet actif dans la barre, sans scrollIntoView qui faisait aussi glisser toute la page.
+  if (cur) { const barre = cur.parentElement; barre.scrollLeft = cur.offsetLeft - barre.offsetLeft - (barre.clientWidth - cur.offsetWidth) / 2; }
 }
 if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Roche aux Fées Communauté";
 document.getElementById("dl-date").textContent = cap(fShort.format(dt(TODAY)));
