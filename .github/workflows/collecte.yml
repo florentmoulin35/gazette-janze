@@ -27,7 +27,18 @@ jobs:
         with:
           python-version: "3.12"
       - name: Lire les sources
-        run: python scripts/collecter.py
+        id: collecte
+        # Code 2 : auto.js est écrit mais une source est en panne depuis plus de 48 h.
+        # On enregistre quand même, et la dernière étape fait échouer le workflow.
+        run: |
+          set +e
+          python scripts/collecter.py 2> "$RUNNER_TEMP/erreurs.txt"
+          code=$?
+          cat "$RUNNER_TEMP/erreurs.txt" >&2
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" -ne 0 ] && [ "$code" -ne 2 ]; then
+            exit "$code"
+          fi
       - name: Enregistrer les nouvelles infos
         run: |
           git config user.name "Gazette de Janzé (collecte)"
@@ -35,7 +46,21 @@ jobs:
           git add donnees/auto.js
           if git diff --cached --quiet; then
             echo "Rien de nouveau."
-          else
-            git commit -m "Collecte du $(date -u +%Y-%m-%d)"
-            git push
+            exit 0
           fi
+          git commit -m "Collecte du $(date -u +%Y-%m-%d)"
+          # Un autre commit a pu arriver sur main pendant la collecte : on se remet à jour.
+          for essai in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            git rebase --abort 2>/dev/null
+            echo "Envoi refusé (essai $essai), nouvel essai…"
+            sleep $((essai * 5))
+          done
+          exit 1
+      - name: Signaler les sources en panne
+        if: steps.collecte.outputs.code == '2'
+        run: |
+          grep '^Source ' "$RUNNER_TEMP/erreurs.txt" | while read -r ligne; do
+            echo "::error::$ligne"
+          done
+          exit 1
