@@ -135,9 +135,18 @@ html, body { overflow-x: hidden; overflow-x: clip; overscroll-behavior-x: none; 
 main { touch-action: pan-y pinch-zoom; }
 main.glisse-g { animation: glisse-g .22s ease-out; } main.glisse-d { animation: glisse-d .22s ease-out; }
 @media (prefers-reduced-motion: reduce) { main.glisse-g, main.glisse-d { animation: none; } }
+/* Loupe : mode « grands caractères » (+50 %) pour les personnes malvoyantes. */
+html.gros nav.rub, html.gros main, html.gros .colophon { zoom: 1.5; }   /* le bandeau du journal garde sa taille */
+html.gros .list .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }   /* date au-dessus du titre */
+.loupe { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 10; width: 52px; height: 52px; border-radius: 50%; background: var(--ink); color: var(--paper); box-shadow: 0 2px 8px rgba(0,0,0,.25); display: grid; place-items: center; }
+.loupe svg { width: 26px; height: 26px; }
+.loupe[aria-pressed="true"] { background: var(--rust-texte); }
 .colophon { margin-top: 26px; font-size: 12px; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
 </style>
 
+<button class="loupe" id="loupe" aria-pressed="false" aria-label="Agrandir les caractères">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l6 6M7.5 10h5M10 7.5v5"/></svg>
+</button>
 <div class="page">
   <header class="mast">
     <small>Le journal de bord de votre ville<span class="rue">pour les voisins des Hirondelles</span></small>
@@ -161,7 +170,8 @@ main.glisse-g { animation: glisse-g .22s ease-out; } main.glisse-d { animation: 
   <p class="colophon" id="colophon">Informations saisies à la main le 28 octobre 2026</p>
 </div>
 
-<script src="donnees/auto.js"></script>
+<!-- Les données changent chaque nuit : l'adresse change toutes les 10 minutes pour ne pas resservir une vieille copie. -->
+<script>document.write('<script src="donnees/auto.js?v=' + Math.floor(Date.now() / 6e5) + '"><\/script>');</script>
 <script>
 const CATS = {
   conseil: { label: "Conseil municipal", short: "Conseil" },
@@ -507,6 +517,19 @@ function fitRue() {
   const ls = parseFloat(getComputedStyle(r).letterSpacing) || 0;
   r.style.letterSpacing = (ls + (width(r.previousSibling) - width(r.firstChild)) / r.textContent.length) + "px";
 }
+// Loupe : le choix est gardé d'une visite à l'autre.
+const loupe = document.getElementById("loupe");
+function grosTexte(oui) {
+  document.documentElement.classList.toggle("gros", oui);
+  loupe.setAttribute("aria-pressed", oui);
+  loupe.setAttribute("aria-label", oui ? "Revenir aux caractères normaux" : "Agrandir les caractères");
+  loupe.querySelector("path").setAttribute("d", oui ? "M15 15l6 6M7.5 10h5" : "M15 15l6 6M7.5 10h5M10 7.5v5");
+  try { localStorage.setItem("gazette-gros", oui ? "1" : ""); } catch (e) {}
+  fitRue();
+}
+loupe.addEventListener("click", () => grosTexte(!document.documentElement.classList.contains("gros")));
+try { if (localStorage.getItem("gazette-gros")) grosTexte(true); } catch (e) {}
+
 fitRue();
 if (document.fonts) document.fonts.ready.then(fitRue);
 </script>
