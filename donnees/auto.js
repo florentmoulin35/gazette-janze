@@ -1,25 +1,25 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-30T23:26+00:00",
+ "maj": "2026-10-30T23:41+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-30T23:26+00:00",
+   "le": "2026-10-30T23:41+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-30T23:26+00:00",
+   "le": "2026-10-30T23:41+00:00",
    "n": 92
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-30T23:26+00:00",
+   "le": "2026-10-30T23:41+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-30T23:26+00:00",
+   "le": "2026-10-30T23:41+00:00",
    "n": 46
   }
  },
@@ -35,7 +35,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.helloasso.com/associations/les-vies-dansent-35/evenements/balilalloween-2026-bals-folk-a-janze-le-30-et-31-octobre-2026",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-af4f311e8f",
@@ -48,7 +49,8 @@ window.GAZETTE_AUTO = {
    "url": "https://35.kidiklik.fr/7013e0535310153532f90c051fe160f7cfa7f26391d8867fd8d0eecba67c61080fc6c2c6d8129ec252da6f11d6104692534",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-a11e4726fb",
@@ -62,6 +64,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
+   "ap": 2,
    "cat2": "urba"
   },
   {
@@ -75,7 +78,8 @@ window.GAZETTE_AUTO = {
    "url": "https://unidivers.fr/janze-circulegg-coquilles-oeufs-industrie-rentable/",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": null
   },
   {
    "id": "rafcom-906e4d100a",
@@ -117,12 +121,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "En images : « Beaucoup de fierté, mais quelques regrets », Janzé s’incline en Coupe de France",
-   "p": "",
+   "p": "Chaque semaine, le Journal de Vitré pose son objectif sur un match. Ce dimanche 25 octobre, direction Janzé (Ille-et-Vilaine) pour le 6e tour de la coupe de France face à Pontivy.",
    "src": "Actu.fr",
    "url": "https://actu.fr/bretagne/janze_35136/en-images-beaucoup-de-fierte-mais-quelques-regrets-janze-sincline-en-coupe-de-france_64976207.html",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-851e41e79b",
@@ -135,7 +140,8 @@ window.GAZETTE_AUTO = {
    "url": "https://footamateur.letelegramme.fr/clubs/us-janze/football-division-3-poule-f-us-janze-chute-a-domicile-contre-us-chateaugiron-7141102.php",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-ebad94b640",
@@ -148,7 +154,8 @@ window.GAZETTE_AUTO = {
    "url": "https://footamateur.letelegramme.fr/clubs/us-janze/football-division-2-poule-f-us-janze-chute-a-domicile-contre-boistrudan-pire-7146382.php",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-b854be71e2",
@@ -161,7 +168,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.ouest-france.fr/sport/football/coupe-de-france/coupe-de-france-6e-tour-battu-par-le-stade-pontivyen-janze-sort-la-tete-haute-9b291f1a-d09d-11f1-897b-b13214c912e2",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-c5fbae126b",
@@ -174,7 +182,8 @@ window.GAZETTE_AUTO = {
    "url": "https://footamateur.letelegramme.fr/competitions/coupe-de-france/on-a-su-faire-le-match-quon-voulait-le-stade-pontivyen-maitrise-janze-et-verra-bien-le-7e-tour-de-coupe-de-france-7145949.php",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-002abe410d",
@@ -187,7 +196,8 @@ window.GAZETTE_AUTO = {
    "url": "https://footamateur.letelegramme.fr/fil-de-match/coupes/coupe-de-france-messieurs/6e-tour/janze-a-stade-pontivyen-a/1821881",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-c1ae7906a7",
@@ -195,12 +205,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Tempête Austen : la route Vitré-Janzé barrée plusieurs heures après la chute d’un arbre",
-   "p": "",
+   "p": "Une chute d’arbre a entraîné la fermeture de la RD777 à la sortie de Vitré (Ille-et-Vilaine), ce samedi 24 octobre 2026, en fin de matinée. Une déviation a été mise en place.",
    "src": "Actu.fr",
    "url": "https://actu.fr/bretagne/vitre_35360/tempete-austen-la-route-vitre-janze-barree-plusieurs-heures-apres-la-chute-dun-arbre_64972334.html",
    "a": "auto",
    "k": "presse",
    "resolu": true,
+   "ap": 2,
    "cat2": "alerte"
   },
   {
@@ -214,7 +225,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.bretagne-economique.com/actualites/janze-le-nouveau-coeur-logistique-de-diesel-technic-france-avec-185-000-commandes-attendues-en-2026/",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": null
   },
   {
    "id": "presse-288b942295",
@@ -228,10 +240,11 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
+   "ap": null,
    "aussi": [
     {
      "src": "TRM24",
-     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQbk9aS0d4bHRXWVpCTDgtM2VTZ2NITDI3VHRBdWxMR0s1dkF0dkxGeHI4bUJSejQtakFpa1FrUG9wTEZCaUFGdFVvM3huUHdvQmpMTGNTbUpqZGRrN20ydXNqT0tVek95NGpJS3RoQjZGSi1Ud2dDbUVjWlNzVW1LcEpEUUpsZERzQzJXNE9iSGx0NGFYWGh2al9UN3VWTTA?oc=5",
+     "url": "https://www.trm24.fr/diesel-technic-france-change-dechelle-avec-sa-plateforme-logistique-de-janze/",
      "t": "Diesel Technic France change d’échelle avec sa plateforme logistique de Janzé"
     }
    ]
@@ -247,7 +260,8 @@ window.GAZETTE_AUTO = {
    "url": "https://footamateur.letelegramme.fr/clubs/stade-pontivyen/au-stade-pontivyen-pas-question-de-se-faire-pieger-7143978.php",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-5631e310d4",
@@ -260,7 +274,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.auto-infos.fr/article/diesel-technic-change-de-dimension-logistique-a-janze.294097",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-6eec1bf1ef",
@@ -319,7 +334,8 @@ window.GAZETTE_AUTO = {
    "url": "https://35.kidiklik.fr/sorties-moment/481658-cine-concert-paranoid-park-spectacle-avec-les-ados-janze-35.html",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": null
   },
   {
    "id": "presse-b4377a8561",
@@ -344,7 +360,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-quinze-athletes-iront-au-championnat-de-france-b5aef5ec-26bb-4a1a-80f9-97986da36498",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-3a391f8241",
@@ -357,7 +374,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193009/rencontre-2683674/",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-0132556806",
@@ -394,7 +412,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194502/rencontre-2697438/",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-0a6406d450",
@@ -456,7 +475,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-feminine-territoriale-30543/poule-192921/rencontre-2682311/",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": null
   },
   {
    "id": "presse-9d7c107f3c",
@@ -469,7 +489,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.ouest-france.fr/sport/football/coupe-de-france/coupe-de-france-5e-tour-janze-simpose-aux-forceps-contre-plescop-05d98f06-c591-11f1-b3a8-1120a69ac78a",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-debc971404",
@@ -482,7 +503,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195135/rencontre-2708156/",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": null
   },
   {
    "id": "presse-79263e24ed",
@@ -495,7 +517,8 @@ window.GAZETTE_AUTO = {
    "url": "https://footamateur.letelegramme.fr/competitions/coupe-de-france/reduit-a-dix-plescop-craque-sur-le-fil-face-a-lus-janze-et-est-elimine-de-coupe-de-france-7136318.php",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-3bf3c12706",
@@ -508,7 +531,8 @@ window.GAZETTE_AUTO = {
    "url": "https://footamateur.letelegramme.fr/fil-de-match/coupes/coupe-de-france-messieurs/5e-tour/plescop-a-janze-a/1820151",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "janze-22d41045be",
@@ -532,7 +556,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-contre-le-cancer-la-population-mobilisee-9673765c-c0bf-11f1-aef6-9f33a81faeff",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-0efc2d2c8d",
@@ -593,7 +618,8 @@ window.GAZETTE_AUTO = {
    "url": "https://ffvelo.fr/cyclotourisme-mag/tous-pour-la-vie-janze-fete-35-ans-de-solidarite-ensemble-a-velo/",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": null
   },
   {
    "id": "presse-d729962597",
@@ -639,12 +665,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "« Un véritable exploit » : Janzé signe la surprise de la région en Coupe de France",
-   "p": "",
+   "p": "L’US Janzé (Ille-et-Vilaine), qui évolue en R3, a créé la surprise en Coupe de France en éliminant une R1, ce 27 septembre 2026. Les autres équipes locales sont aussi qualifiées.",
    "src": "Actu.fr",
    "url": "https://actu.fr/bretagne/vitre_35360/un-veritable-exploit-janze-signe-la-surprise-de-la-region-en-coupe-de-france_64849978.html",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-a00306bf58",
@@ -669,7 +696,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.letelegramme.fr/sports/football/coupe-de-france-le-ploermel-fc-deplume-par-janze-cest-le-charme-de-la-coupe-7126289.php",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-8e085c90c2",
@@ -761,6 +789,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
+   "ap": null,
    "aussi": [
     {
      "src": "velopressecollection",
@@ -1156,6 +1185,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
+   "ap": null,
    "aussi": [
     {
      "src": "velopressecollection",
@@ -1233,7 +1263,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.agirc-arrco.fr/mes-services-particuliers/evenements/je-participe-a-un-evenement/spectacle-debat-souffler-sur-les-braises-janze/",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": null
   },
   {
    "id": "presse-e176cbc28c",
@@ -1260,6 +1291,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
+   "ap": null,
    "aussi": [
     {
      "src": "velopressecollection",
@@ -1302,7 +1334,8 @@ window.GAZETTE_AUTO = {
    "url": "https://www.sapeurs-pompiers35.fr/ladjudant-chef-david-bernadet-a-pris-le-commandement-du-centre-dincendie-et-de-secours-de-janze/",
    "a": "auto",
    "k": "presse",
-   "resolu": true
+   "resolu": true,
+   "ap": null
   },
   {
    "id": "presse-34b7160a12",
