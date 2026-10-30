@@ -7,7 +7,8 @@ jobs:
   sonde:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - shell: bash {0}
+        run: |
           BOT="Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github.io/gazette-janze/)"
           NAV="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
           sonde() {
