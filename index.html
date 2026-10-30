@@ -160,7 +160,8 @@ const CATS = {
 };
 const KEYWORD = "Janzé";
 const AUTO = { auto: "Collecte automatique", semi: "Collecte partielle", non: "Saisie manuelle" };
-const TODAY = "2026-10-28";
+// Date du jour (heure locale), au format AAAA-MM-JJ : sert au bandeau, à la une et à l'agenda.
+const TODAY = new Date().toLocaleDateString("sv-SE");
 const ITEMS = [
   { id: "p-coupe-pontivy", d: "2026-10-26", cat: "presse", press: true, t: "« Beaucoup de fierté, mais quelques regrets » : Janzé s'incline en Coupe de France",
     p: "Reportage photo sur le 6e tour de Coupe de France, où l'US Janzé recevait Pontivy le dimanche 25 octobre.",
