@@ -265,9 +265,6 @@ const ITEMS_MANUELS = [
     p: "À partir du samedi 10 octobre, la brigade s'installe dans l'ancienne Trésorerie pendant toute la durée du chantier. Le bâtiment actuel, à l'entrée de ville, est démoli pour construire une gendarmerie neuve.",
     li: ["Bâtiment de 413 m², cabinet d'architecture Faber", "Coût : 1 587 660 € HT, subventions demandées à l'État et à la Région", "Logements de fonction construits par Neotoa", "Téléphone de la brigade : 02 99 47 03 18"],
     src: "janze.fr", url: "https://www.janze.fr/actualites/la-gendarmerie-demenage-dans-lancienne-tresorerie-le-temps-des-travaux", a: "auto" },
-  { id: "catnat", d: "2026-09-23", cat: "alerte", t: "Catastrophe naturelle reconnue pour les pluies de juillet",
-    p: "Après les pluies diluviennes du 15 juillet, l'État a reconnu l'état de catastrophe naturelle « inondations et coulées de boue ». L'arrêté est paru au Journal officiel le 21 septembre.",
-    src: "janze.fr", url: "https://www.janze.fr/actualites/intemperies-diluviennes-letat-de-catastrophe-naturelle-reconnu", a: "auto" },
   { id: "mairie", d: "2026-09-14", cat: "travaux", t: "Mairie : fin de la phase 1 cet automne, extension en 2027",
     p: "Le chantier d'accessibilité, lancé en mai 2025 et retardé par la découverte de mérule, est coupé en deux.",
     li: ["Phase 1 : finir le bâtiment existant pour rouvrir la mairie, réception visée fin d'automne 2026", "Le chantier rétrécit et rend des places de stationnement", "Phase 2 : extension côté sud pour rendre la salle du conseil accessible, reprise en 2027 avec un projet revu pour garder du stationnement"],
@@ -334,6 +331,8 @@ const SOURCES = [
   { n: "Le Journal de Vitré (actu.fr)", w: "Articles qui citent Janzé, détectés par mot-clé via Google Actualités", a: "auto", k: "presse" },
   { n: "Ouest-France", w: "Titres qui citent Janzé, via Google Actualités ; articles souvent payants", a: "auto", k: "presse" },
   { n: "Restrictions d'eau (VigiEau)", w: "Niveau de sécheresse à Janzé", a: "auto", k: "vigieau" },
+  { n: "Catastrophes naturelles (Géorisques)", w: "Arrêtés de reconnaissance publiés au Journal officiel", a: "auto", k: "catnat" },
+  { n: "Qualité de l'eau du robinet (Hub'Eau)", w: "Contrôles sanitaires de l'ARS ; alerte si un prélèvement n'est pas conforme", a: "auto", k: "eau" },
   { n: "Actualités de Roche aux Fées Communauté", w: "Flux RSS de rafcom.bzh : collectivité, mobilité, urbanisme", a: "auto", k: "rafcom" },
   { n: "Actes officiels (Mégalis)", w: "Délibérations et arrêtés, dont les déviations", a: "bientot" },
   { n: "Permis accordés (Sitadel)", w: "Permis de construire, d'aménager, de démolir, chaque mois", a: "bientot" },
@@ -468,7 +467,7 @@ const fHeure = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short"
 function etatSource(s) {
   const e = s.k && COLLECTE.sources[s.k];
   if (!e) return "";
-  if (e.etat === "ok") return `<em>Lu le ${esc(fHeure.format(new Date(e.le)))}</em>`;
+  if (e.etat === "ok") return `<em>Lu le ${esc(fHeure.format(new Date(e.le)))}${e.info ? " · " + esc(e.info) : ""}</em>`;
   return `<em class="ko">Lecture impossible ${e.dernier_ok ? "depuis le " + esc(fHeure.format(new Date(e.dernier_ok))) : "pour l'instant"}</em>`;
 }
 
@@ -540,7 +539,7 @@ function astuce() {
   try { if (localStorage.getItem("gazette-glisse")) return ""; } catch (e) {}
   return `<p class="astuce">Astuce : glissez le doigt vers la gauche ou la droite pour changer de rubrique.</p>`;
 }
-if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Roche aux Fées Communauté";
+if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Géorisques, Hub'Eau, Roche aux Fées Communauté";
 document.getElementById("dl-date").textContent = cap(fShort.format(dt(TODAY)));
 // Âge de la dernière collecte, dans le bandeau. Après 36 h, la collecte a sans doute échoué : on le signale.
 if (COLLECTE.maj) {
