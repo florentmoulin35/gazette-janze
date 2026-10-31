@@ -1,47 +1,47 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-31T21:47+00:00",
+ "maj": "2026-10-31T22:00+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-31T21:47+00:00",
+   "le": "2026-10-31T22:00+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-31T21:47+00:00",
-   "n": 93
+   "le": "2026-10-31T22:00+00:00",
+   "n": 54
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-31T21:47+00:00",
+   "le": "2026-10-31T22:00+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-31T21:47+00:00",
+   "le": "2026-10-31T22:00+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-10-31T21:47+00:00",
+   "le": "2026-10-31T22:00+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-10-31T21:47+00:00",
+   "le": "2026-10-31T22:00+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-10-31T21:47+00:00",
+   "le": "2026-10-31T22:00+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-10-31T21:47+00:00",
+   "le": "2026-10-31T22:00+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -913,11 +913,6 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
-    },
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -1369,14 +1364,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null,
-   "aussi": [
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/actualites/37515-janze-grand-prix-cycliste-13-juillet-2026-infos-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 13 juillet 2026 infos de course cycliste"
-    }
-   ]
+   "ap": null
   },
   {
    "id": "rafcom-9c04434898",
@@ -1483,14 +1471,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null,
-   "aussi": [
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
-     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
-    }
-   ]
+   "ap": null
   },
   {
    "id": "presse-c321fe73da",
