@@ -1,25 +1,25 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-30T23:46+00:00",
+ "maj": "2026-10-31T04:28+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-30T23:46+00:00",
+   "le": "2026-10-31T04:28+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-30T23:46+00:00",
-   "n": 58
+   "le": "2026-10-31T04:28+00:00",
+   "n": 92
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-30T23:46+00:00",
+   "le": "2026-10-31T04:28+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-30T23:46+00:00",
+   "le": "2026-10-31T04:28+00:00",
    "n": 46
   }
  },
@@ -285,9 +285,11 @@ window.GAZETTE_AUTO = {
    "t": "Entente Bruz Bréal - U18-1 - HB JANZE",
    "p": "",
    "src": "Score'n'co",
-   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNQUszaElyMWFJWkJKem5hRE9pYmFQR0JfSElKeVM2eXdXNkVPT2lKWHdTTjhmZU56WjFENUJqcUhvX2xPblNvRXpqdWowTEVjZEdUTFRhU25hczZRR3J4cjloenhOOExsbUZ6QU92a181TXZWNExDcnJuaE5iUDAwYTBTZm1LcFh4?oc=5",
+   "url": "https://scorenco.com/hand/match-handball-janze-u18-1-ja-bruz-handball-u18-1-1xabz",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "janze-59cd7bbe71",
@@ -319,9 +321,11 @@ window.GAZETTE_AUTO = {
    "t": "PLESCOP ENT S - US Janzé - Football",
    "p": "",
    "src": "Score'n'co",
-   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9rU2Y4N19nZ2dKQ3l1bm54UlRPSndkaGVQb3dnNkFzRExVREZLeE9YbFlickhpYjZuMWZnczBsVDBVUExpTmxNSHdSYzc4M0t0YmVfQURuZENCdXVoX1NZN3dvNUY1bzBqMG01dEV3YnBJUHBiZEdsbVFR?oc=5",
+   "url": "https://scorenco.com/football/match-es-plescop-football-us-janze-1ws1k",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-2b4c863ce1",
@@ -397,9 +401,11 @@ window.GAZETTE_AUTO = {
    "t": "US Janzé - US Val d'Ize",
    "p": "",
    "src": "Score'n'co",
-   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNaXZzc0E4VUowYWlHcEdRSlFsejVqSWlzNDdDa09BM25jWFJtRnMtejhRSzJpUVJYejBFTTFZTXN4LUZ2eVhRYmV4akdFUjVMTVl1MGRuMWZSZ3E4X1BqZ2VQOGZxeGd0bkZaQnJUT3pvQVFtTHU5Unh4NmRjSzB2MHpkRzdGWlJMd2RFQW1KNA?oc=5",
+   "url": "https://scorenco.com/football/match-us-janze-u16-1-us-val-d-ize-1-u16-1w0lr?e",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-c8b89adef5",
@@ -416,16 +422,32 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
+   "id": "presse-5a6b9daafc",
+   "d": "2026-10-15",
+   "cat": "vie",
+   "press": false,
+   "t": "LIFFRE US - US Janzé",
+   "p": "",
+   "src": "Score'n'co",
+   "url": "https://scorenco.com/football/match-us-janze-u14-1-us-liffre-u14-1-1tnqc",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
    "id": "presse-0a6406d450",
    "d": "2026-10-14",
    "cat": "presse",
    "press": true,
    "t": "Résultats municipales 2026 à Janzé (35150) : résultats et maire élu",
-   "p": "",
+   "p": "Consultez les résultats des élections municipales 2026 à Janzé (35150) pour le 1er et le 2nd tour. Dernières actualités et informations sur les candidats et élus.",
    "src": "Le Figaro",
-   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOenVTVFlpY25icDlVQmkwTElISkZqX3NCelk1WURFdThBaTI4U1JfbWlSZGZTclcwODRvRm83ME5NOG5hWXY5eUhsWEwyV1hEQUNkakdVZEk4Vm9ZZmlhbVhHZXhWNjU5LXF2b0xzUjllYlJpQVI1SW1WRG43a1A2TnFGR3RxSHhUTDlFdkdRelMyY2lyYVE?oc=5",
+   "url": "https://www.lefigaro.fr/elections/resultats/municipales/2026/ille-et-vilaine-35/janze-35136",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
+   "ap": 2,
    "cat2": "conseil"
   },
   {
@@ -436,9 +458,11 @@ window.GAZETTE_AUTO = {
    "t": "US Janzé - Football Club Canton du Sel",
    "p": "",
    "src": "Score'n'co",
-   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPbWY0RzIyaUFqaXVNbW9NYkRKWVF4VURjYWNCWlA0bzlxSG5ZSEVabDlMX016NDY0V1JpVlVWa2dOLW5qMjIwTWJfVUZiSlp4NjhQZEpZLW9JTm9mZUFObGFYZnFXYVNyTWN2dUdXM05odUhUVVBDdzYxR3cyLXRaQThyTDhTdUFoTEY3VVhkQWtWaUdx?oc=5",
+   "url": "https://scorenco.com/football/match-football-club-canton-du-sel-1-u16-us-janze-u16-1-1tf4m",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-d8c5c395bf",
@@ -448,9 +472,11 @@ window.GAZETTE_AUTO = {
    "t": "ORGERES US - US Janzé 2",
    "p": "",
    "src": "Score'n'co",
-   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFB1bFF5TmtaaUNhbmJjR3BxZWF3R2hxT1JmWWoxQndheFJZNFZHMEV1VGhIaFJ5ZHkyLXJ3alBOMDdMcGpKMFU0WldBZEZzVGVma0MwZE9kOUcxMnJPeU9ZUV90dlZKd2FfbHVEaEFpX2d4aWJ6NElMYUp0MEs?oc=5",
+   "url": "https://scorenco.com/football/match-us-janze-2-us-orgeres-football-1s9nk",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-324fc94588",
@@ -567,9 +593,11 @@ window.GAZETTE_AUTO = {
    "t": "CESSON RENNES METROPOLE HB 1 vs HB JANZÉ",
    "p": "",
    "src": "Fédération Française de Handball",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOY21ib2ZaTkxLTk8wSDFtdHU5X09vRU5nQUFCdG9XbWFSbmMxNlRuaXBwSFltOVdIZXlZenZIZ3FMd2pYenBDSXVoS1BYdGtqdGwzSzd1cWFfYmpSQWtDTHFxM2Fwd3VkMHUzdFFGdUo3ZHhWRXp4bkRoUWY4RzJqaERYQlFFSXNDRHVZVDRJTWVYbi02MEpwM1BLVVk3aGU3WTBIZG96eXV2VWJBcktDZVBXWmRlV3dFMkkyVnVfMFZ3MmtCMUE?oc=5",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195135/rencontre-2708155/",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-df80b71d1e",
@@ -579,9 +607,11 @@ window.GAZETTE_AUTO = {
    "t": "Football - Régional 3 poule L : victoire de US JANZE contre ASSOCIATION SPORTIVE DE RETIERS-COESMES",
    "p": "",
    "src": "Foot Amateur Bretagne",
-   "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQa2JxbzZicmE1dXltb2xzdXBucmJySWc3ci1kenJmUlpWRWhKYTZUN1JOSWE5d3RZQWJKNWtwNS1HTGpaaVQzSFktUWxJUFBELVlUZHFNemVicVliNXRJMlMtdjZRd3RDWWtMTjJiTUpsa0Q3R2tJbS14UkFvZTJkSEVqWDFCczNZRnE1RFBSeHBFOU54Ni1LNzlvam9fUGxpbElCUlhEd2tpc1NuUnY2dmNnamNUejdiWlFBelhoRmpGOFZWTm1KZnU0NXdtOS1TbFI5QTc2Qmk3TEZCUW1TMXdJRkpGZ0FUcVJjclB1TQ?oc=5",
+   "url": "https://footamateur.letelegramme.fr/clubs/us-janze/football-regional-3-poule-l-victoire-de-us-janze-contre-association-sportive-de-retiers-coesmes-7131041.php",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-044f0072bf",
@@ -654,11 +684,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Résultats des élections municipales 2020 à Janzé (35150) : tout ce qu’il faut savoir",
-   "p": "",
+   "p": "Consultez les résultats des élections municipales 2020 à Janzé (35150) pour le 1er et le 2nd tour. Dernières actualités et informations sur les candidats et élus.",
    "src": "Le Figaro",
-   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOV1JmMDZFTFg3OWhRSGVZdS0xcG5ESzVBTm9OeVdEUTZac0FreFBjMEZxckVSRlZtek45NWNNSXlHRjhGRHZvcThaUkJmSEkxTDdtVFJwckZheXlPb0F2cjJUajlUX2V5TWU4TXZ3UGVlckxUdFZWQXcyYlh6ZjUwc2JpQ2lUWnU4dTh2aDdacy1QTmZoNnc?oc=5",
+   "url": "https://www.lefigaro.fr/elections/resultats/municipales/2020/ille-et-vilaine-35/janze-35136",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
+   "ap": 2,
    "cat2": "conseil"
   },
   {
@@ -709,11 +741,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "À Vitré et Janzé, un rassemblement pour le climat, la paix et la justice sociale ce samedi",
-   "p": "",
+   "p": "Un appel à mobilisation a été lancé pour le climat, la paix et la justice sociale le 26 septembre 2026. À Vitré, il a lieu à 14 h, place la Gare. À Janzé, place de l’Église à 14 h.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQYmhfMWdILUlIMTRucll1TmpnTDR5TDg0Zk1FeFlTdUFBWjU3dGg5UkF1MWxvZ05Md0tjdDNGajIyQ2JoenBjR19OcGdJWEtrbElGemF6MFdkQzVfTzl0dm82bXNPQWo2UWJpdFJzNERWSWxNQTV1VW9teXJuMGx1clZFSU9ISXJ0VFA5ZGp6ZTZOY0NfdXRBRFdQZThKd1VOeE82c0dQQ1BXSWNxNF9tQ0ZldWZyLVlpRzlxVFhUT25qWjcyZzdCcmFiN0xfMGtiendHcmtKNGdPVDktb1lVaEJsU0dfQm9xVDF3?oc=5",
+   "url": "https://actu.fr/bretagne/vitre_35360/a-vitre-et-janze-la-gauche-locale-appelle-a-se-rassembler-pour-le-climat-la-paix-et-la-justice-sociale-2_64840980.html",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
+   "ap": 2,
    "aussi": [
     {
      "src": "Actu.fr",
@@ -767,9 +801,11 @@ window.GAZETTE_AUTO = {
    "t": "US Janzé",
    "p": "",
    "src": "Score'n'co",
-   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0wX0ZQcmZ4aDFnX2xjMU1JdDRwNWE1bUtvcjFhQXp3TGZSQWRLejZHVjBCNE1na0JRN1Btb2VOSkx6aGlTSFVHS2ZCOE1lWU5CV2dwQ2RzSmJvMTA5R2V2cDJmSnAzUnIydkpnLQ?oc=5",
+   "url": "https://scorenco.com/football/clubs/us-janze-2hi0/u15-1-3c8u",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-719297f0b2",
@@ -801,6 +837,11 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
+    },
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -846,9 +887,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Les festivités du 13 juillet auront lieu demain",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNZTVobExJVDNBQkZLOVRhMjlWdVJrVk1tUy0zOF9fMzNqTkg0WGRDTXB3WC1OQVFPVzdfUi1SQVlXRHM0a0oxaWMta19Pa2gxbWtLS3NiMWtzOE14QnY5ZDlicmxzNG1HeC13NEV2bFhGZ3BNRUJyOGZTZ1VrTVJWZ1ZOVzJBZURnVzhzNGtZQUVuemw5ZzFMMHlRbmxhVU5Hc201Y2JaU0FvejVBMUxLMTBnSlV5bGI5QmFJb1BWT0k5c3MtQnBRckhmN05OTFlzeWJvSWRR?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-les-festivites-du-13-juillet-auront-lieu-demain-6b7c6b8a-aac0-11f1-9556-770e8387e7e9",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-2417186eb3",
@@ -858,9 +901,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. L’association des Créatifs janzéens propose des cours de couture",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNYVk0TGFINUh4VFVKZmhVSWpuNVhic2lDVzh6MTg3bVc5RTViSmdUZEdJNEYyaWx2VW9tRTNLM1JiSXR2REVfMXNJN0ZTcXhwNkx1U05HZE5TYU5pZ0tXck0waVFKTDhtcVRMNk5xVFBITGZUWG9vaUQ2T3U5Ui1JTEFmc1JZOEl2SW5pVUZuQl9pMjZVMGRMaDAzeGVhaVBOa3N2UDhYY1NiUzFENFVZaUU2QTdXNFozekJVYW1CRjd3bmI1b1VnajJCUFBQWmR4TzQwdTZOVlhqeVdfWVdPSG1SeENySE9kbXBv?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-lassociation-des-creatifs-janzeens-propose-des-cours-de-couture-0de3138a-9e42-42b3-ac4b-3ea7bbcdd5af",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "janze-925baf1b71",
@@ -894,6 +939,18 @@ window.GAZETTE_AUTO = {
    "url": "https://www.janze.fr/actualites/le-dispositif-argent-de-poche-revient-pour-les-16-17-ans",
    "a": "auto",
    "k": "janze"
+  },
+  {
+   "id": "presse-97cd12d21d",
+   "d": "2026-09-07",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Un nouveau président à l’association Janzé Histoire et Patrimoine",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPQUplcVpudXZ2aWFpU2QyNGRvcmJXc0VGOENBS2VoeDU2dWRicXpEam1yQVpKalRGM09lTEp0akV1anY2aWV4c0lWWU44c212SlF4eTZaMzk2S0lkd1ZtUWw3cjJKQnZIOWRyTlFBdENZR3hTb3h3dmM5SXFoel9XOWZndFZFbC1DVTRFUnpnRjg2VGhTNl85bjFnQ0tHY0NzVm1NQjR5dzNlejNCZ1czSVdmNjNudGt1akx0QXFpMnJKN3Y4WDl0emFBV3dkVGw0MTlaeDV2ekNPblk0UGZxSm9PM2sxVlFLb1dPbQ?oc=5",
+   "a": "auto",
+   "k": "presse"
   },
   {
    "id": "presse-5470bf9fc9",
@@ -939,9 +996,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Avec 50 élèves en moins, le collège public perd deux classes",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNWHJiVThsdUEzbVRQZFBIU2M3SkxhT3VRQzY1d3JlalJCamM0WGNwV0s2VGtRS2RtNzhLeFpvdHVuLS12bW5lcnhtdHlKN0lHM0d1SE9HVDFWaHJiRDgzaTQ2OUlqeWxTeGVoSDZHTy0yUERtV0hPa2tLRlVNcGFYMGVOMXdiRmFCeWpuSXhrX09fVXNEbEI0emd4RUZCUmpDZWMtbkc4RVBnVjVFOHNNRHZmQkxyWmFGRnJrbnludVhqUEdaMTZJNU5mY3VGRy1RMDlvWm9TcTF6NlJmc2k3QW11OHVsQQ?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-avec-50-eleves-en-moins-le-college-public-perd-deux-classes-161a0784-4bbf-4659-8906-1c82729a7751",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-f10ce17556",
@@ -998,11 +1057,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "À Janzé, ces deux jeunes femmes de 19 et 23 ans luttent contre l’isolement des personnes âgées",
-   "p": "",
+   "p": "Deux nouvelles recrues ont rejoint le Centre communal d’action sociale (CCAS) de Janzé (Ille-et-Vilaine) pour renforcer les actions menées contre l’isolement des personnes âgées.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNdlZZY0ZLUTNudmRVUkRWNUFmVEtWQUlGVnhrOWN4aC1yUEw3WWxENUtWeWRab1kzY3F5SDRwbktFYk81T0lEcUUzelZITG8zOS0xNTNVS3haNjVpMmc1WEcyUExCc21VR3J4eEQzQUhWejc2QzN2WkZXOUlUN1RzNmZ1YUJ0ak1Qb3VsQUZJZEtYYXVQUUZ5QkU2a0FEc2dmSzNDczB0YzkzOERSMWFFZmpkdERmRnl3YmNQUzVVaXQ3NWk3ZW9vS1FESFdjVXFDNkJXcVBzR3IxM0E?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/a-janze-ces-deux-jeunes-femmes-de-19-et-23-ans-luttent-contre-lisolement-des-personnes-agees_64716018.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "rafcom-8f8a1733d5",
@@ -1101,11 +1162,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "À Janzé, le père Joseph Hoang Dinh quitte la paroisse Sainte-Anne après trois années de service",
-   "p": "",
+   "p": "Le père Joseph Hoang Dinh quitte la paroisse Sainte-Anne à Janzé (Ille-et-Vilaine) en septembre prochain et va poursuivre sa mission auprès des jeunes de Redon.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQVFpvZTlSWTFrWWhGTU5QR1phUEVNZDlUVHNyMEx0YmUwTU04QUZ5NThCRVJpb3JJRG9CeEludDZ5N3g4cy05MU5pd2lWYmJ0QmlMVW9NYURudlRnWXdDcEl6bDNnQVMzSWtfOS1wYzBqczY5Z2s5VHFOTTZyTGpzZWtUajBzblB2eEkydDExbTJCeTlVUzAxeUR4dnpVUHlSZGsySUcwcUt1T3djSTJTZ0ltV1dDYk42VF9vWjVpbHd4dUJSN0xReV9oXzBNTmZONm5Pdzd0SDRCLWhsZGc?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/a-janze-le-pere-joseph-hoang-dinh-quitte-la-paroisse-sainte-anne-apres-trois-annees-de-service_64643514.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-20c213d445",
@@ -1194,7 +1257,14 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null
+   "ap": null,
+   "aussi": [
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/actualites/37515-janze-grand-prix-cycliste-13-juillet-2026-infos-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 13 juillet 2026 infos de course cycliste"
+    }
+   ]
   },
   {
    "id": "rafcom-9c04434898",
@@ -1254,9 +1324,11 @@ window.GAZETTE_AUTO = {
    "t": "VIDÉO. À Janzé, une centrale photovoltaïque de 6 000 panneaux s’installe dans cette ancienne carrière",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxPMHczeFRadDhQdHdYRUJtYXdhekI5a1ZfYXBncEREdUFBS2VJQjlyelFnTXJCNmdsYmZidXZmb0hKeV9ja1pTUDh6cmNncmVxMmFSbE9Cb2JyRk8tVHpEcklSb2p6ZU9EYTRZUlRtd3RDVlowTXRqNUlQTkxWYlRReF9zdEdETGxNbjRVU0pha2ZtZGdNanRjWkt4V0laMUd5WTRVTjg3RDZtVDAwWWhUQklnMGIzbVI3ODI0SEh5bU5oMWRZMjNQdzVSSk4wN2dJaGxqdmg5c2h6RzlTNGR0b2owdWRNS3VMSklxV2VjWDdQZzMzdm1xZUpYaW8xUDdzUWhjMDdvaDhHSE50UTVuTjI0cw?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/rennes-35000/video-a-janze-une-centrale-photovoltaique-de-6-000-panneaux-sinstalle-dans-cette-ancienne-carriere-92c81d76-d95c-4805-847e-6737c4170965",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-0d79ea41a1",
@@ -1297,7 +1369,14 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null
+   "ap": null,
+   "aussi": [
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
+     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
+    }
+   ]
   },
   {
    "id": "presse-c321fe73da",
@@ -1305,11 +1384,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "La Fête de la musique investit le centre de Janzé ce samedi 20 juin",
-   "p": "",
+   "p": "La Fête de la musique revient à Janzé (Ille-et-Vilaine). Plusieurs ambiances et animations sont au programme pour ravir tout le monde.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOSDZfMWVJc0JoUkZ5dWNaYWZyeWlvT3dlVjhURFZxVzhIUXg4NlNKMnVnTWRCdkE2UDRvZ3pWWlhVOWEwdjFvZkd1ZXRnclFVM21XNTNpOXZHNl9za1pwSC02WVkwYnpKVDAwZGl5RUZwYVFsa0lzbHB5SDctSkIxSWNSQ2tmQWNFVG1JQTNFZHhXazBjakppd0ttS0haNDZWM3FPejhFSWFCdlo5bUN6cU5mZFR3OFpTb0E?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/la-fete-de-la-musique-investit-le-centre-de-janze-ce-samedi-20-juin_64428097.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "rafcom-0ee42d5db3",
@@ -1446,9 +1527,11 @@ window.GAZETTE_AUTO = {
    "t": "Un motard blessé et héliporté en urgence absolue, après une collision, près de Janzé",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNWkhac2R4SDVfLWdyTkhpalVCQUYwcDA2Qk1tOXdrMFdqN0xyVDM5UHM0eEkxSEtHTnhfLUpkdVFNaHN6ZWpyZEQ1NHlHX2VQNzB4QWdHZUlHZDRGaHJSUTZrYWwtN3R0TFAwWXVoWHRJY0V5S1dBZWkzUFpfa1BSZlNwY3Y0UnlFbG10REJqbGJMOTZFRmZ0VHBvemtYUmNYMm5NWWltWlg4UldVdkJ6cnVON0dieXNmWVJJdm5GWHlpeEVERml5alZpdTgxNnJrb2Y1WHpjci00cWN6Y3lyc3M3RG45ci00YmgzNkhRS0ZuMVFsdjllSTE4bXc?oc=5",
+   "url": "https://www.ouest-france.fr/societe/faits-divers/un-motard-blesse-et-heliporte-en-urgence-absolue-apres-une-collision-pres-de-janze-2d229f52-2d35-11f1-907e-c89d90e05bfb",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-982160a402",
