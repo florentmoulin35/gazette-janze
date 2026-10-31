@@ -7,19 +7,40 @@ jobs:
   sonde:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - shell: bash {0}
         run: |
-          UA="Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github.io/gazette-janze/)"
-          for u in "https://www.ille-et-vilaine.gouv.fr/Publications/Recueil-des-actes-administratifs" \
-                   "https://www.ille-et-vilaine.gouv.fr/Publications/Recueil-des-actes-administratifs/Recueil-des-actes-administratifs-2026"; do
-            echo "=== $u"
-            curl -s -L --max-time 30 -A "$UA" -w '\nHTTP %{http_code} %{url_effective}\n' "$u" -o p.html; tail -c 200 p.html | tail -1
-            grep -o 'href="[^"]*"' p.html | grep -iE 'recueil|raa|\.pdf|download' | sort -u | head -40
+          pip -q install pypdf
+          BOT="Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github.io/gazette-janze/)"
+          NAV="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+          P="https://www.ille-et-vilaine.gouv.fr/Publications/Recueil-des-actes-administratifs/Recueil-des-actes-administratifs-2026"
+          curl -s -L --max-time 30 -A "$BOT" "$P" -o p.html
+          grep -o 'href="/contenu/telechargement/[^"]*recueil-35-2026[^"]*"' p.html | sed 's/href="//;s/"$//' | sort -t- -k5 -n | tail -15 > liens.txt
+          grep -o 'recueil-35-2026-[0-9]*' p.html | sort -u | wc -l
+          L=$(tail -1 liens.txt)
+          for ua in BOT NAV; do
+            echo "== $ua"; curl -sS -L --max-time 120 -A "${!ua}" -o r.pdf -w "%{http_code} %{size_download}o %{content_type} %{time_total}s\n" "https://www.ille-et-vilaine.gouv.fr$L" 2>&1
           done
-          echo "=== premiers PDF"
-          for l in $(grep -o 'href="[^"]*"' p.html | grep -iE 'download|\.pdf' | sed 's/href="//;s/"$//' | head -3); do
-            case "$l" in http*) url="$l";; *) url="https://www.ille-et-vilaine.gouv.fr$l";; esac
-            curl -s -L --max-time 60 -A "$UA" -o r.pdf -w "%{http_code} %{size_download}o %{content_type}\n" "$url"; echo "$url"
-            pdftotext r.pdf r.txt 2>&1 | head -2; wc -c r.txt; head -c 600 r.txt; echo
-            grep -n -i -B2 -A3 "janz" r.txt | head -40
+          cat > lire.py <<'PY'
+          import sys, re, time
+          from pypdf import PdfReader
+          for f in sys.argv[1:]:
+              t = time.time()
+              try:
+                  r = PdfReader(f); txt = "\n".join((p.extract_text() or "") for p in r.pages)
+              except Exception as e:
+                  print(f, "ERREUR", e); continue
+              print(f"--- {f}: {len(r.pages)} pages, {len(txt)} car., {time.time()-t:.1f}s")
+              print(txt[:300].replace("\n", " | "))
+              for m in re.finditer(r"janz[ée]", txt, re.I):
+                  print("  >>", txt[max(0, m.start()-250):m.end()+250].replace("\n", " "))
+          PY
+          sed -i 's/^          //' lire.py
+          i=0
+          for L in $(cat liens.txt); do
+            i=$((i+1)); curl -s -L --max-time 120 -A "$NAV" -o "r$i.pdf" "https://www.ille-et-vilaine.gouv.fr$L"
+            echo "$L -> $(stat -c %s r$i.pdf)o"
           done
+          python lire.py r*.pdf 2>&1 | head -c 20000
