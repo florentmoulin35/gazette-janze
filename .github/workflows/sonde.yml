@@ -21,7 +21,7 @@ jobs:
           grep -o 'recueil-35-2026-[0-9]*' p.html | sort -u | wc -l
           L=$(tail -1 liens.txt)
           for ua in BOT NAV; do
-            echo "== $ua"; curl -sS -L --max-time 120 -A "${!ua}" -o r.pdf -w "%{http_code} %{size_download}o %{content_type} %{time_total}s\n" "https://www.ille-et-vilaine.gouv.fr$L" 2>&1
+            echo "== $ua"; curl -sS --http1.1 -L --max-time 120 -A "${!ua}" -o r.pdf -w "%{http_code} %{size_download}o %{content_type} %{time_total}s\n" "https://www.ille-et-vilaine.gouv.fr$L" 2>&1
           done
           cat > lire.py <<'PY'
           import sys, re, time
@@ -40,7 +40,8 @@ jobs:
           sed -i 's/^          //' lire.py
           i=0
           for L in $(cat liens.txt); do
-            i=$((i+1)); curl -s -L --max-time 120 -A "$NAV" -o "r$i.pdf" "https://www.ille-et-vilaine.gouv.fr$L"
+            i=$((i+1)); curl -sS --http1.1 -L --max-time 120 -A "$BOT" -o "r$i.pdf" "https://www.ille-et-vilaine.gouv.fr$L"
             echo "$L -> $(stat -c %s r$i.pdf)o"
           done
+          python -c "import urllib.request as u;r=u.urlopen(u.Request('https://www.ille-et-vilaine.gouv.fr'+open('liens.txt').read().split()[-1],headers={'User-Agent':'GazetteJanze/1.0'}),timeout=60);print('urllib',r.status,r.headers.get('content-type'),len(r.read()))"
           python lire.py r*.pdf 2>&1 | head -c 20000
