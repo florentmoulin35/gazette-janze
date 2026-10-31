@@ -1,7 +1,8 @@
 # Données d'urbanisme de Janzé : à lancer à la main (onglet Actions ›
 # « Données d'urbanisme » › Run workflow). Télécharge les gros fichiers
 # nationaux de data.gouv.fr (Sitadel et DVF), n'en garde que Janzé, et
-# enregistre les CSV légers dans donnees/urbanisme/.
+# enregistre les CSV légers dans donnees/urbanisme/, puis le résumé
+# donnees/urbanisme.js affiché dans la rubrique Urbanisme.
 name: Données d'urbanisme
 
 on:
@@ -41,11 +42,13 @@ jobs:
             *)                  options="--sitadel --dvf" ;;
           esac
           python scripts/filtrer_urbanisme_janze.py $options --dossier donnees/urbanisme
+      - name: Résumer pour la page Urbanisme
+        run: python scripts/resumer_urbanisme.py
       - name: Enregistrer les CSV de Janzé
         run: |
           git config user.name "Gazette de Janzé (urbanisme)"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add donnees/urbanisme
+          git add donnees/urbanisme donnees/urbanisme.js
           if git diff --cached --quiet; then
             echo "Rien de nouveau."
             exit 0

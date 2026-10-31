@@ -52,6 +52,7 @@ self.addEventListener("fetch", e => {
   if (req.mode === "navigate") { e.respondWith(reseauDabord(req, "./")); return; }
   if (url.origin === location.origin) {
     if (url.pathname.endsWith("/donnees/auto.js")) { e.respondWith(reseauDabord(req, "donnees/auto.js")); return; }
+    if (url.pathname.endsWith("/donnees/urbanisme.js")) { e.respondWith(reseauDabord(req, "donnees/urbanisme.js")); return; }
     e.respondWith(cacheDabord(req));
     return;
   }
