@@ -5,8 +5,9 @@ filtrer_urbanisme_janze.py) en un petit fichier donnees/urbanisme.js que la
 page index.html affiche dans la rubrique Urbanisme.
 
 On ne publie que des chiffres agrégés et quelques lignes récentes : la page
-reste légère (quelques Ko) et ne montre aucun nom de particulier ni de
-société civile familiale (voir societe()).
+reste légère (quelques Ko). Le nom du demandeur est affiché quand Sitadel le
+publie, c'est-à-dire pour les personnes morales (entreprises, SCI, collectivités) :
+la base nationale ne contient pas le nom des particuliers.
 """
 
 from __future__ import annotations
@@ -68,14 +69,43 @@ def entier(s: pd.Series) -> pd.Series:
 
 
 def societe(ligne: pd.Series) -> str:
-    """Nom du demandeur, seulement pour les promoteurs, bailleurs, entreprises et collectivités.
+    """Nom du demandeur quand c'est une personne morale (entreprise, SCI, collectivité).
 
-    Les sociétés civiles (SCI, GAEC… : catégorie juridique 65xx) portent souvent le
-    nom d'une famille : on ne les affiche pas, pas plus que les particuliers.
+    Sitadel ne publie pas le nom des particuliers : la case est alors vide.
     """
-    if ligne.get("CJ_DEM", "").startswith("65"):
-        return ""
     return reparer(ligne.get("DENOM_DEM", "")).strip()
+
+
+# Quartier suivi : la rue des Hirondelles et les rues qui la touchent (repérées
+# avec les coordonnées des ventes DVF : toutes à moins de 110 m). Les variantes
+# d'écriture de la source sont couvertes (« RUE RENE DE CHATEAUBRIANT »,
+# « RUE FRANCOIS-RENE CHATEAUB »…). La ligne de train et la route de
+# Châteaubriant, plus loin, sont exclues.
+QUARTIER = re.compile(r"HIRONDELLE|ALOUETTE|MESANGE|CHATEAUBRIAN?[DT]?\b|CHATEAUB$")
+HORS_QUARTIER = re.compile(r"LIGNE|ROUTE|RTE")
+
+
+def dans_quartier(voie: str) -> bool:
+    voie = voie.upper()
+    return bool(QUARTIER.search(voie)) and not HORS_QUARTIER.search(voie)
+
+
+# Nom affiché pour chaque rue du quartier, quelle que soit l'écriture de la source.
+RUES_QUARTIER = [("HIRONDELLE", "Rue des Hirondelles"), ("ALOUETTE", "Rue des Alouettes"),
+                 ("MESANGE", "Rue des Mésanges"), ("CHATEAUB", "Rue Chateaubriand")]
+
+
+def rue_quartier(voie: str) -> str:
+    voie = voie.upper()
+    nom = next((n for cle, n in RUES_QUARTIER if cle in voie), voie.title())
+    lot = re.search(r"LOT\D*(\d+)", voie)
+    return f"{nom} (lot {lot.group(1)})" if lot else nom
+
+
+def numero(ligne: pd.Series, colonne: str) -> str:
+    """Numéro dans la rue, sauf quand la source y a mis un numéro de lot ou de parcelle."""
+    n = str(ligne.get(colonne, "")).strip()
+    return n if re.fullmatch(r"\d{1,4}\s?(BIS|TER|[A-E])?", n, re.I) else ""
 
 
 def resumer_logements() -> dict:
@@ -161,6 +191,44 @@ def resumer_ventes() -> dict:
     }
 
 
+def resumer_quartier() -> dict:
+    """Tous les permis et toutes les ventes de la rue des Hirondelles et des rues voisines."""
+    permis = []
+    fichiers = [("sitadel_logements_janze.csv", "Logement"), ("sitadel_locaux_non_residentiels_janze.csv", "Local"),
+                ("sitadel_permis_amenager_janze.csv", "Aménagement"), ("sitadel_permis_demolir_janze.csv", "Démolition")]
+    for nom, genre in fichiers:
+        df = lire(nom)
+        if df.empty:
+            continue
+        etat = next(c for c in df.columns if c.startswith("ETAT_"))
+        for _, l in df[df[etat] != ETAT_ANNULE].iterrows():
+            if not dans_quartier(f"{l.ADR_LIBVOIE_TER} {l.ADR_LIEUDIT_TER}"):
+                continue
+            lgt = int(entier(pd.Series([l.get("NB_LGT_TOT_CREES", "0")]))[0])
+            quoi = (f"{lgt} logement{'s' if lgt > 1 else ''}" if genre == "Logement" and lgt
+                    else "Travaux sur une maison" if genre == "Logement" else genre)
+            permis.append({"d": l.DATE_REELLE_AUTORISATION, "n": numero(l, "ADR_NUM_TER"),
+                           "voie": rue_quartier(f"{l.ADR_LIBVOIE_TER} {l.ADR_LIEUDIT_TER}"),
+                           "quoi": quoi, "nature": NATURE.get(l.get("NATURE_PROJET_DECLAREE", ""), ""),
+                           "etat": ETATS.get(l[etat], ""), "societe": societe(l)})
+    ventes = []
+    df = lire("dvf_janze.csv")
+    if not df.empty:
+        df = df[df.adresse_nom_voie.map(dans_quartier)]
+        for mid, g in df.groupby("id_mutation"):
+            locaux = g[g.type_local.isin(["Maison", "Appartement", "Local industriel. commercial ou assimilé"])]
+            l = (locaux if len(locaux) else g).iloc[0]
+            surf = pd.to_numeric(locaux.surface_reelle_bati, errors="coerce").sum()
+            prix = pd.to_numeric(l.valeur_fonciere, errors="coerce")
+            type_bien = {"Local industriel. commercial ou assimilé": "Local commercial"}.get(l.type_local, l.type_local)
+            ventes.append({"d": l.date_mutation, "n": l.adresse_numero, "voie": rue_quartier(l.adresse_nom_voie),
+                           "type": type_bien or ("Terrain" if l.nature_culture else "Dépendance"),
+                           "m2": int(surf) if surf else None, "prix": int(prix) if prix == prix else None,
+                           "nature": l.nature_mutation})
+    return {"permis": sorted(permis, key=lambda x: x["d"], reverse=True),
+            "ventes": sorted(ventes, key=lambda x: x["d"], reverse=True)}
+
+
 def main() -> None:
     if not DOSSIER.exists():
         sys.exit(f"Dossier introuvable : {DOSSIER}. Lancez d'abord filtrer_urbanisme_janze.py.")
@@ -171,6 +239,7 @@ def main() -> None:
         "amenager": resumer_simples("sitadel_permis_amenager_janze.csv"),
         "demolir": resumer_simples("sitadel_permis_demolir_janze.csv"),
         "ventes": resumer_ventes(),
+        "quartier": resumer_quartier(),
     }
     texte = json.dumps(resume, ensure_ascii=False, separators=(",", ":"), default=int)
     SORTIE.write_text(
