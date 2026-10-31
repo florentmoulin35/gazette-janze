@@ -1,37 +1,49 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-31T07:41+00:00",
+ "maj": "2026-10-31T20:22+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-31T07:41+00:00",
+   "le": "2026-10-31T20:22+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-31T07:41+00:00",
-   "n": 92
+   "le": "2026-10-31T20:22+00:00",
+   "n": 54
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-31T07:41+00:00",
+   "le": "2026-10-31T20:22+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-31T07:41+00:00",
+   "le": "2026-10-31T20:22+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-10-31T07:41+00:00",
+   "le": "2026-10-31T20:22+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-10-31T07:41+00:00",
+   "le": "2026-10-31T20:22+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
+  },
+  "vigilance": {
+   "etat": "erreur",
+   "le": "2026-10-31T20:22+00:00",
+   "msg": "HTTP Error 401: Unauthorized",
+   "dernier_ok": null
+  },
+  "agenda": {
+   "etat": "ok",
+   "le": "2026-10-31T20:22+00:00",
+   "n": 0,
+   "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
@@ -111,9 +123,11 @@ window.GAZETTE_AUTO = {
    "t": "« Il n’y a pas d’âge pour apprendre » : aux Ondines à Janzé, on met les bouchées doubles pour apprendre à nager",
    "p": "",
    "src": "maville.com",
-   "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNUlFGZHVfYk5CMnhkbG5rRUNEZEx1czQxdjdiaUJmNTRKU3R6VnNCMVBsZkFRTklSNG00YmVZaHRRdW9MblU0bER5OG1nRUIzd045OWd6M3pZSW5kdFZrUXlJNG1TVUlHVGkyUV8tbXRnMDZhc1l6OWNSSjhoNmI5b0NPN1NDM2hYaDN2dHYwekJWalh1ZmhES29SWE84Qk80LWNleVhPZFZwS2ZjV1ladF9UOV84bDlLX09jNHdsMmxJTWNwTGk2SURmLWUtWDQ4TDhIbkhUUXVtZGE1cTVXdzQ1aW1Yc1ZDa1ViT1FOSkUzVEV0UzZJdUJSdC03ZUE?oc=5",
+   "url": "https://saint-malo.maville.com/sport/detail_-il-n-y-a-pas-d-age-pour-apprendre-aux-ondines-a-janze-on-met-les-bouchees-doubles-pour-apprendre-a-nager_dep-7545948_actu.Htm",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "janze-c1d611a184",
@@ -865,11 +879,6 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
-    },
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -1307,14 +1316,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null,
-   "aussi": [
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/actualites/37515-janze-grand-prix-cycliste-13-juillet-2026-infos-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 13 juillet 2026 infos de course cycliste"
-    }
-   ]
+   "ap": null
   },
   {
    "id": "rafcom-9c04434898",
@@ -1421,14 +1423,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null,
-   "aussi": [
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
-     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
-    }
-   ]
+   "ap": null
   },
   {
    "id": "presse-c321fe73da",
@@ -1823,9 +1818,12 @@ window.GAZETTE_AUTO = {
    "t": "« Nous sommes très inquiets » : à Janzé, la crainte des commerçants face à la diminution de clients",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxQay01c2N3eEhKT19hRWFoUUVxajFUWDdGWGF4U0k2ekZoc3JOTUpsZzBIaGRaRDlyWl9JUjQzWVZZSG4zX2JVQmtwOVNCWVVFRmdObjFiVU42UC1KOWswZUQxRndVTTVlS1c0NmFocnRMbEktZ0pNdEhIWE1MMk1wR2xyRG1PS01kVHVtTmhXVTk1RlFLTldDUFE3QVdVZGhHR1NGcmFOMV8zdTh4NkZiZEhmSG1vVDVRSXE2SGgzSzRqY0Z6RkxlTkZoZXB4YjFQcGdLXzJVMDBGRHk3b2JRcHNPZXYwcWhxT3pKOFN0MzRjZDlPWjFFUHlCZ296eHBhNkNqZERXWndzZw?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/nous-sommes-tres-inquiets-a-janze-la-crainte-des-commercants-face-a-la-diminution-de-clients-0bc17550-9a1d-11f0-8a5e-1c057c9fe22e",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   }
- ]
+ ],
+ "agenda": []
 };
