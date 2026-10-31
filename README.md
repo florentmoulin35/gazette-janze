@@ -31,4 +31,4 @@ python scripts/filtrer_urbanisme_janze.py --entree fichier.csv --colonne commune
 
 En local, les résultats vont dans `donnees_janze/` (non versionné).
 
-Sans rien installer : onglet **Actions › Données d'urbanisme › Run workflow**. GitHub lance le script et enregistre les CSV de Janzé dans `donnees/urbanisme/`.
+Sans rien installer : onglet **Actions › Données d'urbanisme › Run workflow**. GitHub lance le script et enregistre les CSV de Janzé dans `donnees/urbanisme/`. `scripts/resumer_urbanisme.py` en tire ensuite `donnees/urbanisme.js` (quelques Ko), affiché en bas de la rubrique **Urbanisme** : logements autorisés par an, derniers permis, prix des ventes.

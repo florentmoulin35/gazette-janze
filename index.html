@@ -204,6 +204,23 @@ nav.rub.fin::after { opacity: 0; }
 .astuce { margin: 12px 0 0; padding: 8px 12px; background: var(--paper-2); border: 1px dashed var(--rule); border-radius: 3px; font-size: 0.8438rem; color: var(--ink-2); text-align: center; }
 .loupe svg { width: 26px; height: 26px; }
 .loupe[aria-pressed="true"] { background: var(--rust-texte); }
+/* Rubrique Urbanisme : chiffres de data.gouv.fr (donnees/urbanisme.js). */
+.chiffres { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); margin-top: 14px; }
+.chiffres div { padding: 10px 8px 10px 0; min-width: 0; }
+.chiffres div + div { border-left: 1px solid var(--rule); padding-left: 10px; }
+@media (max-width: 359px) { .chiffres { grid-template-columns: 1fr 1fr; } .chiffres div:nth-child(3) { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); } }
+.chiffres b { display: block; font-family: var(--display); font-size: clamp(19px, 5.4vw, 30px); white-space: nowrap; line-height: 1; font-variant-numeric: tabular-nums; }
+.chiffres span { display: block; margin-top: 4px; font-size: 0.75rem; color: var(--ink-2); line-height: 1.3; }
+.histo { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 2px; align-items: end; height: 130px; margin-top: 18px; border-bottom: 1px solid var(--ink); }
+.histo div { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+.histo i { display: block; background: var(--ink); border-radius: 4px 4px 0 0; min-height: 2px; }
+.histo div.encours i { background: repeating-linear-gradient(135deg, var(--ink) 0 2px, transparent 2px 5px); border: 1px solid var(--ink); border-bottom: 0; }
+.histo em { font-style: normal; font-size: 0.6875rem; font-weight: 700; text-align: center; margin-bottom: 2px; font-variant-numeric: tabular-nums; }
+.histo-ans { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 2px; font-size: 0.625rem; color: var(--ink-2); text-align: center; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tab { width: 100%; border-collapse: collapse; font-size: 0.8438rem; margin-top: 8px; font-variant-numeric: tabular-nums; }
+.tab th { text-align: right; font-size: 0.6875rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); font-weight: 700; padding: 0 0 6px 6px; border-bottom: 2px solid var(--ink); }
+.tab td { text-align: right; padding: 7px 0 7px 6px; border-bottom: 1px dotted var(--rule); }
+.tab th:first-child, .tab td:first-child { text-align: left; padding-left: 0; font-weight: 700; }
 .colophon { margin-top: 26px; font-size: 0.75rem; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
 </style>
 
@@ -237,6 +254,8 @@ nav.rub.fin::after { opacity: 0; }
 
 <!-- Les données changent chaque nuit : l'adresse change toutes les 10 minutes pour ne pas resservir une vieille copie. -->
 <script>document.write('<script src="donnees/auto.js?v=' + Math.floor(Date.now() / 6e5) + '"><\/script>');</script>
+<!-- Chiffres d'urbanisme (Sitadel et DVF, data.gouv.fr), mis à jour à la main depuis l'onglet Actions. -->
+<script>document.write('<script src="donnees/urbanisme.js?v=' + Math.floor(Date.now() / 864e5) + '"><\/script>');</script>
 <script>
 const CATS = {
   conseil: { label: "Conseil municipal", short: "Conseil" },
@@ -472,6 +491,67 @@ function viewSection(cat) {
   <div class="list" id="liste">${list.length ? listeParMois(list) : `<p class="vide">Rien pour l'instant.</p>`}</div>`;
 }
 
+// Rubrique Urbanisme : les chiffres officiels (permis Sitadel, ventes DVF), puis les articles.
+const URBA = window.URBA || null;
+const fNb = new Intl.NumberFormat("fr-FR");
+const fEur = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+function viewUrba() {
+  const articles = viewSection("urba");
+  const L = URBA && URBA.logements;
+  if (!L || !L.par_an || !L.par_an.length) return articles;
+  const ans = L.par_an;
+  const anCours = TODAY.slice(0, 4);
+  const complets = ans.filter(a => a.an < anCours);
+  const cinq = complets.slice(-5);
+  const moy5 = cinq.length ? Math.round(cinq.reduce((t, a) => t + a.logements, 0) / cinq.length) : 0;
+  const max = Math.max(...ans.map(a => a.logements));
+  const record = ans.find(a => a.logements === max);
+  // Histogramme : une barre par an. Valeur écrite sur le record et la dernière année, les autres au survol.
+  const barres = ans.map(a => {
+    const montre = a === record || a === ans[ans.length - 1];
+    const titre = `${a.an} : ${a.logements} logements autorisés (${a.permis} permis)${a.an === anCours ? ", année en cours" : ""}`;
+    return `<div class="${a.an === anCours ? "encours" : ""}" title="${esc(titre)}">${montre ? `<em>${a.logements}</em>` : ""}<i style="height:${Math.max(2, Math.round(a.logements / max * 100))}%"></i></div>`;
+  }).join("");
+  const tableHisto = `<table class="masque"><caption>Logements autorisés par an à Janzé</caption><tr><th>Année</th><th>Logements</th><th>Permis</th></tr>${ans.map(a => `<tr><td>${a.an}</td><td>${a.logements}</td><td>${a.permis}</td></tr>`).join("")}</table>`;
+  const ligneUrba = (d, titre, detail) => `<div class="agl"><b>${esc(fDay.format(dt(d)))}${d.slice(0, 4) !== anCours ? " " + d.slice(0, 4) : ""}</b><div>${esc(titre)}<small>${esc(detail)}</small></div></div>`;
+  const recents = L.recents.slice(0, 6).map(p => ligneUrba(p.d,
+    `${p.lgt} logement${p.lgt > 1 ? "s" : ""} · ${p.voie}`,
+    [p.nature, p.etat, p.societe].filter(Boolean).join(" · "))).join("");
+  const V = URBA.ventes;
+  const ventes = V && V.par_an && V.par_an.length ? `
+  <div class="box"><div class="boxhead"><h2>Ventes de maisons et d'appartements</h2></div>
+    <table class="tab"><thead><tr><th>Année</th><th>Maisons</th><th>Prix médian</th><th>€/m² maison</th><th>€/m² appart.</th></tr></thead>
+    <tbody>${V.par_an.map(a => `<tr><td>${esc(a.an)}${a.an === anCours ? "*" : ""}</td><td>${a.maisons}</td><td>${a.prix_maison ? esc(fEur.format(a.prix_maison)) : "–"}</td><td>${a.m2_maison ? esc(fNb.format(a.m2_maison)) : "–"}</td><td>${a.m2_appart ? esc(fNb.format(a.m2_appart)) : "–"}</td></tr>`).join("")}</tbody></table>
+    <p class="why">Ventes d'un seul logement, d'après les actes notariés (DVF, data.gouv.fr). Les données arrivent avec environ six mois de retard${V.par_an.some(a => a.an === anCours) ? " : *année en cours, incomplète" : ""}.</p>
+  </div>` : "";
+  const autres = [["amenager", "permis d'aménager", "lotissements, divisions de terrain"], ["demolir", "permis de démolir", ""], ["locaux", "permis de locaux", "commerces, entreprises, équipements"]]
+    .filter(([k]) => URBA[k] && URBA[k].total).map(([k, nom, sens]) => {
+      const x = URBA[k];
+      return `<div class="agl"><b>${x.total}</b><div>${esc(nom)} depuis ${esc(x.depuis)}${sens ? `<small>${esc(sens)}</small>` : ""}${x.recents[0] ? `<small>Dernier : ${esc(fDay.format(dt(x.recents[0].d)))} ${esc(x.recents[0].d.slice(0, 4))}, ${esc(x.recents[0].voie)}${x.recents[0].societe ? " (" + esc(x.recents[0].societe) + ")" : ""}</small>` : ""}</div></div>`;
+    }).join("");
+  const derniere = ans[ans.length - 1];
+  // Dernière année complète avec un prix de maison, pour le chiffre clé.
+  const prixAn = V && V.par_an ? V.par_an.filter(a => a.an < anCours && a.prix_maison).slice(-1)[0] : null;
+  return `${articles}
+  <div class="aussi"><div class="kick">En chiffres · data.gouv.fr</div>
+    <div class="chiffres">
+      <div><b>${derniere.logements}</b><span>logements autorisés en ${esc(derniere.an)}${derniere.an === anCours ? " (à ce jour)" : ""}</span></div>
+      <div><b>${moy5}</b><span>par an en moyenne (${esc(cinq[0]?.an || "")}-${esc(cinq[cinq.length - 1]?.an || "")})</span></div>
+      ${prixAn ? `<div><b>${esc(fEur.format(prixAn.prix_maison))}</b><span>prix médian d'une maison en ${esc(prixAn.an)}</span></div>` : ""}
+    </div>
+    <div class="box"><div class="boxhead"><h2>Logements autorisés par an</h2></div>
+      <div class="histo" aria-hidden="true">${barres}</div>
+      <div class="histo-ans" aria-hidden="true">${ans.map(a => `<span>${esc(a.an.slice(2))}</span>`).join("")}</div>
+      ${tableHisto}
+      <p class="why">Record : ${record.logements} logements en ${esc(record.an)}. Barre hachurée : année en cours. Source : permis de construire Sitadel (ministère du Logement), hors permis annulés.</p>
+    </div>
+    <div class="box"><div class="boxhead"><h2>Derniers permis de logement</h2></div>${recents}</div>
+    ${ventes}
+    <div class="box"><div class="boxhead"><h2>Autres autorisations</h2></div>${autres}</div>
+    <p class="why">Chiffres mis à jour le ${esc(fDay.format(dt(URBA.maj)))} ${esc(URBA.maj.slice(0, 4))} depuis data.gouv.fr. Les noms ne sont donnés que pour les entreprises et les collectivités.</p>
+  </div>`;
+}
+
 function viewAgenda() {
   return `<h2 class="sec-title">Agenda</h2><p class="sec-sub">Séances du conseil, échéances annoncées et événements à Janzé.</p>
   <div class="box">${agendaRows(aVenir())}</div>
@@ -530,7 +610,7 @@ function render() {
   const active = c.rub || ITEMS.find(i => i.id === c.art)?.cat || "une";
   document.getElementById("rub").innerHTML = RUBS.map(([k, l]) => `<button data-go="${k}" ${k === active ? 'aria-current="page"' : ""}>${l}</button>`).join("");
   const m = document.getElementById("main");
-  m.innerHTML = c.art ? viewArticle(c.art) : c.rub === "une" ? viewUne() : c.rub === "agenda" ? viewAgenda() : c.rub === "sources" ? viewSources() : c.rub === "projets" ? viewProjets() : viewSection(c.rub);
+  m.innerHTML = c.art ? viewArticle(c.art) : c.rub === "une" ? viewUne() : c.rub === "agenda" ? viewAgenda() : c.rub === "sources" ? viewSources() : c.rub === "projets" ? viewProjets() : c.rub === "urba" ? viewUrba() : viewSection(c.rub);
   const cur = document.querySelector('nav.rub [aria-current="page"]');
   // Centre l'onglet actif dans la barre, sans scrollIntoView qui faisait aussi glisser toute la page.
   if (cur) { const barre = cur.parentElement; barre.scrollLeft = cur.offsetLeft - barre.offsetLeft - (barre.clientWidth - cur.offsetWidth) / 2; }
