@@ -1,26 +1,37 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-31T04:28+00:00",
+ "maj": "2026-10-31T07:41+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-31T04:28+00:00",
+   "le": "2026-10-31T07:41+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-31T04:28+00:00",
+   "le": "2026-10-31T07:41+00:00",
    "n": 92
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-31T04:28+00:00",
+   "le": "2026-10-31T07:41+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-31T04:28+00:00",
+   "le": "2026-10-31T07:41+00:00",
    "n": 46
+  },
+  "catnat": {
+   "etat": "ok",
+   "le": "2026-10-31T07:41+00:00",
+   "n": 5
+  },
+  "eau": {
+   "etat": "ok",
+   "le": "2026-10-31T07:41+00:00",
+   "n": 0,
+   "info": "Dernier prélèvement le 25 août 2026 : conforme"
   }
  },
  "items": [
@@ -633,9 +644,11 @@ window.GAZETTE_AUTO = {
    "t": "LA VITREENNE HANDBALL 2 vs HB Janzé",
    "p": "",
    "src": "Fédération Française de Handball",
-   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQS01pVlRUM1dYS01kT2pwdmY2a3RkVEdiUGtqaEd2eTNMcEZFRkVFbjV2QU9EVTBMdlR6Q1dDRnd0UGRPVElXOUtXYTNBYmc3WklFZ2dFUm5xU1VsaHBUa2l0V01UMEZRRjJfRU4wN0xPVEFKZ2tITDVib2x0cTVjTkJZdXBoXzd2eGRIY3dFeExCSDdvalQ3UW90RmVzcUxDM0xBOHJ5OXUzTDFrcEJEZXA3clR0YThXa2hlTmJpYjU3T2dyalEteUp4bw?oc=5",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194502/rencontre-2697434/",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-380a52aa2e",
@@ -751,7 +764,7 @@ window.GAZETTE_AUTO = {
    "aussi": [
     {
      "src": "Actu.fr",
-     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNcEw4aV81SE9HSFlySmVPbTlhbnA2MWRSR0NLMHlBaGwxNldRS0wxN1FKYmh6UG5oSGRlVk1lSk50bm1NWm1ib3pGQU0zVEN0MHJ0dDkxX3NGd1dHWWZjUmJ0NTZqdFJpRXNleDNQZ19XVkhPcjFTWXhMOTNiV29tQXdsT1EwTFpPRXkyX3NTbkpvQUJqVzE3VXlSY0szYjRwc1ZvQ3ltWWttbi1IWGZqV0w3end5UTUxN3RybGVTSmktMGFBT1ZsN08xNkdIdHNYZ3BkbFpSQktVTDJKRkJpbDU2RXZVWXNk?oc=5",
+     "url": "https://actu.fr/bretagne/vitre_35360/a-vitre-et-janze-la-gauche-locale-appelle-a-se-rassembler-pour-le-climat-la-paix-et-la-justice-sociale_64840982.html",
      "t": "À Vitré et Janzé, la gauche locale appelle à se rassembler pour le climat, la paix et la justice sociale"
     }
    ]
@@ -789,9 +802,22 @@ window.GAZETTE_AUTO = {
    "t": "Football - Division 2 poule F : égalité entre ETS BRIE et US JANZE",
    "p": "",
    "src": "Foot Amateur Bretagne",
-   "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPakN4eWRWdVB0Z2twcmNRRVhXV0tlWF9uLXRneTc5TmFLeFRZSVJld1A4elRBT0NReVp0TmhKYmxmZ2RXck51dFFyWk9EdEdvWk5zTjJqUU1tamdHOWhfUUxCSWhQeWNQZkZwbVF6S2haR0U1WkNQTjF4WVlFd0ZkSy1VdW5Sajl6Umk4TWVERnBEZkJ0YzEzTlFNTHpWNmRtNEV0QnpUWjF0a2gyMzU4V2xTT29kX2VxZUF4T2J1UFB0aU0?oc=5",
+   "url": "https://footamateur.letelegramme.fr/clubs/ets-brie/football-division-2-poule-f-egalite-entre-ets-brie-et-us-janze-7116200.php",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "catnat-INTE2623922A",
+   "d": "2026-09-21",
+   "cat": "alerte",
+   "t": "Catastrophe naturelle reconnue : inondations et/ou coulées de boue",
+   "p": "L'État reconnaît l'état de catastrophe naturelle à Janzé pour l'événement du 15 juillet 2026 (inondations et/ou coulées de boue). L'arrêté est paru au Journal officiel le 21 septembre 2026.",
+   "src": "Géorisques",
+   "url": "https://www.georisques.gouv.fr/",
+   "a": "auto",
+   "k": "catnat"
   },
   {
    "id": "presse-cac77d6e9b",
@@ -815,9 +841,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. L’association Accueil de jour a soufflé ses vingt bougies",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQQnVvTjc3ZXVFVWZpUWl5cWVEVFZUMVZoWU4tcVljWlBKWExmYXdRMnRyNUNQMzRqVGRsUEk1ZjJ3azhSeUxiREEzM2pRYjlMb2dqU1VoalAwRlZ4UEpjOE1MYkpzTThpUVZKY0dGcEluaHcwMzZnb3pXdm5fTkNaNkd1blR3TThINXZzelIxOWlHRG1FNnhXNFNNUUJnX2ZzYnllUUlwdW84d1J0ZklLZWJhV0g2YWQ1MUQ4VTZJTFpXZ29kRHd1RDNtSW1hZE4yQnl0SktGazZCOEFIcHpzYWVR?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-lassociation-accueil-de-jour-a-souffle-ses-vingt-bougies-067a499e-b1de-11f1-978f-b3ea995ed274",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-4d30b9e371",
@@ -853,9 +881,11 @@ window.GAZETTE_AUTO = {
    "t": "US Janzé 2",
    "p": "",
    "src": "Score'n'co",
-   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9CaE01UWYxSVVhS1ZIbmgyMFlpbGdmdEUweGcwUnU4bW55bExBOWFqZ1NlSGNTZTZhQ0pXSHVsczdvdV9lRHhIcDNmRm82aWJTYmlaUmo4OTN6ZFVMNzI5Wk41UlBNdkgwWXhCZw?oc=5",
+   "url": "https://scorenco.com/football/clubs/us-janze-2hi0/u14-2-aj1u",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "janze-9f8e64a178",
@@ -948,9 +978,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Un nouveau président à l’association Janzé Histoire et Patrimoine",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPQUplcVpudXZ2aWFpU2QyNGRvcmJXc0VGOENBS2VoeDU2dWRicXpEam1yQVpKalRGM09lTEp0akV1anY2aWV4c0lWWU44c212SlF4eTZaMzk2S0lkd1ZtUWw3cjJKQnZIOWRyTlFBdENZR3hTb3h3dmM5SXFoel9XOWZndFZFbC1DVTRFUnpnRjg2VGhTNl85bjFnQ0tHY0NzVm1NQjR5dzNlejNCZ1czSVdmNjNudGt1akx0QXFpMnJKN3Y4WDl0emFBV3dkVGw0MTlaeDV2ekNPblk0UGZxSm9PM2sxVlFLb1dPbQ?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-un-nouveau-president-a-lassociation-janze-histoire-et-patrimoine-56453eed-f353-4cc1-b837-a4e03959ab6f",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-5470bf9fc9",
@@ -960,9 +992,11 @@ window.GAZETTE_AUTO = {
    "t": "Football - Régional 3 poule L : égalité entre US JANZE et Allaire",
    "p": "",
    "src": "Foot Amateur Bretagne",
-   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNa1k3WFdFRGIzb2FiaElFOGNoT0dnSG5TMFVjVlNCaTFTdGtGUjJLTDF5d3FFSEozV3VvaVNKSUsxWEotbm5sa2ExVk1mSUlTMmtzSVVNR1F0RnpRX0haOW0zNXowYmR2YnNqM3hNVTVlUnp4YUFtWnZkMDY1TXJjLVNWM21NcVVpMFVSYkZpQjVrY2JZYnZ3MnpkNFBiTHFhaDNCcWZNNXRmcFpjQU5BVk5qTFQxOUJHbE5rc0J5MXA2Zw?oc=5",
+   "url": "https://footamateur.letelegramme.fr/clubs/us-janze/football-regional-3-poule-l-egalite-entre-us-janze-et-allaire-7112417.php",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-e7b6f421d1",
@@ -972,9 +1006,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Bientôt une végétalisation des cours à l’école Sacré-Cœur",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQRGZ5b1N4bXBMOE40VXktMW1WQ3FXdVdLVVlPb2VfTFZ3aWVxTE82U1QtZU5EbTlUYzRoTkl2emR3OWpTZ0RXTWZKZkhBNzU0LXU0YXp3cHpIdllHZjZMb2dGcllXN0ZqRVNMMzA5bGllNHZVaDA2bU1GY0hNeVNWeW1FMG9BV2lEX05lV2xPZjZRV2lMUW1tcnM3VGljcVg2ZlBZY3pZYjFiSjAyVHZLRV9rdFRtcGpJb0VDQVBwRGZQVndCTC1UcGtxWlNEOEZHRFpMRF9IWFNuLUkzb3Z0dg?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-bientot-une-vegetalisation-des-cours-a-lecole-sacre-cur-b0efb120-6efd-45ec-b97f-203d5c9f03b7",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-4401093843",
@@ -984,9 +1020,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. « Être plus réactif » : la Ville se dote d’une machine de marquage au sol",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPMjhNYUtHY1I4dlN4QzFyZy1OLTY1eU53Tk1obFlqWTN5RWM1MnVQdTRRZDFRbVVfSjAtSDRSbXhJelJvRFlqZ0JucmJ2ZktPWDFaNGFrOGNEUHFhTmdDTDRSaFIwSEszMnQxMkZMUDJidEdjNXZ1X1ljdFdibms4ZFhZVmxlN0ZMMkZfQmFTek1rcVFKZlBTcWlsWGlCa2xtclpTRG15YW52SVV6SXltQmd5TkNyVU1KZFJkaWtQakdlT280TG1IYU1sLXktd2tjSUtOaGF3cVdJdzRPblQtbXdmem9nejFRYUE2b0F0RQ?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-etre-plus-reactif-la-ville-se-dote-dune-machine-de-marquage-au-sol-ac991c62-4f59-4452-ac61-8f96a85e8cba",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-a8f9b1ddd1",
@@ -1010,9 +1048,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Une nouvelle directrice à l’école du Chat Perché",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOeTdjSXBjZ3NScWs5X0tmX25relN6WFVralRmd2JROXM5RHhaMnozR3NLdFdSZ0tlemdKLURwZjFIcFZSVGtPaDlZREo0dV8wUndBbDIzUDdYQWI1RWVmeHhWdDdxNXZOOWdxVG9EUmp2OWpRU09VNWdBTFJqb2hNZXFJWldOY2RobHZvbkN6dE9DVGU2XzBiblpfOV9CbmdxaDRweGlJQ1k2MG9idm9RcnFPLUxEY2gyeFBaenNCN2V4QU42UHlzTkRKTnhJM1QyRzBLeWpn?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-une-nouvelle-directrice-a-lecole-du-chat-perche-210fb32a-2450-45ff-a738-91630e5c1227",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "janze-a0f1c2972d",
@@ -1045,11 +1085,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "PHOTOS. Janzé sort Châteaugiron de la Coupe de France de football au terme d’une rencontre serrée",
-   "p": "",
+   "p": "Chaque semaine, Le Journal de Vitré pose son objectif sur un match. Dimanche 30 août 2026, direction la Coupe de France pour un match entre Janzé et Châteaugiron.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOWXdhQzM5X1ZMdWY1d0daRjhIQ3U1bWt3V2VUR0l4Z3NCQUt6TmlTVUpkM2EyYl80VlBDX0tpaG5kcVozaWRZOFJnaGhIY1dSQ2V5M0pVY0JIVUNlNEp1YTY5QmFaeVUtQnFKYVhZTFREZnBfTFVQdXl3WjM4LV9lNi1DRUFBeXJRemUzTVRwVzNzMklTYjVYVnU2MVhQZFNESG5Yelp2bHdWcmVBYWFpZVVxcWg1NkRPYmdHSHY3aDhtX2M1MkVlaE1sOEx6aDVQM1FEdGIxVGtWTGh3V0M4?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/photos-janze-sort-chateaugiron-de-la-coupe-de-france-de-football-au-terme-dune-rencontre-serree_64726092.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-c711559c47",
@@ -1095,9 +1137,11 @@ window.GAZETTE_AUTO = {
    "t": "Le club d’aquariophilie de Janzé change d’espace",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQQ195b2hCdG9BZUpsNWRFanVHNUJiaHVNdFpxWTNJVDRnT2pOLXdwTEp1UWNpZGRJU3gweDktU0wtYlFPMFdwcUhOS3Blek8zMzItaGgxbzF2YWNGUVhEd2JVTkdCemdOZ3B6cHdLa3Itd1BkT2hRSnpmeGpQN3Z0dUVyZ3Nnd1NHTWJ2NFZsLWZacV9kdFJQZ0dFcXgxMjNnYXNwbWVzaW5SVkhCcGRwN055c3NOQWNsTks3NEpGbnQzcDNxVFYzMXlnTEU?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/le-club-daquariophilie-de-janze-change-despace-56fa5d08-9d5e-11f1-bf88-45bc2c7dc934",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "janze-93743c9bab",
@@ -1137,9 +1181,11 @@ window.GAZETTE_AUTO = {
    "t": "À 18 ans, il crée son entreprise de nettoyage à Janzé, Clean-Auto35",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQOHNtX0Z0QmhYX2hXbXVYR3ZfbFNDTnk4Q0RueXkzdXZ5WjZhbWplbHVYdDQ1LU81dXJUblBRanV5ZFdXUXo4RWUxZktmX3psWDhCMzEwQUh1RENWNWVDUjA5ejBnSUhQVFEyNHhUUVRPZ0R0bEdCR3R5LVdvQmdHQm1EZ1ZBLWZ5eFhIbDJPRWNhVHV1T1NCUEt5Y0xIeUotT1JRa1ZfdUVXdHZSOE5jZnhxODBBdE45VkQ5Znl3cUdMd0w4V1NPd2xvS3ExQ1JqdG9ZY3lLbnFVTWxnOTd4Zw?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/a-18-ans-il-cree-son-entreprise-de-nettoyage-a-c-clean-auto35-0e810c64-958b-11f1-8bf7-39f7788220e2",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-be0a2873e3",
@@ -1190,11 +1236,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Janzé : une fillette de deux ans retrouvée saine et sauve –...",
-   "p": "",
+   "p": "Les actualités des derniers jours à Rennes…",
    "src": "Rennes Info Autrement",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOSllmZWhDX1FwbFZCUDZlSkV6NHZuaU42b1JlYk4talptcGtZaUFZUm9qb1NMNkEzOTgySXQ2RkhOTlNZeFVBV1VkcDZONDZxRjZ2ejVtcVdjN2NjRFVBRjFHMDlvY083NFRuZzVsUnF4Z1ZOX3AybHNFR1BQbW0wVWFRSFRLQ3pPY21FVjV4VjVEb0pPVmVwSmNB?oc=5",
+   "url": "https://www.rennes-infos-autrement.fr/janze-une-fillette-de-deux-ans-retrouvee-saine-et-sauve/",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "rafcom-d848694248",
@@ -1224,11 +1272,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Janzé : Aurore Grimaud-Lecadre quitte la direction de l’hôpital et reçoit la médaille de la ville",
-   "p": "",
+   "p": "Depuis huit ans à la tête du centre hospitalier de la Roche-aux-Fées à Janzé, Aurore Grimaud-Lecadre cède sa place. Retour sur son passage et ses actions.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQZkZsVEdybGJ0aG91Tl94cEZWeGdzUEo5Um9pbzFaWnJGX3RaOXlRODVrRk5kRWFvdTlvb0l2aTNiWnRtcmdvRlEyeExwWElCZ2pRczM4SGNVak1lRXBNZTkzdGVsSWJIamJtQ3ZZZVJYc1dibjYtV2NNeVVSMWpIS2lvVnZ3S3p4U18zY1lBVVZTc3ZjYkw2UGlwd3cya0ZuN2lZWFJiQVhma0hvaFFscmUzekFyZG15RDZxZVMwdUJGN212WGNTUkdjdEw1Z3hmd2pPeDNZZGI5R3RTRXc?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/janze-aurore-grimaud-lecadre-quitte-la-direction-de-lhopital-et-recoit-la-medaille-de-la-ville_64555806.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-46c85121b5",
@@ -1352,9 +1402,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Plan local d’urbanisme : ils ont planché sur la ville qu’ils imaginent pour demain",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNTzJ5ZW8zQUxEWXpwbUg4dkRnUF9MUWh3dWRsRXU4a2FTblhsQ0NvNHN5cGNrOS1uU0FsV3dQdEtTVG5ENnNuYS1odFRqWGtDam5uZUludWprS1JvalBGSXBpemx3cWN1YUJQUXZjNUNQZlRqVEhYV3J5MHZXTWhpckJVZGJIa2NtazVNNm9ZLUlkOS1UOF94OE9BQkhENjh5eV95TjZXLUJXNFpMS0R4b2l0WHAyd0lZcjFyQ1NRQldXbklrSVp1Vld4emhTdDliX2F6SHQtYnozT01pcHJ4YW9ORlBGNkVNTE5CNlEwMElxWVhab25VYUs2MFNXN2s?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-plan-local-durbanisme-ils-ont-planche-sur-la-ville-quils-imaginent-pour-demain-0b6617db-cb84-49bb-9b55-22cafe543e6d",
    "a": "auto",
    "k": "presse",
+   "resolu": true,
+   "ap": 2,
    "cat2": "urba"
   },
   {
@@ -1437,11 +1489,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "À Janzé près de Rennes, La Palissade ouvre un refuge de création pour reprendre souffle",
-   "p": "",
+   "p": "Artiste muraliste et art-thérapeute diplômée, Nadine Herbelin ouvre à Janzé La Palissade, un atelier de création, d’expression et d’accompagnement par l’art.…",
    "src": "Unidivers",
-   "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1lRVduTFF5bzVYMmtOSHotNk92QUpLY0xsVV9BbFdRdTlVdWdyd1UzSHI1QzUzUGJvVE1DSVRhR1BQNlQxZnNGczZ6VjYzX09jWUJ4UGoxQjBJY1I2QVctRmgwUQ?oc=5",
+   "url": "https://unidivers.fr/janze-palissade-nadine-herbelin/",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-9e6bbb3800",
@@ -1451,9 +1505,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Un nouveau conseil d’administration pour le Centre communal d’action sociale",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxNR25KNlJranZPamtMdlJ2Q19TdV9tRnFTalZQb2liLUgxa01NbTJJaDRlZUtUWlpqTE5jc3JwYzBxU3ZSMjhJcGNMa1U2elNTVkN1Y2tZckVtLXVadERoZ3A3cmlSSUo5aUhYZVdNQ01EVEREdlpvNVRJNVlmWDJudDlOTkJHcWJHMzVyYk1peGRzRHAyLU4zOVhVM25JMVEwY21pbW53ZS1oV2dZX21aNWY4S3ZXMnhDdEg1eXFVR25BS2Z3dzg2cTdQQlVwdkNvcTdUVDJUZWlnRG9VMjM5QURwN1d0Z0lkRmdJaWV5R1d3V2haQVMyVTV3?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-un-nouveau-conseil-dadministration-pour-le-centre-communal-daction-sociale-ee52c29e-4d13-11f1-8c1e-ea82e439204b",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-d7d34d2b05",
@@ -1469,6 +1525,18 @@ window.GAZETTE_AUTO = {
    "resolu": true,
    "ap": 2,
    "cat2": "travaux"
+  },
+  {
+   "id": "presse-ecf826e9e1",
+   "d": "2026-04-30",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé : 2 millions d’euros investis pour des aménagements à la mairie et sur un boulevard",
+   "p": "",
+   "src": "Actu.fr",
+   "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNbzluYzl1ak5fOFdrUGlEaVVTSkk2cGUyc3ZmeF93cXBJZDAwMzlCVzA5VWxhVG1ia0RBeFhtdzc3MUxQZEwwcTJUdWt0cE51ZU9JSEhjb09oVFN0dXFVaFkwbm1jNDZ1a3N3bWk4VTJTamI1NmZmZWplcjVwM1A4Z0g1aVdPVlFqOW9zMlhMVHVLSEVaQkdMSXFRMGNUd1ozRkRuRndMX2Y4SEFIQUZqMmV0eFR2bWNGOVJQUF80Y3BLeGlaUWtIYTdHNjd1amNUWnpN?oc=5",
+   "a": "auto",
+   "k": "presse"
   },
   {
    "id": "rafcom-8b874ac2ee",
@@ -1501,9 +1569,23 @@ window.GAZETTE_AUTO = {
    "cat": "vie",
    "press": false,
    "t": "\"La Grande Parade\", déambulation familiale à Janzé",
-   "p": "",
+   "p": "Dans le cadre du festival Fest'Yve, participez avec les enfants à cette grande parade au son de la Nouvelle-Orléans avec Engrenage(s) aux commandes.",
    "src": "Kidiklik",
-   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQc0lETDVTSDRHSWtOU2lpTThkbU1YNHNIQU5hSG1QRVdjUnRaaGltS0xlOEwwNHRXcURqNmtsUjZBTVRTUTF5bU5Gel9iVWR4T29CQ2h2SDZVcGlCVTRJZlFsZlNWM2pzSlFlYUlNd2F2TGlzN3pBZVJOYWVuWVpQMnRSTzYwbjB6TWRJZk0zTUthSXQ2OGl4YUhRNA?oc=5",
+   "url": "https://35.kidiklik.fr/sorties-moment/452163-la-grande-parade-deambulation-familiale-janze.html",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-c731927288",
+   "d": "2026-04-03",
+   "cat": "presse",
+   "press": true,
+   "t": "Classement des lycées près de Janzé : les meilleurs lycées en 2026 (35150) [PUBLIE]",
+   "p": "",
+   "src": "Linternaute.com",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE8zaDB2c19WdE40Z2xJNi01QTBuQWNSNVdHTVczQVB6T1NVZzhyZm5pOVB5RHl3WE05NmM2eDRoOEVmMG5aT3kxOFI1M09MMWJHbnBkSlJaQ3dCUE0yWEsyRXZuYl83VTZa?oc=5",
    "a": "auto",
    "k": "presse"
   },
@@ -1515,9 +1597,11 @@ window.GAZETTE_AUTO = {
    "t": "Dynamiser le centre-ville, déployer la vidéoprotection… Le nouveau maire de Janzé présente ses priorités",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMimAJBVV95cUxQaFkzVVM0cG1XdjBwdXpZaWt2MEZhVS1pRHBFRFdOSHc3ZVZiSWVVd2YwcWxEaU1naEdqUWR6X1RfV20zenRSMFVvWmFyOW5sX2ZxcFJQaEZrbGhjVzRyYWdxbmRRcVhxazhmU0VWUXB4QjNnc0Qxb3FFSmdiVmNEeUhvRGdSWVpaS0JncmFhbmgtSUxNYk9fWUtaNHBSemkyZmJkZTlSMi1zM2FTOWpkaVpvX0RzdHlWaWZFdDZNaDNCSHgwZWg2R0Vpa0tiUkZDUk5JZVpNU0VZUGJMYjBXaHV0aWw5dHpRaklDRjVfb01teU1pWVFCcXFWcnlmNjZMdWpnUGhmY0ZiaGFKcDkzdDNramppa3BR?oc=5",
+   "url": "https://www.ouest-france.fr/elections/municipales/dynamiser-le-centre-ville-deployer-la-videoprotection-le-nouveau-maire-de-janze-presente-ses-priorites-1e81159e-2cfb-11f1-85a7-68014f57823e",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-3d0ff94d72",
