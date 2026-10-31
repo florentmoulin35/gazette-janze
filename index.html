@@ -11,7 +11,21 @@
 <link rel="apple-touch-icon" href="icones/icone-gazette-janze-180.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="apple-mobile-web-app-title" content="Gazette">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<!-- Aperçu quand on partage le lien de l'appli (WhatsApp, Messenger, SMS…) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="La Gazette de Janzé">
+<meta property="og:title" content="La Gazette de Janzé">
+<meta property="og:description" content="Le journal de bord de Janzé : conseil municipal, travaux, projets, urbanisme, presse locale et alertes.">
+<meta property="og:url" content="https://florentmoulin35.github.io/gazette-janze/">
+<meta property="og:image" content="https://florentmoulin35.github.io/gazette-janze/icones/icone-gazette-janze-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Logo de La Gazette de Janzé">
+<meta name="twitter:card" content="summary">
 <style>html,body{margin:0;padding:0}</style>
 </head>
 <body>
@@ -70,6 +84,7 @@ main h2[tabindex]:focus { outline: none; }
 .mast h1 button { text-align: center; display: inline-flex; flex-direction: column; align-items: center; gap: 0; }
 .mast h1 .pre { font-size: clamp(22px, 5.5vw, 30px); letter-spacing: -.01em; margin-top: 10px; }
 .mast h1 .wm { display: block; width: clamp(190px, 52vw, 320px); height: auto; margin-top: 10px; overflow: visible; }
+.dateline .ancien { color: var(--rust-texte); }
 .dateline { display: flex; justify-content: space-between; gap: 8px; font-size: 0.7188rem; font-weight: 600; border-top: 1px solid var(--ink); border-bottom: 3px double var(--ink); padding: 6px 0; margin-top: 10px; }
 
 nav.rub { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); border-bottom: 1px solid var(--ink); margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: 0 max(16px, env(safe-area-inset-left, 0px)); }
@@ -125,7 +140,6 @@ nav.rub button[aria-current="page"] { color: var(--rust-texte); border-bottom-co
 
 .sec-title { font-family: var(--display); font-size: 2rem; margin: 20px 0 4px; }
 .sec-sub { margin: 0 0 6px; color: var(--ink-2); font-size: 0.875rem; }
-.cherche { display: block; width: 100%; margin: 10px 0 4px; padding: 10px 12px; font: inherit; font-size: 1rem; color: var(--ink); background: var(--paper-2); border: 1px solid var(--rule); border-radius: 3px; }
 .mois { margin: 18px 0 0; padding-bottom: 4px; border-bottom: 2px solid var(--ink); font-size: 0.75rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
 .vide { color: var(--ink-2); font-style: italic; }
 .list .row { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; width: 100%; padding: 14px 0; border-bottom: 1px solid var(--rule); }
@@ -201,7 +215,7 @@ nav.rub.fin::after { opacity: 0; }
         <text x="52" y="101.6" font-family="Newsreader, Georgia, serif" font-weight="800" font-style="normal" font-size="50" fill="var(--ink)" letter-spacing="-1">anzé</text>
       </svg>
     </button></h1>
-    <div class="dateline"><span id="dl-date"></span><span>Édition du jour</span><span>35150</span></div>
+    <div class="dateline"><span id="dl-date"></span><span id="fraicheur">Édition du jour</span><span>35150</span></div>
   </header>
   <nav class="rub" aria-label="Rubriques"><div class="in" id="rub"></div></nav>
   <main id="main"></main>
@@ -355,9 +369,8 @@ const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 
 const lienArt = i => `href="#article-${esc(i.id)}" data-open="${esc(i.id)}"`;
 const brief = i => `<a class="br" ${lienArt(i)}><div class="kick">${esc(CATS[i.cat].short)}</div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p><time>${esc(when(i))}</time></a>`;
-// Ligne de liste ; data-txt sert à la recherche (sans accents, en minuscules).
-const sansAccent = t => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-const ligne = i => `<a class="row" ${lienArt(i)} data-txt="${esc(sansAccent(i.t + " " + (i.p || "") + " " + i.src))}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></a>`;
+// Ligne de liste.
+const ligne = i => `<a class="row" ${lienArt(i)}><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></a>`;
 // Liste avec un intertitre par mois.
 function listeParMois(list) {
   let mois = "";
@@ -441,9 +454,7 @@ function viewProjets() {
 function viewSection(cat) {
   const list = sorted().filter(i => i.cat === cat || i.cat2 === cat);   // cat2 : article de presse rangé aussi dans une rubrique
   return `<h2 class="sec-title">${esc(CATS[cat].label)}</h2><p class="sec-sub">${esc(SEC_SUB[cat])}</p>
-  ${list.length > 8 ? `<input type="search" class="cherche" id="cherche" placeholder="Rechercher dans ${esc(CATS[cat].short)}…" aria-label="Rechercher dans ${esc(CATS[cat].label)}" value="${esc(filtres[cat] || "")}">` : ""}
-  <div class="list" id="liste">${list.length ? listeParMois(list) : `<p class="vide">Rien pour l'instant.</p>`}</div>
-  <p class="vide" id="aucun" hidden>Aucun résultat.</p>`;
+  <div class="list" id="liste">${list.length ? listeParMois(list) : `<p class="vide">Rien pour l'instant.</p>`}</div>`;
 }
 
 function viewAgenda() {
@@ -492,7 +503,6 @@ function viewArticle(id) {
 }
 
 let prev = "une";
-const filtres = {};      // recherche en cours dans chaque rubrique
 let premierRendu = true;
 function current() {
   const h = location.hash.slice(1);
@@ -518,27 +528,7 @@ function render() {
   const titre = m.querySelector("h2");
   if (titre && !premierRendu) { titre.tabIndex = -1; titre.focus({ preventScroll: true }); }
   premierRendu = false;
-  if (filtres[c.rub]) filtrer(filtres[c.rub]);
 }
-// Recherche dans une rubrique : masque les lignes qui ne contiennent pas tous les mots.
-function filtrer(texte) {
-  const mots = sansAccent(texte).split(/\s+/).filter(Boolean);
-  const liste = document.getElementById("liste");
-  if (!liste) return;
-  let n = 0;
-  liste.querySelectorAll(".row").forEach(r => { const ok = mots.every(w => r.dataset.txt.includes(w)); r.hidden = !ok; n += ok; });
-  liste.querySelectorAll(".mois").forEach(h => {
-    let e = h.nextElementSibling, visible = false;
-    while (e && !e.classList.contains("mois")) { if (!e.hidden) visible = true; e = e.nextElementSibling; }
-    h.hidden = !visible;
-  });
-  document.getElementById("aucun").hidden = n > 0;
-}
-document.addEventListener("input", e => {
-  if (e.target.id !== "cherche") return;
-  filtres[current().rub] = e.target.value;
-  filtrer(e.target.value);
-});
 // Fondu sur le bord droit de la barre d'onglets tant qu'il reste des onglets à droite.
 function fondu() {
   const b = document.getElementById("rub");
@@ -552,6 +542,14 @@ function astuce() {
 }
 if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Roche aux Fées Communauté";
 document.getElementById("dl-date").textContent = cap(fShort.format(dt(TODAY)));
+// Âge de la dernière collecte, dans le bandeau. Après 36 h, la collecte a sans doute échoué : on le signale.
+if (COLLECTE.maj) {
+  const h = (Date.now() - new Date(COLLECTE.maj)) / 36e5;
+  const f = document.getElementById("fraicheur");
+  f.textContent = h < 1 ? "Mis à jour à l'instant" : h < 36 ? `Mis à jour il y a ${Math.floor(h)} h` : `Pas de mise à jour depuis ${Math.floor(h / 24)} j`;
+  f.classList.toggle("ancien", h >= 36);
+  f.title = "Dernière collecte : " + fHeure.format(new Date(COLLECTE.maj));
+}
 // Position de défilement de chaque rubrique, retrouvée au retour d'un article.
 // « restaurer » reste vrai sauf quand la page change elle-même de rubrique (onglet, lien, geste).
 const positions = {};
@@ -581,12 +579,14 @@ document.addEventListener("click", e => {
   else if (history.state?.prof) history.go(-history.state.prof);  // arrivé depuis la page : on revient dans l'historique
   else location.hash = prev;  // arrivé par un lien direct
 });
-// Partage de l'article : feuille de partage du téléphone, sinon copie du lien.
+// Partage de l'article : lien de la source originale (celui de l'appli s'il n'y en a pas),
+// par la feuille de partage du téléphone, sinon copie du lien.
 function partager(bouton) {
-  const donnees = { title: document.title, url: location.href };
-  if (navigator.share) { navigator.share(donnees).catch(() => {}); return; }
+  const i = ITEMS.find(x => x.id === current().art);
+  const url = i && lienSur(i.url) ? i.url : location.href;
+  if (navigator.share) { navigator.share({ title: i ? i.t : document.title, url }).catch(() => {}); return; }
   const fait = () => { bouton.textContent = "Lien copié"; setTimeout(() => { bouton.textContent = "Partager"; }, 2000); };
-  if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(fait, () => prompt("Lien de l'article :", location.href));
+  if (navigator.clipboard) navigator.clipboard.writeText(url).then(fait, () => prompt("Lien de l'article :", url));
 }
 function remonter() {
   // nav.rub est collante : son offsetTop suit le défilement, on part donc du bas du bandeau.
@@ -654,6 +654,14 @@ try { if (localStorage.getItem("gazette-gros")) grosTexte(true); } catch (e) {}
 
 fitRue();
 if (document.fonts) document.fonts.ready.then(fitRue);
+
+// Appli rouverte après plus de 6 h : on recharge pour avoir la date et la collecte du jour.
+const ouverte = Date.now();
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && Date.now() - ouverte > 6 * 36e5) location.reload();
+});
+// Hors ligne : la page et la dernière collecte restent disponibles.
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>
 
 </body>
