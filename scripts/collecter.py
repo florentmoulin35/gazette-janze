@@ -71,6 +71,8 @@ SOURCES_LOCALES = r"helloasso|kidiklik|velopresse|federation francaise|score.n.c
 # Pages sans rapport avec l'actualité : écartées.
 SOURCES_EXCLUES = r"iqair"
 VIGIEAU = f"https://api.vigieau.gouv.fr/api/zones?commune={CODE_INSEE}&profil=particulier&zoneType=SUP"
+CATNAT = f"https://georisques.gouv.fr/api/v1/gaspar/catnat?code_insee={CODE_INSEE}&page=1&page_size=100"
+EAU = f"https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_commune={CODE_INSEE}&size=100&sort=desc"
 # Flux « Actu » de rafcom.bzh : on garde tout pour les thèmes qui touchent la
 # vie de la commune, et seulement ce qui cite Janzé pour les autres.
 RAFCOM = {
@@ -441,6 +443,81 @@ def collecter_vigieau() -> list[dict]:
     return items
 
 
+# --- Géorisques : arrêtés de catastrophe naturelle -----------------------------
+
+def date_fr(texte: str | None) -> str | None:
+    """« 21/09/2026 » -> « 2026-09-21 »."""
+    try:
+        return datetime.strptime((texte or "").strip(), "%d/%m/%Y").date().isoformat()
+    except ValueError:
+        return None
+
+
+def jour_fr(iso: str) -> str:
+    mois = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
+            "septembre", "octobre", "novembre", "décembre"]
+    d = date_de(iso)
+    return f"{'1er' if d.day == 1 else d.day} {mois[d.month - 1]} {d.year}"
+
+
+def collecter_catnat() -> list[dict]:
+    reponse = json.loads(telecharger(CATNAT))
+    arretes: dict[str, dict] = {}
+    for a in reponse.get("data") or []:
+        jo = date_fr(a.get("date_publication_jo"))
+        if not jo or not a.get("code_national_catnat"):
+            continue
+        arrete = arretes.setdefault(a["code_national_catnat"], {**a, "jo": jo, "risques": []})
+        risque = (a.get("libelle_risque_jo") or "").strip()
+        if risque and risque not in arrete["risques"]:
+            arrete["risques"].append(risque)
+    items = []
+    for code, a in arretes.items():
+        debut, fin = date_fr(a.get("date_debut_evt")), date_fr(a.get("date_fin_evt"))
+        quand = "" if not debut else f" du {jour_fr(debut)}" if fin in (None, debut) else f" du {jour_fr(debut)} au {jour_fr(fin)}"
+        risques = " ; ".join(a["risques"]).lower() or "événement naturel"
+        # Le délai de déclaration n'est rappelé que tant qu'il court (30 jours après le JO).
+        delai = (" Les sinistrés ont 30 jours après cette date pour déclarer leurs dommages à leur assureur."
+                 if (date_de(aujourdhui()) - date_de(a["jo"])).days <= 30 else "")
+        items.append({
+            "id": f"catnat-{code}", "d": a["jo"], "cat": "alerte",
+            "t": f"Catastrophe naturelle reconnue : {risques}",
+            "p": f"L'État reconnaît l'état de catastrophe naturelle à Janzé pour l'événement{quand} ({risques}). "
+                 f"L'arrêté est paru au Journal officiel le {jour_fr(a['jo'])}." + delai,
+            "src": "Géorisques", "url": "https://www.georisques.gouv.fr/", "a": "auto", "k": "catnat",
+        })
+    return items
+
+
+# --- Hub'Eau : qualité de l'eau du robinet -------------------------------------
+
+# Rempli par collecter_eau, affiché dans la page Sources.
+INFOS_SOURCES: dict[str, str] = {}
+
+
+def collecter_eau() -> list[dict]:
+    """Ne crée une alerte que si le dernier prélèvement dépasse une limite de qualité."""
+    lignes = json.loads(telecharger(EAU)).get("data") or []
+    if not lignes:
+        return []
+    dernier = lignes[0]["code_prelevement"]
+    analyses = [l for l in lignes if l["code_prelevement"] == dernier]
+    p = analyses[0]
+    jour = p["date_prelevement"][:10]
+    hors_limite = [l for l in analyses if "N" in (l.get("conformite_limites_bact_prelevement"),
+                                                   l.get("conformite_limites_pc_prelevement"))]
+    INFOS_SOURCES["eau"] = f"Dernier prélèvement le {jour_fr(jour)} : {'non conforme' if hors_limite else 'conforme'}"
+    if not hors_limite:
+        return []
+    return [{
+        "id": f"eau-{dernier}", "d": jour, "cat": "alerte",
+        "t": "Eau du robinet : prélèvement non conforme",
+        "p": couper(p.get("conclusion_conformite_prelevement") or "Le dernier contrôle sanitaire dépasse une limite de qualité.", 600),
+        "src": "Hub'Eau (ARS)", "url": "https://orobnat.sante.gouv.fr/orobnat/",
+        "a": "auto", "k": "eau",
+    }]
+
+
 # --- Roche aux Fées Communauté ------------------------------------------------
 
 def collecter_rafcom() -> list[dict]:
@@ -486,7 +563,8 @@ def classer(i: dict) -> dict:
 
 
 COLLECTEURS = {"janze": collecter_janze, "presse": collecter_presse,
-               "vigieau": collecter_vigieau, "rafcom": collecter_rafcom}
+               "vigieau": collecter_vigieau, "rafcom": collecter_rafcom,
+               "catnat": collecter_catnat, "eau": collecter_eau}
 
 
 def lire_precedent() -> dict:
@@ -517,7 +595,8 @@ def main() -> int:
             for i in trouves:
                 nouveaux[i["id"]] = i
             reussies.add(cle)
-            sources[cle] = {"etat": "ok", "le": maintenant, "n": len(trouves)}
+            sources[cle] = {"etat": "ok", "le": maintenant, "n": len(trouves),
+                            **({"info": INFOS_SOURCES[cle]} if cle in INFOS_SOURCES else {})}
             print(f"{cle:8} ok      {len(trouves)} infos")
         except Exception as erreur:  # noqa: BLE001 : une source en panne ne doit pas tout arrêter
             echecs += 1
@@ -530,9 +609,10 @@ def main() -> int:
 
     # On cumule avec l'historique, sans doublon, en oubliant ce qui est trop ancien.
     limite = (datetime.now(PARIS).date() - timedelta(days=GARDER_JOURS)).isoformat()
-    # VigiEau dit l'état du jour : s'il a répondu, ses anciennes alertes sont remplacées.
-    if "vigieau" in reussies:
-        par_id = {n: i for n, i in par_id.items() if i.get("k") != "vigieau"}
+    # VigiEau et Hub'Eau disent l'état du jour : s'ils ont répondu, leurs anciennes alertes sont remplacées.
+    for cle in ("vigieau", "eau"):
+        if cle in reussies:
+            par_id = {n: i for n, i in par_id.items() if i.get("k") != cle}
     tous = {**par_id, **nouveaux}
     items, titres_presse = [], set()
     for i in sorted(tous.values(), key=lambda i: (i["d"], "maville" not in i["src"].lower()), reverse=True):

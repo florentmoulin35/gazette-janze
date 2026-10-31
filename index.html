@@ -5,8 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>La Gazette de Janzé</title>
 <meta name="description" content="Le journal de bord de Janzé : conseil municipal, travaux, projets, urbanisme et alertes.">
-<meta name="theme-color" content="#f3e3dc" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#161b2e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f3e3dc" id="couleur-barre">
+<script>
+// Thème choisi en touchant le logo, sinon celui du téléphone. Posé avant l'affichage pour éviter un flash.
+(function () {
+  var choix = null;
+  try { choix = localStorage.getItem("gazette-theme"); } catch (e) {}
+  var sombre = choix ? choix === "sombre" : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.classList.toggle("sombre", sombre);
+  document.getElementById("couleur-barre").content = sombre ? "#161b2e" : "#f3e3dc";
+})();
+</script>
 <link rel="icon" type="image/png" sizes="32x32" href="icones/icone-gazette-janze-32.png">
 <link rel="apple-touch-icon" href="icones/icone-gazette-janze-180.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -45,24 +54,23 @@
   --apricot: #f2a65a;
   --display: "Newsreader", Georgia, "Times New Roman", serif;
   --body: "Libre Franklin", "Segoe UI", system-ui, sans-serif;
-  color-scheme: light dark;
+  color-scheme: light;
 }
-/* Mode sombre : suit le réglage du téléphone. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #161b2e;
-    --paper-2: #1f2541;
-    --ink: #f1e4dc;
-    --ink-2: #c9bfc2;
-    --rule: #4b4762;
-    --rust: #e07a52;
-    --rust-texte: #f0946c;
-    --une-fond: #262e55;
-    --une-texte: #f1e4dc;
-  }
-  .srcgroup.auto { --lv: #8fc78a !important; } .srcgroup.non { --lv: #e49ab0 !important; } .srcgroup.bientot { --lv: #aeb2cc !important; }
-  .srclist em.ko { color: #e49ab0 !important; }
+/* Mode sombre : suit le réglage du téléphone, ou le choix fait en touchant le logo. */
+html.sombre {
+  color-scheme: dark;
+  --paper: #161b2e;
+  --paper-2: #1f2541;
+  --ink: #f1e4dc;
+  --ink-2: #c9bfc2;
+  --rule: #4b4762;
+  --rust: #e07a52;
+  --rust-texte: #f0946c;
+  --une-fond: #262e55;
+  --une-texte: #f1e4dc;
 }
+html.sombre .srcgroup.auto { --lv: #8fc78a !important; } html.sombre .srcgroup.non { --lv: #e49ab0 !important; } html.sombre .srcgroup.bientot { --lv: #aeb2cc !important; }
+html.sombre .srclist em.ko { color: #e49ab0 !important; }
 * { box-sizing: border-box; }
 html, body { background: var(--paper); }
 body { color: var(--ink); font-family: var(--body); font-size: 0.9375rem; line-height: 1.5; }
@@ -202,7 +210,7 @@ nav.rub.fin::after { opacity: 0; }
 <div class="page">
   <header class="mast">
     <small>Le journal de bord de votre ville<span class="rue">pour les voisins des Hirondelles</span></small>
-    <h1><button data-go="une" aria-label="La Gazette de Janzé : retour à la une">
+    <h1><button id="theme" aria-label="La Gazette de Janzé : passer en mode sombre">
       <svg class="wm" viewBox="-4 0 170 108" role="img" aria-hidden="true">
         <g transform="translate(-40 -4) scale(.66)">
           <text x="104" y="160" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-weight="800" font-style="normal" font-size="170" fill="var(--ink)">J</text>
@@ -265,9 +273,6 @@ const ITEMS_MANUELS = [
     p: "À partir du samedi 10 octobre, la brigade s'installe dans l'ancienne Trésorerie pendant toute la durée du chantier. Le bâtiment actuel, à l'entrée de ville, est démoli pour construire une gendarmerie neuve.",
     li: ["Bâtiment de 413 m², cabinet d'architecture Faber", "Coût : 1 587 660 € HT, subventions demandées à l'État et à la Région", "Logements de fonction construits par Neotoa", "Téléphone de la brigade : 02 99 47 03 18"],
     src: "janze.fr", url: "https://www.janze.fr/actualites/la-gendarmerie-demenage-dans-lancienne-tresorerie-le-temps-des-travaux", a: "auto" },
-  { id: "catnat", d: "2026-09-23", cat: "alerte", t: "Catastrophe naturelle reconnue pour les pluies de juillet",
-    p: "Après les pluies diluviennes du 15 juillet, l'État a reconnu l'état de catastrophe naturelle « inondations et coulées de boue ». L'arrêté est paru au Journal officiel le 21 septembre.",
-    src: "janze.fr", url: "https://www.janze.fr/actualites/intemperies-diluviennes-letat-de-catastrophe-naturelle-reconnu", a: "auto" },
   { id: "mairie", d: "2026-09-14", cat: "travaux", t: "Mairie : fin de la phase 1 cet automne, extension en 2027",
     p: "Le chantier d'accessibilité, lancé en mai 2025 et retardé par la découverte de mérule, est coupé en deux.",
     li: ["Phase 1 : finir le bâtiment existant pour rouvrir la mairie, réception visée fin d'automne 2026", "Le chantier rétrécit et rend des places de stationnement", "Phase 2 : extension côté sud pour rendre la salle du conseil accessible, reprise en 2027 avec un projet revu pour garder du stationnement"],
@@ -334,6 +339,8 @@ const SOURCES = [
   { n: "Le Journal de Vitré (actu.fr)", w: "Articles qui citent Janzé, détectés par mot-clé via Google Actualités", a: "auto", k: "presse" },
   { n: "Ouest-France", w: "Titres qui citent Janzé, via Google Actualités ; articles souvent payants", a: "auto", k: "presse" },
   { n: "Restrictions d'eau (VigiEau)", w: "Niveau de sécheresse à Janzé", a: "auto", k: "vigieau" },
+  { n: "Catastrophes naturelles (Géorisques)", w: "Arrêtés de reconnaissance publiés au Journal officiel", a: "auto", k: "catnat" },
+  { n: "Qualité de l'eau du robinet (Hub'Eau)", w: "Contrôles sanitaires de l'ARS ; alerte si un prélèvement n'est pas conforme", a: "auto", k: "eau" },
   { n: "Actualités de Roche aux Fées Communauté", w: "Flux RSS de rafcom.bzh : collectivité, mobilité, urbanisme", a: "auto", k: "rafcom" },
   { n: "Actes officiels (Mégalis)", w: "Délibérations et arrêtés, dont les déviations", a: "bientot" },
   { n: "Permis accordés (Sitadel)", w: "Permis de construire, d'aménager, de démolir, chaque mois", a: "bientot" },
@@ -468,7 +475,7 @@ const fHeure = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short"
 function etatSource(s) {
   const e = s.k && COLLECTE.sources[s.k];
   if (!e) return "";
-  if (e.etat === "ok") return `<em>Lu le ${esc(fHeure.format(new Date(e.le)))}</em>`;
+  if (e.etat === "ok") return `<em>Lu le ${esc(fHeure.format(new Date(e.le)))}${e.info ? " · " + esc(e.info) : ""}</em>`;
   return `<em class="ko">Lecture impossible ${e.dernier_ok ? "depuis le " + esc(fHeure.format(new Date(e.dernier_ok))) : "pour l'instant"}</em>`;
 }
 
@@ -540,7 +547,7 @@ function astuce() {
   try { if (localStorage.getItem("gazette-glisse")) return ""; } catch (e) {}
   return `<p class="astuce">Astuce : glissez le doigt vers la gauche ou la droite pour changer de rubrique.</p>`;
 }
-if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Roche aux Fées Communauté";
+if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Géorisques, Hub'Eau, Roche aux Fées Communauté";
 document.getElementById("dl-date").textContent = cap(fShort.format(dt(TODAY)));
 // Âge de la dernière collecte, dans le bandeau. Après 36 h, la collecte a sans doute échoué : on le signale.
 if (COLLECTE.maj) {
@@ -654,6 +661,25 @@ try { if (localStorage.getItem("gazette-gros")) grosTexte(true); } catch (e) {}
 
 fitRue();
 if (document.fonts) document.fonts.ready.then(fitRue);
+
+// Toucher le logo bascule entre mode clair et mode sombre ; le choix est gardé.
+const boutonTheme = document.getElementById("theme");
+function appliquerTheme(sombre) {
+  document.documentElement.classList.toggle("sombre", sombre);
+  document.getElementById("couleur-barre").content = sombre ? "#161b2e" : "#f3e3dc";
+  boutonTheme.setAttribute("aria-label", "La Gazette de Janzé : passer en mode " + (sombre ? "clair" : "sombre"));
+}
+appliquerTheme(document.documentElement.classList.contains("sombre"));
+boutonTheme.addEventListener("click", () => {
+  const sombre = !document.documentElement.classList.contains("sombre");
+  appliquerTheme(sombre);
+  try { localStorage.setItem("gazette-theme", sombre ? "sombre" : "clair"); } catch (e) {}
+});
+// Sans choix enregistré, on suit le téléphone s'il change de thème (le soir, par exemple).
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {
+  try { if (localStorage.getItem("gazette-theme")) return; } catch (err) {}
+  appliquerTheme(e.matches);
+});
 
 // Appli rouverte après plus de 6 h : on recharge pour avoir la date et la collecte du jour.
 const ouverte = Date.now();
