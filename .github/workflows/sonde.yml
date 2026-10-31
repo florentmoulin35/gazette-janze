@@ -9,11 +9,17 @@ jobs:
     steps:
       - shell: bash {0}
         run: |
-          g() { echo "=== $1"; curl -s -L --max-time 30 -w '\nHTTP %{http_code}\n' "$1" | head -c ${2:-1500}; echo; }
-          g "https://api.openagenda.com/v2/agendas?search=Janz%C3%A9&size=5"
-          g "https://openagenda.com/agendas?search=janze"
-          g "https://tipi.bison-fute.gouv.fr/bison-fute-ouvert/publicationsDIR/Evenementiel-DIR/grt/RRN/content.xml" 3000
-          g "https://public-api.meteofrance.fr/public/DPVigilance/v1/cartevigilance/encours" 500
-          g "https://data.ille-et-vilaine.fr/api/explore/v2.1/catalog/datasets?where=search(%22routes%22)&limit=10&select=dataset_id" 3000
-          g "https://data.ille-et-vilaine.fr/api/explore/v2.1/catalog/datasets?where=search(%22circulation%22)&limit=10&select=dataset_id" 3000
-          g "https://www.inforoutes.ille-et-vilaine.fr/" 1500
+          UA="Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github.io/gazette-janze/)"
+          for u in "https://www.ille-et-vilaine.gouv.fr/Publications/Recueil-des-actes-administratifs" \
+                   "https://www.ille-et-vilaine.gouv.fr/Publications/Recueil-des-actes-administratifs/Recueil-des-actes-administratifs-2026"; do
+            echo "=== $u"
+            curl -s -L --max-time 30 -A "$UA" -w '\nHTTP %{http_code} %{url_effective}\n' "$u" -o p.html; tail -c 200 p.html | tail -1
+            grep -o 'href="[^"]*"' p.html | grep -iE 'recueil|raa|\.pdf|download' | sort -u | head -40
+          done
+          echo "=== premiers PDF"
+          for l in $(grep -o 'href="[^"]*"' p.html | grep -iE 'download|\.pdf' | sed 's/href="//;s/"$//' | head -3); do
+            case "$l" in http*) url="$l";; *) url="https://www.ille-et-vilaine.gouv.fr$l";; esac
+            curl -s -L --max-time 60 -A "$UA" -o r.pdf -w "%{http_code} %{size_download}o %{content_type}\n" "$url"; echo "$url"
+            pdftotext r.pdf r.txt 2>&1 | head -2; wc -c r.txt; head -c 600 r.txt; echo
+            grep -n -i -B2 -A3 "janz" r.txt | head -40
+          done
