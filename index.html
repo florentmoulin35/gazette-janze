@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>La Gazette de Janzé</title>
 <meta name="description" content="Le journal de bord de Janzé : conseil municipal, travaux, projets, urbanisme et alertes.">
-<meta name="theme-color" content="#f3e3dc">
+<meta name="theme-color" content="#f3e3dc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161b2e" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" sizes="32x32" href="icones/icone-gazette-janze-32.png">
 <link rel="apple-touch-icon" href="icones/icone-gazette-janze-180.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -30,104 +31,133 @@
   --apricot: #f2a65a;
   --display: "Newsreader", Georgia, "Times New Roman", serif;
   --body: "Libre Franklin", "Segoe UI", system-ui, sans-serif;
-  color-scheme: light;
+  color-scheme: light dark;
+}
+/* Mode sombre : suit le réglage du téléphone. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161b2e;
+    --paper-2: #1f2541;
+    --ink: #f1e4dc;
+    --ink-2: #c9bfc2;
+    --rule: #4b4762;
+    --rust: #e07a52;
+    --rust-texte: #f0946c;
+    --une-fond: #262e55;
+    --une-texte: #f1e4dc;
+  }
+  .srcgroup.auto { --lv: #8fc78a !important; } .srcgroup.non { --lv: #e49ab0 !important; } .srcgroup.bientot { --lv: #aeb2cc !important; }
+  .srclist em.ko { color: #e49ab0 !important; }
 }
 * { box-sizing: border-box; }
 html, body { background: var(--paper); }
-body { color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+body { color: var(--ink); font-family: var(--body); font-size: 0.9375rem; line-height: 1.5; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+a[data-open], a[data-go] { color: inherit; text-decoration: none; }
+.evite { position: absolute; left: 8px; top: -60px; z-index: 20; background: var(--ink); color: var(--paper); padding: 10px 14px; border-radius: 3px; font-weight: 700; }
+.evite:focus { top: 8px; }
+.masque { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 a { color: var(--rust-texte); }
 :focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+nav.rub button:focus-visible { outline-offset: -3px; }   /* sinon rogné par la barre qui défile */
+main h2[tabindex]:focus { outline: none; }
 .page { max-width: 780px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px; }
 
-.mast { padding-top: 34px; text-align: center; }
-.mast small { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; }
+.mast { padding-top: 20px; text-align: center; }
+.mast small { font-size: 0.6875rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; }
 .mast small .rue { display: block; margin-top: 3px; color: var(--rust-texte); }
 .mast h1 { font-family: var(--display); font-weight: 800; font-style: italic; font-size: clamp(40px, 11vw, 68px); margin: 4px 0 2px; letter-spacing: -.02em; line-height: 1; }
 .mast h1 button { text-align: center; display: inline-flex; flex-direction: column; align-items: center; gap: 0; }
 .mast h1 .pre { font-size: clamp(22px, 5.5vw, 30px); letter-spacing: -.01em; margin-top: 10px; }
-.mast h1 .wm { display: block; width: clamp(220px, 62vw, 340px); height: auto; margin-top: 10px; overflow: visible; }
-.dateline { display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; font-weight: 600; border-top: 1px solid var(--ink); border-bottom: 3px double var(--ink); padding: 6px 0; margin-top: 10px; }
+.mast h1 .wm { display: block; width: clamp(190px, 52vw, 320px); height: auto; margin-top: 10px; overflow: visible; }
+.dateline { display: flex; justify-content: space-between; gap: 8px; font-size: 0.7188rem; font-weight: 600; border-top: 1px solid var(--ink); border-bottom: 3px double var(--ink); padding: 6px 0; margin-top: 10px; }
 
 nav.rub { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); border-bottom: 1px solid var(--ink); margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: 0 max(16px, env(safe-area-inset-left, 0px)); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 11; background: var(--paper); }
 nav.rub .in { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
 nav.rub .in::-webkit-scrollbar { display: none; }
-nav.rub button { flex: none; padding: 11px 10px 9px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-bottom: 3px solid transparent; color: var(--ink-2); }
+nav.rub button { flex: none; min-height: 44px; padding: 12px 10px 10px; font-size: 0.75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-bottom: 3px solid transparent; color: var(--ink-2); }
 nav.rub button[aria-current="page"] { color: var(--rust-texte); border-bottom-color: var(--rust); }
 
-.kick { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; font-weight: 700; color: var(--rust-texte); }
-.une { display: block; width: 100%; margin-top: 18px; background: var(--ink); color: var(--paper); padding: 20px; border-radius: 3px; }
+.kick { font-size: 0.6875rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 700; color: var(--rust-texte); }
+.une { display: block; width: 100%; margin-top: 18px; background: var(--une-fond, var(--ink)); color: var(--une-texte, var(--paper)); padding: 20px; border-radius: 3px; }
 .une .kick { color: var(--apricot); }
 .une h2 { font-family: var(--display); font-size: clamp(26px, 6vw, 36px); line-height: 1.08; margin: 6px 0 10px; text-wrap: balance; }
-.une p { margin: 0; font-size: 14.5px; opacity: .92; }
-.une ul { margin: 10px 0 0; padding-left: 18px; font-size: 14px; }
-.une .lire { display: inline-block; margin-top: 12px; font-weight: 700; font-size: 13px; color: var(--apricot); }
+.une p { margin: 0; font-size: 0.9062rem; opacity: .92; }
+.une ul { margin: 10px 0 0; padding-left: 18px; font-size: 0.875rem; }
+.une .lire { display: inline-block; margin-top: 12px; font-weight: 700; font-size: 0.8125rem; color: var(--apricot); }
 
 .grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); margin-top: 18px; }
 @media (max-width: 340px) { .grid { grid-template-columns: 1fr; } }
 .br { display: block; width: 100%; padding: 12px 12px 14px 0; border-bottom: 1px solid var(--rule); min-width: 0; }
 .br:nth-child(even) { padding: 12px 0 14px 12px; border-left: 1px solid var(--rule); }
-.br h3 { font-family: var(--display); font-size: 19px; line-height: 1.15; margin: 4px 0; text-wrap: balance; }
-.br p { margin: 0; font-size: 13px; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.br time { display: block; font-size: 11.5px; color: var(--ink-2); margin-top: 6px; font-weight: 600; }
+.br h3 { font-family: var(--display); font-size: 1.1875rem; line-height: 1.15; margin: 4px 0; text-wrap: balance; }
+.br p { margin: 0; font-size: 0.8125rem; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.br time { display: block; font-size: 0.7188rem; color: var(--ink-2); margin-top: 6px; font-weight: 600; }
 
 .box { margin-top: 22px; background: var(--paper-2); border: 1px solid var(--rule); padding: 14px 16px; border-radius: 3px; }
-.box h4 { margin: 0 0 6px; font-family: var(--display); font-size: 21px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.box h4 button { font-family: var(--body); font-size: 12.5px; font-weight: 700; color: var(--rust-texte); }
-.agl { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 4px 12px; padding: 8px 0; border-top: 1px dotted var(--rule); font-size: 14px; }
+.boxhead { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 0 0 6px; }
+.boxhead h2 { margin: 0; font-family: var(--display); font-size: 1.3125rem; }
+.boxhead a { font-size: 0.7812rem; font-weight: 700; color: var(--rust-texte); min-height: 44px; display: inline-flex; align-items: center; }
+.agl { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 4px 12px; padding: 8px 0; border-top: 1px dotted var(--rule); font-size: 0.875rem; }
 .agl b { color: var(--rust-texte); font-variant-numeric: tabular-nums; }
-.agl small { display: block; color: var(--ink-2); font-size: 12.5px; }
-.why { font-size: 11.5px; color: var(--ink-2); margin: 6px 0 0; font-style: italic; }
-.strip { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; justify-content: space-between; width: 100%; margin-top: 12px; padding: 10px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); font-size: 14px; }
-.strip b { font-family: var(--display); font-size: 17px; }
-.strip span { color: var(--rust-texte); font-weight: 700; font-size: 13px; }
+.agl small { display: block; color: var(--ink-2); font-size: 0.7812rem; }
+.why { font-size: 0.7188rem; color: var(--ink-2); margin: 6px 0 0; font-style: italic; }
+.strip { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; justify-content: space-between; width: 100%; margin-top: 12px; padding: 10px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); font-size: 0.875rem; }
+.strip b { font-family: var(--display); font-size: 1.0625rem; }
+.strip span { color: var(--rust-texte); font-weight: 700; font-size: 0.8125rem; }
 .pj { display: block; width: 100%; padding: 14px 0 16px; border-bottom: 1px solid var(--rule); }
 .pj:last-child { border-bottom: 0; }
 .pj .ph { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
-.pj h3 { font-family: var(--display); font-size: 20px; line-height: 1.15; margin: 0; }
-.pj .stage { flex: none; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--rust-texte); }
-.pj p { margin: 3px 0 10px; font-size: 13.5px; color: var(--ink-2); }
+.pj h3 { font-family: var(--display); font-size: 1.25rem; line-height: 1.15; margin: 0; }
+.pj .stage { flex: none; font-size: 0.6875rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--rust-texte); }
+.pj p { margin: 3px 0 10px; font-size: 0.8438rem; color: var(--ink-2); }
 .bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
 .bar i { height: 8px; background: var(--rule); opacity: .55; }
 .bar i.on { background: var(--ink); opacity: 1; }
 .bar i.cur { background: var(--rust); opacity: 1; }
-.barlab { display: grid; grid-template-columns: repeat(5, 1fr); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin-top: 5px; font-weight: 600; }
+.barlab { display: grid; grid-template-columns: repeat(5, 1fr); font-size: 0.6562rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin-top: 5px; font-weight: 600; }
 .barlab span.here { color: var(--rust-texte); }
-.pj .more { display: inline-block; margin-top: 10px; font-size: 12.5px; font-weight: 700; color: var(--rust-texte); }
+.pj .more { display: inline-block; margin-top: 10px; font-size: 0.7812rem; font-weight: 700; color: var(--rust-texte); }
 .box .pj { padding: 10px 0 12px; }
-.box .pj h3 { font-size: 17px; }
+.box .pj h3 { font-size: 1.0625rem; }
 .box .pj p { display: none; }
 
-.sec-title { font-family: var(--display); font-size: 32px; margin: 20px 0 4px; }
-.sec-sub { margin: 0 0 6px; color: var(--ink-2); font-size: 14px; }
+.sec-title { font-family: var(--display); font-size: 2rem; margin: 20px 0 4px; }
+.sec-sub { margin: 0 0 6px; color: var(--ink-2); font-size: 0.875rem; }
+.cherche { display: block; width: 100%; margin: 10px 0 4px; padding: 10px 12px; font: inherit; font-size: 1rem; color: var(--ink); background: var(--paper-2); border: 1px solid var(--rule); border-radius: 3px; }
+.mois { margin: 18px 0 0; padding-bottom: 4px; border-bottom: 2px solid var(--ink); font-size: 0.75rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+.vide { color: var(--ink-2); font-style: italic; }
 .list .row { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; width: 100%; padding: 14px 0; border-bottom: 1px solid var(--rule); }
-.list .row time { font-size: 12px; font-weight: 700; color: var(--rust-texte); padding-top: 4px; }
-.list .row h3 { font-family: var(--display); font-size: 21px; line-height: 1.15; margin: 0 0 4px; }
-.list .row p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
+.list .row time { font-size: 0.75rem; font-weight: 700; color: var(--rust-texte); padding-top: 4px; }
+.list .row h3 { font-family: var(--display); font-size: 1.3125rem; line-height: 1.15; margin: 0 0 4px; }
+.list .row p { margin: 0; font-size: 0.8438rem; color: var(--ink-2); }
 
 article.read { padding-top: 18px; }
-.back { font-size: 13px; font-weight: 700; color: var(--rust-texte); padding: 6px 0; }
+.back { font-size: 0.8125rem; font-weight: 700; color: var(--rust-texte); padding: 6px 0; min-height: 44px; }
+.outils { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 10px; }
+.outils .srcbtn { margin-top: 0; }
+.partage { padding: 10px 14px; border: 2px solid var(--ink); border-radius: 3px; font-weight: 700; font-size: 0.8438rem; min-height: 44px; }
 article.read h2 { font-family: var(--display); font-size: clamp(30px, 7vw, 42px); line-height: 1.06; margin: 8px 0 10px; text-wrap: balance; }
-.byline { font-size: 12.5px; color: var(--ink-2); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 7px 0; display: flex; flex-wrap: wrap; gap: 4px 14px; }
-.chapo { font-family: var(--display); font-size: 20px; line-height: 1.4; margin: 16px 0 12px; max-width: 62ch; }
-article.read ul { padding-left: 20px; font-size: 15.5px; max-width: 62ch; }
+.byline { font-size: 0.7812rem; color: var(--ink-2); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 7px 0; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.chapo { font-family: var(--display); font-size: 1.25rem; line-height: 1.4; margin: 16px 0 12px; max-width: 62ch; }
+article.read ul { padding-left: 20px; font-size: 0.9688rem; max-width: 62ch; }
 article.read li { margin-bottom: 7px; }
 .drop::first-letter { font-family: var(--display); font-weight: 800; float: left; font-size: 3.1em; line-height: .85; padding: 4px 8px 0 0; color: var(--rust); }
-.autres { font-size: 14px; margin-top: 12px; }
+.autres { font-size: 0.875rem; margin-top: 12px; }
 .chapo.drop { display: flow-root; }   /* la lettrine ne déborde pas sur le bouton de source */
-.srcbtn { display: inline-block; margin-top: 10px; padding: 11px 16px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 700; font-size: 13.5px; border-radius: 3px; }
+.srcbtn { display: inline-block; margin-top: 10px; padding: 11px 16px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 700; font-size: 0.8438rem; border-radius: 3px; }
 .aussi { margin-top: 28px; border-top: 3px double var(--ink); padding-top: 10px; }
 
 .srcgroup { margin-top: 22px; }
-.srcgroup h3 { display: block; margin: 0; padding-bottom: 6px; border-bottom: 2px solid var(--ink); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--lv); }
-.srcgroup h3 small { display: block; margin-top: 2px; font-size: 12px; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--ink-2); }
+.srcgroup h3 { display: block; margin: 0; padding-bottom: 6px; border-bottom: 2px solid var(--ink); font-size: 0.7188rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--lv); }
+.srcgroup h3 small { display: block; margin-top: 2px; font-size: 0.75rem; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--ink-2); }
 .srclist .s { padding: 11px 0 11px 14px; border-bottom: 1px dotted var(--rule); border-left: 3px solid var(--lv); margin-top: 8px; }
 .srcgroup.auto { --lv: #3e6b3a; } .srcgroup.semi { --lv: var(--rust-texte); } .srcgroup.non { --lv: #8a3b52; } .srcgroup.bientot { --lv: #565a70; }
-.srclist em { display: block; font-style: normal; font-size: 12px; font-weight: 600; margin-top: 2px; color: var(--lv); }
+.srclist em { display: block; font-style: normal; font-size: 0.75rem; font-weight: 600; margin-top: 2px; color: var(--lv); }
 .srclist em.ko { color: #8a3b52; }
-.srclist b { display: block; font-family: var(--display); font-size: 17px; }
-.srclist span { font-size: 13px; color: var(--ink-2); }
+.srclist b { display: block; font-family: var(--display); font-size: 1.0625rem; }
+.srclist span { font-size: 0.8125rem; color: var(--ink-2); }
 @keyframes glisse-g { from { transform: translateX(40px); opacity: .3; } to { transform: none; opacity: 1; } }
 @keyframes glisse-d { from { transform: translateX(-40px); opacity: .3; } to { transform: none; opacity: 1; } }
 /* Le geste horizontal est géré par la page : le navigateur ne doit pas faire bouger tout l'écran. */
@@ -139,11 +169,19 @@ main.glisse-g { animation: glisse-g .22s ease-out; } main.glisse-d { animation: 
 html.gros nav.rub, html.gros main, html.gros .colophon { zoom: 1.5; }   /* le bandeau du journal garde sa taille */
 html.gros .list .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }   /* date au-dessus du titre */
 .loupe { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 10; width: 52px; height: 52px; border-radius: 50%; background: var(--ink); color: var(--paper); box-shadow: 0 2px 8px rgba(0,0,0,.25); display: grid; place-items: center; }
+.haut { position: fixed; right: 14px; bottom: calc(76px + env(safe-area-inset-bottom)); z-index: 10; width: 52px; height: 52px; border-radius: 50%; background: var(--paper-2); color: var(--ink); border: 2px solid var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,.2); display: grid; place-items: center; font-size: 1.375rem; font-weight: 700; }
+.haut[hidden] { display: none; }
+/* Les onglets défilent : un fondu sur le bord droit le signale tant qu'il en reste à voir. */
+nav.rub::after { content: ""; position: absolute; top: 0; bottom: 1px; right: 0; width: 36px; pointer-events: none; background: linear-gradient(to right, transparent, var(--paper)); transition: opacity .2s; }
+nav.rub.fin::after { opacity: 0; }
+.astuce { margin: 12px 0 0; padding: 8px 12px; background: var(--paper-2); border: 1px dashed var(--rule); border-radius: 3px; font-size: 0.8438rem; color: var(--ink-2); text-align: center; }
 .loupe svg { width: 26px; height: 26px; }
 .loupe[aria-pressed="true"] { background: var(--rust-texte); }
-.colophon { margin-top: 26px; font-size: 12px; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
+.colophon { margin-top: 26px; font-size: 0.75rem; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
 </style>
 
+<button class="evite" id="evite">Aller au contenu</button>
+<button class="haut" id="haut" hidden aria-label="Revenir en haut de la rubrique">↑</button>
 <button class="loupe" id="loupe" aria-pressed="false" aria-label="Agrandir les caractères">
   <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l6 6M7.5 10h5M10 7.5v5"/></svg>
 </button>
@@ -315,7 +353,21 @@ const when = i => i.approx ? fMon.format(dt(i.d)) : (i.d.startsWith(TODAY.slice(
 const sorted = () => [...ITEMS].sort((a, b) => b.d.localeCompare(a.d));
 const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 
-const brief = i => `<button class="br" data-open="${esc(i.id)}"><div class="kick">${esc(CATS[i.cat].short)}</div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p><time>${esc(when(i))}</time></button>`;
+const lienArt = i => `href="#article-${esc(i.id)}" data-open="${esc(i.id)}"`;
+const brief = i => `<a class="br" ${lienArt(i)}><div class="kick">${esc(CATS[i.cat].short)}</div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p><time>${esc(when(i))}</time></a>`;
+// Ligne de liste ; data-txt sert à la recherche (sans accents, en minuscules).
+const sansAccent = t => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const ligne = i => `<a class="row" ${lienArt(i)} data-txt="${esc(sansAccent(i.t + " " + (i.p || "") + " " + i.src))}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></a>`;
+// Liste avec un intertitre par mois.
+function listeParMois(list) {
+  let mois = "";
+  return list.map(i => {
+    const m = fMon.format(dt(i.d));
+    const tete = m !== mois ? `<h3 class="mois">${esc(m)}</h3>` : "";
+    mois = m;
+    return tete + ligne(i);
+  }).join("");
+}
 
 // Échéances à venir : celles dont la date est passée ne sont plus affichées.
 const aVenir = () => AGENDA.filter(a => a.d >= TODAY);
@@ -344,8 +396,8 @@ const frontProjects = () => [...PROJECTS].sort((a, b) => projectScore(b) - proje
 function projectRow(p, compact) {
   const bars = STEP_LABELS.map((_, k) => `<i class="${k < p.step ? "on" : k === p.step ? "cur" : ""}"></i>`).join("");
   const labs = STEP_LABELS.map((l, k) => `<span class="${k === p.step ? "here" : ""}">${l}</span>`).join("");
-  const tag = p.item ? "button" : "div";
-  return `<${tag} class="pj" ${p.item ? `data-open="${esc(p.item)}"` : ""}>
+  const tag = p.item ? "a" : "div";
+  return `<${tag} class="pj" ${p.item ? `href="#article-${esc(p.item)}" data-open="${esc(p.item)}"` : ""}>
     <div class="ph"><h3>${esc(p.t)}</h3><span class="stage">${STEP_LABELS[p.step]}</span></div>
     <p>${esc(p.s)}</p>
     <div class="bar" role="img" aria-label="Étape ${p.step + 1} sur 5 : ${STEP_LABELS[p.step]}">${bars}</div>
@@ -364,37 +416,40 @@ function viewUne() {
   const inDays = next ? Math.round((dt(next.d) - dt(TODAY)) / 86400000) : 0;
   const delai = inDays === 0 ? "aujourd'hui" : inDays === 1 ? "demain" : `dans ${inDays} jours`;
   return `
-  <button class="une" data-open="${esc(lead.id)}">
+  ${astuce()}
+  <a class="une" ${lienArt(lead)}>
     <div class="kick">${esc(CATS[lead.cat].label)} · ${esc(when(lead))}</div>
     <h2>${esc(lead.t)}</h2>
     <p>${esc(lead.p)}</p>
     ${lead.li ? `<ul>${lead.li.slice(0, 3).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
     <span class="lire">Lire l'article →</span>
-  </button>
+  </a>
   <p class="why">Une choisie automatiquement : l'info la plus importante parmi les plus récentes.</p>
-  ${next ? `<button class="strip" data-go="agenda"><b>${esc(next.t)} : ${esc(new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(dt(next.d)))}</b><span>${delai} →</span></button>` : ""}
+  ${next ? `<a class="strip" href="#agenda" data-go="agenda"><b>${esc(next.t)} : ${esc(new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(dt(next.d)))}</b><span>${delai} →</span></a>` : ""}
   <div class="grid">${rest.map(brief).join("")}</div>
-  <div class="box"><h4>Où en sont les projets <button data-go="projets">Tous les projets →</button></h4>${frontProjects().map(p => projectRow(p, true)).join("")}</div>
-  <div class="box"><h4>Au programme <button data-go="agenda">Tout l'agenda →</button></h4>${agendaRows(agenda.slice(0, 3))}</div>`;
+  <div class="box"><div class="boxhead"><h2>Où en sont les projets</h2><a href="#projets" data-go="projets">Tous les projets →</a></div>${frontProjects().map(p => projectRow(p, true)).join("")}</div>
+  <div class="box"><div class="boxhead"><h2>Au programme</h2><a href="#agenda" data-go="agenda">Tout l'agenda →</a></div>${agendaRows(agenda.slice(0, 3))}</div>`;
 }
 
 function viewProjets() {
   const news = sorted().filter(i => i.cat === "projets" || i.cat2 === "projets");
   return `<h2 class="sec-title">Grands projets</h2><p class="sec-sub">Idée, étude, vote, chantier, livré : l'avancement de chaque projet.</p>
   <div>${PROJECTS.map(p => projectRow(p, false)).join("")}</div>
-  ${news.length ? `<div class="aussi"><div class="kick">Articles</div><div class="list">${news.map(i => `<button class="row" data-open="${esc(i.id)}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></button>`).join("")}</div></div>` : ""}`;
+  ${news.length ? `<div class="aussi"><div class="kick">Articles</div><div class="list">${news.map(ligne).join("")}</div></div>` : ""}`;
 }
 
 function viewSection(cat) {
   const list = sorted().filter(i => i.cat === cat || i.cat2 === cat);   // cat2 : article de presse rangé aussi dans une rubrique
   return `<h2 class="sec-title">${esc(CATS[cat].label)}</h2><p class="sec-sub">${esc(SEC_SUB[cat])}</p>
-  <div class="list">${list.map(i => `<button class="row" data-open="${esc(i.id)}"><time>${esc(when(i))}</time><div><h3>${esc(i.t)}</h3><p>${esc(i.p)}</p></div></button>`).join("")}</div>`;
+  ${list.length > 8 ? `<input type="search" class="cherche" id="cherche" placeholder="Rechercher dans ${esc(CATS[cat].short)}…" aria-label="Rechercher dans ${esc(CATS[cat].label)}" value="${esc(filtres[cat] || "")}">` : ""}
+  <div class="list" id="liste">${list.length ? listeParMois(list) : `<p class="vide">Rien pour l'instant.</p>`}</div>
+  <p class="vide" id="aucun" hidden>Aucun résultat.</p>`;
 }
 
 function viewAgenda() {
   return `<h2 class="sec-title">Agenda</h2><p class="sec-sub">Séances du conseil et échéances annoncées.</p>
   <div class="box">${agendaRows(aVenir())}</div>
-  <div class="box"><h4>Où en sont les grands projets <button data-go="projets">Voir l'avancement →</button></h4></div>`;
+  <div class="box"><div class="boxhead"><h2>Où en sont les grands projets</h2><a href="#projets" data-go="projets">Voir l'avancement →</a></div></div>`;
 }
 
 // État de la dernière collecte pour une source lue chaque nuit.
@@ -427,13 +482,18 @@ function viewArticle(id) {
     <div class="byline"><span>${esc(i.approx ? "Vers " + fMon.format(dt(i.d)) : cap(fFull.format(dt(i.d))))}</span><span>Source : ${esc(i.src)}</span><span>${esc(AUTO[i.a])}</span>${i.press ? `<span>Mot-clé détecté : « ${esc(KEYWORD)} »</span>` : ""}</div>
     ${i.p ? `<p class="chapo drop">${esc(i.p)}</p>` : ""}
     ${i.li ? `<ul>${i.li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
-    ${lienSur(i.url) ? `<a class="srcbtn" href="${esc(i.url)}" target="_blank" rel="noopener">Lire la source originale</a>` : ""}
-    ${(i.aussi || []).some(a => lienSur(a.url)) ? `<p class="autres">Aussi dans : ${i.aussi.filter(a => lienSur(a.url)).map(a => `<a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.t)}">${esc(a.src)}</a>`).join(", ")}</p>` : ""}
+    <div class="outils">
+      ${lienSur(i.url) ? `<a class="srcbtn" href="${esc(i.url)}" target="_blank" rel="noopener">Lire la source originale<span class="masque"> (nouvelle fenêtre)</span></a>` : ""}
+      <button class="partage" data-partage>Partager</button>
+    </div>
+    ${(i.aussi || []).some(a => lienSur(a.url)) ? `<p class="autres">Aussi dans : ${i.aussi.filter(a => lienSur(a.url)).map(a => `<a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.t)}">${esc(a.src)}<span class="masque"> (nouvelle fenêtre)</span></a>`).join(", ")}</p>` : ""}
     <div class="aussi"><div class="kick">Lire aussi</div><div class="grid" style="border-top:0;margin-top:4px">${more.map(brief).join("")}</div></div>
   </article>`;
 }
 
 let prev = "une";
+const filtres = {};      // recherche en cours dans chaque rubrique
+let premierRendu = true;
 function current() {
   const h = location.hash.slice(1);
   if (h.startsWith("article-")) return { art: h.slice(8) };
@@ -449,6 +509,46 @@ function render() {
   const cur = document.querySelector('nav.rub [aria-current="page"]');
   // Centre l'onglet actif dans la barre, sans scrollIntoView qui faisait aussi glisser toute la page.
   if (cur) { const barre = cur.parentElement; barre.scrollLeft = cur.offsetLeft - barre.offsetLeft - (barre.clientWidth - cur.offsetWidth) / 2; }
+  fondu();
+  // Titre de l'onglet du navigateur, annoncé par les lecteurs d'écran.
+  const art = c.art && ITEMS.find(i => i.id === c.art);
+  const nom = art ? art.t : c.rub === "une" ? "" : RUBS.find(r => r[0] === c.rub)[1];
+  document.title = nom ? `${nom} – La Gazette de Janzé` : "La Gazette de Janzé";
+  // Après un changement de vue, le focus va sur le titre : clavier et lecteur d'écran repartent du contenu.
+  const titre = m.querySelector("h2");
+  if (titre && !premierRendu) { titre.tabIndex = -1; titre.focus({ preventScroll: true }); }
+  premierRendu = false;
+  if (filtres[c.rub]) filtrer(filtres[c.rub]);
+}
+// Recherche dans une rubrique : masque les lignes qui ne contiennent pas tous les mots.
+function filtrer(texte) {
+  const mots = sansAccent(texte).split(/\s+/).filter(Boolean);
+  const liste = document.getElementById("liste");
+  if (!liste) return;
+  let n = 0;
+  liste.querySelectorAll(".row").forEach(r => { const ok = mots.every(w => r.dataset.txt.includes(w)); r.hidden = !ok; n += ok; });
+  liste.querySelectorAll(".mois").forEach(h => {
+    let e = h.nextElementSibling, visible = false;
+    while (e && !e.classList.contains("mois")) { if (!e.hidden) visible = true; e = e.nextElementSibling; }
+    h.hidden = !visible;
+  });
+  document.getElementById("aucun").hidden = n > 0;
+}
+document.addEventListener("input", e => {
+  if (e.target.id !== "cherche") return;
+  filtres[current().rub] = e.target.value;
+  filtrer(e.target.value);
+});
+// Fondu sur le bord droit de la barre d'onglets tant qu'il reste des onglets à droite.
+function fondu() {
+  const b = document.getElementById("rub");
+  document.querySelector("nav.rub").classList.toggle("fin", b.scrollLeft + b.clientWidth >= b.scrollWidth - 4);
+}
+document.getElementById("rub").addEventListener("scroll", fondu, { passive: true });
+// Astuce affichée tant que le lecteur n'a jamais glissé d'une rubrique à l'autre.
+function astuce() {
+  try { if (localStorage.getItem("gazette-glisse")) return ""; } catch (e) {}
+  return `<p class="astuce">Astuce : glissez le doigt vers la gauche ou la droite pour changer de rubrique.</p>`;
 }
 if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Roche aux Fées Communauté";
 document.getElementById("dl-date").textContent = cap(fShort.format(dt(TODAY)));
@@ -463,8 +563,12 @@ function aller(h) {
   location.hash = h;
 }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-go],[data-back]");
+  const t = e.target.closest("[data-open],[data-go],[data-back],[data-partage]");
   if (!t) return;
+  if (t.tagName === "A" && (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0)) return;  // ouvrir dans un nouvel onglet
+  e.preventDefault();
+  if (t.dataset.partage !== undefined) { partager(t); return; }
+  if (t.dataset.go && t.dataset.go === current().rub) { remonter(); return; }  // onglet déjà ouvert : retour en haut
   if (t.dataset.open) {
     // Nombre d'articles ouverts depuis la rubrique, pour y revenir d'un coup avec « Retour ».
     const c = current();
@@ -477,6 +581,23 @@ document.addEventListener("click", e => {
   else if (history.state?.prof) history.go(-history.state.prof);  // arrivé depuis la page : on revient dans l'historique
   else location.hash = prev;  // arrivé par un lien direct
 });
+// Partage de l'article : feuille de partage du téléphone, sinon copie du lien.
+function partager(bouton) {
+  const donnees = { title: document.title, url: location.href };
+  if (navigator.share) { navigator.share(donnees).catch(() => {}); return; }
+  const fait = () => { bouton.textContent = "Lien copié"; setTimeout(() => { bouton.textContent = "Partager"; }, 2000); };
+  if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(fait, () => prompt("Lien de l'article :", location.href));
+}
+function remonter() {
+  // nav.rub est collante : son offsetTop suit le défilement, on part donc du bas du bandeau.
+  const mast = document.querySelector("header.mast");
+  window.scrollTo({ top: Math.min(window.scrollY, mast.offsetTop + mast.offsetHeight), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+}
+// Bouton « retour en haut » après deux écrans de défilement.
+const haut = document.getElementById("haut");
+haut.addEventListener("click", remonter);
+window.addEventListener("scroll", () => { haut.hidden = window.scrollY < 2 * window.innerHeight; }, { passive: true });
+document.getElementById("evite").addEventListener("click", () => { const h = document.querySelector("main h2"); if (h) { h.tabIndex = -1; h.focus(); } });
 // Glisser le doigt vers la gauche ou la droite pour passer à la rubrique suivante ou précédente.
 let toucheX = null, toucheY = 0;
 const zoneSwipe = document.getElementById("main");
@@ -497,13 +618,14 @@ zoneSwipe.addEventListener("touchend", e => {
   zoneSwipe.classList.remove("glisse-g", "glisse-d");
   void zoneSwipe.offsetWidth;  // relance l'animation
   zoneSwipe.classList.add(dx < 0 ? "glisse-g" : "glisse-d");
+  try { localStorage.setItem("gazette-glisse", "1"); } catch (e) {}
   aller(cible[0]);
 }, { passive: true });
 window.addEventListener("hashchange", () => {
   render();
   const c = current();
   if (restaurer && c.rub && positions[c.rub] !== undefined) window.scrollTo(0, positions[c.rub]);
-  else { const nav = document.querySelector("nav.rub"); const y = nav.offsetTop; if (window.scrollY > y) window.scrollTo(0, y); }
+  else { const mast = document.querySelector("header.mast"); const y = mast.offsetTop + mast.offsetHeight; if (window.scrollY > y) window.scrollTo(0, y); }
   restaurer = true;
 });
 render();
