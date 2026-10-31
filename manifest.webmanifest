@@ -1,11 +1,19 @@
 {
+  "id": "./",
   "name": "La Gazette de Janzé",
   "short_name": "Gazette",
+  "description": "Le journal de bord de Janzé : conseil municipal, travaux, projets, urbanisme, presse locale et alertes.",
   "lang": "fr",
-  "start_url": ".",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#f3e3dc",
   "theme_color": "#f3e3dc",
+  "categories": [
+    "news"
+  ],
   "icons": [
     {
       "src": "icones/icone-gazette-janze-192.png",
@@ -16,6 +24,12 @@
       "src": "icones/icone-gazette-janze-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "icones/icone-gazette-janze-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

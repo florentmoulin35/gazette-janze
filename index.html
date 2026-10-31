@@ -11,7 +11,21 @@
 <link rel="apple-touch-icon" href="icones/icone-gazette-janze-180.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="apple-mobile-web-app-title" content="Gazette">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<!-- Aperçu quand on partage le lien de l'appli (WhatsApp, Messenger, SMS…) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="La Gazette de Janzé">
+<meta property="og:title" content="La Gazette de Janzé">
+<meta property="og:description" content="Le journal de bord de Janzé : conseil municipal, travaux, projets, urbanisme, presse locale et alertes.">
+<meta property="og:url" content="https://florentmoulin35.github.io/gazette-janze/">
+<meta property="og:image" content="https://florentmoulin35.github.io/gazette-janze/icones/icone-gazette-janze-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Logo de La Gazette de Janzé">
+<meta name="twitter:card" content="summary">
 <style>html,body{margin:0;padding:0}</style>
 </head>
 <body>
@@ -70,6 +84,7 @@ main h2[tabindex]:focus { outline: none; }
 .mast h1 button { text-align: center; display: inline-flex; flex-direction: column; align-items: center; gap: 0; }
 .mast h1 .pre { font-size: clamp(22px, 5.5vw, 30px); letter-spacing: -.01em; margin-top: 10px; }
 .mast h1 .wm { display: block; width: clamp(190px, 52vw, 320px); height: auto; margin-top: 10px; overflow: visible; }
+.dateline .ancien { color: var(--rust-texte); }
 .dateline { display: flex; justify-content: space-between; gap: 8px; font-size: 0.7188rem; font-weight: 600; border-top: 1px solid var(--ink); border-bottom: 3px double var(--ink); padding: 6px 0; margin-top: 10px; }
 
 nav.rub { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); border-bottom: 1px solid var(--ink); margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: 0 max(16px, env(safe-area-inset-left, 0px)); }
@@ -200,7 +215,7 @@ nav.rub.fin::after { opacity: 0; }
         <text x="52" y="101.6" font-family="Newsreader, Georgia, serif" font-weight="800" font-style="normal" font-size="50" fill="var(--ink)" letter-spacing="-1">anzé</text>
       </svg>
     </button></h1>
-    <div class="dateline"><span id="dl-date"></span><span>Édition du jour</span><span>35150</span></div>
+    <div class="dateline"><span id="dl-date"></span><span id="fraicheur">Édition du jour</span><span>35150</span></div>
   </header>
   <nav class="rub" aria-label="Rubriques"><div class="in" id="rub"></div></nav>
   <main id="main"></main>
@@ -527,6 +542,14 @@ function astuce() {
 }
 if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Roche aux Fées Communauté";
 document.getElementById("dl-date").textContent = cap(fShort.format(dt(TODAY)));
+// Âge de la dernière collecte, dans le bandeau. Après 36 h, la collecte a sans doute échoué : on le signale.
+if (COLLECTE.maj) {
+  const h = (Date.now() - new Date(COLLECTE.maj)) / 36e5;
+  const f = document.getElementById("fraicheur");
+  f.textContent = h < 1 ? "Mis à jour à l'instant" : h < 36 ? `Mis à jour il y a ${Math.floor(h)} h` : `Pas de mise à jour depuis ${Math.floor(h / 24)} j`;
+  f.classList.toggle("ancien", h >= 36);
+  f.title = "Dernière collecte : " + fHeure.format(new Date(COLLECTE.maj));
+}
 // Position de défilement de chaque rubrique, retrouvée au retour d'un article.
 // « restaurer » reste vrai sauf quand la page change elle-même de rubrique (onglet, lien, geste).
 const positions = {};
@@ -631,6 +654,14 @@ try { if (localStorage.getItem("gazette-gros")) grosTexte(true); } catch (e) {}
 
 fitRue();
 if (document.fonts) document.fonts.ready.then(fitRue);
+
+// Appli rouverte après plus de 6 h : on recharge pour avoir la date et la collecte du jour.
+const ouverte = Date.now();
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && Date.now() - ouverte > 6 * 36e5) location.reload();
+});
+// Hors ligne : la page et la dernière collecte restent disponibles.
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>
 
 </body>
