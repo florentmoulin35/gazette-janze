@@ -346,6 +346,8 @@ const SOURCES = [
   { n: "Restrictions d'eau (VigiEau)", w: "Niveau de sécheresse à Janzé", a: "auto", k: "vigieau" },
   { n: "Catastrophes naturelles (Géorisques)", w: "Arrêtés de reconnaissance publiés au Journal officiel", a: "auto", k: "catnat" },
   { n: "Qualité de l'eau du robinet (Hub'Eau)", w: "Contrôles sanitaires de l'ARS ; alerte si un prélèvement n'est pas conforme", a: "auto", k: "eau" },
+  { n: "Vigilance météo (Météo-France)", w: "Alerte en vigilance orange ou rouge pour l'Ille-et-Vilaine", a: "auto", k: "vigilance" },
+  { n: "Événements (OpenAgenda)", w: "Saison culturelle de Roche aux Fées Communauté, rendez-vous à Janzé", a: "auto", k: "agenda" },
   { n: "Actualités de Roche aux Fées Communauté", w: "Flux RSS de rafcom.bzh : collectivité, mobilité, urbanisme", a: "auto", k: "rafcom" },
   { n: "Actes officiels (Mégalis)", w: "Délibérations et arrêtés, dont les déviations", a: "bientot" },
   { n: "Permis accordés (Sitadel)", w: "Permis de construire, d'aménager, de démolir, chaque mois", a: "bientot" },
@@ -395,10 +397,11 @@ function listeParMois(list) {
 }
 
 // Échéances à venir : celles dont la date est passée ne sont plus affichées.
-const aVenir = () => AGENDA.filter(a => a.d >= TODAY);
+// Rendez-vous saisis à la main et événements collectés sur OpenAgenda, par date.
+const aVenir = () => [...AGENDA, ...(COLLECTE.agenda || [])].filter(a => a.d >= TODAY).sort((a, b) => a.d.localeCompare(b.d));
 function agendaRows(list) {
   if (!list.length) return `<p class="why">Aucune échéance annoncée pour l'instant.</p>`;
-  return list.map(a => `<div class="agl"><b>${esc(a.approx ? a.approx : fDay.format(dt(a.d)))}</b><div>${esc(a.t)}<small>${esc(a.s)}</small></div></div>`).join("");
+  return list.map(a => `<div class="agl"><b>${esc(a.approx ? a.approx : fDay.format(dt(a.d)))}</b><div>${lienSur(a.url) ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.t)}<span class="masque"> (nouvelle fenêtre)</span></a>` : esc(a.t)}<small>${esc(a.s)}</small></div></div>`).join("");
 }
 
 // La une : l'info la plus importante parmi les plus fraîches.
@@ -470,7 +473,7 @@ function viewSection(cat) {
 }
 
 function viewAgenda() {
-  return `<h2 class="sec-title">Agenda</h2><p class="sec-sub">Séances du conseil et échéances annoncées.</p>
+  return `<h2 class="sec-title">Agenda</h2><p class="sec-sub">Séances du conseil, échéances annoncées et événements à Janzé.</p>
   <div class="box">${agendaRows(aVenir())}</div>
   <div class="box"><div class="boxhead"><h2>Où en sont les grands projets</h2><a href="#projets" data-go="projets">Voir l'avancement →</a></div></div>`;
 }
@@ -552,7 +555,7 @@ function astuce() {
   try { if (localStorage.getItem("gazette-glisse")) return ""; } catch (e) {}
   return `<p class="astuce">Astuce : glissez le doigt vers la gauche ou la droite pour changer de rubrique.</p>`;
 }
-if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Géorisques, Hub'Eau, Roche aux Fées Communauté";
+if (COLLECTE.maj) document.getElementById("colophon").textContent = "Mise à jour automatique le " + fHeure.format(new Date(COLLECTE.maj)) + " · janze.fr, presse locale, VigiEau, Météo-France, Géorisques, Hub'Eau, OpenAgenda, Roche aux Fées Communauté";
 document.getElementById("dl-date").textContent = cap(fShort.format(dt(TODAY)));
 // Âge de la dernière collecte, dans le bandeau. Après 36 h, la collecte a sans doute échoué : on le signale.
 if (COLLECTE.maj) {
