@@ -222,6 +222,8 @@ nav.rub.fin::after { opacity: 0; }
 .tab td { text-align: right; padding: 7px 0 7px 6px; border-bottom: 1px dotted var(--rule); }
 .tab th:first-child, .tab td:first-child { text-align: left; padding-left: 0; font-weight: 700; }
 .tab-defile { overflow-x: auto; }
+.voir { display: flex; flex-wrap: wrap; gap: 0 14px; font-size: 0.75rem; font-weight: 700; }
+.voir a { display: inline-flex; align-items: center; min-height: 32px; }
 @media (max-width: 359px) { .tab { font-size: 0.75rem; } .tab td, .tab th { padding-left: 4px; } }
 .zone { display: flex; gap: 0; margin-top: 12px; border: 2px solid var(--ink); border-radius: 3px; overflow: hidden; }
 .zone button { flex: 1; min-height: 44px; padding: 8px 10px; text-align: center; font-weight: 700; font-size: 0.8125rem; }
@@ -581,16 +583,18 @@ function viewQuartier() {
   const date = d => `${fDay.format(dt(d))} ${d.slice(0, 4)}`;
   // Google Earth centré sur la parcelle, vu de haut à 150 m : l'outil règle permet de mesurer le terrain.
   const earth = v => `https://earth.google.com/web/@${v.lat},${v.lon},60a,150d,35y,0h,0t,0r`;
+  // Street View : la vue depuis la rue la plus proche de la parcelle.
+  const streetView = v => `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${v.lat},${v.lon}`;
   const adr = x => `${x.n ? x.n.replace(/\s+/g, " ") + " " : ""}${x.voie}`;
   const permis = Q.permis.length ? Q.permis.map(p => `<div class="agl"><b>${esc(date(p.d))}</b><div>${esc(p.quoi)} · ${esc(adr(p))}<small>${esc([p.nature, p.etat, p.societe ? "Demandeur : " + p.societe : ""].filter(Boolean).join(" · "))}</small></div></div>`).join("")
     : `<p class="vide">Aucun permis dans le quartier.</p>`;
-  const ventes = Q.ventes.length ? `<div class="tab-defile"><table class="tab"><thead><tr><th>Date</th><th style="text-align:left">Bien</th><th>Prix</th></tr></thead><tbody>${Q.ventes.map(v => `<tr><td style="white-space:nowrap">${esc(v.d.slice(8, 10) + "/" + v.d.slice(5, 7) + "/" + v.d.slice(2, 4))}</td><td style="text-align:left">${v.lat ? `<a href="${esc(earth(v))}" target="_blank" rel="noopener">${esc(adr(v))}<span class="masque"> (Google Earth, nouvelle fenêtre)</span></a>` : esc(adr(v))}<br><small>${esc(v.type)}${v.m2 ? ` · ${v.m2} m²` : ""}${v.terrain ? ` · <span style="white-space:nowrap">${v.type === "Terrain" ? "" : "terrain "}${esc(fNb.format(v.terrain))} m²</span>` : ""}</small></td><td style="white-space:nowrap">${v.prix ? esc(fEur.format(v.prix)) : "–"}</td></tr>`).join("")}</tbody></table></div>`
+  const ventes = Q.ventes.length ? `<div class="tab-defile"><table class="tab"><thead><tr><th>Date</th><th style="text-align:left">Bien</th><th>Prix</th></tr></thead><tbody>${Q.ventes.map(v => `<tr><td style="white-space:nowrap">${esc(v.d.slice(8, 10) + "/" + v.d.slice(5, 7) + "/" + v.d.slice(2, 4))}</td><td style="text-align:left">${esc(adr(v))}${v.lat ? `<span class="voir"><a href="${esc(streetView(v))}" target="_blank" rel="noopener">Street View<span class="masque"> : ${esc(adr(v))} (nouvelle fenêtre)</span></a><a href="${esc(earth(v))}" target="_blank" rel="noopener">Google Earth<span class="masque"> : ${esc(adr(v))} (nouvelle fenêtre)</span></a></span>` : ""}<small style="display:block">${esc(v.type)}${v.m2 ? ` · ${v.m2} m²` : ""}${v.terrain ? ` · <span style="white-space:nowrap">${v.type === "Terrain" ? "" : "terrain "}${esc(fNb.format(v.terrain))} m²</span>` : ""}</small></td><td style="white-space:nowrap">${v.prix ? esc(fEur.format(v.prix)) : "–"}</td></tr>`).join("")}</tbody></table></div>`
     : `<p class="vide">Aucune vente dans le quartier.</p>`;
   return `<p class="sec-sub" style="margin-top:12px">Rue des Hirondelles, rue des Alouettes, rue des Mésanges et rue Chateaubriand.</p>
     <div class="box"><div class="boxhead"><h2>Permis du quartier</h2></div>${permis}
       <p class="why">${Q.permis.length} autorisation${Q.permis.length > 1 ? "s" : ""} depuis 2013 (permis de construire Sitadel). Le nom du demandeur n'est publié que pour les sociétés et les collectivités.</p></div>
     <div class="box"><div class="boxhead"><h2>Ventes du quartier</h2></div>${ventes}
-      <p class="why">Ventes depuis juillet 2021, d'après les actes notariés (DVF). Prix total de la vente, frais de notaire exclus. Touchez une adresse pour l'ouvrir dans Google Earth.</p></div>
+      <p class="why">Ventes depuis juillet 2021, d'après les actes notariés (DVF). Prix total de la vente, frais de notaire exclus. Street View montre la maison depuis la rue, Google Earth la parcelle vue du ciel (avec une règle pour mesurer).</p></div>
     <p class="why">Chiffres mis à jour le ${esc(date(URBA.maj))} depuis data.gouv.fr.</p>`;
 }
 
