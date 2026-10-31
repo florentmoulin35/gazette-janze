@@ -17,3 +17,16 @@ Chaque nuit à 4 h UTC, `.github/workflows/collecte.yml` lance `scripts/collecte
 - les flux RSS de Roche aux Fées Communauté.
 
 Le résultat est écrit dans `donnees/auto.js`, que `index.html` charge au démarrage. Les infos saisies à la main dans `index.html` restent affichées. Pour lancer une collecte tout de suite : onglet **Actions › Collecte de la nuit › Run workflow**.
+
+## Données d'urbanisme (à lancer à la main)
+
+`scripts/filtrer_urbanisme_janze.py` télécharge les gros fichiers nationaux de data.gouv.fr et n'en garde que les lignes de Janzé (code INSEE 35136), dans des CSV légers. Il lit les fichiers par morceaux avec pandas, sans jamais les charger en entier.
+
+```sh
+pip install pandas
+python scripts/filtrer_urbanisme_janze.py --sitadel   # permis de construire, d'aménager, de démolir (Sitadel)
+python scripts/filtrer_urbanisme_janze.py --dvf       # ventes immobilières (DVF géolocalisées)
+python scripts/filtrer_urbanisme_janze.py --entree fichier.csv --colonne commune --valeur "Janzé"
+```
+
+Les résultats vont dans `donnees_janze/` (non versionné).
