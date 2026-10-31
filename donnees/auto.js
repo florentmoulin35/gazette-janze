@@ -1,47 +1,47 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-31T20:38+00:00",
+ "maj": "2026-10-31T20:44+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-31T20:38+00:00",
+   "le": "2026-10-31T20:44+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-31T20:38+00:00",
-   "n": 54
+   "le": "2026-10-31T20:44+00:00",
+   "n": 93
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-31T20:38+00:00",
+   "le": "2026-10-31T20:44+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-31T20:38+00:00",
+   "le": "2026-10-31T20:44+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-10-31T20:38+00:00",
+   "le": "2026-10-31T20:44+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-10-31T20:38+00:00",
+   "le": "2026-10-31T20:44+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "erreur",
-   "le": "2026-10-31T20:38+00:00",
+   "le": "2026-10-31T20:44+00:00",
    "msg": "HTTP Error 401: Unauthorized",
    "dernier_ok": null
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-10-31T20:38+00:00",
+   "le": "2026-10-31T20:44+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -367,16 +367,32 @@ window.GAZETTE_AUTO = {
    "ap": null
   },
   {
+   "id": "presse-9b1a070459",
+   "d": "2026-10-19",
+   "cat": "vie",
+   "press": false,
+   "t": "Handball Janzé U15 Féminines - hand",
+   "p": "",
+   "src": "Score'n'co",
+   "url": "https://scorenco.com/hand/clubs/handball-janze-2nbc/u15-f1-1wd6",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
    "id": "presse-b4377a8561",
    "d": "2026-10-19",
    "cat": "presse",
    "press": true,
    "t": "Janzé. Des gourdes pour les jeunes footballeurs",
    "p": "",
-   "src": "MaVille.com - Rennes",
-   "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPbkoyMHJMZUlPUmwwNlBmQTZVNjN6Tm90Z0JsOUVxaVRkNnNDZV9mOTA1Q3FZRFBHZHhNbFBmd3NlZzk0WnZzU24xVnZINHhQeU1wOFN6aEN6TnVxZnBHOFBPQ2llcnpkTEx4UU82SFhhOW9JWk5mTWRMeHItczQtWkZXTFFPUlpiMzNpcHN6TXlOMU4tX1dnM2dmQ2lsSGhlYTFrZGdyMEQ?oc=5",
+   "src": "maville.com",
+   "url": "https://rennes.maville.com/actu/actudet_-janze-des-gourdes-pour-les-jeunes-footballeurs_-7534451_actu.Htm",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-b706d84d50",
@@ -414,9 +430,11 @@ window.GAZETTE_AUTO = {
    "t": "A Janzé, Les Ormeaux du Nord proposent une large gamme de plantes pour la Toussaint",
    "p": "",
    "src": "maville.com",
-   "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPQ0YxdFJwN3hIRUlaTUxha2tveDJxTFNNLXJWdXdsRHZ1bVhuMVo5MVVWa19oQm4tQTliX05SNkJ3QWFTa3ZaOFNRcG1CeVg2TlRXcE1TaF9FcC1TdGMyQTRkNEFRbWZJdm8xWEFjT2VsQVBnZmsweDZ4NUtTZE9HOUlqVGY3NlY1WldsM0lkWU1NR0VQZzd4VU10MVZyd3duNW9GcXo5NjdsVFducHFvbm1lYzhZc3lXVzlZRFktMDdPRFlya05rUUpFY2VYWEN5ZWdaOVlWYTMyaDJXR3l3?oc=5",
+   "url": "https://rennes.maville.com/actu/actudet_-a-janze-les-ormeaux-du-nord-proposent-une-large-gamme-de-plantes-pour-la-toussaint_52674-7526152_actu.Htm",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-b8a792067b",
@@ -511,9 +529,11 @@ window.GAZETTE_AUTO = {
    "t": "Janzé. Chef cuisinier, il propose des menus sur-mesure à domicile",
    "p": "",
    "src": "MaVille.com - Rennes",
-   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOMHp6eVdSYXlGS0VpYWd5R3BfQUpadXlWempDSHRtVmxWby1KUm1FTDlzT2JjcGJyNnpCQWtaUkljY1lDczd1N1M3NjJxM1dKaFRoQlFQZzU4akw0WFZZZ1JvMEd6dHliZ21tbmNNU0Z4N0RlRmlRREhoTmxxMDlSVWt0TlhSdGhUenM4cVh4bS1DRHRQcF9DZ1pCdjJUa2dPN3lTOVJ0cWZUNHJMWlgxVjdpRF9vbDJEVGxRV0Vobw?oc=5",
+   "url": "https://rennes.maville.com/actu/actudet_-janze-chef-cuisinier-il-propose-des-menus-sur-mesure-a-domicile_-7525813_actu.Htm",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-2201c7d148",
@@ -879,6 +899,11 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
+    },
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -1316,7 +1341,14 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null
+   "ap": null,
+   "aussi": [
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/actualites/37515-janze-grand-prix-cycliste-13-juillet-2026-infos-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 13 juillet 2026 infos de course cycliste"
+    }
+   ]
   },
   {
    "id": "rafcom-9c04434898",
@@ -1423,7 +1455,14 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null
+   "ap": null,
+   "aussi": [
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
+     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
+    }
+   ]
   },
   {
    "id": "presse-c321fe73da",
@@ -1527,11 +1566,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Janzé : 2 millions d’euros investis pour des aménagements à la mairie et sur un boulevard",
-   "p": "",
+   "p": "Réunis mercredi 22 avril 2026, les élus de Janzé (Ille-et-Vilaine) ont voté le budget 2026. Les taux d’imposition sont maintenus.",
    "src": "Actu.fr",
-   "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNbzluYzl1ak5fOFdrUGlEaVVTSkk2cGUyc3ZmeF93cXBJZDAwMzlCVzA5VWxhVG1ia0RBeFhtdzc3MUxQZEwwcTJUdWt0cE51ZU9JSEhjb09oVFN0dXFVaFkwbm1jNDZ1a3N3bWk4VTJTamI1NmZmZWplcjVwM1A4Z0g1aVdPVlFqOW9zMlhMVHVLSEVaQkdMSXFRMGNUd1ozRkRuRndMX2Y4SEFIQUZqMmV0eFR2bWNGOVJQUF80Y3BLeGlaUWtIYTdHNjd1amNUWnpN?oc=5",
+   "url": "https://actu.fr/bretagne/janze_35136/janze-2-millions-deuros-investis-pour-des-amenagements-a-la-mairie-et-sur-un-boulevard_64211308.html",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "rafcom-8b874ac2ee",
@@ -1578,11 +1619,13 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Classement des lycées près de Janzé : les meilleurs lycées en 2026 (35150) [PUBLIE]",
-   "p": "",
+   "p": "Le classement des lycées près de Janzé en 2026 est publié. Quel est le meilleur lycée près de de Janzé (35150) ? Découvrez gratuitement notre palmarès des lycées",
    "src": "Linternaute.com",
-   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE8zaDB2c19WdE40Z2xJNi01QTBuQWNSNVdHTVczQVB6T1NVZzhyZm5pOVB5RHl3WE05NmM2eDRoOEVmMG5aT3kxOFI1M09MMWJHbnBkSlJaQ3dCUE0yWEsyRXZuYl83VTZa?oc=5",
+   "url": "https://www.linternaute.com/ville/lycee/janze/ville-35136",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-8fad30c9df",
