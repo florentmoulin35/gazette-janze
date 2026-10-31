@@ -1,0 +1,34 @@
+name: Sonde (temporaire)
+on:
+  push:
+    branches: [claude/project-thread-kwhgxp]
+    paths: [".github/workflows/sonde.yml"]
+jobs:
+  sonde:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash {0}
+        env:
+          OA: ${{ secrets.OPENAGENDA_KEY }}
+          MF: ${{ secrets.METEOFRANCE_KEY }}
+        run: |
+          echo "cles: OA=${#OA} car, MF=${#MF} car"
+          g() { echo "=== $1"; curl -s -L --max-time 30 -w '\nHTTP %{http_code}\n' "${@:3}" "$1" | head -c ${2:-2500}; echo; }
+          g "https://api.openagenda.com/v2/agendas?key=$OA&search=Janz%C3%A9&size=10" 3000
+          g "https://api.openagenda.com/v2/agendas?key=$OA&search=Roche%20aux%20F%C3%A9es&size=10" 2000
+          g "https://api.openagenda.com/v2/agendas?key=$OA&search=Ille-et-Vilaine&size=10&official=1" 2000
+          g "https://api.openagenda.com/v2/events?key=$OA&size=5&relative[]=current&relative[]=upcoming&geo[northEast][lat]=47.98&geo[northEast][lng]=-1.42&geo[southWest][lat]=47.90&geo[southWest][lng]=-1.56" 3000
+          g "https://public-api.meteofrance.fr/public/DPVigilance/v1/cartevigilance/encours" 1200 -H "apikey: $MF"
+          echo; echo "--- dept 35"
+          cat > v.py <<'PY'
+          import sys, json
+          d = json.load(sys.stdin); p = d.get("product", d)
+          print("keys", list(p.keys())[:12])
+          for per in p.get("periods", []):
+              print("periode", per.get("echeance"), per.get("begin_validity_time"), per.get("end_validity_time"))
+              for dom in per.get("timelaps", {}).get("domain_ids", []):
+                  if dom.get("domain_id") == "35": print(json.dumps(dom, ensure_ascii=False)[:1500])
+          PY
+          sed -i 's/^          //' v.py
+          curl -s --max-time 30 -H "apikey: $MF" "https://public-api.meteofrance.fr/public/DPVigilance/v1/cartevigilance/encours" | python3 v.py
+          g "https://public-api.meteofrance.fr/public/DPVigilance/v1/textesvigilance/encours" 1500 -H "apikey: $MF"
