@@ -1,47 +1,47 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-10-31T20:49+00:00",
+ "maj": "2026-10-31T21:05+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-10-31T20:49+00:00",
+   "le": "2026-10-31T21:05+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-10-31T20:49+00:00",
-   "n": 54
+   "le": "2026-10-31T21:05+00:00",
+   "n": 93
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-10-31T20:49+00:00",
+   "le": "2026-10-31T21:05+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-10-31T20:49+00:00",
+   "le": "2026-10-31T21:05+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-10-31T20:49+00:00",
+   "le": "2026-10-31T21:05+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-10-31T20:49+00:00",
+   "le": "2026-10-31T21:05+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
-   "etat": "erreur",
-   "le": "2026-10-31T20:49+00:00",
-   "msg": "HTTP Error 401: Unauthorized",
-   "dernier_ok": null
+   "etat": "ok",
+   "le": "2026-10-31T21:05+00:00",
+   "n": 0,
+   "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-10-31T20:49+00:00",
+   "le": "2026-10-31T21:05+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -769,6 +769,20 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
+   "id": "presse-3a7f0420af",
+   "d": "2026-09-28",
+   "cat": "vie",
+   "press": false,
+   "t": "HB JANZÉ vs Guichen HB 1",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-masculin-territoriale-30547/poule-194052/rencontre-2696381/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
    "id": "presse-ca3fb8f167",
    "d": "2026-09-27",
    "cat": "presse",
@@ -899,6 +913,11 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
+    },
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -1078,6 +1097,20 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-une-nouvelle-directrice-a-lecole-du-chat-perche-210fb32a-2450-45ff-a738-91630e5c1227",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-469ee9cfc2",
+   "d": "2026-09-01",
+   "cat": "presse",
+   "press": true,
+   "t": "Ille-et-Vilaine : poursuite de la rénovation de l’hôtel de ville de Janzé",
+   "p": "",
+   "src": "Le Moniteur",
+   "url": "https://www.lemoniteur.fr/bretagne/ille-et-vilaine/ille-et-vilaine-poursuite-de-la-renovation-de-lhotel-de-ville-de-janze.KR2YD73K6BH6RDTTOKMC2MHPEU.html",
    "a": "auto",
    "k": "presse",
    "resolu": true,
@@ -1336,7 +1369,14 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null
+   "ap": null,
+   "aussi": [
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/actualites/37515-janze-grand-prix-cycliste-13-juillet-2026-infos-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 13 juillet 2026 infos de course cycliste"
+    }
+   ]
   },
   {
    "id": "rafcom-9c04434898",
@@ -1443,7 +1483,14 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null
+   "ap": null,
+   "aussi": [
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
+     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
+    }
+   ]
   },
   {
    "id": "presse-c321fe73da",
