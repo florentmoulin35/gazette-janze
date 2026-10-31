@@ -28,6 +28,9 @@ jobs:
           python-version: "3.12"
       - name: Lire les sources
         id: collecte
+        env:
+          METEOFRANCE_KEY: ${{ secrets.METEOFRANCE_KEY }}
+          OPENAGENDA_KEY: ${{ secrets.OPENAGENDA_KEY }}
         # Code 2 : auto.js est écrit mais une source est en panne depuis plus de 48 h.
         # On enregistre quand même, et la dernière étape fait échouer le workflow.
         run: |

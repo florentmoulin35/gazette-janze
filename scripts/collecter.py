@@ -26,6 +26,7 @@ import email.utils
 import hashlib
 import html
 import json
+import os
 import re
 import sys
 import time
@@ -72,6 +73,15 @@ SOURCES_LOCALES = r"helloasso|kidiklik|velopresse|federation francaise|score.n.c
 SOURCES_EXCLUES = r"iqair"
 VIGIEAU = f"https://api.vigieau.gouv.fr/api/zones?commune={CODE_INSEE}&profil=particulier&zoneType=SUP"
 CATNAT = f"https://georisques.gouv.fr/api/v1/gaspar/catnat?code_insee={CODE_INSEE}&page=1&page_size=100"
+VIGILANCE = "https://public-api.meteofrance.fr/public/DPVigilance/v1/cartevigilance/encours"
+VIGILANCE_PAGE = "https://vigilance.meteofrance.fr/fr/ille-et-vilaine"
+DEPARTEMENT = "35"
+PHENOMENES = {"1": "vent violent", "2": "pluie-inondation", "3": "orages", "4": "crues", "5": "neige-verglas",
+              "6": "canicule", "7": "grand froid", "8": "avalanches", "9": "vagues-submersion"}
+COULEURS = {1: "verte", 2: "jaune", 3: "orange", 4: "rouge"}
+# Agendas OpenAgenda qui peuvent annoncer des événements à Janzé (la recherche sur tous les
+# agendas demande un accès partenaire). Saison culturelle de Roche aux Fées Communauté.
+OPENAGENDA_AGENDAS = {57863275: "saison-culturelle-roche-aux-fees-communaute"}
 EAU = f"https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_commune={CODE_INSEE}&size=100&sort=desc"
 # Flux « Actu » de rafcom.bzh : on garde tout pour les thèmes qui touchent la
 # vie de la commune, et seulement ce qui cite Janzé pour les autres.
@@ -122,11 +132,12 @@ def aujourdhui() -> str:
     return datetime.now(PARIS).date().isoformat()
 
 
-def telecharger(url: str, essais: int = 2, donnees: dict | None = None, ua: str = UA) -> str:
+def telecharger(url: str, essais: int = 2, donnees: dict | None = None, ua: str = UA,
+                entetes: dict | None = None) -> str:
     corps = urllib.parse.urlencode(donnees).encode() if donnees else None
     requete = urllib.request.Request(url, data=corps, headers={
         "User-Agent": ua, "Accept-Language": "fr-FR,fr",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"})
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", **(entetes or {})})
     for essai in range(essais):
         try:
             with urllib.request.urlopen(requete, timeout=30) as reponse:  # noqa: S310
@@ -518,6 +529,74 @@ def collecter_eau() -> list[dict]:
     }]
 
 
+# --- Météo-France : vigilance météo -----------------------------------------------
+
+def collecter_vigilance() -> list[dict]:
+    """Une alerte par jour (aujourd'hui, demain) où l'Ille-et-Vilaine est en vigilance orange ou rouge.
+    La vigilance jaune, fréquente, est seulement indiquée dans la page Sources."""
+    cle = os.environ.get("METEOFRANCE_KEY", "").strip()
+    if not cle:
+        raise RuntimeError("clé METEOFRANCE_KEY absente")
+    carte = json.loads(telecharger(VIGILANCE, entetes={"apikey": cle}))["product"]
+    items, niveaux = [], []
+    for periode in carte.get("periods", []):
+        dom = next((d for d in periode.get("timelaps", {}).get("domain_ids", []) if d.get("domain_id") == DEPARTEMENT), None)
+        if not dom:
+            continue
+        jour_iso = datetime.fromisoformat(periode["begin_validity_time"].replace("Z", "+00:00")).astimezone(PARIS).date().isoformat()
+        quand = "aujourd'hui" if periode.get("echeance") == "J" else "demain"
+        couleur = COULEURS.get(dom.get("max_color_id") or 1, "verte")
+        niveaux.append(f"{quand} {couleur}")
+        if (dom.get("max_color_id") or 1) < 3:
+            continue
+        quoi = ", ".join(PHENOMENES.get(p["phenomenon_id"], "?") for p in dom.get("phenomenon_items", [])
+                         if (p.get("phenomenon_max_color_id") or 1) >= 3)
+        items.append({
+            "id": f"vigilance-{jour_iso}-{couleur}", "d": jour_iso, "cat": "alerte",
+            "t": f"Vigilance {couleur} {quoi} en Ille-et-Vilaine",
+            "p": f"Météo-France place l'Ille-et-Vilaine en vigilance {couleur} ({quoi}) le {jour_fr(jour_iso)}. "
+                 "Les consignes de sécurité sont sur le site de la vigilance.",
+            "src": "Météo-France", "url": VIGILANCE_PAGE, "a": "auto", "k": "vigilance", "fin": jour_iso,
+        })
+    if niveaux:
+        INFOS_SOURCES["vigilance"] = "Vigilance " + ", ".join(niveaux)
+    return items
+
+
+# --- OpenAgenda : événements à Janzé ----------------------------------------------
+
+# Rempli par collecter_agenda : rendez-vous à venir, affichés dans l'onglet Agenda.
+AGENDA_AUTO: list[dict] = []
+
+
+def collecter_agenda() -> list[dict]:
+    cle = os.environ.get("OPENAGENDA_KEY", "").strip()
+    if not cle:
+        raise RuntimeError("clé OPENAGENDA_KEY absente")
+    vus = set()
+    for uid, slug in OPENAGENDA_AGENDAS.items():
+        url = (f"https://api.openagenda.com/v2/agendas/{uid}/events?key={urllib.parse.quote(cle)}"
+               "&size=100&relative[]=current&relative[]=upcoming&monolingual=fr")
+        for e in json.loads(telecharger(url)).get("events", []):
+            lieu = e.get("location") or {}
+            if MOT_CLE not in normaliser(f"{lieu.get('city', '')} {lieu.get('address', '')}"):
+                continue
+            debut = (e.get("nextTiming") or e.get("firstTiming") or {}).get("begin")
+            if not debut or e.get("uid") in vus:
+                continue
+            vus.add(e.get("uid"))
+            quand = datetime.fromisoformat(debut).astimezone(PARIS)
+            lien = f"https://openagenda.com/fr/{slug}/events/{e.get('slug', '')}"
+            AGENDA_AUTO.append({
+                "d": quand.date().isoformat(), "cat": "vie", "t": couper(e.get("title") or "Événement", 120),
+                "s": " · ".join(x for x in (lieu.get("name"), quand.strftime("%Hh%M").replace("h00", "h")) if x),
+                **({"url": lien} if lien_valide(lien) else {}),
+            })
+    AGENDA_AUTO.sort(key=lambda a: a["d"])
+    INFOS_SOURCES["agenda"] = f"{len(AGENDA_AUTO)} rendez-vous à venir à Janzé"
+    return []
+
+
 # --- Roche aux Fées Communauté ------------------------------------------------
 
 def collecter_rafcom() -> list[dict]:
@@ -564,7 +643,8 @@ def classer(i: dict) -> dict:
 
 COLLECTEURS = {"janze": collecter_janze, "presse": collecter_presse,
                "vigieau": collecter_vigieau, "rafcom": collecter_rafcom,
-               "catnat": collecter_catnat, "eau": collecter_eau}
+               "catnat": collecter_catnat, "eau": collecter_eau, "vigilance": collecter_vigilance,
+               "agenda": collecter_agenda}
 
 
 def lire_precedent() -> dict:
@@ -610,7 +690,7 @@ def main() -> int:
     # On cumule avec l'historique, sans doublon, en oubliant ce qui est trop ancien.
     limite = (datetime.now(PARIS).date() - timedelta(days=GARDER_JOURS)).isoformat()
     # VigiEau et Hub'Eau disent l'état du jour : s'ils ont répondu, leurs anciennes alertes sont remplacées.
-    for cle in ("vigieau", "eau"):
+    for cle in ("vigieau", "eau", "vigilance"):
         if cle in reussies:
             par_id = {n: i for n, i in par_id.items() if i.get("k") != cle}
     tous = {**par_id, **nouveaux}
@@ -618,7 +698,7 @@ def main() -> int:
     for i in sorted(tous.values(), key=lambda i: (i["d"], "maville" not in i["src"].lower()), reverse=True):
         if i["d"] < limite or not lien_valide(i.get("url", "")):
             continue
-        if i.get("fin") and i["fin"] < aujourdhui():   # arrêté VigiEau expiré
+        if i.get("fin") and i["fin"] < aujourdhui():   # arrêté VigiEau ou vigilance météo terminés
             continue
         if i["k"] == "rafcom" and autre_commune(i["t"], i.get("p", "")):
             continue
@@ -632,7 +712,9 @@ def main() -> int:
         items.append(i)
     items = regrouper(items)[:MAX_ITEMS]
 
-    donnees = {"maj": maintenant, "sources": sources, "items": items}
+    # Agenda OpenAgenda : la liste du jour remplace la précédente ; en cas de panne, on garde l'ancienne.
+    agenda = AGENDA_AUTO if "agenda" in reussies else [a for a in avant.get("agenda", []) if a["d"] >= aujourdhui()]
+    donnees = {"maj": maintenant, "sources": sources, "items": items, "agenda": agenda}
     SORTIE.parent.mkdir(exist_ok=True)
     SORTIE.write_text(
         "// Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.\n"
