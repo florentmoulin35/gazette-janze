@@ -1,0 +1,61 @@
+# Données d'urbanisme de Janzé : à lancer à la main (onglet Actions ›
+# « Données d'urbanisme » › Run workflow). Télécharge les gros fichiers
+# nationaux de data.gouv.fr (Sitadel et DVF), n'en garde que Janzé, et
+# enregistre les CSV légers dans donnees/urbanisme/.
+name: Données d'urbanisme
+
+on:
+  workflow_dispatch:
+    inputs:
+      sources:
+        description: "Fichiers à mettre à jour"
+        type: choice
+        default: "Sitadel et DVF"
+        options: ["Sitadel et DVF", "Sitadel (permis)", "DVF (ventes)"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: urbanisme
+  cancel-in-progress: false
+
+jobs:
+  urbanisme:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer pandas
+        run: pip install pandas
+      - name: Filtrer les fichiers nationaux
+        env:
+          SOURCES: ${{ inputs.sources }}
+        run: |
+          case "$SOURCES" in
+            "Sitadel (permis)") options="--sitadel" ;;
+            "DVF (ventes)")     options="--dvf" ;;
+            *)                  options="--sitadel --dvf" ;;
+          esac
+          python scripts/filtrer_urbanisme_janze.py $options --dossier donnees/urbanisme
+      - name: Enregistrer les CSV de Janzé
+        run: |
+          git config user.name "Gazette de Janzé (urbanisme)"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add donnees/urbanisme
+          if git diff --cached --quiet; then
+            echo "Rien de nouveau."
+            exit 0
+          fi
+          git commit -m "Données d'urbanisme du $(date -u +%Y-%m-%d)"
+          # La collecte de la nuit a pu pousser entre-temps : on se remet à jour.
+          for essai in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            git rebase --abort 2>/dev/null
+            echo "Envoi refusé (essai $essai), nouvel essai…"
+            sleep $((essai * 5))
+          done
+          exit 1
