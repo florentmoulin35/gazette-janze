@@ -224,7 +224,12 @@ def resumer_quartier() -> dict:
             ventes.append({"d": l.date_mutation, "n": l.adresse_numero, "voie": rue_quartier(l.adresse_nom_voie),
                            "type": type_bien or ("Terrain" if l.nature_culture else "Dépendance"),
                            "m2": int(surf) if surf else None, "prix": int(prix) if prix == prix else None,
-                           "nature": l.nature_mutation})
+                           "nature": l.nature_mutation,
+                           # Surface du terrain : une fois par parcelle (une parcelle peut avoir plusieurs lignes).
+                           "terrain": int(pd.to_numeric(g.drop_duplicates("id_parcelle").surface_terrain, errors="coerce").sum()) or None,
+                           # Position de la parcelle, pour l'ouvrir dans Google Earth.
+                           **({"lat": round(float(pos.latitude.iloc[0]), 6), "lon": round(float(pos.longitude.iloc[0]), 6)}
+                              if len(pos := g[g.latitude != ""]) else {})})
     return {"permis": sorted(permis, key=lambda x: x["d"], reverse=True),
             "ventes": sorted(ventes, key=lambda x: x["d"], reverse=True)}
 
