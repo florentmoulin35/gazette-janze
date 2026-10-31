@@ -13,35 +13,36 @@ jobs:
       - shell: bash {0}
         run: |
           pip -q install pypdf
-          BOT="Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github.io/gazette-janze/)"
-          NAV="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
-          P="https://www.ille-et-vilaine.gouv.fr/Publications/Recueil-des-actes-administratifs/Recueil-des-actes-administratifs-2026"
-          curl -s -L --max-time 30 -A "$BOT" "$P" -o p.html
-          grep -o 'href="/contenu/telechargement/[^"]*recueil-35-2026[^"]*"' p.html | sed 's/href="//;s/"$//' | sort -t- -k5 -n | tail -15 > liens.txt
-          grep -o 'recueil-35-2026-[0-9]*' p.html | sort -u | wc -l
-          L=$(tail -1 liens.txt)
-          for ua in BOT NAV; do
-            echo "== $ua"; curl -sS --http1.1 -L --max-time 120 -A "${!ua}" -o r.pdf -w "%{http_code} %{size_download}o %{content_type} %{time_total}s\n" "https://www.ille-et-vilaine.gouv.fr$L" 2>&1
-          done
-          cat > lire.py <<'PY'
-          import sys, re, time
+          cat > s.py <<'PY'
+          import re, time, io, urllib.request as u
           from pypdf import PdfReader
-          for f in sys.argv[1:]:
+          UA = "Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github.io/gazette-janze/)"
+          B = "https://www.ille-et-vilaine.gouv.fr"
+          def get(url):
+              r = u.urlopen(u.Request(url, headers={"User-Agent": UA}), timeout=90)
+              return r.status, r.headers.get("content-type"), r.read()
+          s, ct, page = get(B + "/Publications/Recueil-des-actes-administratifs/Recueil-des-actes-administratifs-2026")
+          html = page.decode("utf-8", "replace")
+          print("page", s, len(html))
+          liens = sorted(set(re.findall(r'href="(/contenu/telechargement/[^"]*recueil-35-2026-(\d+)[^"]*\.pdf)"', html)), key=lambda x: int(x[1]))
+          print(len(liens), "recueils ; derniers :", [l[1] for l in liens[-12:]])
+          # titres autour des liens
+          for l, n in liens[-3:]:
+              i = html.find(l); print("contexte", n, re.sub(r"<[^>]+>", " ", html[max(0, i-400):i+600]).split()[:60])
+          for l, n in liens[-12:]:
+              time.sleep(2)
+              try:
+                  s, ct, data = get(B + l)
+              except Exception as e:
+                  print(n, "ERREUR téléchargement", e); continue
               t = time.time()
               try:
-                  r = PdfReader(f); txt = "\n".join((p.extract_text() or "") for p in r.pages)
+                  r = PdfReader(io.BytesIO(data)); txt = "\n".join((p.extract_text() or "") for p in r.pages)
               except Exception as e:
-                  print(f, "ERREUR", e); continue
-              print(f"--- {f}: {len(r.pages)} pages, {len(txt)} car., {time.time()-t:.1f}s")
-              print(txt[:300].replace("\n", " | "))
-              for m in re.finditer(r"janz[ée]", txt, re.I):
-                  print("  >>", txt[max(0, m.start()-250):m.end()+250].replace("\n", " "))
+                  print(n, ct, len(data), "ERREUR pdf", e, data[:80]); continue
+              print(f"--- {n}: {ct} {len(data)//1024} Ko, {len(r.pages)} p, {len(txt)} car, {time.time()-t:.1f}s | {txt[:200]!r}")
+              for m in list(re.finditer(r"janz[ée]", txt, re.I))[:4]:
+                  print("  >>", re.sub(r"\s+", " ", txt[max(0, m.start()-300):m.end()+300]))
           PY
-          sed -i 's/^          //' lire.py
-          i=0
-          for L in $(cat liens.txt); do
-            i=$((i+1)); curl -sS --http1.1 -L --max-time 120 -A "$BOT" -o "r$i.pdf" "https://www.ille-et-vilaine.gouv.fr$L"
-            echo "$L -> $(stat -c %s r$i.pdf)o"
-          done
-          python -c "import urllib.request as u;r=u.urlopen(u.Request('https://www.ille-et-vilaine.gouv.fr'+open('liens.txt').read().split()[-1],headers={'User-Agent':'GazetteJanze/1.0'}),timeout=60);print('urllib',r.status,r.headers.get('content-type'),len(r.read()))"
-          python lire.py r*.pdf 2>&1 | head -c 20000
+          sed -i 's/^          //' s.py
+          python s.py 2>&1 | head -c 30000
