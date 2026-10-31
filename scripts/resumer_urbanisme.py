@@ -15,6 +15,9 @@ from __future__ import annotations
 import json
 import re
 import sys
+import unicodedata
+import urllib.parse
+import urllib.request
 from datetime import date
 from pathlib import Path
 
@@ -191,8 +194,61 @@ def resumer_ventes() -> dict:
     }
 
 
+# Positions déjà trouvées par la Base Adresse Nationale, gardées dans le dépôt pour
+# ne pas redemander les mêmes adresses à chaque mise à jour.
+GEOCACHE = DOSSIER / "geocodage.json"
+
+
+def geocoder(adresse_texte: str, cache: dict) -> tuple[float, float] | None:
+    """Position d'une adresse de Janzé via la Base Adresse Nationale (api-adresse.data.gouv.fr)."""
+    cle = unicodedata.normalize("NFKD", adresse_texte.upper()).encode("ascii", "ignore").decode()
+    if cle in cache:
+        return tuple(cache[cle]) if cache[cle] else None
+    url = "https://api-adresse.data.gouv.fr/search/?" + urllib.parse.urlencode(
+        {"q": adresse_texte, "citycode": "35136", "limit": 1})
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "gazette-janze/1.0"}), timeout=15) as rep:
+            res = json.load(rep).get("features") or []
+    except OSError as erreur:  # hors ligne : on réessaiera à la prochaine mise à jour
+        print(f"  géocodage impossible pour « {adresse_texte} » : {erreur}", file=sys.stderr)
+        return None
+    # On n'accepte qu'une réponse sûre (score de la BAN entre 0 et 1).
+    pos = None
+    if res and res[0]["properties"].get("score", 0) >= 0.5:
+        lon, lat = res[0]["geometry"]["coordinates"]
+        pos = (round(lat, 6), round(lon, 6))
+    cache[cle] = pos
+    return pos
+
+
+def id_parcelle(section: str, num: str) -> str:
+    """Identifiant cadastral au format DVF : 35136 + 000 + section sur 2 + numéro sur 4."""
+    section, num = section.strip().upper(), num.strip()
+    return f"35136000{section.rjust(2, '0')}{num.zfill(4)}" if section and num.isdigit() else ""
+
+
 def resumer_quartier() -> dict:
     """Tous les permis et toutes les ventes de la rue des Hirondelles et des rues voisines."""
+    # Positions connues par DVF : par parcelle cadastrale, et par adresse (numéro + rue).
+    dvf = lire("dvf_janze.csv")
+    par_parcelle, par_adresse = {}, {}
+    for _, l in (dvf[dvf.latitude != ""] if not dvf.empty else dvf).iterrows():
+        pos = (round(float(l.latitude), 6), round(float(l.longitude), 6))
+        par_parcelle.setdefault(l.id_parcelle, pos)
+        if l.adresse_numero:
+            par_adresse.setdefault((l.adresse_numero, rue_quartier(l.adresse_nom_voie)), pos)
+    try:
+        cache = json.loads(GEOCACHE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        cache = {}
+
+    def position(l: pd.Series, n: str, voie: str) -> tuple[float, float] | None:
+        """Parcelle du permis si elle a été vendue (DVF), sinon l'adresse via la BAN, sinon une vente au même numéro."""
+        pos = par_parcelle.get(id_parcelle(l.get("SEC_CADASTRE1", ""), l.get("NUM_CADASTRE1", "")))
+        if not pos and n:
+            pos = geocoder(f"{n} {voie.split(' (lot')[0]} 35150 Janzé", cache)
+        return pos or par_adresse.get((n, voie))
+
     permis = []
     fichiers = [("sitadel_logements_janze.csv", "Logement"), ("sitadel_locaux_non_residentiels_janze.csv", "Local"),
                 ("sitadel_permis_amenager_janze.csv", "Aménagement"), ("sitadel_permis_demolir_janze.csv", "Démolition")]
@@ -207,10 +263,13 @@ def resumer_quartier() -> dict:
             lgt = int(entier(pd.Series([l.get("NB_LGT_TOT_CREES", "0")]))[0])
             quoi = (f"{lgt} logement{'s' if lgt > 1 else ''}" if genre == "Logement" and lgt
                     else "Travaux sur une maison" if genre == "Logement" else genre)
-            permis.append({"d": l.DATE_REELLE_AUTORISATION, "n": numero(l, "ADR_NUM_TER"),
-                           "voie": rue_quartier(f"{l.ADR_LIBVOIE_TER} {l.ADR_LIEUDIT_TER}"),
+            n, voie = numero(l, "ADR_NUM_TER"), rue_quartier(f"{l.ADR_LIBVOIE_TER} {l.ADR_LIEUDIT_TER}")
+            pos = position(l, n, voie)
+            permis.append({"d": l.DATE_REELLE_AUTORISATION, "n": n, "voie": voie,
                            "quoi": quoi, "nature": NATURE.get(l.get("NATURE_PROJET_DECLAREE", ""), ""),
-                           "etat": ETATS.get(l[etat], ""), "societe": societe(l)})
+                           "etat": ETATS.get(l[etat], ""), "societe": societe(l),
+                           **({"lat": pos[0], "lon": pos[1]} if pos else {})})
+    GEOCACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
     ventes = []
     df = lire("dvf_janze.csv")
     if not df.empty:
