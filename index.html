@@ -221,6 +221,12 @@ nav.rub.fin::after { opacity: 0; }
 .tab th { text-align: right; font-size: 0.6875rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); font-weight: 700; padding: 0 0 6px 6px; border-bottom: 2px solid var(--ink); }
 .tab td { text-align: right; padding: 7px 0 7px 6px; border-bottom: 1px dotted var(--rule); }
 .tab th:first-child, .tab td:first-child { text-align: left; padding-left: 0; font-weight: 700; }
+.tab-defile { overflow-x: auto; }
+@media (max-width: 359px) { .tab { font-size: 0.75rem; } .tab td, .tab th { padding-left: 4px; } }
+.zone { display: flex; gap: 0; margin-top: 12px; border: 2px solid var(--ink); border-radius: 3px; overflow: hidden; }
+.zone button { flex: 1; min-height: 44px; padding: 8px 10px; text-align: center; font-weight: 700; font-size: 0.8125rem; }
+.zone button + button { border-left: 2px solid var(--ink); }
+.zone button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .colophon { margin-top: 26px; font-size: 0.75rem; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
 </style>
 
@@ -529,11 +535,13 @@ function viewUrba() {
       const x = URBA[k];
       return `<div class="agl"><b>${x.total}</b><div>${esc(nom)} depuis ${esc(x.depuis)}${sens ? `<small>${esc(sens)}</small>` : ""}${x.recents[0] ? `<small>Dernier : ${esc(fDay.format(dt(x.recents[0].d)))} ${esc(x.recents[0].d.slice(0, 4))}, ${esc(x.recents[0].voie)}${x.recents[0].societe ? " (" + esc(x.recents[0].societe) + ")" : ""}</small>` : ""}</div></div>`;
     }).join("");
+  if (zoneUrba === "quartier") return `${articles}<div class="aussi"><div class="kick">En chiffres · data.gouv.fr</div>${choixZone()}${viewQuartier()}</div>`;
   const derniere = ans[ans.length - 1];
   // Dernière année complète avec un prix de maison, pour le chiffre clé.
   const prixAn = V && V.par_an ? V.par_an.filter(a => a.an < anCours && a.prix_maison).slice(-1)[0] : null;
   return `${articles}
   <div class="aussi"><div class="kick">En chiffres · data.gouv.fr</div>
+    ${choixZone()}
     <div class="chiffres">
       <div><b>${derniere.logements}</b><span>logements autorisés en ${esc(derniere.an)}${derniere.an === anCours ? " (à ce jour)" : ""}</span></div>
       <div><b>${moy5}</b><span>par an en moyenne (${esc(cinq[0]?.an || "")}-${esc(cinq[cinq.length - 1]?.an || "")})</span></div>
@@ -548,8 +556,40 @@ function viewUrba() {
     <div class="box"><div class="boxhead"><h2>Derniers permis de logement</h2></div>${recents}</div>
     ${ventes}
     <div class="box"><div class="boxhead"><h2>Autres autorisations</h2></div>${autres}</div>
-    <p class="why">Chiffres mis à jour le ${esc(fDay.format(dt(URBA.maj)))} ${esc(URBA.maj.slice(0, 4))} depuis data.gouv.fr. Les noms ne sont donnés que pour les entreprises et les collectivités.</p>
+    <p class="why">Chiffres mis à jour le ${esc(fDay.format(dt(URBA.maj)))} ${esc(URBA.maj.slice(0, 4))} depuis data.gouv.fr. Le nom du demandeur n'est publié que pour les sociétés (SCI, entreprises) et les collectivités, pas pour les particuliers.</p>
   </div>`;
+}
+
+// Filtre de la rubrique : tout Janzé, ou seulement la rue des Hirondelles et les rues qui la touchent.
+let zoneUrba = "janze";
+try { zoneUrba = localStorage.getItem("gazette-zone-urba") || "janze"; } catch (e) {}
+const choixZone = () => URBA && URBA.quartier ? `<div class="zone" role="group" aria-label="Zone affichée">
+  <button data-zone="janze" aria-pressed="${zoneUrba === "janze"}">Tout Janzé</button>
+  <button data-zone="quartier" aria-pressed="${zoneUrba === "quartier"}">Quartier des Hirondelles</button></div>` : "";
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-zone]");
+  if (!b) return;
+  zoneUrba = b.dataset.zone;
+  try { localStorage.setItem("gazette-zone-urba", zoneUrba); } catch (err) {}
+  const y = window.scrollY;
+  render();
+  window.scrollTo(0, y);
+  document.querySelector(`[data-zone="${zoneUrba}"]`)?.focus();
+});
+function viewQuartier() {
+  const Q = URBA.quartier;
+  const date = d => `${fDay.format(dt(d))} ${d.slice(0, 4)}`;
+  const adr = x => `${x.n ? x.n.replace(/\s+/g, " ") + " " : ""}${x.voie}`;
+  const permis = Q.permis.length ? Q.permis.map(p => `<div class="agl"><b>${esc(date(p.d))}</b><div>${esc(p.quoi)} · ${esc(adr(p))}<small>${esc([p.nature, p.etat, p.societe ? "Demandeur : " + p.societe : ""].filter(Boolean).join(" · "))}</small></div></div>`).join("")
+    : `<p class="vide">Aucun permis dans le quartier.</p>`;
+  const ventes = Q.ventes.length ? `<div class="tab-defile"><table class="tab"><thead><tr><th>Date</th><th style="text-align:left">Bien</th><th>Prix</th></tr></thead><tbody>${Q.ventes.map(v => `<tr><td style="white-space:nowrap">${esc(v.d.slice(8, 10) + "/" + v.d.slice(5, 7) + "/" + v.d.slice(2, 4))}</td><td style="text-align:left">${esc(adr(v))}<br><small>${esc(v.type)}${v.m2 ? ` · ${v.m2} m²` : ""}</small></td><td style="white-space:nowrap">${v.prix ? esc(fEur.format(v.prix)) : "–"}</td></tr>`).join("")}</tbody></table></div>`
+    : `<p class="vide">Aucune vente dans le quartier.</p>`;
+  return `<p class="sec-sub" style="margin-top:12px">Rue des Hirondelles, rue des Alouettes, rue des Mésanges et rue Chateaubriand.</p>
+    <div class="box"><div class="boxhead"><h2>Permis du quartier</h2></div>${permis}
+      <p class="why">${Q.permis.length} autorisation${Q.permis.length > 1 ? "s" : ""} depuis 2013 (permis de construire Sitadel). Le nom du demandeur n'est publié que pour les sociétés et les collectivités.</p></div>
+    <div class="box"><div class="boxhead"><h2>Ventes du quartier</h2></div>${ventes}
+      <p class="why">Ventes depuis juillet 2021, d'après les actes notariés (DVF). Prix total de la vente, frais de notaire exclus.</p></div>
+    <p class="why">Chiffres mis à jour le ${esc(date(URBA.maj))} depuis data.gouv.fr.</p>`;
 }
 
 function viewAgenda() {
