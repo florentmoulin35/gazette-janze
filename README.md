@@ -29,4 +29,6 @@ python scripts/filtrer_urbanisme_janze.py --dvf       # ventes immobilières (DV
 python scripts/filtrer_urbanisme_janze.py --entree fichier.csv --colonne commune --valeur "Janzé"
 ```
 
-Les résultats vont dans `donnees_janze/` (non versionné).
+En local, les résultats vont dans `donnees_janze/` (non versionné).
+
+Sans rien installer : onglet **Actions › Données d'urbanisme › Run workflow**. GitHub lance le script et enregistre les CSV de Janzé dans `donnees/urbanisme/`.
