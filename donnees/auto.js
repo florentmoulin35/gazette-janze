@@ -1,52 +1,66 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-01T04:36+00:00",
+ "maj": "2026-11-02T04:44+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-01T04:36+00:00",
+   "le": "2026-11-02T04:44+00:00",
    "n": 10
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-01T04:36+00:00",
-   "n": 93
+   "le": "2026-11-02T04:44+00:00",
+   "n": 55
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-01T04:36+00:00",
+   "le": "2026-11-02T04:44+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-01T04:36+00:00",
+   "le": "2026-11-02T04:44+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-01T04:36+00:00",
+   "le": "2026-11-02T04:44+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-01T04:36+00:00",
+   "le": "2026-11-02T04:44+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-01T04:36+00:00",
+   "le": "2026-11-02T04:44+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-01T04:36+00:00",
+   "le": "2026-11-02T04:44+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-697f8a0f37",
+   "d": "2026-11-02",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Sept enfants ont appris à nager pendant les vacances",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-sept-enfants-ont-appris-a-nager-pendant-les-vacances-248d75c0-d536-11f1-bce4-49c6ba196371",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-d13b86c1fc",
    "d": "2026-10-30",
@@ -365,6 +379,17 @@ window.GAZETTE_AUTO = {
    "k": "presse",
    "resolu": true,
    "ap": null
+  },
+  {
+   "id": "janze-22a5b6b36f",
+   "d": "2026-10-20",
+   "cat": "vie",
+   "t": "Faciliter l’atterrissage de nuit pour sauver des vies !",
+   "p": "En septembre dernier, la ville s’est dotée d’un boîtier connecté permettant de faciliter l’atterrissage de nuit des hélicoptères de secours. Un équipement permettra au SAMU de gagner de précieuses minutes lors des interventions d’urgence. Auparavant, lorsqu’un hélicoptère de…",
+   "src": "janze.fr",
+   "url": "https://www.janze.fr/actualites/faciliter-latterrissage-de-nuit-pour-sauver-des-vies",
+   "a": "auto",
+   "k": "janze"
   },
   {
    "id": "presse-9b1a070459",
@@ -913,11 +938,6 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
-    },
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -1369,14 +1389,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null,
-   "aussi": [
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/actualites/37515-janze-grand-prix-cycliste-13-juillet-2026-infos-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 13 juillet 2026 infos de course cycliste"
-    }
-   ]
+   "ap": null
   },
   {
    "id": "rafcom-9c04434898",
@@ -1483,14 +1496,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null,
-   "aussi": [
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
-     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
-    }
-   ]
+   "ap": null
   },
   {
    "id": "presse-c321fe73da",
@@ -1787,9 +1793,11 @@ window.GAZETTE_AUTO = {
    "t": "Municipales 2026 à Janzé : découvrez la liste sans étiquette portée par Jennifer Maillard",
    "p": "",
    "src": "Ouest-France",
-   "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxPVkt3TnlDRHM0ZnBJWldCWms3SmgwZmIyZ1FKUDBJQVhVXzFQTUVfaDdwUTlMRmJIS0ZPZFBKaHpxODU5cmpmQjRoR0V1UGlaWEV6VllPS3ppbWlBTFNFckNudFdZQUZjT1dyaUxPVzRsMlBVZEhiSENWMjZCdVNWSTFQd2xHaGtWTWpsN2RHT2duWERmSGk3VGpkY0NNX05fa3Rhek5ST1RCWW5KSmljTTFkTlE3aHp5LWtwZkdiaW9wSFl2RzRLdVhobXhERFp1dV9WcUpTMHJJdEpYV3RLLXpxM0VwZUk2UFdzNmhiM1FnVDhDY0szbklGSWY3c1RheE1N?oc=5",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/municipales-2026-a-janze-decouvrez-la-liste-sans-etiquette-portee-par-jennifer-maillard-767699f4-09c9-11f1-9018-5ad7ac48f8c6",
    "a": "auto",
-   "k": "presse"
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "rafcom-cbfecc5458",
