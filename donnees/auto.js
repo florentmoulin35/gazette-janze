@@ -1,47 +1,47 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-02T04:44+00:00",
+ "maj": "2026-11-03T04:37+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-02T04:44+00:00",
-   "n": 10
+   "le": "2026-11-03T04:37+00:00",
+   "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-02T04:44+00:00",
+   "le": "2026-11-03T04:37+00:00",
    "n": 55
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-02T04:44+00:00",
+   "le": "2026-11-03T04:37+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-02T04:44+00:00",
+   "le": "2026-11-03T04:37+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-02T04:44+00:00",
+   "le": "2026-11-03T04:37+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-02T04:44+00:00",
+   "le": "2026-11-03T04:37+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-02T04:44+00:00",
+   "le": "2026-11-03T04:37+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-02T04:44+00:00",
+   "le": "2026-11-03T04:37+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -56,6 +56,42 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-sept-enfants-ont-appris-a-nager-pendant-les-vacances-248d75c0-d536-11f1-bce4-49c6ba196371",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "janze-0ccba33a87",
+   "d": "2026-11-02",
+   "cat": "vie",
+   "t": "Concours \"Maison de Noël\"",
+   "p": "À l'occasion des fêtes de fin d'année, la Ville de Janzé organise son concours des décorations et illuminations de Noël ! Guirlandes lumineuses, décorations féeriques, façades illuminées, jardins enchantés… Laissez parler votre créativité pour faire scintiller la commune et…",
+   "src": "janze.fr",
+   "url": "https://www.janze.fr/actualites/concours-maison-de-noel",
+   "a": "auto",
+   "k": "janze"
+  },
+  {
+   "id": "janze-5fc82a4ee3",
+   "d": "2026-11-02",
+   "cat": "vie",
+   "t": "Jumelage : donnez-nous votre avis !",
+   "p": "À l’invitation de Cyprien Esnault, conseiller délégué à la culture, au patrimoine et au jumelage, les Janzéens et Janzéennes se sont rencontrés pour échanger sur le projet de jumelage. Une quarantaine de personnes s’est réunie pour enrichir la réflexion portée par la…",
+   "src": "janze.fr",
+   "url": "https://www.janze.fr/actualites/jumelage-donnez-nous-votre-avis",
+   "a": "auto",
+   "k": "janze"
+  },
+  {
+   "id": "presse-8ab1f1a78b",
+   "d": "2026-11-02",
+   "cat": "presse",
+   "press": true,
+   "t": "À Janzé, l’application Mon Village se déploie avec Ouest-France",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/a-janze-lapplication-mon-village-se-deploie-avec-ouest-france-e1e21720-d518-11f1-84f3-5611f158a658",
    "a": "auto",
    "k": "presse",
    "resolu": true,
@@ -694,6 +730,20 @@ window.GAZETTE_AUTO = {
    "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQVGEzcFh1OFBZN3NoMnFjbXpvYWNHUk1ncjhvZnFRZEtQZ0pQRVVkSFN1ZkdXUmxaTktCNmtuVEZEYlUzQ1JrTDNLTVJ6T3Q4LWNtUWh0TlhSeTQ1b3NaVDBrd0h1ZzZDd3dQdnU3bGFxNk5PUV9pdTNWaW13ZDBWaGlkNW1iUWJ6ZGRvSGdIWjF0UXpyRnA4T25kZDdhdGhQdjBmcVBvUlE1SGpITVV3WW1SZ1BIM1dpdG1jWklRMTV6dTFHb2NWN29sSVZCcGZma1k5bk9WM3NZU295dG5J?oc=5",
    "a": "auto",
    "k": "presse"
+  },
+  {
+   "id": "presse-358b13802e",
+   "d": "2026-10-03",
+   "cat": "vie",
+   "press": false,
+   "t": "RETIERS HANDBALL vs HB Janzé",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u13-feminine-territoriale-30545/poule-194502/rencontre-2697433/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-886325fa95",
@@ -1863,6 +1913,20 @@ window.GAZETTE_AUTO = {
    "resolu": true,
    "ap": 2,
    "cat2": "conseil"
+  },
+  {
+   "id": "presse-5d2af06748",
+   "d": "2025-12-24",
+   "cat": "presse",
+   "press": true,
+   "t": "Municipales 2026 à Janzé : Jennifer Maillard est candidate à la mairie",
+   "p": "Jennifer Maillard conduira une liste aux municipales à Janzé (Ille-et-Vilaine). Elle souhaite mettre son engagement, son expérience et son sens du terrain au service de la ville.",
+   "src": "Actu.fr",
+   "url": "https://actu.fr/bretagne/janze_35136/municipales-2026-a-janze-jennifer-maillard-est-candidate-a-la-mairie_63617192.html",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "rafcom-0a51b32ec3",
