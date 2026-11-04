@@ -1,47 +1,47 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-03T04:37+00:00",
+ "maj": "2026-11-04T04:40+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-03T04:37+00:00",
+   "le": "2026-11-04T04:40+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-03T04:37+00:00",
+   "le": "2026-11-04T04:40+00:00",
    "n": 55
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-03T04:37+00:00",
+   "le": "2026-11-04T04:40+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-03T04:37+00:00",
+   "le": "2026-11-04T04:40+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-03T04:37+00:00",
+   "le": "2026-11-04T04:40+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-03T04:37+00:00",
+   "le": "2026-11-04T04:40+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-03T04:37+00:00",
+   "le": "2026-11-04T04:40+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-03T04:37+00:00",
+   "le": "2026-11-04T04:40+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -424,6 +424,17 @@ window.GAZETTE_AUTO = {
    "p": "En septembre dernier, la ville s’est dotée d’un boîtier connecté permettant de faciliter l’atterrissage de nuit des hélicoptères de secours. Un équipement permettra au SAMU de gagner de précieuses minutes lors des interventions d’urgence. Auparavant, lorsqu’un hélicoptère de…",
    "src": "janze.fr",
    "url": "https://www.janze.fr/actualites/faciliter-latterrissage-de-nuit-pour-sauver-des-vies",
+   "a": "auto",
+   "k": "janze"
+  },
+  {
+   "id": "janze-1cea359cbb",
+   "d": "2026-10-20",
+   "cat": "vie",
+   "t": "Le registre communal des personnes vulnérables évolue",
+   "p": "Le registre nominatif des personnes vulnérables (âgées et en situation de handicap) vivant à domicile est un document obligatoire pour chaque commune. Il permet au service dédié, le CCAS à Janzé, de téléphoner ou de rendre visite aux personnes concernées pour s’assurer qu’elles…",
+   "src": "janze.fr",
+   "url": "https://www.janze.fr/actualites/le-registre-communal-des-personnes-vulnerables-evolue",
    "a": "auto",
    "k": "janze"
   },
@@ -1636,7 +1647,7 @@ window.GAZETTE_AUTO = {
    "press": true,
    "t": "RD 173 : travaux du 18 au 26 mai entre Janzé et Brie",
    "p": "Le Département d'Ille-et-Vilaine réalise des travaux de renouvellement de la chaussée sur le RD 173 entre les communes de Janzé et Brie.",
-   "src": "Département Ille et Vilaine",
+   "src": "Département d'Ille-et-Vilaine",
    "url": "https://www.ille-et-vilaine.fr/rd-173-travaux-du-18-au-26-mai-entre-janze-et-brie",
    "a": "auto",
    "k": "presse",
