@@ -1,52 +1,63 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-04T04:40+00:00",
+ "maj": "2026-11-05T04:43+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-04T04:40+00:00",
+   "le": "2026-11-05T04:43+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-04T04:40+00:00",
-   "n": 55
+   "le": "2026-11-05T04:43+00:00",
+   "n": 53
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-04T04:40+00:00",
+   "le": "2026-11-05T04:43+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-04T04:40+00:00",
+   "le": "2026-11-05T04:43+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-04T04:40+00:00",
+   "le": "2026-11-05T04:43+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-04T04:40+00:00",
+   "le": "2026-11-05T04:43+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-04T04:40+00:00",
+   "le": "2026-11-05T04:43+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-04T04:40+00:00",
+   "le": "2026-11-05T04:43+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "janze-28c81e3944",
+   "d": "2026-11-04",
+   "cat": "vie",
+   "t": "18 agents recenseurs recherchés pour 2027",
+   "p": "Envie de participer à une mission de proximité au service de votre commune ? La Ville recrute 18 agents recenseurs dans le cadre de sa prochaine campagne de recensement, qui se déroulera du 21 janvier au 20 février 2027. Organisé tous les cinq ans, le recensement de la…",
+   "src": "janze.fr",
+   "url": "https://www.janze.fr/actualites/18-agents-recenseurs-recherches-pour-2027",
+   "a": "auto",
+   "k": "janze"
+  },
   {
    "id": "presse-697f8a0f37",
    "d": "2026-11-02",
@@ -439,6 +450,17 @@ window.GAZETTE_AUTO = {
    "k": "janze"
   },
   {
+   "id": "janze-6ab2e840e6",
+   "d": "2026-10-20",
+   "cat": "alerte",
+   "t": "Entretenir les fossés pour prévenir les risques d'inondation",
+   "p": "Suite aux inondations de cet été, la ville de Janzé a procédé cet automne à une campagne de curage de fossés et de nettoyage des grilles d’avaloirs. Ces entretiens réguliers sont indispensables à la préservation des eaux pluviales et peuvent limiter les risques d’inondations.…",
+   "src": "janze.fr",
+   "url": "https://www.janze.fr/actualites/entretenir-les-fosses-pour-prevenir-les-risques-dinondation",
+   "a": "auto",
+   "k": "janze"
+  },
+  {
    "id": "presse-9b1a070459",
    "d": "2026-10-19",
    "cat": "vie",
@@ -608,20 +630,6 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
-   "id": "presse-2201c7d148",
-   "d": "2026-10-12",
-   "cat": "vie",
-   "press": false,
-   "t": "HB Janzé vs SC MÉVENNAIS HANDBALL",
-   "p": "",
-   "src": "Fédération Française de Handball",
-   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-feminine-territoriale-30543/poule-192921/rencontre-2682311/",
-   "a": "auto",
-   "k": "presse",
-   "resolu": true,
-   "ap": 2
-  },
-  {
    "id": "presse-9d7c107f3c",
    "d": "2026-10-11",
    "cat": "presse",
@@ -658,6 +666,20 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Foot Amateur Bretagne",
    "url": "https://footamateur.letelegramme.fr/competitions/coupe-de-france/reduit-a-dix-plescop-craque-sur-le-fil-face-a-lus-janze-et-est-elimine-de-coupe-de-france-7136318.php",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-2201c7d148",
+   "d": "2026-10-10",
+   "cat": "vie",
+   "press": false,
+   "t": "HB Janzé vs SC MÉVENNAIS HANDBALL",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-feminine-territoriale-30543/poule-192921/rencontre-2682311/",
    "a": "auto",
    "k": "presse",
    "resolu": true,
@@ -995,6 +1017,11 @@ window.GAZETTE_AUTO = {
    "resolu": true,
    "ap": null,
    "aussi": [
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
+    },
     {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
@@ -1557,7 +1584,14 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null
+   "ap": null,
+   "aussi": [
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
+     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
+    }
+   ]
   },
   {
    "id": "presse-c321fe73da",
