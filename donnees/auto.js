@@ -1,52 +1,66 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-05T04:43+00:00",
+ "maj": "2026-11-06T04:43+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-05T04:43+00:00",
+   "le": "2026-11-06T04:43+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-05T04:43+00:00",
-   "n": 53
+   "le": "2026-11-06T04:43+00:00",
+   "n": 52
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-05T04:43+00:00",
+   "le": "2026-11-06T04:43+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-05T04:43+00:00",
+   "le": "2026-11-06T04:43+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-05T04:43+00:00",
+   "le": "2026-11-06T04:43+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-05T04:43+00:00",
+   "le": "2026-11-06T04:43+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-05T04:43+00:00",
+   "le": "2026-11-06T04:43+00:00",
    "n": 0,
-   "info": "Vigilance aujourd'hui verte, demain verte"
+   "info": "Vigilance aujourd'hui verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-05T04:43+00:00",
+   "le": "2026-11-06T04:43+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-e5cf980a3a",
+   "d": "2026-11-06",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Les classes 6 se réunissent pour une grande fête",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-les-classes-6-se-reunissent-pour-une-grande-fete-203fe50a-1187-41dd-b8d0-e2b9a238ad18",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "janze-28c81e3944",
    "d": "2026-11-04",
@@ -1019,13 +1033,13 @@ window.GAZETTE_AUTO = {
    "aussi": [
     {
      "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
+     "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
     },
     {
      "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
