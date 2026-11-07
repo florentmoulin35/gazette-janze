@@ -1,47 +1,47 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-06T04:43+00:00",
+ "maj": "2026-11-07T04:37+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-06T04:43+00:00",
+   "le": "2026-11-07T04:37+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-06T04:43+00:00",
-   "n": 52
+   "le": "2026-11-07T04:37+00:00",
+   "n": 54
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-06T04:43+00:00",
+   "le": "2026-11-07T04:37+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-06T04:43+00:00",
+   "le": "2026-11-07T04:37+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-06T04:43+00:00",
+   "le": "2026-11-07T04:37+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-06T04:43+00:00",
+   "le": "2026-11-07T04:37+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-06T04:43+00:00",
+   "le": "2026-11-07T04:37+00:00",
    "n": 0,
-   "info": "Vigilance aujourd'hui verte"
+   "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-06T04:43+00:00",
+   "le": "2026-11-07T04:37+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -56,6 +56,34 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-les-classes-6-se-reunissent-pour-une-grande-fete-203fe50a-1187-41dd-b8d0-e2b9a238ad18",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-f88e9575f5",
+   "d": "2026-11-06",
+   "cat": "presse",
+   "press": true,
+   "t": "Athlétisme. Janzé, Rennes, Redon… L’Ille-et-Vilaine va accueillir plusieurs championnats de France en 2027",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/sport/athletisme/athletisme-janze-rennes-redon-lille-et-vilaine-va-accueillir-plusieurs-championnats-de-france-en-2027-592b4986-d9cf-11f1-81f5-8e32b0872d76",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-6eeb4dec94",
+   "d": "2026-11-06",
+   "cat": "presse",
+   "press": true,
+   "t": "« C’est pour eux une opportunité de parler en public » : six collégiens créent leur mini-entreprise à Janzé",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/cest-pour-eux-une-opportunite-de-parler-en-public-six-collegiens-creent-leur-mini-entreprise-a-janze-98d97644-d85c-11f1-9911-9179baff22e2",
    "a": "auto",
    "k": "presse",
    "resolu": true,
@@ -658,20 +686,6 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
-   "id": "presse-debc971404",
-   "d": "2026-10-11",
-   "cat": "vie",
-   "press": false,
-   "t": "CPB RENNES 3 vs HB JANZÉ",
-   "p": "",
-   "src": "Fédération Française de Handball",
-   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195135/rencontre-2708156/",
-   "a": "auto",
-   "k": "presse",
-   "resolu": true,
-   "ap": 2
-  },
-  {
    "id": "presse-79263e24ed",
    "d": "2026-10-11",
    "cat": "presse",
@@ -680,6 +694,20 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Foot Amateur Bretagne",
    "url": "https://footamateur.letelegramme.fr/competitions/coupe-de-france/reduit-a-dix-plescop-craque-sur-le-fil-face-a-lus-janze-et-est-elimine-de-coupe-de-france-7136318.php",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-debc971404",
+   "d": "2026-10-10",
+   "cat": "vie",
+   "press": false,
+   "t": "CPB RENNES 3 vs HB JANZÉ",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195135/rencontre-2708156/",
    "a": "auto",
    "k": "presse",
    "resolu": true,
@@ -2007,20 +2035,6 @@ window.GAZETTE_AUTO = {
    "p": "Battu d’un rien aux élections municipales de 2020 à Janzé (Ille-et-Vilaine), l’élu d’opposition et conseiller départemental Jonathan Houillot sera de nouveau candidat en 2026.",
    "src": "Actu.fr",
    "url": "https://actu.fr/bretagne/janze_35136/municipales-2026-a-janze-le-conseiller-departemental-jonathan-houillot-est-candidat_63376601.html",
-   "a": "auto",
-   "k": "presse",
-   "resolu": true,
-   "ap": 2
-  },
-  {
-   "id": "presse-912d09e11a",
-   "d": "2025-10-02",
-   "cat": "presse",
-   "press": true,
-   "t": "« Nous sommes très inquiets » : à Janzé, la crainte des commerçants face à la diminution de clients",
-   "p": "",
-   "src": "Ouest-France",
-   "url": "https://www.ouest-france.fr/bretagne/janze-35150/nous-sommes-tres-inquiets-a-janze-la-crainte-des-commercants-face-a-la-diminution-de-clients-0bc17550-9a1d-11f0-8a5e-1c057c9fe22e",
    "a": "auto",
    "k": "presse",
    "resolu": true,
