@@ -1,52 +1,80 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-07T04:37+00:00",
+ "maj": "2026-11-08T04:38+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-07T04:37+00:00",
+   "le": "2026-11-08T04:38+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-07T04:37+00:00",
+   "le": "2026-11-08T04:38+00:00",
    "n": 54
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-07T04:37+00:00",
+   "le": "2026-11-08T04:38+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-07T04:37+00:00",
+   "le": "2026-11-08T04:38+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-07T04:37+00:00",
+   "le": "2026-11-08T04:38+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-07T04:37+00:00",
+   "le": "2026-11-08T04:38+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-07T04:37+00:00",
+   "le": "2026-11-08T04:38+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-07T04:37+00:00",
+   "le": "2026-11-08T04:38+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-308cddb56f",
+   "d": "2026-11-07",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé : un véhicule à contresens provoque un accident sur la RD 173",
+   "p": "Les actualités des derniers jours à Rennes…",
+   "src": "Rennes Info Autrement",
+   "url": "https://www.rennes-infos-autrement.fr/janze-un-vehicule-a-contresens-provoque-un-accident-sur-la-rd-173/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-2745a10154",
+   "d": "2026-11-07",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. La ville accueille le tournage du film Le Vote",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-la-ville-accueille-le-tournage-du-film-le-vote-810f7cc8-8382-484e-b87f-76eaa2b28f39",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-e5cf980a3a",
    "d": "2026-11-06",
@@ -503,6 +531,17 @@ window.GAZETTE_AUTO = {
    "k": "janze"
   },
   {
+   "id": "janze-924970f70e",
+   "d": "2026-10-20",
+   "cat": "urba",
+   "t": "[Logement] Le chantier de la Maison Civet démarre !",
+   "p": "La Maison Civet, c'est 15 logements collectifs (T2 au T4) en plein centre de Janzé, rue Jean-Marie Lacire, à proximité des commerces et services. Une place de stationnement privative et un espace extérieur sont prévus pour chaque appartement. Les logements sont commercialisés…",
+   "src": "janze.fr",
+   "url": "https://www.janze.fr/actualites/logement-le-chantier-de-la-maison-civet-demarre",
+   "a": "auto",
+   "k": "janze"
+  },
+  {
    "id": "presse-9b1a070459",
    "d": "2026-10-19",
    "cat": "vie",
@@ -672,6 +711,20 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
+   "id": "presse-2201c7d148",
+   "d": "2026-10-12",
+   "cat": "vie",
+   "press": false,
+   "t": "HB Janzé vs SC MÉVENNAIS HANDBALL",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-feminine-territoriale-30543/poule-192921/rencontre-2682311/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
    "id": "presse-9d7c107f3c",
    "d": "2026-10-11",
    "cat": "presse",
@@ -708,20 +761,6 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Fédération Française de Handball",
    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11-mixte-territorial-30546/poule-195135/rencontre-2708156/",
-   "a": "auto",
-   "k": "presse",
-   "resolu": true,
-   "ap": 2
-  },
-  {
-   "id": "presse-2201c7d148",
-   "d": "2026-10-10",
-   "cat": "vie",
-   "press": false,
-   "t": "HB Janzé vs SC MÉVENNAIS HANDBALL",
-   "p": "",
-   "src": "Fédération Française de Handball",
-   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u18-feminine-territoriale-30543/poule-192921/rencontre-2682311/",
    "a": "auto",
    "k": "presse",
    "resolu": true,
