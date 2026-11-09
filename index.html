@@ -432,11 +432,26 @@ function agendaRows(list) {
 }
 
 // La une : l'info la plus importante parmi les plus fraîches.
-// Poids par rubrique, moins un point par jour d'ancienneté.
-const WEIGHT = { alerte: 50, conseil: 45, travaux: 40, urba: 30, projets: 30, presse: 20, vie: 15 };
-const ageDays = i => Math.round((dt(TODAY) - dt(i.d)) / 86400000);
-const score = i => WEIGHT[i.cat] - ageDays(i);
-const pickLead = () => [...ITEMS].sort((a, b) => score(b) - score(a))[0];
+// Chaque type d'info a un poids et une durée de vie à la une : le poids baisse chaque jour
+// et tombe à zéro au bout de cette durée. Une fois à zéro, l'info reste dans sa rubrique
+// mais ne passe plus devant une actu du jour.
+// - Fait marquant (accident, incendie, secours…) : en tête pendant 4 jours.
+// - Alerte : 3 jours seulement. Une crise qui dure (sécheresse) reste dans Alertes, pas en une.
+// - Conseil, travaux : 10 jours. Urbanisme, projets : 10 jours. Presse et vie locale : 7 jours.
+const UNE = { marquant: [100, 4], alerte: [100, 3], conseil: [60, 10], travaux: [50, 10], urba: [40, 10], projets: [40, 10], presse: [35, 7], vie: [25, 7] };
+const ageDays = i => Math.max(0, Math.round((dt(TODAY) - dt(i.d)) / 86400000));
+const sansAccents = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+// Faits divers et événements graves, repérés dans le titre.
+const MARQUANT = /accident|collision|percut|carambolage|incendie(?!s? et de secours)|\ben feu\b|explosion|fuite de gaz|effondr|bless|\btues?\b|\bmorts?\b|deces|decede|drame|noyade|agress|cambriol|braquage|interpell|garde a vue|evacu|pompiers|\bsamu\b|disparu|alerte enlevement/;
+const marquant = i => MARQUANT.test(sansAccents(i.t));
+const typeUne = i => marquant(i) ? "marquant" : i.cat;
+function score(i) {
+  const [poids, duree] = UNE[typeUne(i)] || UNE.vie;
+  return Math.max(0, poids * (1 - ageDays(i) / duree));
+}
+// À score égal (souvent zéro quand l'actu est calme), la plus récente passe devant.
+const parUne = (a, b) => score(b) - score(a) || b.d.localeCompare(a.d);
+const pickLead = () => [...ITEMS].sort(parUne)[0];
 
 // Projets de la une : actu récente et échéance proche d'abord, puis chantiers en cours.
 // Jusqu'à 60 points pour une actu de moins de 2 mois, 60 pour une échéance dans les 2 mois, 15 si chantier.
@@ -464,7 +479,7 @@ function viewUne() {
   const lead = pickLead();
   // Brèves : même règle que la une, avec au plus 2 articles de presse pour laisser la place à la ville.
   let nPresse = 0;
-  const rest = [...ITEMS].sort((a, b) => score(b) - score(a))
+  const rest = [...ITEMS].sort(parUne)
     .filter(i => i.id !== lead.id && (i.cat !== "presse" || ++nPresse <= 2)).slice(0, 6);
   const agenda = aVenir();
   const next = agenda.find(a => !a.approx);
@@ -473,13 +488,13 @@ function viewUne() {
   return `
   ${astuce()}
   <a class="une" ${lienArt(lead)}>
-    <div class="kick">${esc(CATS[lead.cat].label)} · ${esc(when(lead))}</div>
+    <div class="kick">${esc(marquant(lead) ? "Fait marquant" : CATS[lead.cat].label)} · ${esc(when(lead))}</div>
     <h2>${esc(lead.t)}</h2>
     <p>${esc(lead.p)}</p>
     ${lead.li ? `<ul>${lead.li.slice(0, 3).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
     <span class="lire">Lire l'article →</span>
   </a>
-  <p class="why">Une choisie automatiquement : l'info la plus importante parmi les plus récentes.</p>
+  <p class="why">Une choisie automatiquement : un fait marquant ou une alerte des derniers jours d'abord, sinon l'info la plus importante parmi les plus récentes.</p>
   ${next ? `<a class="strip" href="#agenda" data-go="agenda"><b>${esc(next.t)} : ${esc(new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(dt(next.d)))}</b><span>${delai} →</span></a>` : ""}
   <div class="grid">${rest.map(brief).join("")}</div>
   <div class="box"><div class="boxhead"><h2>Où en sont les projets</h2><a href="#projets" data-go="projets">Tous les projets →</a></div>${frontProjects().map(p => projectRow(p, true)).join("")}</div>
