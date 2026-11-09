@@ -432,11 +432,29 @@ function agendaRows(list) {
 }
 
 // La une : l'info la plus importante parmi les plus fraîches.
-// Poids par rubrique, moins un point par jour d'ancienneté.
-const WEIGHT = { alerte: 50, conseil: 45, travaux: 40, urba: 30, projets: 30, presse: 20, vie: 15 };
-const ageDays = i => Math.round((dt(TODAY) - dt(i.d)) / 86400000);
-const score = i => WEIGHT[i.cat] - ageDays(i);
-const pickLead = () => [...ITEMS].sort((a, b) => score(b) - score(a))[0];
+// Une info ne reste à la une qu'une journée : le jour de sa parution et le lendemain matin
+// (la collecte passe la nuit), avec un poids divisé par deux le lendemain. Ensuite elle reste
+// dans sa rubrique. Une crise qui dure (sécheresse) ne repasse donc pas en une chaque jour.
+// Exception, réservée aux événements graves en cours sur plusieurs jours :
+// - eau du robinet non conforme (k « eau ») : l'alerte reste tant que la collecte la renvoie ;
+// - info saisie à la main avec « enCours: "AAAA-MM-JJ" » : reste à la une jusqu'à ce jour inclus.
+// La vigilance météo orange ou rouge crée une info par jour, elle se renouvelle d'elle-même.
+// Dans tous les cas, rien ne reste plus de 3 jours (parution, lendemain, surlendemain).
+// Si rien n'est paru depuis 3 jours, pas de une : seulement les brèves.
+const UNE_MAX = 3;
+const UNE = { marquant: 100, alerte: 90, conseil: 60, travaux: 50, urba: 40, projets: 40, presse: 35, vie: 25 };
+const ageDays = i => Math.max(0, Math.round((dt(TODAY) - dt(i.d)) / 86400000));
+const graveEnCours = i => ageDays(i) < UNE_MAX && (i.k === "eau" || (i.enCours && i.enCours >= TODAY));
+const sansAccents = t => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+// Faits divers et événements graves, repérés dans le titre.
+const MARQUANT = /accident|collision|percut|carambolage|incendie(?!s? et de secours)|\ben feu\b|explosion|fuite de gaz|effondr|bless|\btues?\b|\bmorts?\b|deces|decede|drame|noyade|agress|cambriol|braquage|interpell|garde a vue|evacu|pompiers|\bsamu\b|disparu|alerte enlevement/;
+const marquant = i => MARQUANT.test(sansAccents(i.t));
+const typeUne = i => marquant(i) ? "marquant" : i.cat;
+const poidsUne = i => UNE[typeUne(i)] || UNE.vie;
+const score = i => graveEnCours(i) ? poidsUne(i) : Math.max(0, poidsUne(i) * (1 - ageDays(i) / 2));
+// Quand rien n'est frais (tout à zéro), la plus récente passe devant, puis la plus importante.
+const parUne = (a, b) => score(b) - score(a) || b.d.localeCompare(a.d) || poidsUne(b) - poidsUne(a);
+const pickLead = () => [...ITEMS].sort(parUne).find(i => ageDays(i) < UNE_MAX);
 
 // Projets de la une : actu récente et échéance proche d'abord, puis chantiers en cours.
 // Jusqu'à 60 points pour une actu de moins de 2 mois, 60 pour une échéance dans les 2 mois, 15 si chantier.
@@ -464,22 +482,22 @@ function viewUne() {
   const lead = pickLead();
   // Brèves : même règle que la une, avec au plus 2 articles de presse pour laisser la place à la ville.
   let nPresse = 0;
-  const rest = [...ITEMS].sort((a, b) => score(b) - score(a))
-    .filter(i => i.id !== lead.id && (i.cat !== "presse" || ++nPresse <= 2)).slice(0, 6);
+  const rest = [...ITEMS].sort(parUne)
+    .filter(i => i !== lead && (i.cat !== "presse" || ++nPresse <= 2)).slice(0, 6);
   const agenda = aVenir();
   const next = agenda.find(a => !a.approx);
   const inDays = next ? Math.round((dt(next.d) - dt(TODAY)) / 86400000) : 0;
   const delai = inDays === 0 ? "aujourd'hui" : inDays === 1 ? "demain" : `dans ${inDays} jours`;
   return `
   ${astuce()}
-  <a class="une" ${lienArt(lead)}>
-    <div class="kick">${esc(CATS[lead.cat].label)} · ${esc(when(lead))}</div>
+  ${lead ? `<a class="une" ${lienArt(lead)}>
+    <div class="kick">${esc(marquant(lead) ? "Fait marquant" : CATS[lead.cat].label)} · ${esc(when(lead))}</div>
     <h2>${esc(lead.t)}</h2>
     <p>${esc(lead.p)}</p>
     ${lead.li ? `<ul>${lead.li.slice(0, 3).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
     <span class="lire">Lire l'article →</span>
   </a>
-  <p class="why">Une choisie automatiquement : l'info la plus importante parmi les plus récentes.</p>
+  <p class="why">Une choisie automatiquement : l'info la plus importante du jour ou de la veille, un fait marquant en priorité. Jamais plus de 3 jours.</p>` : ""}
   ${next ? `<a class="strip" href="#agenda" data-go="agenda"><b>${esc(next.t)} : ${esc(new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(dt(next.d)))}</b><span>${delai} →</span></a>` : ""}
   <div class="grid">${rest.map(brief).join("")}</div>
   <div class="box"><div class="boxhead"><h2>Où en sont les projets</h2><a href="#projets" data-go="projets">Tous les projets →</a></div>${frontProjects().map(p => projectRow(p, true)).join("")}</div>
