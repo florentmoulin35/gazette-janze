@@ -9,14 +9,14 @@ Site statique publié avec GitHub Pages : https://florentmoulin35.github.io/gaze
 
 ## Mise à jour automatique
 
-Chaque nuit à 4 h UTC, `.github/workflows/collecte.yml` lance `scripts/collecter.py`, qui lit :
+Cinq fois par jour (0 h, 8 h, 12 h, 16 h et 20 h, heure de Paris, été comme hiver), `.github/workflows/collecte.yml` lance `scripts/collecter.py`, qui lit :
 
 - les actualités de janze.fr,
 - les articles de presse qui citent Janzé (Google Actualités : Ouest-France, Journal de Vitré…),
 - les restrictions d'eau VigiEau pour Janzé,
 - les flux RSS de Roche aux Fées Communauté.
 
-Le résultat est écrit dans `donnees/auto.js`, que `index.html` charge au démarrage. Les infos saisies à la main dans `index.html` restent affichées. Pour lancer une collecte tout de suite : onglet **Actions › Collecte de la nuit › Run workflow**.
+Le résultat est écrit dans `donnees/auto.js`, que `index.html` charge au démarrage. Les infos saisies à la main dans `index.html` restent affichées. Pour lancer une collecte tout de suite : onglet **Actions › Collecte › Run workflow**.
 
 ## Données d'urbanisme (à lancer à la main)
 
