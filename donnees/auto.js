@@ -1,52 +1,66 @@
 // Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-09T04:49+00:00",
+ "maj": "2026-11-09T18:41+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-09T04:49+00:00",
+   "le": "2026-11-09T18:41+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-09T04:49+00:00",
-   "n": 51
+   "le": "2026-11-09T18:41+00:00",
+   "n": 52
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-09T04:49+00:00",
+   "le": "2026-11-09T18:41+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-09T04:49+00:00",
+   "le": "2026-11-09T18:41+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-09T04:49+00:00",
+   "le": "2026-11-09T18:41+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-09T04:49+00:00",
+   "le": "2026-11-09T18:41+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-09T04:49+00:00",
+   "le": "2026-11-09T18:41+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-09T04:49+00:00",
+   "le": "2026-11-09T18:41+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-d76fdd12fd",
+   "d": "2026-11-09",
+   "cat": "presse",
+   "press": true,
+   "t": "En images : les volleyeuses de Janzé - Corps-Nuds s’inclinent face à Saint-Grégoire dans « un match à haute intensité »",
+   "p": "Chaque semaine, nous posons notre objectif sur un match. Samedi 7 novembre, place au volley féminin avec une rencontre opposant Saint-Grégoire à Janzé-Corps-Nuds (Ille-et-Vilaine).",
+   "src": "Actu.fr",
+   "url": "https://actu.fr/bretagne/corps-nuds_35088/en-images-les-volleyeuses-de-janze-corps-nuds-sinclinent-face-a-saint-gregoire-dans-un-match-a-haute-intensite_65033454.html",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-308cddb56f",
    "d": "2026-11-07",
@@ -1359,17 +1373,6 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
-   "id": "rafcom-8f8a1733d5",
-   "d": "2026-08-27",
-   "cat": "vie",
-   "t": "Les Journées du Patrimoine 2026",
-   "p": "Les Journées du Patrimoine reviennent les 19 et 20 septembre, chaque année, les Journées du Patrimoine offrent une occasion unique de découvrir et d'explorer les trésors culturels et naturels qui façonnent notre histoire et notre environnement. Cet événement incontournable,…",
-   "src": "Roche aux Fées Communauté",
-   "url": "https://www.rafcom.bzh/",
-   "a": "auto",
-   "k": "rafcom"
-  },
-  {
    "id": "rafcom-7e0e674eff",
    "d": "2026-08-26",
    "cat": "vie",
@@ -1696,6 +1699,17 @@ window.GAZETTE_AUTO = {
    "p": "« En voiture Nina et Simon.e.s » : Un van jaune pour faire rouler l’égalité sur notre territoire Depuis le début de l’année, un curieux véhicule jaune vif sillonne les communes de Roche aux Fées Communauté. Son nom ? « En voiture Nina et Simon.e.s ». Porté par le CIDFF 35…",
    "src": "Roche aux Fées Communauté",
    "url": "https://www.rafcom.bzh/actualites/en-voiture-nina-et-simones",
+   "a": "auto",
+   "k": "rafcom"
+  },
+  {
+   "id": "rafcom-8f8a1733d5",
+   "d": "2026-06-12",
+   "cat": "vie",
+   "t": "Les incontournables du moment",
+   "p": "Les beaux jours approchent à grands pas, profitez des activités sur le territoire de Roche a ux Fées Communauté...",
+   "src": "Roche aux Fées Communauté",
+   "url": "https://www.rafcom.bzh/",
    "a": "auto",
    "k": "rafcom"
   },
