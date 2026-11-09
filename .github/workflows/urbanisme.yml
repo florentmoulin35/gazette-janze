@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Installer pandas
-        run: pip install pandas
+        run: pip install pandas cryptography
       - name: Filtrer les fichiers nationaux
         env:
           SOURCES: ${{ inputs.sources }}
@@ -43,6 +43,9 @@ jobs:
           esac
           python scripts/filtrer_urbanisme_janze.py $options --dossier donnees/urbanisme
       - name: Résumer pour la page Urbanisme
+        env:
+          # Mot de passe qui chiffre les prix des ventes du quartier (Settings › Secrets › Actions).
+          PRIX_QUARTIER_MDP: ${{ secrets.PRIX_QUARTIER_MDP }}
         run: python scripts/resumer_urbanisme.py
       - name: Enregistrer les CSV de Janzé
         run: |

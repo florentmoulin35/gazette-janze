@@ -193,7 +193,12 @@ main { touch-action: pan-y; }   /* le geste horizontal sert à changer de rubriq
 main.glisse-g { animation: glisse-g .22s ease-out; } main.glisse-d { animation: glisse-d .22s ease-out; }
 @media (prefers-reduced-motion: reduce) { main.glisse-g, main.glisse-d { animation: none; } }
 /* Loupe : mode « grands caractères » (+50 %) pour les personnes malvoyantes. */
-html.gros nav.rub, html.gros main, html.gros .colophon { zoom: 1.5; }   /* le bandeau du journal garde sa taille */
+html.gros nav.rub, html.gros main, html.gros .cle-prix { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; font-size: 0.8125rem; }
+.cle-prix input { min-height: 40px; padding: 6px 8px; border: 2px solid var(--ink); border-radius: 3px; background: var(--paper); color: var(--ink); font: inherit; width: 11em; }
+.cle-prix button { min-height: 40px; padding: 6px 12px; border: 2px solid var(--ink); border-radius: 3px; font-weight: 700; }
+.lien { text-decoration: underline; font: inherit; color: inherit; padding: 0; min-height: 0; }
+.cle-prix .ko { color: var(--ink-2); font-style: italic; }
+.colophon { zoom: 1.5; }   /* le bandeau du journal garde sa taille */
 html.gros .list .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }   /* date au-dessus du titre */
 .loupe { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 10; width: 52px; height: 52px; border-radius: 50%; background: var(--ink); color: var(--paper); box-shadow: 0 2px 8px rgba(0,0,0,.25); display: grid; place-items: center; }
 .haut { position: fixed; right: 14px; bottom: calc(76px + env(safe-area-inset-bottom)); z-index: 10; width: 52px; height: 52px; border-radius: 50%; background: var(--paper-2); color: var(--ink); border: 2px solid var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,.2); display: grid; place-items: center; font-size: 1.375rem; font-weight: 700; }
@@ -578,6 +583,41 @@ document.addEventListener("click", e => {
   window.scrollTo(0, y);
   document.querySelector(`[data-zone="${zoneUrba}"]`)?.focus();
 });
+// Prix des ventes du quartier : publiés chiffrés (scripts/resumer_urbanisme.py), lisibles avec le mot de passe seulement.
+// Le mot de passe reste dans ce navigateur une fois saisi.
+let prixQuartier = null, prixErreur = false;
+async function dechiffrerPrix(mdp) {
+  const c = URBA && URBA.quartier && URBA.quartier.prix_chiffres;
+  if (!c || !mdp || !window.crypto || !crypto.subtle) return null;
+  const b = t => Uint8Array.from(atob(t), x => x.charCodeAt(0));
+  try {
+    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(mdp), "PBKDF2", false, ["deriveKey"]);
+    const cle = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: b(c.sel), iterations: c.tours, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+    return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: b(c.iv) }, cle, b(c.data))));
+  } catch (e) { return null; }
+}
+function rendreSurPlace() { const y = window.scrollY; render(); window.scrollTo(0, y); }
+(async () => {
+  let mdp = null;
+  try { mdp = localStorage.getItem("gazette-prix-quartier"); } catch (e) {}
+  if (mdp && (prixQuartier = await dechiffrerPrix(mdp))) rendreSurPlace();
+})();
+document.addEventListener("submit", async e => {
+  if (!e.target.matches(".cle-prix")) return;
+  e.preventDefault();
+  const mdp = e.target.querySelector("input").value;
+  prixQuartier = await dechiffrerPrix(mdp);
+  prixErreur = !prixQuartier;
+  if (prixQuartier) { try { localStorage.setItem("gazette-prix-quartier", mdp); } catch (err) {} }
+  rendreSurPlace();
+  if (prixErreur) document.querySelector(".cle-prix input")?.focus();
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest("[data-oublier-prix]")) return;
+  prixQuartier = null;
+  try { localStorage.removeItem("gazette-prix-quartier"); } catch (err) {}
+  rendreSurPlace();
+});
 function viewQuartier() {
   const Q = URBA.quartier;
   const date = d => `${fDay.format(dt(d))} ${d.slice(0, 4)}`;
@@ -590,13 +630,17 @@ function viewQuartier() {
   const adr = x => `${x.n ? x.n.replace(/\s+/g, " ") + " " : ""}${x.voie}`;
   const permis = Q.permis.length ? Q.permis.map(p => `<div class="agl"><b>${esc(date(p.d))}</b><div>${esc(p.quoi)} · ${esc(adr(p))}<span class="voir"><a href="${esc(p.lat ? streetView(p) : rechercheMaps(p))}" target="_blank" rel="noopener">Street View<span class="masque"> : ${esc(adr(p))} (nouvelle fenêtre)</span></a></span><small>${esc([p.nature, p.etat, p.societe ? "Demandeur : " + p.societe : ""].filter(Boolean).join(" · "))}</small></div></div>`).join("")
     : `<p class="vide">Aucun permis dans le quartier.</p>`;
-  const ventes = Q.ventes.length ? `<div class="tab-defile"><table class="tab"><thead><tr><th>Date</th><th style="text-align:left">Bien</th><th>Prix</th></tr></thead><tbody>${Q.ventes.map(v => `<tr><td style="white-space:nowrap">${esc(v.d.slice(8, 10) + "/" + v.d.slice(5, 7) + "/" + v.d.slice(2, 4))}</td><td style="text-align:left">${esc(adr(v))}${v.lat ? `<span class="voir"><a href="${esc(streetView(v))}" target="_blank" rel="noopener">Street View<span class="masque"> : ${esc(adr(v))} (nouvelle fenêtre)</span></a><a href="${esc(earth(v))}" target="_blank" rel="noopener">Google Earth<span class="masque"> : ${esc(adr(v))} (nouvelle fenêtre)</span></a></span>` : ""}<small style="display:block">${esc(v.type)}${v.m2 ? ` · ${v.m2} m²` : ""}${v.terrain ? ` · <span style="white-space:nowrap">${v.type === "Terrain" ? "" : "terrain "}${esc(fNb.format(v.terrain))} m²</span>` : ""}</small></td><td style="white-space:nowrap">${v.prix ? esc(fEur.format(v.prix)) : "–"}</td></tr>`).join("")}</tbody></table></div>`
+  const prix = prixQuartier && prixQuartier.length === Q.ventes.length ? prixQuartier : null;
+  const cle = !Q.prix_chiffres ? "" : prix
+    ? `<p class="why">Prix affichés sur cet appareil seulement. <button class="lien" data-oublier-prix>Masquer les prix</button></p>`
+    : `<form class="cle-prix"><label for="mdp-prix">Prix réservés :</label><input id="mdp-prix" type="password" autocomplete="current-password" placeholder="Mot de passe"><button>Afficher</button>${prixErreur ? `<span class="ko" role="alert">Mot de passe incorrect.</span>` : ""}</form>`;
+  const ventes = Q.ventes.length ? `<div class="tab-defile"><table class="tab"><thead><tr><th>Date</th><th style="text-align:left">Bien</th>${prix ? "<th>Prix</th>" : ""}</tr></thead><tbody>${Q.ventes.map((v, i) => `<tr><td style="white-space:nowrap">${esc(v.d.slice(8, 10) + "/" + v.d.slice(5, 7) + "/" + v.d.slice(2, 4))}</td><td style="text-align:left">${esc(adr(v))}${v.lat ? `<span class="voir"><a href="${esc(streetView(v))}" target="_blank" rel="noopener">Street View<span class="masque"> : ${esc(adr(v))} (nouvelle fenêtre)</span></a><a href="${esc(earth(v))}" target="_blank" rel="noopener">Google Earth<span class="masque"> : ${esc(adr(v))} (nouvelle fenêtre)</span></a></span>` : ""}<small style="display:block">${esc(v.type)}${v.m2 ? ` · ${v.m2} m²` : ""}${v.terrain ? ` · <span style="white-space:nowrap">${v.type === "Terrain" ? "" : "terrain "}${esc(fNb.format(v.terrain))} m²</span>` : ""}</small></td>${prix ? `<td style="white-space:nowrap">${prix[i] ? esc(fEur.format(prix[i])) : "–"}</td>` : ""}</tr>`).join("")}</tbody></table></div>${cle}`
     : `<p class="vide">Aucune vente dans le quartier.</p>`;
   return `<p class="sec-sub" style="margin-top:12px">Rue des Hirondelles, rue des Alouettes, rue des Mésanges et rue Chateaubriand.</p>
     <div class="box"><div class="boxhead"><h2>Permis du quartier</h2></div>${permis}
       <p class="why">${Q.permis.length} autorisation${Q.permis.length > 1 ? "s" : ""} depuis 2013 (permis de construire Sitadel). Le nom du demandeur n'est publié que pour les sociétés et les collectivités.</p></div>
     <div class="box"><div class="boxhead"><h2>Ventes du quartier</h2></div>${ventes}
-      <p class="why">Ventes depuis juillet 2021, d'après les actes notariés (DVF). Prix total de la vente, frais de notaire exclus. Street View montre la maison depuis la rue, Google Earth la parcelle vue du ciel (avec une règle pour mesurer).</p></div>
+      <p class="why">Ventes depuis juillet 2021, d'après les actes notariés (DVF). ${prix ? "Prix total de la vente, frais de notaire exclus. " : ""}Street View montre la maison depuis la rue, Google Earth la parcelle vue du ciel (avec une règle pour mesurer).</p></div>
     <p class="why">Chiffres mis à jour le ${esc(date(URBA.maj))} depuis data.gouv.fr.</p>`;
 }
 
