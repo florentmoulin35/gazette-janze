@@ -193,12 +193,7 @@ main { touch-action: pan-y; }   /* le geste horizontal sert à changer de rubriq
 main.glisse-g { animation: glisse-g .22s ease-out; } main.glisse-d { animation: glisse-d .22s ease-out; }
 @media (prefers-reduced-motion: reduce) { main.glisse-g, main.glisse-d { animation: none; } }
 /* Loupe : mode « grands caractères » (+50 %) pour les personnes malvoyantes. */
-html.gros nav.rub, html.gros main, html.gros .cle-prix { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; font-size: 0.8125rem; }
-.cle-prix input { min-height: 40px; padding: 6px 8px; border: 2px solid var(--ink); border-radius: 3px; background: var(--paper); color: var(--ink); font: inherit; width: 11em; }
-.cle-prix button { min-height: 40px; padding: 6px 12px; border: 2px solid var(--ink); border-radius: 3px; font-weight: 700; }
-.lien { text-decoration: underline; font: inherit; color: inherit; padding: 0; min-height: 0; }
-.cle-prix .ko { color: var(--ink-2); font-style: italic; }
-.colophon { zoom: 1.5; }   /* le bandeau du journal garde sa taille */
+html.gros nav.rub, html.gros main, html.gros .colophon { zoom: 1.5; }   /* le bandeau du journal garde sa taille */
 html.gros .list .row { grid-template-columns: minmax(0, 1fr); gap: 2px; }   /* date au-dessus du titre */
 .loupe { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 10; width: 52px; height: 52px; border-radius: 50%; background: var(--ink); color: var(--paper); box-shadow: 0 2px 8px rgba(0,0,0,.25); display: grid; place-items: center; }
 .haut { position: fixed; right: 14px; bottom: calc(76px + env(safe-area-inset-bottom)); z-index: 10; width: 52px; height: 52px; border-radius: 50%; background: var(--paper-2); color: var(--ink); border: 2px solid var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,.2); display: grid; place-items: center; font-size: 1.375rem; font-weight: 700; }
@@ -234,6 +229,12 @@ nav.rub.fin::after { opacity: 0; }
 .zone button { flex: 1; min-height: 44px; padding: 8px 10px; text-align: center; font-weight: 700; font-size: 0.8125rem; }
 .zone button + button { border-left: 2px solid var(--ink); }
 .zone button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+/* Champ discret en bas de « Nos sources » : déverrouille les prix des ventes du quartier. */
+.cle-prix { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 40px; font-size: 0.75rem; color: var(--ink-2); }
+.cle-prix input { min-height: 36px; padding: 4px 8px; border: 1px solid var(--rule); border-radius: 3px; background: var(--paper); color: var(--ink); font: inherit; width: 9em; }
+.cle-prix button { min-height: 36px; padding: 4px 10px; border: 1px solid var(--rule); border-radius: 3px; }
+.lien { text-decoration: underline; font: inherit; color: inherit; padding: 0; min-height: 0; }
+.cle-prix .ko { font-style: italic; }
 .colophon { margin-top: 26px; font-size: 0.75rem; color: var(--ink-2); text-align: center; border-top: 1px solid var(--rule); padding-top: 12px; }
 </style>
 
@@ -649,9 +650,7 @@ function viewQuartier() {
   const permis = Q.permis.length ? Q.permis.map(p => `<div class="agl"><b>${esc(date(p.d))}</b><div>${esc(p.quoi)} · ${esc(adr(p))}<span class="voir"><a href="${esc(p.lat ? streetView(p) : rechercheMaps(p))}" target="_blank" rel="noopener">Street View<span class="masque"> : ${esc(adr(p))} (nouvelle fenêtre)</span></a></span><small>${esc([p.nature, p.etat, p.societe ? "Demandeur : " + p.societe : ""].filter(Boolean).join(" · "))}</small></div></div>`).join("")
     : `<p class="vide">Aucun permis dans le quartier.</p>`;
   const prix = prixQuartier && prixQuartier.length === Q.ventes.length ? prixQuartier : null;
-  const cle = !Q.prix_chiffres ? "" : prix
-    ? `<p class="why">Prix affichés sur cet appareil seulement. <button class="lien" data-oublier-prix>Masquer les prix</button></p>`
-    : `<form class="cle-prix"><label for="mdp-prix">Prix réservés :</label><input id="mdp-prix" type="password" autocomplete="current-password" placeholder="Mot de passe"><button>Afficher</button>${prixErreur ? `<span class="ko" role="alert">Mot de passe incorrect.</span>` : ""}</form>`;
+  const cle = prix ? `<p class="why">Prix affichés sur cet appareil seulement. <button class="lien" data-oublier-prix>Masquer les prix</button></p>` : "";
   const ventes = Q.ventes.length ? `<div class="tab-defile"><table class="tab"><thead><tr><th>Date</th><th style="text-align:left">Bien</th>${prix ? "<th>Prix</th>" : ""}</tr></thead><tbody>${Q.ventes.map((v, i) => `<tr><td style="white-space:nowrap">${esc(v.d.slice(8, 10) + "/" + v.d.slice(5, 7) + "/" + v.d.slice(2, 4))}</td><td style="text-align:left">${esc(adr(v))}${v.lat ? `<span class="voir"><a href="${esc(streetView(v))}" target="_blank" rel="noopener">Street View<span class="masque"> : ${esc(adr(v))} (nouvelle fenêtre)</span></a><a href="${esc(earth(v))}" target="_blank" rel="noopener">Google Earth<span class="masque"> : ${esc(adr(v))} (nouvelle fenêtre)</span></a></span>` : ""}<small style="display:block">${esc(v.type)}${v.m2 ? ` · ${v.m2} m²` : ""}${v.terrain ? ` · <span style="white-space:nowrap">${v.type === "Terrain" ? "" : "terrain "}${esc(fNb.format(v.terrain))} m²</span>` : ""}</small></td>${prix ? `<td style="white-space:nowrap">${prix[i] ? esc(fEur.format(prix[i])) : "–"}</td>` : ""}</tr>`).join("")}</tbody></table></div>${cle}`
     : `<p class="vide">Aucune vente dans le quartier.</p>`;
   return `<p class="sec-sub" style="margin-top:12px">Rue des Hirondelles, rue des Alouettes, rue des Mésanges et rue Chateaubriand.</p>
@@ -683,7 +682,8 @@ function viewSources() {
     const list = SOURCES.filter(s => s.a === k);
     return list.length ? `<section class="srcgroup ${k}"><h3>${title} <small>${list.length} · ${sub}</small></h3>
       <div class="srclist">${list.map(s => `<div class="s"><b>${esc(s.n)}</b><span>${esc(s.w)}</span>${etatSource(s)}</div>`).join("")}</div></section>` : "";
-  }).join("")}`;
+  }).join("")}
+  ${URBA && URBA.quartier && URBA.quartier.prix_chiffres && !prixQuartier ? `<form class="cle-prix"><input id="mdp-prix" type="password" autocomplete="current-password" aria-label="Code"><button>OK</button>${prixErreur ? `<span class="ko" role="alert">Non.</span>` : ""}</form>` : ""}`;
 }
 
 function viewArticle(id) {
