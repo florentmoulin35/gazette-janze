@@ -8,11 +8,19 @@ On ne publie que des chiffres agrégés et quelques lignes récentes : la page
 reste légère (quelques Ko). Le nom du demandeur est affiché quand Sitadel le
 publie, c'est-à-dire pour les personnes morales (entreprises, SCI, collectivités) :
 la base nationale ne contient pas le nom des particuliers.
+
+Prix des ventes du quartier : ils ne sont jamais publiés en clair. Si la
+variable d'environnement PRIX_QUARTIER_MDP contient un mot de passe (secret
+GitHub du même nom), les prix sont chiffrés (AES-256-GCM, clé tirée du mot de
+passe par PBKDF2-SHA256) et seul celui qui connaît le mot de passe peut les
+afficher sur la page. Sans mot de passe, ils sont simplement retirés.
 """
 
 from __future__ import annotations
 
+import base64
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -293,6 +301,25 @@ def resumer_quartier() -> dict:
             "ventes": sorted(ventes, key=lambda x: x["d"], reverse=True)}
 
 
+def chiffrer_prix(quartier: dict) -> None:
+    """Retire les prix des ventes du quartier ; les range chiffrés si un mot de passe est fourni."""
+    prix = [v.pop("prix", None) for v in quartier["ventes"]]
+    mdp = os.environ.get("PRIX_QUARTIER_MDP", "")
+    if not mdp:
+        print("PRIX_QUARTIER_MDP absent : prix du quartier retirés, sans version chiffrée.")
+        return
+    from cryptography.hazmat.primitives import hashes
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+    tours, sel, iv = 310_000, os.urandom(16), os.urandom(12)
+    cle = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=sel, iterations=tours).derive(mdp.encode())
+    # Liste dans le même ordre que quartier["ventes"].
+    clair = json.dumps(prix, separators=(",", ":")).encode()
+    b64 = lambda b: base64.b64encode(b).decode()
+    quartier["prix_chiffres"] = {"tours": tours, "sel": b64(sel), "iv": b64(iv),
+                                 "data": b64(AESGCM(cle).encrypt(iv, clair, None))}
+
+
 def main() -> None:
     if not DOSSIER.exists():
         sys.exit(f"Dossier introuvable : {DOSSIER}. Lancez d'abord filtrer_urbanisme_janze.py.")
@@ -305,6 +332,7 @@ def main() -> None:
         "ventes": resumer_ventes(),
         "quartier": resumer_quartier(),
     }
+    chiffrer_prix(resume["quartier"])
     texte = json.dumps(resume, ensure_ascii=False, separators=(",", ":"), default=int)
     SORTIE.write_text(
         "// Fichier écrit par scripts/resumer_urbanisme.py, ne pas modifier à la main.\n"
