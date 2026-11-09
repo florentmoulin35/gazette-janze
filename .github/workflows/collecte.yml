@@ -1,10 +1,15 @@
-# Collecte de chaque nuit : lit les sources, met à jour donnees/auto.js
-# et l'enregistre dans le dépôt. GitHub Pages republie alors le site.
-name: Collecte de la nuit
+# Collecte : lit les sources, met à jour donnees/auto.js et l'enregistre
+# dans le dépôt. GitHub Pages republie alors le site.
+# Cinq passages par jour, heure de Paris : 0 h, 8 h, 12 h, 16 h et 20 h.
+name: Collecte
 
 on:
+  # GitHub ne connaît que l'heure UTC : une ligne pour l'hiver, une pour l'été.
+  # Le job « horaire » ne garde que celle qui correspond à l'heure de Paris du jour.
+  # (GitHub démarre souvent ces tâches avec quelques minutes de retard.)
   schedule:
-    - cron: "0 4 * * *"   # tous les jours à 4 h UTC (5 h ou 6 h à Janzé)
+    - cron: "0 7,11,15,19,23 * * *"   # hiver (UTC+1)
+    - cron: "0 6,10,14,18,22 * * *"   # été (UTC+2)
   workflow_dispatch:       # bouton « Run workflow » pour lancer à la main
   push:
     branches: [main]
@@ -18,7 +23,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  horaire:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.verif.outputs.go }}
+    steps:
+      - name: Bonne ligne pour l'heure de Paris ?
+        id: verif
+        env:
+          PLANNING: ${{ github.event.schedule }}
+        run: |
+          decalage=$(TZ=Europe/Paris date +%z)   # +0100 en hiver, +0200 en été
+          case "$PLANNING" in
+            "")                       go=true ;;   # lancé à la main ou par un push
+            "0 7,11,15,19,23 * * *")  [ "$decalage" = "+0100" ] && go=true || go=false ;;
+            "0 6,10,14,18,22 * * *")  [ "$decalage" = "+0200" ] && go=true || go=false ;;
+            *)                        go=false ;;
+          esac
+          echo "Planning « $PLANNING », Paris $decalage : collecte=$go"
+          echo "go=$go" >> "$GITHUB_OUTPUT"
+
   collecte:
+    needs: horaire
+    if: needs.horaire.outputs.go == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -51,7 +78,7 @@ jobs:
             echo "Rien de nouveau."
             exit 0
           fi
-          git commit -m "Collecte du $(date -u +%Y-%m-%d)"
+          git commit -m "Collecte du $(TZ=Europe/Paris date +'%Y-%m-%d à %H h')"
           # Un autre commit a pu arriver sur main pendant la collecte : on se remet à jour.
           for essai in 1 2 3; do
             git pull --rebase origin main && git push origin HEAD:main && exit 0

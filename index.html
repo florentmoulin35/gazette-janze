@@ -266,7 +266,7 @@ nav.rub.fin::after { opacity: 0; }
   <p class="colophon" id="colophon">Informations saisies à la main le 28 octobre 2026</p>
 </div>
 
-<!-- Les données changent chaque nuit : l'adresse change toutes les 10 minutes pour ne pas resservir une vieille copie. -->
+<!-- Les données changent plusieurs fois par jour : l'adresse change toutes les 10 minutes pour ne pas resservir une vieille copie. -->
 <script>document.write('<script src="donnees/auto.js?v=' + Math.floor(Date.now() / 6e5) + '"><\/script>');</script>
 <!-- Chiffres d'urbanisme (Sitadel et DVF, data.gouv.fr), mis à jour à la main depuis l'onglet Actions. -->
 <script>document.write('<script src="donnees/urbanisme.js?v=' + Math.floor(Date.now() / 864e5) + '"><\/script>');</script>
@@ -354,7 +354,7 @@ const AGENDA = [
   { d: "2027-01-15", cat: "projets", t: "Boucle d'électricité locale", s: "Janzé rejoint l'autoconsommation collective", approx: "début 2027" },
   { d: "2027-06-30", cat: "projets", t: "Ouverture du nouvel hôpital", s: "Échéance du dossier 2024, à confirmer", approx: "2027" }
 ];
-// Infos collectées chaque nuit (donnees/auto.js), ajoutées aux infos saisies à la main.
+// Infos collectées automatiquement (donnees/auto.js), ajoutées aux infos saisies à la main.
 // Une info déjà saisie à la main (même lien) garde sa version manuelle, plus complète.
 const COLLECTE = window.GAZETTE_AUTO || { items: [], sources: {} };
 // Les articles de presse saisis à la main sont remplacés par la collecte dès qu'elle fonctionne.
@@ -438,8 +438,10 @@ function agendaRows(list) {
 }
 
 // La une : l'info la plus importante parmi les plus fraîches.
-// Une info ne reste à la une qu'une journée : le jour de sa parution et le lendemain matin
-// (la collecte passe la nuit), avec un poids divisé par deux le lendemain. Ensuite elle reste
+// Une info ne reste à la une qu'une journée environ : plein poids le jour de sa parution, poids
+// divisé par deux le lendemain. La collecte passe 5 fois par jour (0 h, 8 h, 12 h, 16 h, 20 h) :
+// une info est donc vue le jour même ; le lendemain sert pour celles parues le soir ou
+// publiées avec retard par leur source (presse, flux RSS). Ensuite elle reste
 // dans sa rubrique. Une crise qui dure (sécheresse) ne repasse donc pas en une chaque jour.
 // Exception, réservée aux événements graves en cours sur plusieurs jours :
 // - eau du robinet non conforme (k « eau ») : l'alerte reste tant que la collecte la renvoie ;
@@ -667,7 +669,7 @@ function viewAgenda() {
   <div class="box"><div class="boxhead"><h2>Où en sont les grands projets</h2><a href="#projets" data-go="projets">Voir l'avancement →</a></div></div>`;
 }
 
-// État de la dernière collecte pour une source lue chaque nuit.
+// État de la dernière collecte pour une source lue automatiquement.
 const fHeure = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" });
 function etatSource(s) {
   const e = s.k && COLLECTE.sources[s.k];
@@ -677,8 +679,8 @@ function etatSource(s) {
 }
 
 function viewSources() {
-  return `<h2 class="sec-title">Nos sources</h2><p class="sec-sub">Ce que la Gazette lit chaque nuit, et ce qu'elle ne peut pas lire.</p>
-  ${[["auto", "Collecte automatique", "lu chaque nuit sans intervention"], ["bientot", "Bientôt", "prévu, pas encore branché"], ["semi", "Collecte partielle", "incomplet, en retard ou payant"], ["non", "Hors ligne", "rien à lire sur internet"]].map(([k, title, sub]) => {
+  return `<h2 class="sec-title">Nos sources</h2><p class="sec-sub">Ce que la Gazette lit cinq fois par jour, et ce qu'elle ne peut pas lire.</p>
+  ${[["auto", "Collecte automatique", "lu 5 fois par jour sans intervention"], ["bientot", "Bientôt", "prévu, pas encore branché"], ["semi", "Collecte partielle", "incomplet, en retard ou payant"], ["non", "Hors ligne", "rien à lire sur internet"]].map(([k, title, sub]) => {
     const list = SOURCES.filter(s => s.a === k);
     return list.length ? `<section class="srcgroup ${k}"><h3>${title} <small>${list.length} · ${sub}</small></h3>
       <div class="srclist">${list.map(s => `<div class="s"><b>${esc(s.n)}</b><span>${esc(s.w)}</span>${etatSource(s)}</div>`).join("")}</div></section>` : "";

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Collecte de chaque nuit pour La Gazette de Janzé.
+Collecte de La Gazette de Janzé (5 fois par jour : 0 h, 8 h, 12 h, 16 h, 20 h, heure de Paris).
 
 Lit les sources en ligne, garde ce qui concerne Janzé et écrit donnees/auto.js,
 que la page index.html charge au démarrage. Aucune dépendance : bibliothèque
@@ -13,7 +13,7 @@ Sources lues :
 - Roche aux Fées Communauté : flux RSS des actus (collectivité, mobilité, urbanisme…)
 
 Une source en panne ne bloque pas les autres : on garde ce qu'elle avait donné
-la veille. Codes de sortie :
+au passage précédent. Codes de sortie :
 - 0 : tout va bien (ou panne récente, de moins de 48 h) ;
 - 1 : toutes les sources ont échoué ;
 - 2 : auto.js est écrit, mais une source est en panne depuis plus de 48 h
@@ -383,7 +383,7 @@ def completer_presse(item: dict, connu: dict | None, debut: float, cherches: lis
     cherches.append(item["id"])
     try:
         url = url_reelle(item["url"])
-    except Exception as erreur:  # noqa: BLE001 : on réessaiera la nuit suivante
+    except Exception as erreur:  # noqa: BLE001 : on réessaiera au passage suivant
         print(f"presse   adresse introuvable : {item['t'][:50]} ({erreur})", file=sys.stderr)
         return item
     if not url:
@@ -717,7 +717,7 @@ def main() -> int:
     donnees = {"maj": maintenant, "sources": sources, "items": items, "agenda": agenda}
     SORTIE.parent.mkdir(exist_ok=True)
     SORTIE.write_text(
-        "// Fichier écrit chaque nuit par scripts/collecter.py : ne pas modifier à la main.\n"
+        "// Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.\n"
         "window.GAZETTE_AUTO = " + json.dumps(donnees, ensure_ascii=False, indent=1) + ";\n",
         encoding="utf-8",
     )
