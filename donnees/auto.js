@@ -1,52 +1,80 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-10T04:29+00:00",
+ "maj": "2026-11-10T15:26+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-10T04:29+00:00",
+   "le": "2026-11-10T15:26+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-10T04:29+00:00",
-   "n": 53
+   "le": "2026-11-10T15:26+00:00",
+   "n": 57
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-10T04:29+00:00",
+   "le": "2026-11-10T15:26+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-10T04:29+00:00",
+   "le": "2026-11-10T15:26+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-10T04:29+00:00",
+   "le": "2026-11-10T15:26+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-10T04:29+00:00",
+   "le": "2026-11-10T15:26+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-10T04:29+00:00",
+   "le": "2026-11-10T15:26+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-10T04:29+00:00",
+   "le": "2026-11-10T15:26+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-eab65dad0f",
+   "d": "2026-11-10",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. « Un Petit prince » revisité par la compagnie de danse Storyteller",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-un-petit-prince-revisite-par-la-compagnie-de-danse-storyteller-505e3bb3-e213-4acc-806e-4aa936073466",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-f9923e94c2",
+   "d": "2026-11-10",
+   "cat": "presse",
+   "press": true,
+   "t": "« Notre objectif est de partager notre savoir-faire » : un nouveau président au club photo Féérie d’images à Janzé",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/notre-objectif-est-de-partager-notre-savoir-faire-un-nouveau-president-au-club-photo-feerie-dimages-a-janze-e5d8fb8c-dab3-11f1-a04a-6776b5256c5b",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-d76fdd12fd",
    "d": "2026-11-09",
@@ -1667,8 +1695,8 @@ window.GAZETTE_AUTO = {
    "aussi": [
     {
      "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
-     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/37326-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-classement.html",
+     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 classement"
     }
    ]
   },
