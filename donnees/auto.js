@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-09T21:57+00:00",
+ "maj": "2026-11-10T04:29+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-09T21:57+00:00",
+   "le": "2026-11-10T04:29+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-09T21:57+00:00",
+   "le": "2026-11-10T04:29+00:00",
    "n": 53
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-09T21:57+00:00",
+   "le": "2026-11-10T04:29+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-09T21:57+00:00",
+   "le": "2026-11-10T04:29+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-09T21:57+00:00",
+   "le": "2026-11-10T04:29+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-09T21:57+00:00",
+   "le": "2026-11-10T04:29+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-09T21:57+00:00",
+   "le": "2026-11-10T04:29+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-09T21:57+00:00",
+   "le": "2026-11-10T04:29+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -1116,11 +1116,6 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
-    },
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
