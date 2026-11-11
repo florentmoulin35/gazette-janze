@@ -9,7 +9,13 @@ jobs:
     steps:
       - run: |
           UA="Mozilla/5.0 (compatible; GazetteJanze/1.0; +https://florentmoulin35.github.io/gazette-janze/)"
-          t() { echo "=== $1"; curl -sS -L -m 20 -o /tmp/o -w "code=%{http_code} taille=%{size_download} type=%{content_type}\n" -A "$UA" "$1" || true; grep -c "<item" /tmp/o || true; grep -oiE '<description>[^<]{0,300}|<description><!\[CDATA\[.{0,300}' /tmp/o | head -4; grep -i "janz" /tmp/o | head -c 600; echo; }
-          t https://www.ouest-france.fr/robots.txt
-          for r in https://www.ouest-france.fr/rss/une https://www.ouest-france.fr/rss-en-continu.xml https://www.ouest-france.fr/bretagne/janze-35150/rss https://www.ouest-france.fr/rss/bretagne/janze-35150; do t "$r"; done
-          t "https://www.bing.com/news/search?q=Janz%C3%A9&format=rss&setlang=fr&cc=FR"
+          curl -sS -m 20 -A "$UA" https://www.ouest-france.fr/robots.txt | grep -i -E "rss|user-agent: \*" | head -20
+          for q in "Janz%C3%A9" "Janz%C3%A9+site%3Aouest-france.fr"; do
+            echo "##### $q"
+            curl -sS -m 20 -A "$UA" "https://www.bing.com/news/search?q=$q&format=rss&setlang=fr&cc=FR" | python3 -c "
+          import sys,xml.etree.ElementTree as E
+          r=E.fromstring(sys.stdin.read())
+          for it in r.iter('item'):
+              print('-', it.findtext('title')); print('  ', (it.findtext('link') or '')[:400]); print('  ', it.findtext('description')); print('  ', it.findtext('pubDate'), [c.tag+'='+(c.text or '') for c in it if 'News' in c.tag or '}' in c.tag])
+          "
+          done
