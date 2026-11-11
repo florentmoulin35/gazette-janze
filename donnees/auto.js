@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-11T21:48+00:00",
+ "maj": "2026-11-11T22:12+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-11T21:48+00:00",
+   "le": "2026-11-11T22:12+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-11T21:48+00:00",
+   "le": "2026-11-11T22:12+00:00",
    "n": 59
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-11T21:48+00:00",
+   "le": "2026-11-11T22:12+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-11T21:48+00:00",
+   "le": "2026-11-11T22:12+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-11T21:48+00:00",
+   "le": "2026-11-11T22:12+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-11T21:48+00:00",
+   "le": "2026-11-11T22:12+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-11T21:48+00:00",
+   "le": "2026-11-11T22:12+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-11T21:48+00:00",
+   "le": "2026-11-11T22:12+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -67,7 +67,7 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Janzé. « Un Petit prince » revisité par la compagnie de danse Storyteller",
-   "p": "",
+   "p": "Pour le second spectacle de sa saison culturelle, la Ville a choisi un spectacle pour jeune public : « Un Petit prince ». La compagnie Storyteller revisite l’œuvre d’Antoine de Saint-Exupéry dans ce…",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-un-petit-prince-revisite-par-la-compagnie-de-danse-storyteller-505e3bb3-e213-4acc-806e-4aa936073466",
    "a": "auto",
@@ -81,7 +81,7 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "« Notre objectif est de partager notre savoir-faire » : un nouveau président au club photo Féérie d’images à Janzé",
-   "p": "",
+   "p": "Créée par Pascal Rouault en 2011, à Janzé (Ille-et-Vilaine), l’association Féérie d’images compte une vingtaine d’adhérents. Elle propose des séances pour améliorer ses techniques photographiques…",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/notre-objectif-est-de-partager-notre-savoir-faire-un-nouveau-president-au-club-photo-feerie-dimages-a-janze-e5d8fb8c-dab3-11f1-a04a-6776b5256c5b",
    "a": "auto",
@@ -123,7 +123,7 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Janzé. La ville accueille le tournage du film Le Vote",
-   "p": "",
+   "p": "Mercredi, la ville a eu le plaisir d’accueillir le tournage du film Le Vote, réalisé par Marine Arlen et Reynold de Guenyveau. Pour l’occasion, les équipes du film ont d’abord investi la place de la…",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-la-ville-accueille-le-tournage-du-film-le-vote-810f7cc8-8382-484e-b87f-76eaa2b28f39",
    "a": "auto",
@@ -137,7 +137,7 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Janzé. Les classes 6 se réunissent pour une grande fête",
-   "p": "",
+   "p": "La fête des classes avait disparu depuis plus de dix ans. Catherine Avrillaud, Marie-Laure Ginguené et Philippe Esnault ont décidé de la relancer. Nous fêterons Les classes 6 , informe Catherine…",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-les-classes-6-se-reunissent-pour-une-grande-fete-203fe50a-1187-41dd-b8d0-e2b9a238ad18",
    "a": "auto",
@@ -165,7 +165,7 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "« C’est pour eux une opportunité de parler en public » : six collégiens créent leur mini-entreprise à Janzé",
-   "p": "",
+   "p": "Les jeunes collégiens de Saint-Joseph, à Janzé, à l’est de Rennes (Ille-et-Vilaine), apprennent la création d’une entreprise, ses rouages, la vente de ses produits. Ils participeront au festival des…",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/cest-pour-eux-une-opportunite-de-parler-en-public-six-collegiens-creent-leur-mini-entreprise-a-janze-98d97644-d85c-11f1-9911-9179baff22e2",
    "a": "auto",
@@ -190,7 +190,7 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "Janzé. Sept enfants ont appris à nager pendant les vacances",
-   "p": "",
+   "p": "Récréa réaffirme chaque année, depuis 2013, son dispositif « Comme un poisson dans l’eau » en partenariat avec le Centre départemental d’action sociale (CDAS). C’est un stage auquel nous sommes très…",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-sept-enfants-ont-appris-a-nager-pendant-les-vacances-248d75c0-d536-11f1-bce4-49c6ba196371",
    "a": "auto",
@@ -226,7 +226,7 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "À Janzé, l’application Mon Village se déploie avec Ouest-France",
-   "p": "",
+   "p": "Avec l’application Mon Village, la commune de Janzé (Ille-et-Vilaine) bénéficie désormais d’un nouvel outil de communication digitale, innovant et participatif.",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/a-janze-lapplication-mon-village-se-deploie-avec-ouest-france-e1e21720-d518-11f1-84f3-5611f158a658",
    "a": "auto",
