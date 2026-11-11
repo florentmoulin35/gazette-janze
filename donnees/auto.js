@@ -1,52 +1,66 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-11T14:56+00:00",
+ "maj": "2026-11-11T21:48+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-11T14:56+00:00",
+   "le": "2026-11-11T21:48+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-11T14:56+00:00",
-   "n": 57
+   "le": "2026-11-11T21:48+00:00",
+   "n": 59
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-11T14:56+00:00",
+   "le": "2026-11-11T21:48+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-11T14:56+00:00",
+   "le": "2026-11-11T21:48+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-11T14:56+00:00",
+   "le": "2026-11-11T21:48+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-11T14:56+00:00",
+   "le": "2026-11-11T21:48+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-11T14:56+00:00",
+   "le": "2026-11-11T21:48+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-11T14:56+00:00",
+   "le": "2026-11-11T21:48+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-312c5c69c2",
+   "d": "2026-11-11",
+   "cat": "presse",
+   "press": true,
+   "t": "« Sportif et festif » : une première édition de la course des Poulets de Janzé",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/sportif-et-festif-une-premiere-edition-de-la-course-des-poulets-de-janze-e5974132-dd20-11f1-9a04-3c520384c4a6",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-eab65dad0f",
    "d": "2026-11-10",
