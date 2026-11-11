@@ -172,6 +172,7 @@ article.read ul { padding-left: 20px; font-size: 0.9688rem; max-width: 62ch; }
 article.read li { margin-bottom: 7px; }
 .drop::first-letter { font-family: var(--display); font-weight: 800; float: left; font-size: 3.1em; line-height: .85; padding: 4px 8px 0 0; color: var(--rust); }
 .autres { font-size: 0.875rem; margin-top: 12px; }
+.extrait { font-size: 0.8125rem; color: var(--ink-2); font-style: italic; margin: -4px 0 4px; }
 .chapo.drop { display: flow-root; }   /* la lettrine ne déborde pas sur le bouton de source */
 .srcbtn { display: inline-block; margin-top: 10px; padding: 11px 16px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 700; font-size: 0.8438rem; border-radius: 3px; }
 .aussi { margin-top: 28px; border-top: 3px double var(--ink); padding-top: 10px; }
@@ -699,6 +700,7 @@ function viewArticle(id) {
     <h2>${esc(i.t)}</h2>
     <div class="byline"><span>${esc(i.approx ? "Vers " + fMon.format(dt(i.d)) : cap(fFull.format(dt(i.d))))}</span><span>Source : ${esc(i.src)}</span><span>${esc(AUTO[i.a])}</span>${i.press ? `<span>Mot-clé détecté : « ${esc(KEYWORD)} »</span>` : ""}</div>
     ${i.p ? `<p class="chapo drop">${esc(i.p)}</p>` : ""}
+    ${i.p && i.press ? `<p class="extrait">Début de l’article, la suite sur le site de ${esc(i.src)}.</p>` : ""}
     ${i.li ? `<ul>${i.li.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
     <div class="outils">
       ${lienSur(i.url) ? `<a class="srcbtn" href="${esc(i.url)}" target="_blank" rel="noopener">Lire la source originale<span class="masque"> (nouvelle fenêtre)</span></a>` : ""}

@@ -65,6 +65,10 @@ SITES_FERMES = r"www\.ouest-france\.fr|letelegramme\.fr|helloasso\.com|auto-info
 
 JANZE_LISTE = "https://www.janze.fr/actualites"
 PRESSE_RSS = "https://news.google.com/rss/search?q=Janz%C3%A9&hl=fr&gl=FR&ceid=FR:fr"
+# Bing Actualités publie, dans son flux RSS, le chapeau public des articles (celui
+# que le journal montre gratuitement) : il remplace l'aperçu des sites fermés aux robots.
+BING_RSS = "https://www.bing.com/news/search?q={q}&format=rss&setlang=fr&cc=FR"
+BING_REQUETES = ("Janzé", "Janzé site:ouest-france.fr", "Janzé site:letelegramme.fr")
 GN_DECODE = "https://news.google.com/_/DotsSplashUi/data/batchexecute?rpcids=Fbv4je"
 # Sites trouvés par Google Actualités qui ne sont pas des journaux mais annoncent
 # la vie locale (bals, spectacles, courses, matchs) : rangés en Vie locale.
@@ -361,6 +365,52 @@ def apercu(url: str) -> str:
         if trouve and len(trouve.group(1).strip()) >= 40:
             return couper(trouve.group(1))
     return ""
+
+
+def cle_url(url: str) -> str:
+    """Adresse comparable : sans https, www, paramètres ni / final."""
+    morceaux = urllib.parse.urlsplit((url or "").strip().lower())
+    return morceaux.netloc.removeprefix("www.") + morceaux.path.rstrip("/")
+
+
+def chapeau_bing(texte: str) -> str:
+    """Nettoie une description Bing : coupée au milieu d'un mot (« … dans ce s ... »)."""
+    texte = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", texte or ""))).strip()
+    if texte.endswith("..."):
+        texte = texte[:-3].rstrip().rsplit(" ", 1)[0].rstrip(" ,;:–-") + "…"
+    return couper(texte) if len(texte) >= 40 else ""
+
+
+def apercus_bing() -> dict[str, str]:
+    """Chapeaux publics trouvés par Bing Actualités, par adresse d'article et par titre."""
+    trouves: dict[str, str] = {}
+    for requete in BING_REQUETES:
+        try:
+            flux = lire_rss(telecharger(BING_RSS.format(q=urllib.parse.quote_plus(requete)), essais=1))
+        except Exception as erreur:  # noqa: BLE001 : simple bonus, la presse reste lisible sans
+            print(f"presse   Bing indisponible ({requete}) : {erreur}", file=sys.stderr)
+            continue
+        for it in flux:
+            chapeau = chapeau_bing(it["resume"])
+            if not chapeau:
+                continue
+            lien = urllib.parse.parse_qs(urllib.parse.urlsplit(it["lien"]).query).get("url", [it["lien"]])[0]
+            trouves.setdefault(cle_url(lien), chapeau)
+            trouves.setdefault(cle_titre(it["titre"]), chapeau)
+    return trouves
+
+
+def completer_par_bing(items: list[dict]) -> int:
+    """Donne un début d'article aux articles de presse qui n'en ont pas. Renvoie le nombre complété."""
+    sans = [i for i in items if i.get("k") == "presse" and not i.get("p")]
+    if not sans:
+        return 0
+    apercus, n = apercus_bing(), 0
+    for i in sans:
+        chapeau = apercus.get(cle_url(i["url"])) or apercus.get(cle_titre(i["t"]))
+        if chapeau:
+            i["p"], n = chapeau, n + 1
+    return n
 
 
 def completer_presse(item: dict, connu: dict | None, debut: float, cherches: list) -> dict:
@@ -710,6 +760,8 @@ def main() -> int:
                 continue
             titres_presse.add(cle_titre(i["t"]))
         items.append(i)
+    if "presse" in reussies:
+        print(f"presse   {completer_par_bing(items)} débuts d'article trouvés par Bing")
     items = regrouper(items)[:MAX_ITEMS]
 
     # Agenda OpenAgenda : la liste du jour remplace la précédente ; en cas de panne, on garde l'ancienne.
