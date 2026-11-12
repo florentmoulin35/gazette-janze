@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-11T22:12+00:00",
+ "maj": "2026-11-12T03:39+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-11T22:12+00:00",
+   "le": "2026-11-12T03:39+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-11T22:12+00:00",
-   "n": 59
+   "le": "2026-11-12T03:39+00:00",
+   "n": 58
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-11T22:12+00:00",
+   "le": "2026-11-12T03:39+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-11T22:12+00:00",
+   "le": "2026-11-12T03:39+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-11T22:12+00:00",
+   "le": "2026-11-12T03:39+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-11T22:12+00:00",
+   "le": "2026-11-12T03:39+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-11T22:12+00:00",
+   "le": "2026-11-12T03:39+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-11T22:12+00:00",
+   "le": "2026-11-12T03:39+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -389,7 +389,7 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "« On a su faire le match qu’on voulait » : le Stade Pontivyen maîtrise Janzé et verra bien le 7e tour de Coupe de France",
-   "p": "",
+   "p": "Opposé au petit poucet Bretillien (R3), le Stade Pontivyen n’a pas tremblé et s’est imposé 0-2 au terme d’une rencontre maîtrisée, en marquant un but par période.",
    "src": "Foot Amateur Bretagne",
    "url": "https://footamateur.letelegramme.fr/competitions/coupe-de-france/on-a-su-faire-le-match-quon-voulait-le-stade-pontivyen-maitrise-janze-et-verra-bien-le-7e-tour-de-coupe-de-france-7145949.php",
    "a": "auto",
