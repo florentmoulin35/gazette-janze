@@ -286,6 +286,10 @@ const AUTO = { auto: "Collecte automatique", semi: "Collecte partielle", non: "S
 // Date du jour (heure locale), au format AAAA-MM-JJ : sert au bandeau, à la une et à l'agenda.
 const TODAY = new Date().toLocaleDateString("sv-SE");
 const ITEMS_MANUELS = [
+  { id: "panne-mail-mairie", d: "2026-11-13", enCours: "2026-11-13", expire: "2026-11-16", cat: "alerte", t: "Panne informatique : la mairie ne reçoit plus les mails",
+    p: "La Ville est touchée par la panne mondiale d'Outlook : pour le moment, aucun service municipal ne reçoit les demandes envoyées par mail.",
+    li: ["Demande urgente : appeler la mairie, ou se rendre à l'accueil de la Mairie ou aux Services Techniques", "Maison France Services : sur rendez-vous", "Pour le reste : informations et démarches sur janze.fr"],
+    src: "Mairie de Janzé (appli Mon Village)", url: "https://www.janze.fr", a: "non" },
   { id: "p-coupe-pontivy", d: "2026-10-26", cat: "presse", press: true, t: "« Beaucoup de fierté, mais quelques regrets » : Janzé s'incline en Coupe de France",
     p: "Reportage photo sur le 6e tour de Coupe de France, où l'US Janzé recevait Pontivy le dimanche 25 octobre.",
     src: "Le Journal de Vitré (actu.fr)", url: "https://actu.fr/bretagne/janze_35136/en-images-beaucoup-de-fierte-mais-quelques-regrets-janze-sincline-en-coupe-de-france_64976207.html", a: "auto" },
