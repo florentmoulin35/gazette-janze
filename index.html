@@ -286,9 +286,9 @@ const AUTO = { auto: "Collecte automatique", semi: "Collecte partielle", non: "S
 // Date du jour (heure locale), au format AAAA-MM-JJ : sert au bandeau, à la une et à l'agenda.
 const TODAY = new Date().toLocaleDateString("sv-SE");
 const ITEMS_MANUELS = [
-  { id: "panne-mail-mairie", d: "2026-11-13", enCours: "2026-11-13", expire: "2026-11-16", cat: "alerte", t: "Panne informatique : la mairie ne reçoit plus les mails",
-    p: "La Ville est touchée par la panne mondiale d'Outlook : pour le moment, aucun service municipal ne reçoit les demandes envoyées par mail.",
-    li: ["Demande urgente : appeler la mairie, ou se rendre à l'accueil de la Mairie ou aux Services Techniques", "Maison France Services : sur rendez-vous", "Pour le reste : informations et démarches sur janze.fr"],
+  { id: "panne-mail-mairie", d: "2026-11-13", enCours: "2026-11-13", expire: "2026-11-13T23:00:00+01:00", cat: "alerte", t: "Panne informatique résolue : la mairie reçoit de nouveau les mails",
+    p: "La Ville a été touchée ce vendredi par la panne mondiale d'Outlook : pendant plusieurs heures, aucun service municipal ne recevait les demandes envoyées par mail. La panne est résolue depuis 14 h environ.",
+    li: ["Les demandes par mail sont de nouveau reçues", "Pour toute autre demande : informations et démarches sur janze.fr"],
     src: "Mairie de Janzé (appli Mon Village)", url: "https://www.janze.fr", a: "non" },
   { id: "p-coupe-pontivy", d: "2026-10-26", cat: "presse", press: true, t: "« Beaucoup de fierté, mais quelques regrets » : Janzé s'incline en Coupe de France",
     p: "Reportage photo sur le 6e tour de Coupe de France, où l'US Janzé recevait Pontivy le dimanche 25 octobre.",
@@ -364,8 +364,9 @@ const AGENDA = [
 const COLLECTE = window.GAZETTE_AUTO || { items: [], sources: {} };
 // Les articles de presse saisis à la main sont remplacés par la collecte dès qu'elle fonctionne.
 // Un item manuel peut porter une date « expire » (AAAA-MM-JJ) : il n'est plus affiché après ce jour.
+// « expire » peut aussi être une date et heure (AAAA-MM-JJTHH:MM:SS+01:00) : l'item disparaît à cette heure précise.
 const PRESSE_OK = COLLECTE.sources.presse?.etat === "ok";
-const MANUELS = ITEMS_MANUELS.filter(i => !(PRESSE_OK && i.press) && !(i.expire && i.expire < TODAY));
+const MANUELS = ITEMS_MANUELS.filter(i => !(PRESSE_OK && i.press) && !(i.expire && (i.expire.includes("T") ? new Date(i.expire) <= new Date() : i.expire < TODAY)));
 const ITEMS = [...MANUELS, ...COLLECTE.items.filter(a => CATS[a.cat] && !MANUELS.some(m => m.url === a.url))];
 const STEP_LABELS = ["Idée", "Étude", "Vote", "Chantier", "Livré"];
 const PROJECTS = [
