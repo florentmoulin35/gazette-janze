@@ -1,52 +1,81 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-13T15:08+00:00",
+ "maj": "2026-11-14T00:13+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-13T15:08+00:00",
+   "le": "2026-11-14T00:13+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-13T15:08+00:00",
-   "n": 52
+   "le": "2026-11-14T00:13+00:00",
+   "n": 49
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-13T15:08+00:00",
+   "le": "2026-11-14T00:13+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-13T15:08+00:00",
+   "le": "2026-11-14T00:13+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-13T15:08+00:00",
+   "le": "2026-11-14T00:13+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-13T15:08+00:00",
+   "le": "2026-11-14T00:13+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-13T15:08+00:00",
+   "le": "2026-11-14T00:13+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-13T15:08+00:00",
+   "le": "2026-11-14T00:13+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-ebcf1ed62b",
+   "d": "2026-11-13",
+   "cat": "vie",
+   "press": false,
+   "t": "HB JANZÉ vs US BAIN HB 1",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15f-coupe-bzh-territoriale-32872/poule-198731/rencontre-2747645/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-eb9340eae5",
+   "d": "2026-11-13",
+   "cat": "presse",
+   "press": true,
+   "t": "Ille-et-Vilaine : reconstruction de la gendarmerie de Janzé sur son site actuel",
+   "p": "",
+   "src": "Le Moniteur",
+   "url": "https://www.lemoniteur.fr/bretagne/ille-et-vilaine/ille-et-vilaine-reconstruction-de-la-gendarmerie-de-janze-sur-son-site-actuel.LAVMCGGDKZFP5AXUE5XRBBRSNE.html",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2,
+   "cat2": "projets"
+  },
   {
    "id": "presse-312c5c69c2",
    "d": "2026-11-11",
