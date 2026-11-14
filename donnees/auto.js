@@ -1,52 +1,66 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-14T00:13+00:00",
+ "maj": "2026-11-14T13:58+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-14T00:13+00:00",
+   "le": "2026-11-14T13:58+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-14T00:13+00:00",
-   "n": 49
+   "le": "2026-11-14T13:58+00:00",
+   "n": 52
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-14T00:13+00:00",
+   "le": "2026-11-14T13:58+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-14T00:13+00:00",
+   "le": "2026-11-14T13:58+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-14T00:13+00:00",
+   "le": "2026-11-14T13:58+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-14T00:13+00:00",
+   "le": "2026-11-14T13:58+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-14T00:13+00:00",
+   "le": "2026-11-14T13:58+00:00",
    "n": 0,
-   "info": "Vigilance aujourd'hui verte, demain verte"
+   "info": "Vigilance aujourd'hui verte, demain jaune"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-14T00:13+00:00",
+   "le": "2026-11-14T13:58+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-c017ba5e28",
+   "d": "2026-11-14",
+   "cat": "vie",
+   "press": false,
+   "t": "COBSE HB 1 vs HB JANZÉ",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11m-coupe-bzh-territoriale-32876/poule-198759/rencontre-2747800/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-ebcf1ed62b",
    "d": "2026-11-13",
