@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-15T02:26+00:00",
+ "maj": "2026-11-15T14:32+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-15T02:26+00:00",
+   "le": "2026-11-15T14:32+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-15T02:26+00:00",
-   "n": 52
+   "le": "2026-11-15T14:32+00:00",
+   "n": 51
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-15T02:26+00:00",
+   "le": "2026-11-15T14:32+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-15T02:26+00:00",
+   "le": "2026-11-15T14:32+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-15T02:26+00:00",
+   "le": "2026-11-15T14:32+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-15T02:26+00:00",
+   "le": "2026-11-15T14:32+00:00",
    "n": 0,
-   "info": "Dernier prélèvement le 25 août 2026 : conforme"
+   "info": "Dernier prélèvement le 4 décembre 2024 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-15T02:26+00:00",
+   "le": "2026-11-15T14:32+00:00",
    "n": 0,
-   "info": "Vigilance aujourd'hui verte, demain jaune"
+   "info": "Vigilance aujourd'hui jaune, demain jaune"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-15T02:26+00:00",
+   "le": "2026-11-15T14:32+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -56,6 +56,20 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Fédération Française de Handball",
    "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u11m-coupe-bzh-territoriale-32876/poule-198759/rencontre-2747800/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-d007e27074",
+   "d": "2026-11-14",
+   "cat": "vie",
+   "press": false,
+   "t": "HB JANZÉ vs ASC MAURE DE BRETAGNE HANDBALL 1",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/u15-masculin-territoriale-30548/poule-193009/rencontre-2683687/",
    "a": "auto",
    "k": "presse",
    "resolu": true,
