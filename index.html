@@ -114,6 +114,15 @@ nav.rub button[aria-current="page"] { color: var(--rust-texte); border-bottom-co
 .une p { margin: 0; font-size: 0.9062rem; opacity: .92; }
 .une ul { margin: 10px 0 0; padding-left: 18px; font-size: 0.875rem; }
 .une .lire { display: inline-block; margin-top: 12px; font-weight: 700; font-size: 0.8125rem; color: var(--apricot); }
+/* Une épinglée en couleur (annonce exceptionnelle, champ « une » de l'item) : mêmes couleurs en mode clair et sombre. */
+.une.une-rouille { background: #b5532f; color: #fff8f2; }
+.une.une-abricot { background: #f2a65a; color: #1e2a4a; }
+.une.une-rouille .kick, .une.une-abricot .kick { color: inherit; opacity: .85; }
+.une.une-rouille .lire { color: #ffd2b8; text-decoration: underline; text-underline-offset: 3px; }
+.une.une-abricot .lire { color: #1e2a4a; text-decoration: underline; text-underline-offset: 3px; }
+.une .grand { font-family: var(--display); font-style: italic; font-weight: 800; font-size: clamp(42px, 11vw, 60px); line-height: 1; margin: 4px 0 8px; opacity: 1; overflow-wrap: anywhere; }
+.une.une-rouille .grand { color: #fff8f2; text-shadow: 0 3px 0 #1e2a4a; }
+.une.une-abricot .grand { color: #fff8f2; text-shadow: 0 2px 0 rgba(30,42,74,.25); }
 
 .grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); margin-top: 18px; }
 @media (max-width: 340px) { .grid { grid-template-columns: 1fr; } }
@@ -286,6 +295,14 @@ const AUTO = { auto: "Collecte automatique", semi: "Collecte partielle", non: "S
 // Date du jour (heure locale), au format AAAA-MM-JJ : sert au bandeau, à la une et à l'agenda.
 const TODAY = new Date().toLocaleDateString("sv-SE");
 const ITEMS_MANUELS = [
+  // Annonce de naissance, prête à remplir (proposition « Plein abricot »). Retirer les // et compléter les [ ].
+  // « d » et « publie » : jour de parution (la une dure ce jour-là, le lendemain et le surlendemain).
+  // « une » : couleur de la carte, "rouille" ou "abricot".
+  // { id: "naissance", d: "[AAAA-MM-JJ]", publie: "[AAAA-MM-JJ]", epingle: true, une: "rouille", cat: "vie", kick: "Naissance",
+  //   t: "Une petite Janzéenne est née", grand: "[Prénom]",
+  //   p: "[Prénom] est arrivée le [jour date mois] à [heure], [poids] et [taille]. Toute la famille se porte bien.",
+  //   li: ["Née à [heure], à [lieu]", "[poids] et [taille]", "Les parents : [parents]"],
+  //   src: "La rédaction", a: "non" },
   { id: "panne-mail-mairie", d: "2026-11-13", enCours: "2026-11-13", expire: "2026-11-13T23:00:00+01:00", cat: "alerte", t: "Panne informatique résolue : la mairie reçoit de nouveau les mails",
     p: "La Ville a été touchée ce vendredi par la panne mondiale d'Outlook : pendant plusieurs heures, aucun service municipal ne recevait les demandes envoyées par mail. La panne est résolue depuis 14 h environ.",
     li: ["Les demandes par mail sont de nouveau reçues", "Pour toute autre demande : informations et démarches sur janze.fr"],
@@ -366,7 +383,8 @@ const COLLECTE = window.GAZETTE_AUTO || { items: [], sources: {} };
 // Un item manuel peut porter une date « expire » (AAAA-MM-JJ) : il n'est plus affiché après ce jour.
 // « expire » peut aussi être une date et heure (AAAA-MM-JJTHH:MM:SS+01:00) : l'item disparaît à cette heure précise.
 const PRESSE_OK = COLLECTE.sources.presse?.etat === "ok";
-const MANUELS = ITEMS_MANUELS.filter(i => !(PRESSE_OK && i.press) && !(i.expire && (i.expire.includes("T") ? new Date(i.expire) <= new Date() : i.expire < TODAY)));
+// Un item manuel avec « publie » (AAAA-MM-JJ) reste caché jusqu'à ce jour : on peut le préparer à l'avance.
+const MANUELS = ITEMS_MANUELS.filter(i => !(i.publie && i.publie > TODAY) && !(PRESSE_OK && i.press) && !(i.expire && (i.expire.includes("T") ? new Date(i.expire) <= new Date() : i.expire < TODAY)));
 const ITEMS = [...MANUELS, ...COLLECTE.items.filter(a => CATS[a.cat] && !MANUELS.some(m => m.url === a.url))];
 const STEP_LABELS = ["Idée", "Étude", "Vote", "Chantier", "Livré"];
 const PROJECTS = [
@@ -468,7 +486,13 @@ const poidsUne = i => UNE[typeUne(i)] || UNE.vie;
 const score = i => graveEnCours(i) ? poidsUne(i) : Math.max(0, poidsUne(i) * (1 - ageDays(i) / 2));
 // Quand rien n'est frais (tout à zéro), la plus récente passe devant, puis la plus importante.
 const parUne = (a, b) => score(b) - score(a) || b.d.localeCompare(a.d) || poidsUne(b) - poidsUne(a);
-const pickLead = () => [...ITEMS].sort(parUne).find(i => ageDays(i) < UNE_MAX);
+// Info épinglée (item manuel avec « epingle: true ») : elle reste en tête de une pendant 3 jours
+// à partir de sa date « d » (parution, lendemain, surlendemain), quoi qu'il paraisse d'autre.
+// Seule une vigilance météo orange ou rouge du jour passe devant ; l'info épinglée revient ensuite.
+// Réservé aux annonces exceptionnelles. Ensuite l'info reste dans sa rubrique.
+const epinglee = i => i.epingle && ageDays(i) < UNE_MAX && i.d <= TODAY;
+const vigilanceDuJour = i => String(i.id || "").startsWith("vigilance-") && i.d === TODAY;
+const pickLead = () => ITEMS.find(vigilanceDuJour) || ITEMS.find(epinglee) || [...ITEMS].sort(parUne).find(i => ageDays(i) < UNE_MAX);
 
 // Projets de la une : actu récente et échéance proche d'abord, puis chantiers en cours.
 // Jusqu'à 60 points pour une actu de moins de 2 mois, 60 pour une échéance dans les 2 mois, 15 si chantier.
@@ -504,14 +528,15 @@ function viewUne() {
   const delai = inDays === 0 ? "aujourd'hui" : inDays === 1 ? "demain" : `dans ${inDays} jours`;
   return `
   ${astuce()}
-  ${lead ? `<a class="une" ${lienArt(lead)}>
-    <div class="kick">${esc(marquant(lead) ? "Fait marquant" : CATS[lead.cat].label)} · ${esc(when(lead))}</div>
+  ${lead ? `<a class="une${lead.une && epinglee(lead) ? " une-" + esc(lead.une) : ""}" ${lienArt(lead)}>
+    <div class="kick">${esc(marquant(lead) ? "Fait marquant" : CATS[lead.cat].label)}${lead.kick ? " · " + esc(lead.kick) : ""} · ${esc(when(lead))}</div>
     <h2>${esc(lead.t)}</h2>
+    ${lead.grand && epinglee(lead) ? `<p class="grand">${esc(lead.grand)}</p>` : ""}
     <p>${esc(lead.p)}</p>
     ${lead.li ? `<ul>${lead.li.slice(0, 3).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
     <span class="lire">Lire l'article →</span>
   </a>
-  <p class="why">Une choisie automatiquement : l'info la plus importante du jour ou de la veille, un fait marquant en priorité. Jamais plus de 3 jours.</p>` : ""}
+  <p class="why">${epinglee(lead) ? "Une choisie par la rédaction pour trois jours." : "Une choisie automatiquement : l'info la plus importante du jour ou de la veille, un fait marquant en priorité. Jamais plus de 3 jours."}</p>` : ""}
   ${next ? `<a class="strip" href="#agenda" data-go="agenda"><b>${esc(next.t)} : ${esc(new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(dt(next.d)))}</b><span>${delai} →</span></a>` : ""}
   <div class="grid">${rest.map(brief).join("")}</div>
   <div class="box"><div class="boxhead"><h2>Où en sont les projets</h2><a href="#projets" data-go="projets">Tous les projets →</a></div>${frontProjects().map(p => projectRow(p, true)).join("")}</div>
