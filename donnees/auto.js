@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-14T19:45+00:00",
+ "maj": "2026-11-15T02:26+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-14T19:45+00:00",
+   "le": "2026-11-15T02:26+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-14T19:45+00:00",
-   "n": 51
+   "le": "2026-11-15T02:26+00:00",
+   "n": 52
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-14T19:45+00:00",
+   "le": "2026-11-15T02:26+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-14T19:45+00:00",
+   "le": "2026-11-15T02:26+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-14T19:45+00:00",
+   "le": "2026-11-15T02:26+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-14T19:45+00:00",
+   "le": "2026-11-15T02:26+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-14T19:45+00:00",
+   "le": "2026-11-15T02:26+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain jaune"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-14T19:45+00:00",
+   "le": "2026-11-15T02:26+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -99,6 +99,20 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/sportif-et-festif-une-premiere-edition-de-la-course-des-poulets-de-janze-e5974132-dd20-11f1-9a04-3c520384c4a6",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-358b49d80d",
+   "d": "2026-11-11",
+   "cat": "presse",
+   "press": true,
+   "t": "Enigmaparc - Vente flash au prix de 2006 ! Janzé 2026 : date, horaires, programme, tarifs",
+   "p": "Manifestations, événements et animations, du 21 novembre au 22 novembre 2026, à Janzé (Ille-et-Vilaine) - horaires, tarifs, renseignements. La vie est chère et, pour certaines familles, il faut choisir : mettre de l’essence dans la voiture ou",
+   "src": "jds.fr",
+   "url": "https://www.jds.fr/rennes/manifestations/enigmaparc-vente-flash-au-prix-de-2006-1841655_A",
    "a": "auto",
    "k": "presse",
    "resolu": true,
