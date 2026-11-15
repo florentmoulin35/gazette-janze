@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-15T14:32+00:00",
+ "maj": "2026-11-15T20:11+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-15T14:32+00:00",
+   "le": "2026-11-15T20:11+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-15T14:32+00:00",
-   "n": 51
+   "le": "2026-11-15T20:11+00:00",
+   "n": 50
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-15T14:32+00:00",
+   "le": "2026-11-15T20:11+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-15T14:32+00:00",
+   "le": "2026-11-15T20:11+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-15T14:32+00:00",
+   "le": "2026-11-15T20:11+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-15T14:32+00:00",
+   "le": "2026-11-15T20:11+00:00",
    "n": 0,
-   "info": "Dernier prélèvement le 4 décembre 2024 : conforme"
+   "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-15T14:32+00:00",
+   "le": "2026-11-15T20:11+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui jaune, demain jaune"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-15T14:32+00:00",
+   "le": "2026-11-15T20:11+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -538,7 +538,7 @@ window.GAZETTE_AUTO = {
    "cat": "presse",
    "press": true,
    "t": "« C’est aux jeunes d’écrire l’histoire » : favori à Janzé (R3), le Stade Pontivyen (R1) n’a plus perdu contre une équipe inférieure depuis 13 ans en Coupe de France",
-   "p": "",
+   "p": "Le Stade Pontivyen (R1) se déplace à Janzé (R3), dimanche, en Coupe de France. Son président Steven Le Plénier espère voir ses protégés à nouveau au septième tour. Ce qui ne serait pas une surprise…",
    "src": "Foot Amateur Bretagne",
    "url": "https://footamateur.letelegramme.fr/clubs/stade-pontivyen/au-stade-pontivyen-pas-question-de-se-faire-pieger-7143978.php",
    "a": "auto",
@@ -1780,8 +1780,8 @@ window.GAZETTE_AUTO = {
    "aussi": [
     {
      "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
-     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/37326-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-classement.html",
+     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 classement"
     }
    ]
   },
