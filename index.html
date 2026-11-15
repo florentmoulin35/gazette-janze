@@ -488,11 +488,10 @@ const score = i => graveEnCours(i) ? poidsUne(i) : Math.max(0, poidsUne(i) * (1 
 const parUne = (a, b) => score(b) - score(a) || b.d.localeCompare(a.d) || poidsUne(b) - poidsUne(a);
 // Info épinglée (item manuel avec « epingle: true ») : elle reste en tête de une pendant 3 jours
 // à partir de sa date « d » (parution, lendemain, surlendemain), quoi qu'il paraisse d'autre.
-// Seule une vigilance météo orange ou rouge du jour passe devant ; l'info épinglée revient ensuite.
+// Rien ne passe devant, pas même une vigilance météo : les autres infos restent dans les brèves.
 // Réservé aux annonces exceptionnelles. Ensuite l'info reste dans sa rubrique.
 const epinglee = i => i.epingle && ageDays(i) < UNE_MAX && i.d <= TODAY;
-const vigilanceDuJour = i => String(i.id || "").startsWith("vigilance-") && i.d === TODAY;
-const pickLead = () => ITEMS.find(vigilanceDuJour) || ITEMS.find(epinglee) || [...ITEMS].sort(parUne).find(i => ageDays(i) < UNE_MAX);
+const pickLead = () => ITEMS.find(epinglee) || [...ITEMS].sort(parUne).find(i => ageDays(i) < UNE_MAX);
 
 // Projets de la une : actu récente et échéance proche d'abord, puis chantiers en cours.
 // Jusqu'à 60 points pour une actu de moins de 2 mois, 60 pour une échéance dans les 2 mois, 15 si chantier.
