@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-15T20:11+00:00",
+ "maj": "2026-11-16T02:35+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-16T02:35+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
-   "n": 50
+   "le": "2026-11-16T02:35+00:00",
+   "n": 49
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-16T02:35+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-16T02:35+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-16T02:35+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-16T02:35+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-16T02:35+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui jaune, demain jaune"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-16T02:35+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
