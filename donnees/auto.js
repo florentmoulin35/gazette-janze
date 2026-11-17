@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-16T16:48+00:00",
+ "maj": "2026-11-17T02:20+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-16T16:48+00:00",
+   "le": "2026-11-17T02:20+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-16T16:48+00:00",
-   "n": 47
+   "le": "2026-11-17T02:20+00:00",
+   "n": 48
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-16T16:48+00:00",
+   "le": "2026-11-17T02:20+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-16T16:48+00:00",
+   "le": "2026-11-17T02:20+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-16T16:48+00:00",
+   "le": "2026-11-17T02:20+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-16T16:48+00:00",
+   "le": "2026-11-17T02:20+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-16T16:48+00:00",
+   "le": "2026-11-17T02:20+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain jaune"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-16T16:48+00:00",
+   "le": "2026-11-17T02:20+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -2171,6 +2171,20 @@ window.GAZETTE_AUTO = {
    "p": "Jennifer Maillard conduira une liste aux municipales à Janzé (Ille-et-Vilaine). Elle souhaite mettre son engagement, son expérience et son sens du terrain au service de la ville.",
    "src": "Actu.fr",
    "url": "https://actu.fr/bretagne/janze_35136/municipales-2026-a-janze-jennifer-maillard-est-candidate-a-la-mairie_63617192.html",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-1cb12fc418",
+   "d": "2025-12-11",
+   "cat": "presse",
+   "press": true,
+   "t": "Le centre-ville de Janzé s’anime pour Noël",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/le-centre-ville-de-janze-sanime-pour-noel-ce60f786-cb94-11f0-ba45-4db149beed90",
    "a": "auto",
    "k": "presse",
    "resolu": true,
