@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-17T02:20+00:00",
+ "maj": "2026-11-17T16:43+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-17T02:20+00:00",
+   "le": "2026-11-17T16:43+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-17T02:20+00:00",
-   "n": 48
+   "le": "2026-11-17T16:43+00:00",
+   "n": 46
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-17T02:20+00:00",
+   "le": "2026-11-17T16:43+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-17T02:20+00:00",
+   "le": "2026-11-17T16:43+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-17T02:20+00:00",
+   "le": "2026-11-17T16:43+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-17T02:20+00:00",
+   "le": "2026-11-17T16:43+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-17T02:20+00:00",
+   "le": "2026-11-17T16:43+00:00",
    "n": 0,
-   "info": "Vigilance aujourd'hui verte, demain jaune"
+   "info": "Vigilance aujourd'hui jaune, demain jaune"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-17T02:20+00:00",
+   "le": "2026-11-17T16:43+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -908,6 +908,20 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
+   "id": "presse-0d79ea41a1",
+   "d": "2026-10-09",
+   "cat": "vie",
+   "press": false,
+   "t": "Spectacle-débat « Souffler sur les braises » Janzé",
+   "p": "Le Comité Action Sociale Agirc-Arrco Bretagne, en partenariat avec le CLIC de la Roche aux Fées et le CCAS de Janzé, a le plaisir de vous inviter à un spect ...",
+   "src": "Agirc-Arrco",
+   "url": "https://www.agirc-arrco.fr/mes-services-particuliers/evenements/je-participe-a-un-evenement/spectacle-debat-souffler-sur-les-braises-janze/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": null
+  },
+  {
    "id": "janze-22d41045be",
    "d": "2026-10-08",
    "cat": "projets",
@@ -1736,20 +1750,6 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
-   "id": "presse-0d79ea41a1",
-   "d": "2026-06-26",
-   "cat": "vie",
-   "press": false,
-   "t": "Spectacle-débat « Souffler sur les braises » Janzé",
-   "p": "Le Comité Action Sociale Agirc-Arrco Bretagne, en partenariat avec le CLIC de la Roche aux Fées et le CCAS de Janzé, a le plaisir de vous inviter à un spect ...",
-   "src": "Agirc-Arrco",
-   "url": "https://www.agirc-arrco.fr/mes-services-particuliers/evenements/je-participe-a-un-evenement/spectacle-debat-souffler-sur-les-braises-janze/",
-   "a": "auto",
-   "k": "presse",
-   "resolu": true,
-   "ap": null
-  },
-  {
    "id": "presse-e176cbc28c",
    "d": "2026-06-25",
    "cat": "presse",
@@ -1884,7 +1884,7 @@ window.GAZETTE_AUTO = {
    "press": true,
    "t": "RD 173 : travaux du 18 au 26 mai entre Janzé et Brie",
    "p": "Le Département d'Ille-et-Vilaine réalise des travaux de renouvellement de la chaussée sur le RD 173 entre les communes de Janzé et Brie.",
-   "src": "Département d'Ille-et-Vilaine",
+   "src": "Département Ille et Vilaine",
    "url": "https://www.ille-et-vilaine.fr/rd-173-travaux-du-18-au-26-mai-entre-janze-et-brie",
    "a": "auto",
    "k": "presse",
