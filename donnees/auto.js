@@ -1,47 +1,48 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-18T01:30+00:00",
+ "maj": "2026-11-18T16:14+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-18T01:30+00:00",
+   "le": "2026-11-18T16:14+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-18T01:30+00:00",
+   "le": "2026-11-18T16:14+00:00",
    "n": 49
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-18T01:30+00:00",
+   "le": "2026-11-18T16:14+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-18T01:30+00:00",
+   "le": "2026-11-18T16:14+00:00",
    "n": 46
   },
   "catnat": {
-   "etat": "ok",
-   "le": "2026-11-18T01:30+00:00",
-   "n": 5
+   "etat": "erreur",
+   "le": "2026-11-18T16:14+00:00",
+   "msg": "Remote end closed connection without response",
+   "dernier_ok": "2026-11-18T01:30+00:00"
   },
   "eau": {
-   "etat": "ok",
-   "le": "2026-11-18T01:30+00:00",
-   "n": 0,
-   "info": "Dernier prélèvement le 25 août 2026 : conforme"
+   "etat": "erreur",
+   "le": "2026-11-18T16:14+00:00",
+   "msg": "Expecting value: line 1 column 1 (char 0)",
+   "dernier_ok": "2026-11-18T01:30+00:00"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-18T01:30+00:00",
+   "le": "2026-11-18T16:14+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui jaune, demain jaune"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-18T01:30+00:00",
+   "le": "2026-11-18T16:14+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -2147,6 +2148,20 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/de-nouvelles-tetes-accueillies-a-la-brigade-de-gendarmerie-5409293a-f520-11f0-b9a1-d6112deb75f2",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-1d2d56ce77",
+   "d": "2026-01-17",
+   "cat": "presse",
+   "press": true,
+   "t": "ATTILA : une nouvelle agence ouvre ses portes à Bain-de-Bretagne – Janzé",
+   "p": "Le réseau ATTILA poursuit son développement en Bretagne avec l’ouverture d’une nouvelle agence sur le secteur Bain-de-Bretagne – Janzé.",
+   "src": "Toute la Franchise",
+   "url": "https://www.toute-la-franchise.com/news-attila-nouvelle-agence-bain-de-bretagne-janze",
    "a": "auto",
    "k": "presse",
    "resolu": true,
