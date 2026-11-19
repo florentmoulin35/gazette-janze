@@ -1,53 +1,66 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-19T00:58+00:00",
+ "maj": "2026-11-19T16:22+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-19T00:58+00:00",
+   "le": "2026-11-19T16:22+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-19T00:58+00:00",
-   "n": 47
+   "le": "2026-11-19T16:22+00:00",
+   "n": 48
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-19T00:58+00:00",
+   "le": "2026-11-19T16:22+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-19T00:58+00:00",
+   "le": "2026-11-19T16:22+00:00",
    "n": 46
   },
   "catnat": {
-   "etat": "erreur",
-   "le": "2026-11-19T00:58+00:00",
-   "msg": "Remote end closed connection without response",
-   "dernier_ok": "2026-11-18T01:30+00:00"
+   "etat": "ok",
+   "le": "2026-11-19T16:22+00:00",
+   "n": 5
   },
   "eau": {
-   "etat": "erreur",
-   "le": "2026-11-19T00:58+00:00",
-   "msg": "Expecting value: line 1 column 1 (char 0)",
-   "dernier_ok": "2026-11-18T01:30+00:00"
+   "etat": "ok",
+   "le": "2026-11-19T16:22+00:00",
+   "n": 0,
+   "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-19T00:58+00:00",
+   "le": "2026-11-19T16:22+00:00",
    "n": 0,
-   "info": "Vigilance aujourd'hui jaune, demain jaune"
+   "info": "Vigilance aujourd'hui jaune, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-19T00:58+00:00",
+   "le": "2026-11-19T16:22+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-707f457751",
+   "d": "2026-11-19",
+   "cat": "presse",
+   "press": true,
+   "t": "Cette habitante de Janzé est championne d’Europe de football en marchant",
+   "p": "Géraldine Jouin, habitante de Janzé (Ille-et-Vilaine), sportive depuis son jeune âge, fait partie de l’équipe féminine de France de football en marchant depuis 2023. Au poste d’attaquante, elle a…",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/cette-habitante-de-janze-est-championne-deurope-de-football-en-marchant-6ea77b08-e295-11f1-9549-83e3460b2e87",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-c017ba5e28",
    "d": "2026-11-14",
@@ -1244,11 +1257,6 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
-    },
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
