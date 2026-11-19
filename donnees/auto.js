@@ -1,48 +1,48 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-18T16:14+00:00",
+ "maj": "2026-11-19T00:58+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-18T16:14+00:00",
+   "le": "2026-11-19T00:58+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-18T16:14+00:00",
-   "n": 49
+   "le": "2026-11-19T00:58+00:00",
+   "n": 47
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-18T16:14+00:00",
+   "le": "2026-11-19T00:58+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-18T16:14+00:00",
+   "le": "2026-11-19T00:58+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "erreur",
-   "le": "2026-11-18T16:14+00:00",
+   "le": "2026-11-19T00:58+00:00",
    "msg": "Remote end closed connection without response",
    "dernier_ok": "2026-11-18T01:30+00:00"
   },
   "eau": {
    "etat": "erreur",
-   "le": "2026-11-18T16:14+00:00",
+   "le": "2026-11-19T00:58+00:00",
    "msg": "Expecting value: line 1 column 1 (char 0)",
    "dernier_ok": "2026-11-18T01:30+00:00"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-18T16:14+00:00",
+   "le": "2026-11-19T00:58+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui jaune, demain jaune"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-18T16:14+00:00",
+   "le": "2026-11-19T00:58+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
