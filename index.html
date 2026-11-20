@@ -295,14 +295,12 @@ const AUTO = { auto: "Collecte automatique", semi: "Collecte partielle", non: "S
 // Date du jour (heure locale), au format AAAA-MM-JJ : sert au bandeau, à la une et à l'agenda.
 const TODAY = new Date().toLocaleDateString("sv-SE");
 const ITEMS_MANUELS = [
-  // Annonce de naissance, prête à remplir (proposition « Plein abricot »). Retirer les // et compléter les [ ].
-  // « d » et « publie » : jour de parution, le 20 novembre (en une les 20, 21 et 22 novembre).
-  // « une » : couleur de la carte, "rouille" ou "abricot".
-  // { id: "naissance", d: "2026-11-20", publie: "2026-11-20", epingle: true, une: "rouille", cat: "vie", kick: "Naissance",
-  //   t: "Une petite Janzéenne est née", grand: "[Prénom]",
-  //   p: "[Prénom] est arrivée le [jour date mois] à [heure], [poids] et [taille]. Toute la famille se porte bien.",
-  //   li: ["Née à [heure], à [lieu]", "[poids] et [taille]", "Les parents : [parents]"],
-  //   src: "La rédaction", a: "non" },
+  // Annonce de naissance : épinglée en une les 20, 21 et 22 novembre, puis dans Vie locale.
+  { id: "naissance-albane", d: "2026-11-20", publie: "2026-11-20", epingle: true, une: "rouille", cat: "vie", kick: "Naissance",
+    t: "Une petite Janzéenne est née", grand: "Albane",
+    p: "Albane est arrivée ce vendredi 20 novembre à 11 h 27, pour 2,960 kg. Bienvenue à la plus jeune lectrice de la Gazette !",
+    li: ["Née le vendredi 20 novembre 2026 à 11 h 27", "2,960 kg"],
+    src: "La rédaction", a: "non" },
   { id: "panne-mail-mairie", d: "2026-11-13", enCours: "2026-11-13", expire: "2026-11-13T23:00:00+01:00", cat: "alerte", t: "Panne informatique résolue : la mairie reçoit de nouveau les mails",
     p: "La Ville a été touchée ce vendredi par la panne mondiale d'Outlook : pendant plusieurs heures, aucun service municipal ne recevait les demandes envoyées par mail. La panne est résolue depuis 14 h environ.",
     li: ["Les demandes par mail sont de nouveau reçues", "Pour toute autre demande : informations et démarches sur janze.fr"],
