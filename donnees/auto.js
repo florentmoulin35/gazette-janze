@@ -1,52 +1,66 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-15T20:11+00:00",
+ "maj": "2026-11-20T01:04+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-20T01:04+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
-   "n": 50
+   "le": "2026-11-20T01:04+00:00",
+   "n": 47
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-20T01:04+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-20T01:04+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-20T01:04+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-20T01:04+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-20T01:04+00:00",
    "n": 0,
-   "info": "Vigilance aujourd'hui jaune, demain jaune"
+   "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-15T20:11+00:00",
+   "le": "2026-11-20T01:04+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-707f457751",
+   "d": "2026-11-19",
+   "cat": "presse",
+   "press": true,
+   "t": "Cette habitante de Janzé est championne d’Europe de football en marchant",
+   "p": "Géraldine Jouin, habitante de Janzé (Ille-et-Vilaine), sportive depuis son jeune âge, fait partie de l’équipe féminine de France de football en marchant depuis 2023. Au poste d’attaquante, elle a…",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/cette-habitante-de-janze-est-championne-deurope-de-football-en-marchant-6ea77b08-e295-11f1-9549-83e3460b2e87",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-c017ba5e28",
    "d": "2026-11-14",
@@ -908,6 +922,20 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
+   "id": "presse-0d79ea41a1",
+   "d": "2026-10-09",
+   "cat": "vie",
+   "press": false,
+   "t": "Spectacle-débat « Souffler sur les braises » Janzé",
+   "p": "Le Comité Action Sociale Agirc-Arrco Bretagne, en partenariat avec le CLIC de la Roche aux Fées et le CCAS de Janzé, a le plaisir de vous inviter à un spect ...",
+   "src": "Agirc-Arrco",
+   "url": "https://www.agirc-arrco.fr/mes-services-particuliers/evenements/je-participe-a-un-evenement/spectacle-debat-souffler-sur-les-braises-janze/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": null
+  },
+  {
    "id": "janze-22d41045be",
    "d": "2026-10-08",
    "cat": "projets",
@@ -1229,6 +1257,11 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
+    },
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -1736,20 +1769,6 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
-   "id": "presse-0d79ea41a1",
-   "d": "2026-06-26",
-   "cat": "vie",
-   "press": false,
-   "t": "Spectacle-débat « Souffler sur les braises » Janzé",
-   "p": "Le Comité Action Sociale Agirc-Arrco Bretagne, en partenariat avec le CLIC de la Roche aux Fées et le CCAS de Janzé, a le plaisir de vous inviter à un spect ...",
-   "src": "Agirc-Arrco",
-   "url": "https://www.agirc-arrco.fr/mes-services-particuliers/evenements/je-participe-a-un-evenement/spectacle-debat-souffler-sur-les-braises-janze/",
-   "a": "auto",
-   "k": "presse",
-   "resolu": true,
-   "ap": null
-  },
-  {
    "id": "presse-e176cbc28c",
    "d": "2026-06-25",
    "cat": "presse",
@@ -1884,7 +1903,7 @@ window.GAZETTE_AUTO = {
    "press": true,
    "t": "RD 173 : travaux du 18 au 26 mai entre Janzé et Brie",
    "p": "Le Département d'Ille-et-Vilaine réalise des travaux de renouvellement de la chaussée sur le RD 173 entre les communes de Janzé et Brie.",
-   "src": "Département d'Ille-et-Vilaine",
+   "src": "Département Ille et Vilaine",
    "url": "https://www.ille-et-vilaine.fr/rd-173-travaux-du-18-au-26-mai-entre-janze-et-brie",
    "a": "auto",
    "k": "presse",
@@ -2148,6 +2167,20 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
+   "id": "presse-1d2d56ce77",
+   "d": "2026-01-17",
+   "cat": "presse",
+   "press": true,
+   "t": "ATTILA : une nouvelle agence ouvre ses portes à Bain-de-Bretagne – Janzé",
+   "p": "Le réseau ATTILA poursuit son développement en Bretagne avec l’ouverture d’une nouvelle agence sur le secteur Bain-de-Bretagne – Janzé.",
+   "src": "Toute la Franchise",
+   "url": "https://www.toute-la-franchise.com/news-attila-nouvelle-agence-bain-de-bretagne-janze",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
    "id": "presse-3fa999d3d8",
    "d": "2026-01-12",
    "cat": "presse",
@@ -2171,6 +2204,20 @@ window.GAZETTE_AUTO = {
    "p": "Jennifer Maillard conduira une liste aux municipales à Janzé (Ille-et-Vilaine). Elle souhaite mettre son engagement, son expérience et son sens du terrain au service de la ville.",
    "src": "Actu.fr",
    "url": "https://actu.fr/bretagne/janze_35136/municipales-2026-a-janze-jennifer-maillard-est-candidate-a-la-mairie_63617192.html",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-1cb12fc418",
+   "d": "2025-12-11",
+   "cat": "presse",
+   "press": true,
+   "t": "Le centre-ville de Janzé s’anime pour Noël",
+   "p": "",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/le-centre-ville-de-janze-sanime-pour-noel-ce60f786-cb94-11f0-ba45-4db149beed90",
    "a": "auto",
    "k": "presse",
    "resolu": true,
