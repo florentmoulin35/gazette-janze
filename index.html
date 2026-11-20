@@ -526,14 +526,14 @@ function viewUne() {
   const delai = inDays === 0 ? "aujourd'hui" : inDays === 1 ? "demain" : `dans ${inDays} jours`;
   return `
   ${astuce()}
-  ${lead ? `<a class="une${lead.une && epinglee(lead) ? " une-" + esc(lead.une) : ""}" ${lienArt(lead)}>
+  ${lead ? `<${lead.lire === false ? "div" : "a"} class="une${lead.une && epinglee(lead) ? " une-" + esc(lead.une) : ""}" ${lead.lire === false ? "" : lienArt(lead)}>
     <div class="kick">${esc(marquant(lead) ? "Fait marquant" : CATS[lead.cat].label)}${lead.kick ? " · " + esc(lead.kick) : ""} · ${esc(when(lead))}</div>
     <h2>${esc(lead.t)}</h2>
     ${lead.grand && epinglee(lead) ? `<p class="grand">${esc(lead.grand)}</p>` : ""}
     <p>${esc(lead.p)}</p>
     ${lead.li ? `<ul>${lead.li.slice(0, 3).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
     ${lead.lire === false ? "" : `<span class="lire">Lire l'article →</span>`}
-  </a>
+  </${lead.lire === false ? "div" : "a"}>
   <p class="why">${epinglee(lead) ? "Une choisie par la rédaction pour trois jours." : "Une choisie automatiquement : l'info la plus importante du jour ou de la veille, un fait marquant en priorité. Jamais plus de 3 jours."}</p>` : ""}
   ${next ? `<a class="strip" href="#agenda" data-go="agenda"><b>${esc(next.t)} : ${esc(new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(dt(next.d)))}</b><span>${delai} →</span></a>` : ""}
   <div class="grid">${rest.map(brief).join("")}</div>
