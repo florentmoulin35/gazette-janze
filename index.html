@@ -300,7 +300,7 @@ const ITEMS_MANUELS = [
   { id: "naissance-albane", d: "2026-11-20", publie: "2026-11-20", epingle: true, une: "rouille", cat: "vie", kick: "Naissance",
     t: "Une petite Janzéenne est née", grand: "Albane",
     p: "Elise et Florent sont heureux de vous annoncer l'arrivée d'Albane ce vendredi 20\u00a0novembre à 11\u00a0h\u00a027. Elle pèse 2,960\u00a0kg et sa maman va bien.",
-    suite: "Bienvenue à la plus jeune lectrice de la Gazette !",
+    suite: "Bienvenue à la plus jeune lectrice de la Gazette !", lire: false,
     src: "La rédaction", a: "non" },
   { id: "panne-mail-mairie", d: "2026-11-13", enCours: "2026-11-13", expire: "2026-11-13T23:00:00+01:00", cat: "alerte", t: "Panne informatique résolue : la mairie reçoit de nouveau les mails",
     p: "La Ville a été touchée ce vendredi par la panne mondiale d'Outlook : pendant plusieurs heures, aucun service municipal ne recevait les demandes envoyées par mail. La panne est résolue depuis 14 h environ.",
@@ -532,7 +532,7 @@ function viewUne() {
     ${lead.grand && epinglee(lead) ? `<p class="grand">${esc(lead.grand)}</p>` : ""}
     <p>${esc(lead.p)}</p>
     ${lead.li ? `<ul>${lead.li.slice(0, 3).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
-    <span class="lire">Lire l'article →</span>
+    ${lead.lire === false ? "" : `<span class="lire">Lire l'article →</span>`}
   </a>
   <p class="why">${epinglee(lead) ? "Une choisie par la rédaction pour trois jours." : "Une choisie automatiquement : l'info la plus importante du jour ou de la veille, un fait marquant en priorité. Jamais plus de 3 jours."}</p>` : ""}
   ${next ? `<a class="strip" href="#agenda" data-go="agenda"><b>${esc(next.t)} : ${esc(new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" }).format(dt(next.d)))}</b><span>${delai} →</span></a>` : ""}
