@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-20T01:04+00:00",
+ "maj": "2026-11-20T15:56+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-20T01:04+00:00",
+   "le": "2026-11-20T15:56+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-20T01:04+00:00",
-   "n": 47
+   "le": "2026-11-20T15:56+00:00",
+   "n": 44
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-20T01:04+00:00",
+   "le": "2026-11-20T15:56+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-20T01:04+00:00",
+   "le": "2026-11-20T15:56+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-20T01:04+00:00",
+   "le": "2026-11-20T15:56+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-20T01:04+00:00",
+   "le": "2026-11-20T15:56+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-20T01:04+00:00",
+   "le": "2026-11-20T15:56+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-20T01:04+00:00",
+   "le": "2026-11-20T15:56+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -683,6 +683,17 @@ window.GAZETTE_AUTO = {
    "k": "janze"
   },
   {
+   "id": "janze-059e1aaa9e",
+   "d": "2026-10-20",
+   "cat": "vie",
+   "t": "[Recensement] On recrute !",
+   "p": "Mieux connaître la population, c'est mieux répondre aux besoins des habitants ! C'est pourquoi, tous les 5 ans, doit être effectué le recensement de la population. Pour sa prochaine campagne de recensement, la ville recrute 18 agents recenseurs pour la période du jeudi 21…",
+   "src": "janze.fr",
+   "url": "https://www.janze.fr/actualites/recensement-recrute",
+   "a": "auto",
+   "k": "janze"
+  },
+  {
    "id": "presse-9b1a070459",
    "d": "2026-10-19",
    "cat": "vie",
@@ -1257,11 +1268,6 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
-    },
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -1799,8 +1805,8 @@ window.GAZETTE_AUTO = {
    "aussi": [
     {
      "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/37326-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-classement.html",
-     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 classement"
+     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
+     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
     }
    ]
   },
