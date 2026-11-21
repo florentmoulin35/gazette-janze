@@ -1,52 +1,66 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-21T00:39+00:00",
+ "maj": "2026-11-21T15:08+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-21T00:39+00:00",
+   "le": "2026-11-21T15:08+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-21T00:39+00:00",
-   "n": 43
+   "le": "2026-11-21T15:08+00:00",
+   "n": 87
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-21T00:39+00:00",
+   "le": "2026-11-21T15:08+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-21T00:39+00:00",
+   "le": "2026-11-21T15:08+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-21T00:39+00:00",
+   "le": "2026-11-21T15:08+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-21T00:39+00:00",
+   "le": "2026-11-21T15:08+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-21T00:39+00:00",
+   "le": "2026-11-21T15:08+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-21T00:39+00:00",
+   "le": "2026-11-21T15:08+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-543af5932a",
+   "d": "2026-11-21",
+   "cat": "presse",
+   "press": true,
+   "t": "Assemblée générale Janzé 2026 : date, horaires, exposants",
+   "p": "Marchés et braderies, le 21 novembre 2026, à Janzé (Ille-et-Vilaine) - horaires, tarifs, renseignements. Assemblée générale de Rue des Arts : présentation du bilan et des perspectives des années à venir ! Élection du conseil d'administration",
+   "src": "jds.fr",
+   "url": "https://www.jds.fr/rennes/foires-et-salons/marches/assemblee-generale-1854984_A",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-707f457751",
    "d": "2026-11-19",
@@ -56,6 +70,20 @@ window.GAZETTE_AUTO = {
    "p": "Géraldine Jouin, habitante de Janzé (Ille-et-Vilaine), sportive depuis son jeune âge, fait partie de l’équipe féminine de France de football en marchant depuis 2023. Au poste d’attaquante, elle a…",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/cette-habitante-de-janze-est-championne-deurope-de-football-en-marchant-6ea77b08-e295-11f1-9549-83e3460b2e87",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-358b49d80d",
+   "d": "2026-11-15",
+   "cat": "presse",
+   "press": true,
+   "t": "Enigmaparc - Vente flash au prix de 2006 ! Janzé 2026 : date, horaires, programme, tarifs",
+   "p": "Manifestations, événements et animations, du 21 novembre au 22 novembre 2026, à Janzé (Ille-et-Vilaine) - horaires, tarifs, renseignements. La vie est chère et, pour certaines familles, il faut choisir : mettre de l’essence dans la voiture ou",
+   "src": "jds.fr",
+   "url": "https://www.jds.fr/rennes/manifestations/enigmaparc-vente-flash-au-prix-de-2006-1841655_A",
    "a": "auto",
    "k": "presse",
    "resolu": true,
@@ -133,14 +161,42 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
-   "id": "presse-358b49d80d",
+   "id": "presse-1ee105a7b5",
    "d": "2026-11-11",
-   "cat": "presse",
-   "press": true,
-   "t": "Enigmaparc - Vente flash au prix de 2006 ! Janzé 2026 : date, horaires, programme, tarifs",
-   "p": "Manifestations, événements et animations, du 21 novembre au 22 novembre 2026, à Janzé (Ille-et-Vilaine) - horaires, tarifs, renseignements. La vie est chère et, pour certaines familles, il faut choisir : mettre de l’essence dans la voiture ou",
-   "src": "jds.fr",
-   "url": "https://www.jds.fr/rennes/manifestations/enigmaparc-vente-flash-au-prix-de-2006-1841655_A",
+   "cat": "vie",
+   "press": false,
+   "t": "REDON ATL VILAINE - US Janzé",
+   "p": "",
+   "src": "Score'n'co",
+   "url": "https://scorenco.com/football/match-fc-atlantique-vilaine-2-us-janze-1rfks",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-8b0dac9147",
+   "d": "2026-11-11",
+   "cat": "vie",
+   "press": false,
+   "t": "CHELUN MARTIGNE Cad. - US Janzé 3",
+   "p": "",
+   "src": "Score'n'co",
+   "url": "https://scorenco.com/football/match-cadets-chelun-martigne-2-us-janze-3-zqag",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-96b0dfe69e",
+   "d": "2026-11-11",
+   "cat": "vie",
+   "press": false,
+   "t": "US Domagne St Didier - US Janzé U17",
+   "p": "",
+   "src": "Score'n'co",
+   "url": "https://scorenco.com/football/match-us-domagne-saint-didier-1-u17-us-janze-u17-1-1tf0m",
    "a": "auto",
    "k": "presse",
    "resolu": true,
@@ -253,6 +309,34 @@ window.GAZETTE_AUTO = {
    "p": "Les jeunes collégiens de Saint-Joseph, à Janzé, à l’est de Rennes (Ille-et-Vilaine), apprennent la création d’une entreprise, ses rouages, la vente de ses produits. Ils participeront au festival des…",
    "src": "Ouest-France",
    "url": "https://www.ouest-france.fr/bretagne/janze-35150/cest-pour-eux-une-opportunite-de-parler-en-public-six-collegiens-creent-leur-mini-entreprise-a-janze-98d97644-d85c-11f1-9911-9179baff22e2",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-a223c457e3",
+   "d": "2026-11-06",
+   "cat": "vie",
+   "press": false,
+   "t": "US Janzé - Stade Pontivyen",
+   "p": "",
+   "src": "Score'n'co",
+   "url": "https://scorenco.com/football/match-stade-pontivyen-us-janze-1x78g",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-eddd864b8a",
+   "d": "2026-11-05",
+   "cat": "vie",
+   "press": false,
+   "t": "HB JANZÉ - U18F TER BROCELI'HAND ST GILLES",
+   "p": "",
+   "src": "Score'n'co",
+   "url": "https://scorenco.com/hand/match-broceli-hand-club-u18-f1-handball-janze-u18-f1-9qpg",
    "a": "auto",
    "k": "presse",
    "resolu": true,
@@ -537,14 +621,7 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null,
-   "aussi": [
-    {
-     "src": "TRM24",
-     "url": "https://www.trm24.fr/diesel-technic-france-change-dechelle-avec-sa-plateforme-logistique-de-janze/",
-     "t": "Diesel Technic France change d’échelle avec sa plateforme logistique de Janzé"
-    }
-   ]
+   "ap": null
   },
   {
    "id": "presse-6a593e8e7d",
@@ -855,7 +932,7 @@ window.GAZETTE_AUTO = {
    "press": true,
    "t": "Janzé. Chef cuisinier, il propose des menus sur-mesure à domicile",
    "p": "",
-   "src": "MaVille.com - Rennes",
+   "src": "maville.com",
    "url": "https://rennes.maville.com/actu/actudet_-janze-chef-cuisinier-il-propose-des-menus-sur-mesure-a-domicile_-7525813_actu.Htm",
    "a": "auto",
    "k": "presse",
@@ -930,7 +1007,14 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": 2
+   "ap": 2,
+   "aussi": [
+    {
+     "src": "Foot Amateur Bretagne",
+     "url": "https://footamateur.letelegramme.fr/fil-de-match/coupes/coupe-de-france-messieurs/4e-tour/janze-a-ploermel-a/1817500",
+     "t": "Janzé (A) - Ploërmel (A) - Résultats et calendrier"
+    }
+   ]
   },
   {
    "id": "presse-0d79ea41a1",
@@ -1268,6 +1352,11 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
+    },
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -1708,7 +1797,14 @@ window.GAZETTE_AUTO = {
    "a": "auto",
    "k": "presse",
    "resolu": true,
-   "ap": null
+   "ap": null,
+   "aussi": [
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/actualites/37515-janze-grand-prix-cycliste-13-juillet-2026-infos-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 13 juillet 2026 infos de course cycliste"
+    }
+   ]
   },
   {
    "id": "rafcom-9c04434898",
@@ -1965,6 +2061,20 @@ window.GAZETTE_AUTO = {
    "p": "Dans le cadre du festival Fest'Yve, participez avec les enfants à cette grande parade au son de la Nouvelle-Orléans avec Engrenage(s) aux commandes.",
    "src": "Kidiklik",
    "url": "https://35.kidiklik.fr/sorties-moment/452163-la-grande-parade-deambulation-familiale-janze.html",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-284ce4048f",
+   "d": "2026-04-13",
+   "cat": "presse",
+   "press": true,
+   "t": "Louis Janvier et Yanis Clemens triomphent au concours Les Toqués de Janzé 2026",
+   "p": "La passion et la transmission étaient au cœur de la 12e édition Les Toqués de Janzé, laquelle comportait une épreuve technique sur le thème « Terre & Mer ».",
+   "src": "Zepros Restauration",
+   "url": "https://resto.zepros.fr/actus-metiers/louis-janvier-yanis-clemens-triomphent-concours-toques-janze-2026",
    "a": "auto",
    "k": "presse",
    "resolu": true,
