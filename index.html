@@ -296,8 +296,8 @@ const AUTO = { auto: "Collecte automatique", semi: "Collecte partielle", non: "S
 // Date du jour (heure locale), au format AAAA-MM-JJ : sert au bandeau, à la une et à l'agenda.
 const TODAY = new Date().toLocaleDateString("sv-SE");
 const ITEMS_MANUELS = [
-  // Annonce de naissance : épinglée en une les 20, 21 et 22 novembre, puis dans Vie locale.
-  { id: "naissance-albane", d: "2026-11-20", publie: "2026-11-20", epingle: true, une: "rouille", cat: "vie", kick: "Naissance",
+  // Annonce de naissance : épinglée en une du 20 novembre au 21 novembre à 18 h, puis dans Vie locale.
+  { id: "naissance-albane", d: "2026-11-20", publie: "2026-11-20", epingle: true, finUne: "2026-11-21T18:00:00+01:00", une: "rouille", cat: "vie", kick: "Naissance",
     t: "Une petite Janzéenne est née", grand: "Albane",
     p: "Elise, Florent et Louis sont heureux de vous annoncer l'arrivée d'Albane ce vendredi 20\u00a0novembre à 11\u00a0h\u00a027. Elle pèse 2,960\u00a0kg et sa maman va bien.",
     suite: "Bienvenue à la plus jeune lectrice de la Gazette !", lire: false,
@@ -490,7 +490,10 @@ const parUne = (a, b) => score(b) - score(a) || b.d.localeCompare(a.d) || poidsU
 // Rien ne passe devant, pas même une vigilance météo : les autres infos restent dans les brèves.
 // Réservé aux annonces exceptionnelles. Ensuite l'info reste dans sa rubrique.
 const epinglee = i => i.epingle && ageDays(i) < UNE_MAX && i.d <= TODAY;
-const pickLead = () => ITEMS.find(epinglee) || [...ITEMS].sort(parUne).find(i => ageDays(i) < UNE_MAX);
+// « finUne » (date et heure, AAAA-MM-JJTHH:MM:SS+01:00) : passé ce moment, l'info quitte la page À la une
+// (carte et brèves) et ne reste que dans sa rubrique.
+const horsUne = i => i.finUne && new Date(i.finUne) <= new Date();
+const pickLead = () => ITEMS.find(i => epinglee(i) && !horsUne(i)) || [...ITEMS].sort(parUne).find(i => ageDays(i) < UNE_MAX && !horsUne(i));
 
 // Projets de la une : actu récente et échéance proche d'abord, puis chantiers en cours.
 // Jusqu'à 60 points pour une actu de moins de 2 mois, 60 pour une échéance dans les 2 mois, 15 si chantier.
@@ -519,7 +522,7 @@ function viewUne() {
   // Brèves : même règle que la une, avec au plus 2 articles de presse pour laisser la place à la ville.
   let nPresse = 0;
   const rest = [...ITEMS].sort(parUne)
-    .filter(i => i !== lead && (i.cat !== "presse" || ++nPresse <= 2)).slice(0, 6);
+    .filter(i => i !== lead && !horsUne(i) && (i.cat !== "presse" || ++nPresse <= 2)).slice(0, 6);
   const agenda = aVenir();
   const next = agenda.find(a => !a.approx);
   const inDays = next ? Math.round((dt(next.d) - dt(TODAY)) / 86400000) : 0;
