@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-21T23:43+00:00",
+ "maj": "2026-11-22T15:05+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-21T23:43+00:00",
+   "le": "2026-11-22T15:05+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-21T23:43+00:00",
-   "n": 45
+   "le": "2026-11-22T15:05+00:00",
+   "n": 47
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-21T23:43+00:00",
+   "le": "2026-11-22T15:05+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-21T23:43+00:00",
+   "le": "2026-11-22T15:05+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-21T23:43+00:00",
+   "le": "2026-11-22T15:05+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-21T23:43+00:00",
+   "le": "2026-11-22T15:05+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-21T23:43+00:00",
+   "le": "2026-11-22T15:05+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-21T23:43+00:00",
+   "le": "2026-11-22T15:05+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -1017,20 +1017,6 @@ window.GAZETTE_AUTO = {
    ]
   },
   {
-   "id": "presse-0d79ea41a1",
-   "d": "2026-10-09",
-   "cat": "vie",
-   "press": false,
-   "t": "Spectacle-débat « Souffler sur les braises » Janzé",
-   "p": "Le Comité Action Sociale Agirc-Arrco Bretagne, en partenariat avec le CLIC de la Roche aux Fées et le CCAS de Janzé, a le plaisir de vous inviter à un spect ...",
-   "src": "Agirc-Arrco",
-   "url": "https://www.agirc-arrco.fr/mes-services-particuliers/evenements/je-participe-a-un-evenement/spectacle-debat-souffler-sur-les-braises-janze/",
-   "a": "auto",
-   "k": "presse",
-   "resolu": true,
-   "ap": null
-  },
-  {
    "id": "janze-22d41045be",
    "d": "2026-10-08",
    "cat": "projets",
@@ -1852,6 +1838,20 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
+   "id": "presse-0d79ea41a1",
+   "d": "2026-06-26",
+   "cat": "vie",
+   "press": false,
+   "t": "Spectacle-débat « Souffler sur les braises » Janzé",
+   "p": "Le Comité Action Sociale Agirc-Arrco Bretagne, en partenariat avec le CLIC de la Roche aux Fées et le CCAS de Janzé, a le plaisir de vous inviter à un spect ...",
+   "src": "Agirc-Arrco",
+   "url": "https://www.agirc-arrco.fr/mes-services-particuliers/evenements/je-participe-a-un-evenement/spectacle-debat-souffler-sur-les-braises-janze/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": null
+  },
+  {
    "id": "presse-d1d28750bc",
    "d": "2026-06-26",
    "cat": "presse",
@@ -1896,8 +1896,8 @@ window.GAZETTE_AUTO = {
    "aussi": [
     {
      "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
-     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/37326-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-classement.html",
+     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 classement"
     }
    ]
   },
