@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-23T00:00+00:00",
+ "maj": "2026-11-23T19:00+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-23T00:00+00:00",
+   "le": "2026-11-23T19:00+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-23T00:00+00:00",
-   "n": 46
+   "le": "2026-11-23T19:00+00:00",
+   "n": 48
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-23T00:00+00:00",
+   "le": "2026-11-23T19:00+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-23T00:00+00:00",
+   "le": "2026-11-23T19:00+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-23T00:00+00:00",
+   "le": "2026-11-23T19:00+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-23T00:00+00:00",
+   "le": "2026-11-23T19:00+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-23T00:00+00:00",
+   "le": "2026-11-23T19:00+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-23T00:00+00:00",
+   "le": "2026-11-23T19:00+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -1896,8 +1896,8 @@ window.GAZETTE_AUTO = {
    "aussi": [
     {
      "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/37326-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-classement.html",
-     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 classement"
+     "url": "https://velopressecollection.ouest-france.fr/route/engages/37279-janze-grand-prix-de-la-roche-aux-fees-et-course-d-attente-21-juin-2026-engages.html",
+     "t": "Janzé Grand Prix de la Roche aux Fées et course d'attente 21 juin 2026 engagés"
     }
    ]
   },
