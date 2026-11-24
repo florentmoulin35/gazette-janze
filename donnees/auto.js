@@ -1,52 +1,109 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-24T06:48+00:00",
+ "maj": "2026-11-24T18:41+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-24T06:48+00:00",
+   "le": "2026-11-24T18:41+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-24T06:48+00:00",
-   "n": 91
+   "le": "2026-11-24T18:41+00:00",
+   "n": 83
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-24T06:48+00:00",
+   "le": "2026-11-24T18:41+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-24T06:48+00:00",
+   "le": "2026-11-24T18:41+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-24T06:48+00:00",
+   "le": "2026-11-24T18:41+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-24T06:48+00:00",
+   "le": "2026-11-24T18:41+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-24T06:48+00:00",
+   "le": "2026-11-24T18:41+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-24T06:48+00:00",
+   "le": "2026-11-24T18:41+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-8d8c927206",
+   "d": "2026-11-24",
+   "cat": "presse",
+   "press": true,
+   "t": "À Janzé, les repas des écoliers sont cuisinés par les travailleurs de l’Esat de Retiers",
+   "p": "Les repas du restaurant scolaire municipal de Janzé sont préparés par l’Esat de Retiers (Ille-et-Vilaine). Un partenariat qui a été mis en avant…",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/a-janze-les-repas-des-ecoliers-sont-cuisines-par-les-travailleurs-de-lesat-de-retiers-d6982e3a-e73e-11f1-b9ed-164c427aef07",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-662cd4bbda",
+   "d": "2026-11-24",
+   "cat": "presse",
+   "press": true,
+   "t": "Fred Cavayé, réalisateur du film « Les Misérables », a répondu aux questions de 200 élèves de Janzé",
+   "p": "Fred Cavayé a été à la rencontre d’élèves de la MFR et du collège Jean-Monnet de Janzé (Ille-et-Vilaine), jeudi 19 novembre 2026. Après la projection de son film « Les Misérables », il a répondu aux…",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/fred-cavaye-realisateur-du-film-les-miserables-a-repondu-aux-questions-de-200-eleves-de-janze-84f7c396-e5af-11f1-b9ed-164c427aef07",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-24df6140af",
+   "d": "2026-11-24",
+   "cat": "presse",
+   "press": true,
+   "t": "« Dans les tiroirs depuis 2018 » : la première pierre de la Maison Civet, résidence de 15 logements, a été posée à Janzé",
+   "p": "La première pierre de la Maison Civet, qui comptera quinze appartements du T2 au T4, dont trois logements sociaux acquis par le bailleur Espacil, a été posée vendredi 20 novembre 2026 à Janzé…",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/dans-les-tiroirs-depuis-2018-la-premiere-pierre-de-la-maison-civet-residence-de-15-logements-a-ete-posee-a-janze-a67576ee-e749-11f1-b9ed-164c427aef07",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2,
+   "cat2": "urba"
+  },
+  {
+   "id": "presse-032e5cb0a5",
+   "d": "2026-11-24",
+   "cat": "presse",
+   "press": true,
+   "t": "À Janzé, décorez votre maison pour Noël et tentez de gagner 100 euros !",
+   "p": "Cette année, à Janzé, en Ille-et-Vilaine, la magie de Noël ne se limitera pas aux illuminations municipales. La ville lance pour la première fois un concours de décoration et d'illumination des maisons. Une initiative pour embellir la commune, mais aussi pour créer du lien…",
+   "src": "ici.fr",
+   "url": "https://www.ici.fr/emissions/le-coup-de-coeur-ici-armorique/a-janze-decorez-votre-maison-pour-noel-et-tentez-de-gagner-100-euros-2751710",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-a6a2260b9d",
    "d": "2026-11-24",
