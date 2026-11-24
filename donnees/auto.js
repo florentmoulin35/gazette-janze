@@ -1,52 +1,66 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-23T19:00+00:00",
+ "maj": "2026-11-24T06:48+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-23T19:00+00:00",
+   "le": "2026-11-24T06:48+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-23T19:00+00:00",
-   "n": 48
+   "le": "2026-11-24T06:48+00:00",
+   "n": 91
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-23T19:00+00:00",
+   "le": "2026-11-24T06:48+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-23T19:00+00:00",
+   "le": "2026-11-24T06:48+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-23T19:00+00:00",
+   "le": "2026-11-24T06:48+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-23T19:00+00:00",
+   "le": "2026-11-24T06:48+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-23T19:00+00:00",
+   "le": "2026-11-24T06:48+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-23T19:00+00:00",
+   "le": "2026-11-24T06:48+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-a6a2260b9d",
+   "d": "2026-11-24",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. La soirée de lancement des illuminations aura lieu vendredi",
+   "p": "",
+   "src": "maville.com",
+   "url": "https://redon.maville.com/actu/actudet_-janze-la-soiree-de-lancement-des-illuminations-aura-lieu-vendredi_dep-7582647_actu.Htm",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-543af5932a",
    "d": "2026-11-21",
@@ -231,6 +245,20 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
+   "id": "presse-df930c2909",
+   "d": "2026-11-10",
+   "cat": "vie",
+   "press": false,
+   "t": "BAIN BGNE FOOT US - US Janzé",
+   "p": "",
+   "src": "Score'n'co",
+   "url": "https://scorenco.com/football/match-us-bain-de-bretagne-football-loisir-1-us-janze-loisir-1-1sh6n?e",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
    "id": "presse-d76fdd12fd",
    "d": "2026-11-09",
    "cat": "presse",
@@ -323,6 +351,20 @@ window.GAZETTE_AUTO = {
    "p": "",
    "src": "Score'n'co",
    "url": "https://scorenco.com/football/match-stade-pontivyen-us-janze-1x78g",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-da16bece4e",
+   "d": "2026-11-06",
+   "cat": "vie",
+   "press": false,
+   "t": "US Janzé",
+   "p": "",
+   "src": "Score'n'co",
+   "url": "https://scorenco.com/football/clubs/us-janze-2hi0/u13-f1-4l6i",
    "a": "auto",
    "k": "presse",
    "resolu": true,
@@ -1056,6 +1098,20 @@ window.GAZETTE_AUTO = {
    "ap": 2
   },
   {
+   "id": "presse-d32a7a2e11",
+   "d": "2026-10-06",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Un spectacle destiné aux seniors sera joué vendredi",
+   "p": "",
+   "src": "maville.com",
+   "url": "https://rennes.maville.com/actu/actudet_-janze-un-spectacle-destine-aux-seniors-sera-joue-vendredi_7-7510511_actu.Htm",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
    "id": "presse-df80b71d1e",
    "d": "2026-10-04",
    "cat": "presse",
@@ -1293,20 +1349,6 @@ window.GAZETTE_AUTO = {
    "k": "catnat"
   },
   {
-   "id": "presse-cac77d6e9b",
-   "d": "2026-09-18",
-   "cat": "vie",
-   "press": false,
-   "t": "US Janzé",
-   "p": "",
-   "src": "Score'n'co",
-   "url": "https://scorenco.com/football/clubs/us-janze-2hi0/u15-1-3c8u",
-   "a": "auto",
-   "k": "presse",
-   "resolu": true,
-   "ap": 2
-  },
-  {
    "id": "presse-719297f0b2",
    "d": "2026-09-18",
    "cat": "presse",
@@ -1338,6 +1380,11 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
+    },
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
@@ -1786,6 +1833,20 @@ window.GAZETTE_AUTO = {
      "t": "Janzé Grand Prix Cycliste 13 juillet 2026 infos de course cycliste"
     }
    ]
+  },
+  {
+   "id": "presse-e9214efdc2",
+   "d": "2026-07-09",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. Le club d’athlétisme organise un meeting régional",
+   "p": "",
+   "src": "maville.com",
+   "url": "https://rennes.maville.com/actu/actudet_-janze-le-club-d-athletisme-organise-un-meeting-regional_-7398241_actu.Htm",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "rafcom-9c04434898",
