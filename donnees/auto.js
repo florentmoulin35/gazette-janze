@@ -1,52 +1,66 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-25T02:56+00:00",
+ "maj": "2026-11-25T17:50+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-25T02:56+00:00",
+   "le": "2026-11-25T17:50+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-25T02:56+00:00",
-   "n": 52
+   "le": "2026-11-25T17:50+00:00",
+   "n": 87
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-25T02:56+00:00",
+   "le": "2026-11-25T17:50+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-25T02:56+00:00",
+   "le": "2026-11-25T17:50+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-25T02:56+00:00",
+   "le": "2026-11-25T17:50+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-25T02:56+00:00",
+   "le": "2026-11-25T17:50+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-25T02:56+00:00",
+   "le": "2026-11-25T17:50+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-25T02:56+00:00",
+   "le": "2026-11-25T17:50+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-b425f90bea",
+   "d": "2026-11-25",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. La Ville lance le premier concours de maisons décorées",
+   "p": "Alors que les fêtes de fin d’année approchent, la Ville lance la première édition du concours Maison de Noël. Les habitants sont donc invités à laisser libre cours à leur créativité pour décorer et…",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/janze-la-ville-lance-le-premier-concours-de-maisons-decorees-bea2f771-70f7-4a0a-bd8e-b53414ebca30",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-8d8c927206",
    "d": "2026-11-24",
@@ -451,6 +465,20 @@ window.GAZETTE_AUTO = {
    "url": "https://www.janze.fr/actualites/18-agents-recenseurs-recherches-pour-2027",
    "a": "auto",
    "k": "janze"
+  },
+  {
+   "id": "presse-9c5503aed1",
+   "d": "2026-11-03",
+   "cat": "vie",
+   "press": false,
+   "t": "HANDBALL CLUB 310 2 vs HB Janzé 1",
+   "p": "",
+   "src": "Fédération Française de Handball",
+   "url": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/loisirs-bretagne-2026-2027-33265/poule-197971/rencontre-2741742/",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
   },
   {
    "id": "presse-697f8a0f37",
@@ -1437,6 +1465,11 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
+    },
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
