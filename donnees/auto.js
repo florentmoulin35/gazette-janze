@@ -1,52 +1,80 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-26T02:03+00:00",
+ "maj": "2026-11-26T17:33+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-26T02:03+00:00",
+   "le": "2026-11-26T17:33+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-26T02:03+00:00",
-   "n": 55
+   "le": "2026-11-26T17:33+00:00",
+   "n": 82
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-26T02:03+00:00",
+   "le": "2026-11-26T17:33+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-26T02:03+00:00",
+   "le": "2026-11-26T17:33+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-26T02:03+00:00",
+   "le": "2026-11-26T17:33+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-26T02:03+00:00",
+   "le": "2026-11-26T17:33+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-26T02:03+00:00",
+   "le": "2026-11-26T17:33+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-26T02:03+00:00",
+   "le": "2026-11-26T17:33+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-1150ea5cdc",
+   "d": "2026-11-26",
+   "cat": "presse",
+   "press": true,
+   "t": "La hotte solidaire Janzé 2026 : date, horaires, programme, tarifs",
+   "p": "Manifestations, événements et animations, du 30 novembre 2026 au 9 janvier 2027, à Janzé (Ille-et-Vilaine) - horaires, tarifs, renseignements. La Hotte Solidaire débarque aux Ondines : mobilisons-nous pour les fêtes ! À l'approche des fêtes de",
+   "src": "jds.fr",
+   "url": "https://www.jds.fr/rennes/manifestations/la-hotte-solidaire-1864043_A",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-96abee42b3",
+   "d": "2026-11-26",
+   "cat": "presse",
+   "press": true,
+   "t": "Chez Optic 2000 Bruz, Janzé et Bain-de-Bretagne, une deuxième paire vraiment utile au quotidien",
+   "p": "",
+   "src": "maville.com",
+   "url": "https://rennes.maville.com/actu/actudet_-chez-optic-2000-bruz-janze-et-bain-de-bretagne-une-deuxieme-paire-vraiment-utile-au-quotidien_52674-7583226_actu.Htm",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-b425f90bea",
    "d": "2026-11-25",
@@ -1465,6 +1493,11 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
+    },
+    {
+     "src": "velopressecollection",
+     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
+     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
