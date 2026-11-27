@@ -1,47 +1,47 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-26T17:33+00:00",
+ "maj": "2026-11-27T02:02+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-26T17:33+00:00",
+   "le": "2026-11-27T02:02+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-26T17:33+00:00",
+   "le": "2026-11-27T02:02+00:00",
    "n": 82
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-26T17:33+00:00",
+   "le": "2026-11-27T02:02+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-26T17:33+00:00",
+   "le": "2026-11-27T02:02+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-26T17:33+00:00",
+   "le": "2026-11-27T02:02+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-26T17:33+00:00",
+   "le": "2026-11-27T02:02+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-26T17:33+00:00",
+   "le": "2026-11-27T02:02+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-26T17:33+00:00",
+   "le": "2026-11-27T02:02+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
@@ -366,6 +366,20 @@ window.GAZETTE_AUTO = {
    "p": "Chaque semaine, nous posons notre objectif sur un match. Samedi 7 novembre, place au volley féminin avec une rencontre opposant Saint-Grégoire à Janzé-Corps-Nuds (Ille-et-Vilaine).",
    "src": "Actu.fr",
    "url": "https://actu.fr/bretagne/corps-nuds_35088/en-images-les-volleyeuses-de-janze-corps-nuds-sinclinent-face-a-saint-gregoire-dans-un-match-a-haute-intensite_65033454.html",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-c0e81242e2",
+   "d": "2026-11-09",
+   "cat": "vie",
+   "press": false,
+   "t": "US Janzé - STDE CASTELBOURGEOIS",
+   "p": "",
+   "src": "Score'n'co",
+   "url": "https://scorenco.com/football/match-stade-castelbourgeois-fc-u15-1-us-janze-u15-1-1w0mu",
    "a": "auto",
    "k": "presse",
    "resolu": true,
