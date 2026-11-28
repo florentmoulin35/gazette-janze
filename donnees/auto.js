@@ -1,52 +1,80 @@
 // Fichier écrit à chaque collecte par scripts/collecter.py : ne pas modifier à la main.
 window.GAZETTE_AUTO = {
- "maj": "2026-11-28T01:47+00:00",
+ "maj": "2026-11-28T15:58+00:00",
  "sources": {
   "janze": {
    "etat": "ok",
-   "le": "2026-11-28T01:47+00:00",
+   "le": "2026-11-28T15:58+00:00",
    "n": 11
   },
   "presse": {
    "etat": "ok",
-   "le": "2026-11-28T01:47+00:00",
-   "n": 84
+   "le": "2026-11-28T15:58+00:00",
+   "n": 50
   },
   "vigieau": {
    "etat": "ok",
-   "le": "2026-11-28T01:47+00:00",
+   "le": "2026-11-28T15:58+00:00",
    "n": 1
   },
   "rafcom": {
    "etat": "ok",
-   "le": "2026-11-28T01:47+00:00",
+   "le": "2026-11-28T15:58+00:00",
    "n": 46
   },
   "catnat": {
    "etat": "ok",
-   "le": "2026-11-28T01:47+00:00",
+   "le": "2026-11-28T15:58+00:00",
    "n": 5
   },
   "eau": {
    "etat": "ok",
-   "le": "2026-11-28T01:47+00:00",
+   "le": "2026-11-28T15:58+00:00",
    "n": 0,
    "info": "Dernier prélèvement le 25 août 2026 : conforme"
   },
   "vigilance": {
    "etat": "ok",
-   "le": "2026-11-28T01:47+00:00",
+   "le": "2026-11-28T15:58+00:00",
    "n": 0,
    "info": "Vigilance aujourd'hui verte, demain verte"
   },
   "agenda": {
    "etat": "ok",
-   "le": "2026-11-28T01:47+00:00",
+   "le": "2026-11-28T15:58+00:00",
    "n": 0,
    "info": "0 rendez-vous à venir à Janzé"
   }
  },
  "items": [
+  {
+   "id": "presse-9db95a63bc",
+   "d": "2026-11-28",
+   "cat": "presse",
+   "press": true,
+   "t": "« Le sport permet de s’épanouir » : le Handball Janzé est le seul club d’Ille-et-Vilaine doté d’une section hand fauteuil",
+   "p": "Début octobre, le club Handball Janzé (Ille-et-Vilaine) a ouvert une section hand fauteuil et une section hand adapté, pour rendre cette discipline sportive accessible à toutes et tous.",
+   "src": "Ouest-France",
+   "url": "https://www.ouest-france.fr/bretagne/janze-35150/le-sport-permet-de-sepanouir-le-handball-janze-est-le-seul-club-dille-et-vilaine-dote-dune-section-hand-fauteuil-379a47a4-e9b5-11f1-b706-1d273d1ab155",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
+  {
+   "id": "presse-4cdc464e09",
+   "d": "2026-11-28",
+   "cat": "presse",
+   "press": true,
+   "t": "Janzé. L’artiste peintre fait un don à Tous pour la vie",
+   "p": "",
+   "src": "maville.com",
+   "url": "https://rennes.maville.com/actu/actudet_-janze-l-artiste-peintre-fait-un-don-a-tous-pour-la-vie_dep-7589297_actu.Htm",
+   "a": "auto",
+   "k": "presse",
+   "resolu": true,
+   "ap": 2
+  },
   {
    "id": "presse-1150ea5cdc",
    "d": "2026-11-26",
@@ -1507,11 +1535,6 @@ window.GAZETTE_AUTO = {
      "src": "velopressecollection",
      "url": "https://velopressecollection.ouest-france.fr/route/engages/38500-janze-grand-prix-cycliste-11-septembre-2026-engages-de-course-cycliste.html",
      "t": "Janzé Grand Prix Cycliste 11 septembre 2026 engagés de course cycliste"
-    },
-    {
-     "src": "velopressecollection",
-     "url": "https://velopressecollection.ouest-france.fr/route/classements/38545-janze-grand-prix-cycliste-11-septembre-2026-classement-de-course-cycliste.html",
-     "t": "Janzé Grand Prix Cycliste 11 septembre 2026 classement de course cycliste"
     }
    ]
   },
